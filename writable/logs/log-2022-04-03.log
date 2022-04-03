@@ -1,0 +1,24 @@
+CRITICAL - 2022-04-03 20:24:00 --> The framework needs the following extension(s) installed and loaded: intl.
+#0 C:\xampp\htdocs\ProyectoFinal\system\CodeIgniter.php(219): CodeIgniter\Exceptions\FrameworkException::forMissingExtension('intl')
+#1 C:\xampp\htdocs\ProyectoFinal\system\CodeIgniter.php(177): CodeIgniter\CodeIgniter->resolvePlatformExtensions()
+#2 C:\xampp\htdocs\ProyectoFinal\system\bootstrap.php(146): CodeIgniter\CodeIgniter->initialize()
+#3 C:\xampp\htdocs\ProyectoFinal\public\index.php(28): require('C:\\xampp\\htdocs...')
+#4 {main}
+CRITICAL - 2022-04-03 20:33:22 --> The framework needs the following extension(s) installed and loaded: intl.
+#0 C:\xampp\htdocs\ProyectoFinal\system\CodeIgniter.php(219): CodeIgniter\Exceptions\FrameworkException::forMissingExtension('intl')
+#1 C:\xampp\htdocs\ProyectoFinal\system\CodeIgniter.php(177): CodeIgniter\CodeIgniter->resolvePlatformExtensions()
+#2 C:\xampp\htdocs\ProyectoFinal\system\bootstrap.php(146): CodeIgniter\CodeIgniter->initialize()
+#3 C:\xampp\htdocs\ProyectoFinal\public\index.php(28): require('C:\\xampp\\htdocs...')
+#4 {main}
+CRITICAL - 2022-04-03 20:37:30 --> The framework needs the following extension(s) installed and loaded: intl.
+#0 C:\xampp\htdocs\ProyectoFinal\system\CodeIgniter.php(219): CodeIgniter\Exceptions\FrameworkException::forMissingExtension('intl')
+#1 C:\xampp\htdocs\ProyectoFinal\system\CodeIgniter.php(177): CodeIgniter\CodeIgniter->resolvePlatformExtensions()
+#2 C:\xampp\htdocs\ProyectoFinal\system\bootstrap.php(146): CodeIgniter\CodeIgniter->initialize()
+#3 C:\xampp\htdocs\ProyectoFinal\public\index.php(28): require('C:\\xampp\\htdocs...')
+#4 {main}
+CRITICAL - 2022-04-03 20:39:26 --> The framework needs the following extension(s) installed and loaded: intl.
+#0 C:\xampp\htdocs\ProyectoFinal\system\CodeIgniter.php(219): CodeIgniter\Exceptions\FrameworkException::forMissingExtension('intl')
+#1 C:\xampp\htdocs\ProyectoFinal\system\CodeIgniter.php(177): CodeIgniter\CodeIgniter->resolvePlatformExtensions()
+#2 C:\xampp\htdocs\ProyectoFinal\system\bootstrap.php(146): CodeIgniter\CodeIgniter->initialize()
+#3 C:\xampp\htdocs\ProyectoFinal\public\index.php(28): require('C:\\xampp\\htdocs...')
+#4 {main}
