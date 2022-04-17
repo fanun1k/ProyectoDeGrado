@@ -1,4 +1,8 @@
-# Equipo FireRed
+# Equipo FireRed (Grupo de 3)
+Pablo Daniel Rodriguez Solis
+Axel Eddy Martinez Ayala
+Rodrigo Iriarte Zamorano
+
 # CodeIgniter 4 Development
 
 [![Build Status](https://github.com/codeigniter4/CodeIgniter4/workflows/PHPUnit/badge.svg)](https://github.com/codeigniter4/CodeIgniter4/actions?query=workflow%3A%22PHPUnit%22)
