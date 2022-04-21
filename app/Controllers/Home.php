@@ -2,12 +2,12 @@
 
 namespace App\Controllers;
 
-class Home extends BaseController
+use CodeIgniter\RESTful\ResourceController;
+
+class Home extends ResourceController
 {
     public function index()
     {
-        $user_name=$_POST['UserName'];
-        echo $user_name;
         return view('home_view');
     }
 }

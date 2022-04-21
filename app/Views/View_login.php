@@ -44,10 +44,9 @@
 							<div class="center">
 								<h1>
 									<i class="ace-icon fa fa-leaf green"></i>
-									<span class="red">Ace</span>
-									<span class="white" id="id-text2">Application</span>
+									<span class="red">ELPAD</span>
+									<span class="white" id="id-text2">& L.G.</span>
 								</h1>
-								<h4 class="blue" id="id-company-text">&copy; Company Name</h4>
 							</div>
 
 							<div class="space-6"></div>
@@ -58,24 +57,24 @@
 										<div class="widget-main">
 											<h4 class="header blue lighter bigger">
 												<i class="ace-icon fa fa-coffee green"></i>
-												Please Enter Your Information
+												Iniciar Sesión
 											</h4>
 
 											<div class="space-6"></div>
 
-											<form method="post" action="login">
+											<form method="post" action="Controller_login/login">
                                             
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="Username" name="UserName" />
+															<input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Nombre de Usuario" name="UserName" />
 															<i class="ace-icon fa fa-user"></i>
 														</span>
 													</label>
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="Password"  />
+															<input type="Password" name="password" class="form-control" placeholder="Contraseña" required />
 															<i class="ace-icon fa fa-lock"></i>
 														</span>
 													</label>
@@ -85,7 +84,7 @@
 													<div class="clearfix">
 														<label class="inline">
 															<input type="checkbox" class="ace" />
-															<span class="lbl"> Remember Me</span>
+															<span class="lbl"> Recordar</span>
 														</label>
 
 														<button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
@@ -97,26 +96,6 @@
 													<div class="space-4"></div>
 												</fieldset>
 											</form>
-
-											<div class="social-or-login center">
-												<span class="bigger-110">Or Login Using</span>
-											</div>
-
-											<div class="space-6"></div>
-
-											<div class="social-login center">
-												<a class="btn btn-primary">
-													<i class="ace-icon fa fa-facebook"></i>
-												</a>
-
-												<a class="btn btn-info">
-													<i class="ace-icon fa fa-twitter"></i>
-												</a>
-
-												<a class="btn btn-danger">
-													<i class="ace-icon fa fa-google-plus"></i>
-												</a>
-											</div>
 										</div><!-- /.widget-main -->
 
 										<div class="toolbar clearfix">
@@ -124,13 +103,6 @@
 												<a href="#" data-target="#forgot-box" class="forgot-password-link">
 													<i class="ace-icon fa fa-arrow-left"></i>
 													I forgot my password
-												</a>
-											</div>
-
-											<div>
-												<a href="#" data-target="#signup-box" class="user-signup-link">
-													I want to register
-													<i class="ace-icon fa fa-arrow-right"></i>
 												</a>
 											</div>
 										</div>
@@ -254,21 +226,6 @@
 									</div><!-- /.widget-body -->
 								</div><!-- /.signup-box -->
 							</div><!-- /.position-relative -->
-
-							<div class="navbar-fixed-top align-right">
-								<br />
-								&nbsp;
-								<a id="btn-login-dark" href="#">Dark</a>
-								&nbsp;
-								<span class="blue">/</span>
-								&nbsp;
-								<a id="btn-login-blur" href="#">Blur</a>
-								&nbsp;
-								<span class="blue">/</span>
-								&nbsp;
-								<a id="btn-login-light" href="#">Light</a>
-								&nbsp; &nbsp; &nbsp;
-							</div>
 						</div>
 					</div><!-- /.col -->
 				</div><!-- /.row -->
@@ -299,34 +256,11 @@
 				$(target).addClass('visible');//show target
 			 });
 			});
-			
-			
-			
-			//you don't need this, just used for changing background
-			jQuery(function($) {
-			 $('#btn-login-dark').on('click', function(e) {
-				$('body').attr('class', 'login-layout');
-				$('#id-text2').attr('class', 'white');
-				$('#id-company-text').attr('class', 'blue');
-				
-				e.preventDefault();
-			 });
-			 $('#btn-login-light').on('click', function(e) {
-				$('body').attr('class', 'login-layout light-login');
-				$('#id-text2').attr('class', 'grey');
-				$('#id-company-text').attr('class', 'blue');
-				
-				e.preventDefault();
-			 });
-			 $('#btn-login-blur').on('click', function(e) {
-				$('body').attr('class', 'login-layout blur-login');
+			$('body').attr('class', 'login-layout blur-login');
 				$('#id-text2').attr('class', 'white');
 				$('#id-company-text').attr('class', 'light-blue');
 				
 				e.preventDefault();
-			 });
-			 
-			});
 		</script>
 	</body>
 </html>
