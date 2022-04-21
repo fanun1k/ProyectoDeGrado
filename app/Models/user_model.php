@@ -8,13 +8,15 @@ class user_model extends Model
     //El nombre del ID en la tabla
     protected $primaryKey= 'id_usuario';
     //Last columnas que van a afectar
-    protected $allowedFields= ['nombre_usuario'];
-   public function login($user_name,$password){
+    protected $allowedFields= ['contrasena'];
 
-   }
-   public function getUsers(){
-       return $this->findAll();
-   }
+    public function login($user_name,$password){
+        return $this->where(['nombre_usuario'=>$user_name,'contrasena'=>$password])->first();
+        
+    }
+    public function getUsers(){
+        return $this->findAll();
+    }
 }
 
 ?>
