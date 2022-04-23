@@ -8,6 +8,7 @@ class Home extends ResourceController
 {
     public function index()
     {
-        return view('home_view');
+        $vista= view('header_footer/header').view('header_footer/sidebar').view('baseView').view('header_footer/footer');
+        return $vista;
     }
 }
