@@ -23,7 +23,9 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $baseURL = 'http://localhost/ProyectoDeGrado/';
+
+    //Dynamic URL
+    public $baseURL = BASESEURL; //'http://localhost:8080/ProyectoDeGrado/';
 
     /**
      * --------------------------------------------------------------------------
