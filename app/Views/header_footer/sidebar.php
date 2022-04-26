@@ -100,7 +100,7 @@
 					<li class="">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-archive"></i>
-							<span style=" font-size: 11px;" class="menu-text"> Cadena de Suministros </span>
+							<span style=" font-size: 11.5px;" class="menu-text"> Cadena de Suministros </span>
 
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
@@ -190,19 +190,71 @@
 							<li class="">
 								<a href="content-slider.html">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Content Sliders
+									Planif. Horarios
 								</a>
 
 								<b class="arrow"></b>
 							</li>
 
 							<li class="">
-								<a href="treeview.html">
+								<a href="#" class="dropdown-toggle">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Treeview
+									<span class="menu-text">
+										Perfiles del Personal
+									</span>
+									<b class="arrow fa fa-angle-down"></b>
 								</a>
-
 								<b class="arrow"></b>
+								<ul class="submenu">
+									<li class="">
+										<a href="jquery-ui.html">
+											<i class="menu-icon fa fa-caret-right"></i>
+											Nuevo Perfil
+										</a>
+										<b class="arrow"></b>
+									</li>
+									<li class="">
+										<a href="jquery-ui.html">
+											<i class="menu-icon fa fa-caret-right"></i>
+											Visualizar Perfiles
+										</a>
+										<b class="arrow"></b>
+									</li>
+								</ul>
+							</li>
+
+							<li class="">
+								<a href="#" class="dropdown-toggle">
+									<i class="menu-icon fa fa-caret-right"></i>
+									<span class="menu-text">
+										Planillas
+									</span>
+									<b class="arrow fa fa-angle-down"></b>
+								</a>
+								<b class="arrow"></b>
+								<ul class="submenu">
+									<li class="">
+										<a href="jquery-ui.html">
+											<i class="menu-icon fa fa-caret-right"></i>
+											Horas Trabajadas
+										</a>
+										<b class="arrow"></b>
+									</li>
+									<li class="">
+										<a href="jquery-ui.html">
+											<i class="menu-icon fa fa-caret-right"></i>
+											Permisos / Vacaciones
+										</a>
+										<b class="arrow"></b>
+									</li>
+									<li class="">
+										<a href="jquery-ui.html">
+											<i class="menu-icon fa fa-caret-right"></i>
+											Memorándums
+										</a>
+										<b class="arrow"></b>
+									</li>
+								</ul>
 							</li>
 
 						</ul>
@@ -211,47 +263,72 @@
 					<li class="">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-tasks"></i>
-							<span class="menu-text" style="font-size: 11px;">
+							<span class="menu-text" style="font-size: 11.5px;">
 								Gestión de Proyectos
 							</span>
-
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
-
 						<b class="arrow"></b>
-
 						<ul class="submenu">
-							
 							<li class="">
-								<a href="elements.html">
+								<a href="treeview.html">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Elements
+									Gestión de Comedores
 								</a>
 
 								<b class="arrow"></b>
 							</li>
-
 							<li class="">
-								<a href="buttons.html">
+								<a href="#" class="dropdown-toggle">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Buttons &amp; Icons
+									Gestión Nutricional
+									<b class="arrow fa fa-angle-down"></b>
 								</a>
+								<ul class="submenu">
+									<li class="">
+										<a href="top-menu.html">
+											<i class="menu-icon fa fa-caret-right"></i>
+											Insumos-Tabla Nutricional
+										</a>
 
-								<b class="arrow"></b>
+										<b class="arrow"></b>
+									</li>
 							</li>
 
 							<li class="">
-								<a href="content-slider.html">
+								<a href="#" class="dropdown-toggle">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Content Sliders
+									<span class="menu-text" >
+										Plan Alimenticio
+									</span>
+									<b class="arrow fa fa-angle-down"></b>
 								</a>
 
 								<b class="arrow"></b>
-							</li>
 
+								<ul class="submenu">
+									
+									<li class="">
+										<a href="elements.html">
+											<i class="menu-icon fa fa-caret-right"></i>
+											Platos
+										</a>
+
+										<b class="arrow"></b>
+									</li>
+
+									<li class="">
+										<a href="buttons.html">
+											<i class="menu-icon fa fa-caret-right"></i>
+											Menús
+										</a>
+
+										<b class="arrow"></b>
+									</li>
+								</ul>
+							</li>
 						</ul>
 					</li>
-			
 				</ul><!-- /.nav-list -->
 
 				<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
