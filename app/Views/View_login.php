@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Login Page - Ace Admin</title>
+		<title>Iniciar Sesión</title>
 
 		<meta name="description" content="User login page" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -67,7 +67,7 @@
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Nombre de Usuario" name="UserName" />
+															<input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Nombre de Usuario" name="username" />
 															<i class="ace-icon fa fa-user"></i>
 														</span>
 													</label>
@@ -83,7 +83,7 @@
 
 													<div class="clearfix">
 														<label class="inline">
-															<input type="checkbox" class="ace" />
+															<input type="checkbox" name="remember_me" class="ace" />
 															<span class="lbl"> Recordar</span>
 														</label>
 

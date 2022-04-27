@@ -37,6 +37,8 @@ $routes->get('/home', 'Home::index');
 $routes->get('/add_dining_area', 'Controller_dining_area::add_dining_area');
 $routes->get('/list_dining_area', 'Controller_dining_area::list_dining_area');
 $routes->get('/gestionNutricional/tablaNutricional','Controller_nutritional_table::index');
+$routes->get('/cerrar_sesion', 'Controller_login::logout');
+
 
 /*
  * --------------------------------------------------------------------
