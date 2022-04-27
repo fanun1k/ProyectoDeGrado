@@ -4,14 +4,14 @@ use CodeIgniter\Model;
 
 class user_model extends Model
 {
-    protected $table='User';
+    protected $table='usuario';
     //El nombre del ID en la tabla
     protected $primaryKey= 'id_usuario';
     //Last columnas que van a afectar
     protected $allowedFields= ['contrasena'];
 
-    public function login($user_name,$password){
-        return $this->where(['nombre_usuario'=>$user_name,'contrasena'=>$password])->first();
+    public function login($correo_electronico,$password){
+        return $this->where(['correo_electronico'=>$correo_electronico,'contrasena'=>$password])->first();
         
     }
     public function getUsers(){

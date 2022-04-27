@@ -286,7 +286,7 @@
 								</a>
 								<ul class="submenu">
 									<li class="">
-										<a href="top-menu.html">
+										<a href="<?php echo base_url('gestionNutricional/tablaNutricional')?>">
 											<i class="menu-icon fa fa-caret-right"></i>
 											Insumos-Tabla Nutricional
 										</a>
