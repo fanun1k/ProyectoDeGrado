@@ -10,10 +10,20 @@ class user_model extends Model
     //Last columnas que van a afectar
     protected $allowedFields= ['contrasena'];
 
-    public function login($correo_electronico,$password){
-        return $this->where(['correo_electronico'=>$correo_electronico,'contrasena'=>$password])->first();
-        
+    public function login($correo_electronico, $contrasena){
+        $db = db_connect();
+        $builder = $db->table('usuario');
+        $builder->select('correo_electronico');
+        $builder->where('correo_electronico', $correo_electronico);
+        $builder->where('contrasena', $contrasena);
+        $query = $builder->get();
+
+        foreach ($query->getResult() as $row) {
+            $correo_electronico_sesion = $row->correo_electronico;
+        }
+        return $correo_electronico_sesion;
     }
+
     public function getUsers(){
         return $this->findAll();
     }
