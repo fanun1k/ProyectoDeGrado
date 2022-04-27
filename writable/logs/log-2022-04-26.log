@@ -1,3 +1,44 @@
+<<<<<<< HEAD
+CRITICAL - 2022-04-26 16:17:45 --> Invalid file: header.php
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('header.php')
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('header', Array, true)
+#2 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(26): view('header')
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->dining_area()
+#4 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2022-04-26 20:54:59 --> Table 'elpad_db.user' doesn't exist
+CRITICAL - 2022-04-26 20:54:59 --> Call to a member function getFirstRow() on bool
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#1 C:\xampp\htdocs\ProyectoDeGrado\app\Models\user_model.php(14): CodeIgniter\BaseModel->first()
+#2 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_login.php(21): App\Models\user_model->login('axel20ayalam@gm...', '202cb962ac59075...')
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_login->login()
+#4 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_login))
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2022-04-26 20:55:12 --> Table 'elpad_db.user' doesn't exist
+CRITICAL - 2022-04-26 20:55:12 --> Call to a member function getFirstRow() on bool
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#1 C:\xampp\htdocs\ProyectoDeGrado\app\Models\user_model.php(14): CodeIgniter\BaseModel->first()
+#2 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_login.php(21): App\Models\user_model->login('axel20ayalam@gm...', '202cb962ac59075...')
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_login->login()
+#4 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_login))
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2022-04-26 20:56:09 --> Table 'elpad_db.user' doesn't exist
+CRITICAL - 2022-04-26 20:56:09 --> Call to a member function getFirstRow() on bool
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#1 C:\xampp\htdocs\ProyectoDeGrado\app\Models\user_model.php(14): CodeIgniter\BaseModel->first()
+#2 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_login.php(21): App\Models\user_model->login('axel20ayalam@gm...', '202cb962ac59075...')
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_login->login()
+#4 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_login))
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+=======
 ERROR - 2022-04-26 19:56:51 --> Table 'elpad_db.User' doesn't exist
 CRITICAL - 2022-04-26 19:56:51 --> Call to a member function getFirstRow() on bool
 #0 /var/www/html/ProyectoDeGrado/system/BaseModel.php(622): CodeIgniter\Model->doFirst()
@@ -53,6 +94,7 @@ CRITICAL - 2022-04-26 20:48:24 --> syntax error, unexpected 'if' (T_IF)
 #1 /var/www/html/ProyectoDeGrado/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest()
 #2 /var/www/html/ProyectoDeGrado/index.php(37): CodeIgniter\CodeIgniter->run()
 #3 {main}
+<<<<<<< HEAD
 CRITICAL - 2022-04-26 22:55:12 --> syntax error, unexpected '}', expecting ';'
 #0 /var/www/html/ProyectoDeGrado/system/Autoloader/Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile()
 #1 /var/www/html/ProyectoDeGrado/system/Autoloader/Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace()
@@ -288,3 +330,6 @@ CRITICAL - 2022-04-26 23:24:10 --> Invalid argument supplied for foreach()
 #7 /var/www/html/ProyectoDeGrado/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest()
 #8 /var/www/html/ProyectoDeGrado/index.php(37): CodeIgniter\CodeIgniter->run()
 #9 {main}
+=======
+>>>>>>> 06bdf9d247a0e6a319d89f33f86460609052691c
+>>>>>>> b940b448770026049ca49023a4fb7f74f582d0be
