@@ -1,0 +1,55 @@
+ERROR - 2022-04-26 19:56:51 --> Table 'elpad_db.User' doesn't exist
+CRITICAL - 2022-04-26 19:56:51 --> Call to a member function getFirstRow() on bool
+#0 /var/www/html/ProyectoDeGrado/system/BaseModel.php(622): CodeIgniter\Model->doFirst()
+#1 /var/www/html/ProyectoDeGrado/app/Models/user_model.php(14): CodeIgniter\BaseModel->first()
+#2 /var/www/html/ProyectoDeGrado/app/Controllers/Controller_login.php(21): App\Models\user_model->login()
+#3 /var/www/html/ProyectoDeGrado/system/CodeIgniter.php(832): App\Controllers\Controller_login->login()
+#4 /var/www/html/ProyectoDeGrado/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController()
+#5 /var/www/html/ProyectoDeGrado/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest()
+#6 /var/www/html/ProyectoDeGrado/index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2022-04-26 19:59:59 --> Table 'elpad_db.User' doesn't exist
+CRITICAL - 2022-04-26 19:59:59 --> Call to a member function getFirstRow() on bool
+#0 /var/www/html/ProyectoDeGrado/system/BaseModel.php(622): CodeIgniter\Model->doFirst()
+#1 /var/www/html/ProyectoDeGrado/app/Models/user_model.php(14): CodeIgniter\BaseModel->first()
+#2 /var/www/html/ProyectoDeGrado/app/Controllers/Controller_login.php(21): App\Models\user_model->login()
+#3 /var/www/html/ProyectoDeGrado/system/CodeIgniter.php(832): App\Controllers\Controller_login->login()
+#4 /var/www/html/ProyectoDeGrado/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController()
+#5 /var/www/html/ProyectoDeGrado/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest()
+#6 /var/www/html/ProyectoDeGrado/index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2022-04-26 20:00:10 --> Table 'elpad_db.User' doesn't exist
+CRITICAL - 2022-04-26 20:00:10 --> Call to a member function getFirstRow() on bool
+#0 /var/www/html/ProyectoDeGrado/system/BaseModel.php(622): CodeIgniter\Model->doFirst()
+#1 /var/www/html/ProyectoDeGrado/app/Models/user_model.php(14): CodeIgniter\BaseModel->first()
+#2 /var/www/html/ProyectoDeGrado/app/Controllers/Controller_login.php(21): App\Models\user_model->login()
+#3 /var/www/html/ProyectoDeGrado/system/CodeIgniter.php(832): App\Controllers\Controller_login->login()
+#4 /var/www/html/ProyectoDeGrado/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController()
+#5 /var/www/html/ProyectoDeGrado/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest()
+#6 /var/www/html/ProyectoDeGrado/index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2022-04-26 20:01:05 --> Table 'elpad_db.User' doesn't exist
+CRITICAL - 2022-04-26 20:01:05 --> Call to a member function getFirstRow() on bool
+#0 /var/www/html/ProyectoDeGrado/system/BaseModel.php(622): CodeIgniter\Model->doFirst()
+#1 /var/www/html/ProyectoDeGrado/app/Models/user_model.php(14): CodeIgniter\BaseModel->first()
+#2 /var/www/html/ProyectoDeGrado/app/Controllers/Controller_login.php(21): App\Models\user_model->login()
+#3 /var/www/html/ProyectoDeGrado/system/CodeIgniter.php(832): App\Controllers\Controller_login->login()
+#4 /var/www/html/ProyectoDeGrado/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController()
+#5 /var/www/html/ProyectoDeGrado/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest()
+#6 /var/www/html/ProyectoDeGrado/index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2022-04-26 20:02:21 --> Table 'elpad_db.Usuario' doesn't exist
+CRITICAL - 2022-04-26 20:02:21 --> Call to a member function getFirstRow() on bool
+#0 /var/www/html/ProyectoDeGrado/system/BaseModel.php(622): CodeIgniter\Model->doFirst()
+#1 /var/www/html/ProyectoDeGrado/app/Models/user_model.php(14): CodeIgniter\BaseModel->first()
+#2 /var/www/html/ProyectoDeGrado/app/Controllers/Controller_login.php(21): App\Models\user_model->login()
+#3 /var/www/html/ProyectoDeGrado/system/CodeIgniter.php(832): App\Controllers\Controller_login->login()
+#4 /var/www/html/ProyectoDeGrado/system/CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController()
+#5 /var/www/html/ProyectoDeGrado/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest()
+#6 /var/www/html/ProyectoDeGrado/index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-04-26 20:48:24 --> syntax error, unexpected 'if' (T_IF)
+#0 /var/www/html/ProyectoDeGrado/system/CodeIgniter.php(368): CodeIgniter\CodeIgniter->tryToRouteIt()
+#1 /var/www/html/ProyectoDeGrado/system/CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest()
+#2 /var/www/html/ProyectoDeGrado/index.php(37): CodeIgniter\CodeIgniter->run()
+#3 {main}
