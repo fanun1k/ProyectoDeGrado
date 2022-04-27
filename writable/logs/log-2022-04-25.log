@@ -1,0 +1,20 @@
+CRITICAL - 2022-04-25 17:02:36 --> The framework needs the following extension(s) installed and loaded: intl.
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(219): CodeIgniter\Exceptions\FrameworkException::forMissingExtension('intl')
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(177): CodeIgniter\CodeIgniter->resolvePlatformExtensions()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\bootstrap.php(146): CodeIgniter\CodeIgniter->initialize()
+#3 C:\xampp\htdocs\ProyectoDeGrado\index.php(28): require('C:\\xampp\\htdocs...')
+#4 {main}
+ERROR - 2022-04-25 10:20:22 --> Error connecting to the database: Unknown database 'elpad_db'
+CRITICAL - 2022-04-25 10:20:22 --> Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'elpad_db'
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\Database\BaseBuilder.php(1455): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Models\user_model.php(14): CodeIgniter\BaseModel->first()
+#5 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_login.php(21): App\Models\user_model->login('axel@gmail.com', '202cb962ac59075...')
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_login->login()
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_login))
+#8 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}

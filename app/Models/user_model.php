@@ -10,8 +10,8 @@ class user_model extends Model
     //Last columnas que van a afectar
     protected $allowedFields= ['contrasena'];
 
-    public function login($correo_electronico,$password){
-        return $this->where(['correo_electronico'=>$correo_electronico,'contrasena'=>$password])->first();
+    public function login($user_name,$password){
+        return $this->where(['correo_electronico'=>$user_name,'contrasena'=>$password])->first();
         
     }
     public function getUsers(){
