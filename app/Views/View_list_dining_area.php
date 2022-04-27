@@ -7,33 +7,23 @@
 					<a href="#">Home</a>
 				</li>
 				<li>
-					<a href="#">Other Pages</a>
+					<a href="#">Gestión de Proyectos</a>
 					</li>
-				<li class="active">Blank Page</li>
+				<li class="active">Visualizar Comedores</li>
 			</ul><!-- /.breadcrumb -->
 		</div>
 		
 		<div class="page-content">
 			<div class="page-header">
 				<h1>
-					Gestión de Comedores
+					Visualizar Comedores
 				</h1>
 			</div><!-- /.page-header -->
 			<div class="row">
 				<div class="col-xs-12">
 					<!-- PAGE CONTENT BEGINS -->
 					<div class="row">
-						<div class="col-sm-4">
-						<h3 class="header smaller lighter red">Agregar Comedor</h3>
-							<div class="widget-box">
-								<div class="widget-body">
-									<div class="widget-main">
-										<p>Formulario</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-8">
+						<div class="col-sm-12">
 							<h3 class="header smaller lighter green">Comedores Registrados</h3>
 							<div class="clearfix">
 								<div class="pull-right tableTools-container"></div>
