@@ -271,7 +271,7 @@
 						<b class="arrow"></b>
 						<ul class="submenu">
 							<li class="">
-								<a href="treeview.html">
+								<a href="<?php echo base_url()."/dining_area"; ?>">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Gestión de Comedores
 								</a>
