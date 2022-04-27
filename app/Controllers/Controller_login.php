@@ -16,9 +16,9 @@ class Controller_login extends ResourceController
     }
     
     public function login(){
-        $user_name=$_POST['UserName'];
+        $correo_electronico=$_POST['UserName'];
         $password=md5($_POST['password']);
-        $session=$this->model->login($user_name,$password);
+        $session=$this->model->login($correo_electronico,$password);
         if ($session!=null) {
             return redirect()->route('home');
         }
