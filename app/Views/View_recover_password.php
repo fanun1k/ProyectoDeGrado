@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Iniciar Sesión</title>
+		<title>Recuperar Cuenta</title>
 
 		<meta name="description" content="User login page" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -57,24 +57,25 @@
 										<div class="widget-main">
 											<h4 class="header blue lighter bigger">
 												<i class="ace-icon fa fa-coffee green"></i>
-												Iniciar Sesión
+												Escriba su nueva contraseña
 											</h4>
 
 											<div class="space-6"></div>
 
-											<form method="post" action="Controller_login/login">
-                                            
+											<form method="post" action="Controller_login/change_password">
 												<fieldset>
+													<input type="hidden" name="token" class="form-control" value="<?php echo $tk;?>" />
+
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Nombre de Usuario" name="username" />
-															<i class="ace-icon fa fa-user"></i>
+															<input type="password" name="password" class="form-control" placeholder="Contraseña" />
+															<i class="ace-icon fa fa-lock"></i>
 														</span>
 													</label>
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="Password" name="password" class="form-control" placeholder="Contraseña" required />
+															<input type="password" name="password2" class="form-control" placeholder="Repetir Contraseña" />
 															<i class="ace-icon fa fa-lock"></i>
 														</span>
 													</label>
@@ -82,14 +83,9 @@
 													<div class="space"></div>
 
 													<div class="clearfix">
-														<label class="inline">
-															<input type="checkbox" name="remember_me" class="ace" />
-															<span class="lbl"> Recordar</span>
-														</label>
-
-														<button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
+														<button type="submit" class="btn btn-sm btn-block btn-primary">
 															<i class="ace-icon fa fa-key"></i>
-															<span class="bigger-110">Entrar</span>
+															<span class="bigger-110">Recuperar Cuenta</span>
 														</button>
 													</div>
 
@@ -97,58 +93,8 @@
 												</fieldset>
 											</form>
 										</div><!-- /.widget-main -->
-
-										<div class="toolbar clearfix">
-											<div>
-												<a href="#" data-target="#forgot-box" class="forgot-password-link">
-													<i class="ace-icon fa fa-arrow-left"></i>
-													Olvidé mi contraseña
-												</a>
-											</div>
-										</div>
 									</div><!-- /.widget-body -->
 								</div><!-- /.login-box -->
-
-								<div id="forgot-box" class="forgot-box widget-box no-border">
-									<div class="widget-body">
-										<div class="widget-main">
-											<h4 class="header red lighter bigger">
-												<i class="ace-icon fa fa-key"></i>
-												Recuperar Contraseña
-											</h4>
-
-											<div class="space-6"></div>
-											<p>
-												Ingresa tu email para recibir instrucciones
-											</p>
-
-											<form method="post" action="Controller_login/recover_password">
-												<fieldset>
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="email" name="email_recover_password" class="form-control" placeholder="Email" />
-															<i class="ace-icon fa fa-envelope"></i>
-														</span>
-													</label>
-
-													<div class="clearfix">
-														<button type="submit" class="width-35 pull-right btn btn-sm btn-danger">
-															<i class="ace-icon fa fa-lightbulb-o"></i>
-															<span class="bigger-110">¡Envíame!</span>
-														</button>
-													</div>
-												</fieldset>
-											</form>
-										</div><!-- /.widget-main -->
-
-										<div class="toolbar center">
-											<a href="#" data-target="#login-box" class="back-to-login-link">
-												Volver a inicio de sesión
-												<i class="ace-icon fa fa-arrow-right"></i>
-											</a>
-										</div>
-									</div><!-- /.widget-body -->
-								</div><!-- /.forgot-box -->
 							</div><!-- /.position-relative -->
 						</div>
 					</div><!-- /.col -->
@@ -173,18 +119,10 @@
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
 			jQuery(function($) {
-			 $(document).on('click', '.toolbar a[data-target]', function(e) {
-				e.preventDefault();
-				var target = $(this).data('target');
-				$('.widget-box.visible').removeClass('visible');//hide others
-				$(target).addClass('visible');//show target
-			 });
-			});
-			$('body').attr('class', 'login-layout blur-login');
+			 	$('body').attr('class', 'login-layout');
 				$('#id-text2').attr('class', 'white');
-				$('#id-company-text').attr('class', 'light-blue');
-				
-				e.preventDefault();
+				$('#id-company-text').attr('class', 'blue');
+			});
 		</script>
 	</body>
 </html>

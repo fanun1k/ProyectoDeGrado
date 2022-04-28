@@ -13,7 +13,7 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 		<!-- page specific plugin styles -->
-
+		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/chosen.min.css'?>" />
 		<!-- text fonts -->
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/'?>/css/fonts.googleapis.com.css" />
 
@@ -327,7 +327,11 @@
 								<img class="nav-user-photo" src="<?php echo base_url().'/assets/'?>/images/avatars/user.jpg" alt="Jason's Photo" />
 								<span class="user-info">
 									<small>Bienvenido,</small>
-									Pablo
+									<?php if (session()->has('name')) {
+										echo session()->get('name');
+									} else if (isset($_COOKIE['name'])) {
+										echo $_COOKIE['name'];
+									} ?>
 								</span>
 
 								<i class="ace-icon fa fa-caret-down"></i>

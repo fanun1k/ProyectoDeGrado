@@ -13,6 +13,9 @@ class supply_model extends Model
     public function getAllSupplies($limit,$offset){
         return $this->findAll();
     }
+    public function InsertSupply($data){
+        return $this->insert($data);
+    }
 }
 
 ?>

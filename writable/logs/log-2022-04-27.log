@@ -636,3 +636,13 @@ CRITICAL - 2022-04-27 23:59:43 --> Invalid argument supplied for foreach()
 #7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
 #8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
 #9 {main}
+ERROR - 2022-04-27 22:47:41 --> Email: sendWithMail throwed mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set()
+ERROR - 2022-04-27 22:52:30 --> Email: sendWithMail throwed mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set()
+CRITICAL - 2022-04-27 23:16:56 --> Cannot redeclare App\Models\user_model::login()
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+ERROR - 2022-04-27 23:18:02 --> Unknown column 'e.estado' in 'where clause'
+ERROR - 2022-04-27 23:25:50 --> Unknown column 'e.estado' in 'where clause'
+ERROR - 2022-04-27 23:26:00 --> Unknown column 'e.estado' in 'where clause'
+ERROR - 2022-04-27 23:26:31 --> Unknown column 'e.estado' in 'where clause'
+ERROR - 2022-04-27 23:26:36 --> Unknown column 'e.estado' in 'where clause'
