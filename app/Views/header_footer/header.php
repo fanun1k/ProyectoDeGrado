@@ -327,7 +327,11 @@
 								<img class="nav-user-photo" src="<?php echo base_url().'/assets/'?>/images/avatars/user.jpg" alt="Jason's Photo" />
 								<span class="user-info">
 									<small>Bienvenido,</small>
-									Pablo
+									<?php if (session()->has('name')) {
+										echo session()->get('name');
+									} else if (isset($_COOKIE['name'])) {
+										echo $_COOKIE['name'];
+									} ?>
 								</span>
 
 								<i class="ace-icon fa fa-caret-down"></i>
