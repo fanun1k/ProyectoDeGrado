@@ -28,17 +28,17 @@
 							<div class="widget-box">
 								<div class="widget-body">
 									<div class="widget-main">
-										<form class="form-horizontal" role="form">
+										<form class="form-horizontal" role="form" method="POST" action="Controller_dining_area/add_dining_area">
 											<div class="form-group">
 												<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Nombre: </label>
 												<div class="col-sm-9">
-													<input type="text" id="form-field-1" placeholder="Nombre del Comedor" class="col-xs-10 col-sm-5" />
+													<input type="text" id="form-field-1" name="nombre_comedor" placeholder="Nombre del Comedor" class="col-xs-10 col-sm-5" />
 												</div>
 											</div>
 											<div class="form-group">
 												<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Media Calórica: </label>
 												<div class="col-sm-9">
-													<input type="text" id="form-field-1" placeholder="Media Calórica" class="col-xs-5 col-sm-3" />
+													<input type="text" id="form-field-1" name="media_calorica" placeholder="Media Calórica" class="col-xs-5 col-sm-3" />
 												</div>
 											</div>
 											<div class="form-group">
@@ -48,8 +48,6 @@
 												</div>
 												<div id="marker" class="collapse"></div>
 											</div>
-											
-										</form>
 									</div>
 								</div>
 							</div>
@@ -59,36 +57,18 @@
 							<div class="widget-box">
 								<div class="widget-body">
 									<div class="widget-main">
-										<div class="checkbox">
-											<label>
-												<input name="form-field-checkbox" type="checkbox" class="ace" />
-												<span class="lbl"> choice 1</span>
-											</label>
-										</div>
-										<div class="checkbox">
-											<label>
-												<input name="form-field-checkbox" type="checkbox" class="ace" />
-												<span class="lbl"> choice 2</span>
-											</label>
-										</div>
-										<div class="checkbox">
-											<label>
-												<input name="form-field-checkbox" type="checkbox" class="ace" />
-												<span class="lbl"> choice 3</span>
-											</label>
-										</div>
-										<div class="checkbox">
-											<label>
-												<input name="form-field-checkbox" type="checkbox" class="ace" />
-												<span class="lbl"> choice 4</span>
-											</label>
-										</div>
-										<div class="checkbox">
-											<label>
-												<input name="form-field-checkbox" type="checkbox" class="ace" />
-												<span class="lbl"> choice 5</span>
-											</label>
-										</div>
+										<?php 
+											foreach ($data as $value) {
+											?>
+											<div class="checkbox">
+												<label>
+													<input name="foodTime" value="<?php echo $value["id_tiempos_de_comida"]; ?>" type="checkbox" class="ace" />
+													<span class="lbl"> <?php echo $value["nombre_tiempos_de_comida"]; ?></span>
+												</label>
+											</div>
+										<?php
+											}
+										?>
 									</div>
 								</div>
 							</div>
@@ -105,6 +85,7 @@
 								</div>
 							</div>
 						</div>
+						</form>
 					</div>
 					<!-- PAGE CONTENT ENDS -->
 				</div><!-- /.col -->

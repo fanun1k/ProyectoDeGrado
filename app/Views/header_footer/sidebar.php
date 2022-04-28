@@ -281,7 +281,7 @@
 								<b class="arrow"></b>
 								<ul class="submenu">
 									<li class="">
-										<a href="<?php echo base_url()."/add_dining_area"; ?>">
+										<a href="<?php echo base_url("gestionProyectos/gestionComedores/agregarNuevoComedor"); ?>">
 											<i class="menu-icon fa fa-caret-right"></i>
 											Agregar Nuevo Comedor
 										</a>

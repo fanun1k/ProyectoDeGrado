@@ -34,7 +34,7 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Controller_login::index');
 $routes->get('/login','Controller_login::index');
 $routes->get('/home', 'Home::index');
-$routes->get('/add_dining_area', 'Controller_dining_area::add_dining_area');
+$routes->get('/gestionProyectos/gestionComedores/agregarNuevoComedor', 'Controller_dining_area::add_dining_area_view');
 $routes->get('/list_dining_area', 'Controller_dining_area::list_dining_area');
 $routes->get('/gestionNutricional/tablaNutricional','Controller_nutritional_table::index');
 $routes->get('/cerrar_sesion', 'Controller_login::logout');
