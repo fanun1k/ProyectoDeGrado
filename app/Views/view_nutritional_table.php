@@ -75,8 +75,8 @@
                                                         <td>
                                                           <div class="hidden-sm hidden-xs action-buttons">                                                                                                                                     <a class="green" href="#">
                                                               <i class="ace-icon fa fa-pencil bigger-130"></i>
-                                                            </a>
-                                                              <a class="red" href="#">
+                                                            
+                                                            <a class="red" href="tablaNutricional/eliminarInsumo/'.$value["id_insumo"].'">
                                                               <i class="ace-icon fa fa-trash-o bigger-130"></i>
                                                             </a>
                                                           </div>

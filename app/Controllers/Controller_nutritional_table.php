@@ -31,7 +31,7 @@ class Controller_nutritional_table extends ResourceController
                     'grasas'=>$this->request->getPost('val_grasas'),
                     'carbohidratos'=>$this->request->getPost('val_carbohidratos'));   
        if ($this->model->InsertSupply($data)>0) {
-           return $this->index();
+           return redirect()->route('gestionNutricional/tablaNutricional');
        }
        echo "error";
     }
@@ -39,5 +39,11 @@ class Controller_nutritional_table extends ResourceController
     public function GetTypeSupplies(){
         $type_supplies=new type_supply_model();
         return $type_supplies->getAllTypeSupplies(10,1);
+    }
+    public function DeleteSupply($id){
+       if($this->model->deleteSupply($id)>0){
+        return redirect()->route('gestionNutricional/tablaNutricional');
+       }
+
     }
 }

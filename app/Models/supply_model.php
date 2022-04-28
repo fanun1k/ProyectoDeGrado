@@ -17,10 +17,9 @@ class supply_model extends Model
         return $this->insert($data);
     }
     public function EditSupply($id,$data){
-
     }
-    public function DeleteSupply($id){
-
+    public function deleteSupply($id){
+       return $this->update($id,['estado'=>'0']);
     }
 }
 
