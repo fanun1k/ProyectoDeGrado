@@ -28,7 +28,7 @@
 							<div class="widget-box">
 								<div class="widget-body">
 									<div class="widget-main">
-										<form class="form-horizontal" role="form" method="POST" action="Controller_dining_area/add_dining_area">
+										<form class="form-horizontal" role="form" method="POST" action="comedor/registrarComedor">
 											<div class="form-group">
 												<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Nombre: </label>
 												<div class="col-sm-9">
@@ -58,15 +58,17 @@
 								<div class="widget-body">
 									<div class="widget-main">
 										<?php 
+											$cont=1;
 											foreach ($data as $value) {
 											?>
 											<div class="checkbox">
 												<label>
-													<input name="foodTime" value="<?php echo $value["id_tiempos_de_comida"]; ?>" type="checkbox" class="ace" />
+													<input name="food_time[]" value="<?php echo $value["id_tiempos_de_comida"]; ?>" type="checkbox" class="ace" />
 													<span class="lbl"> <?php echo $value["nombre_tiempos_de_comida"]; ?></span>
 												</label>
 											</div>
 										<?php
+											$cont++;
 											}
 										?>
 									</div>
@@ -77,7 +79,7 @@
 							<div class="col-xs-12">
 								<div class="clearfix form-actions">
 									<div class="col-xs-12 center">
-										<button class="btn btn-info" type="button" style="width: 250px;">
+										<button class="btn btn-info" type="submit" style="width: 250px;">
 											<i class="ace-icon fa fa-check bigger-110"></i>
 											Agregar
 										</button>

@@ -34,12 +34,13 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Controller_login::index');
 $routes->get('/login','Controller_login::index');
 $routes->get('/home', 'Home::index');
-$routes->get('/gestionProyectos/gestionComedores/agregarNuevoComedor', 'Controller_dining_area::add_dining_area_view');
-$routes->get('/list_dining_area', 'Controller_dining_area::list_dining_area');
+$routes->get('/gestionProyectos/gestionComedores/comedor', 'Controller_dining_area::diningArea');
+$routes->get('/gestionProyectos/gestionComedores/visualizarComedores', 'Controller_dining_area::index');
 $routes->get('/gestionNutricional/tablaNutricional','Controller_nutritional_table::index');
 $routes->get('/cerrar_sesion', 'Controller_login::logout');
 $routes->get('/recuperar_cuenta', 'Controller_login::recover_password_page');
 $routes->post('/gestionNutricional/tablaNutricional/registrarInsumo','Controller_nutritional_table::RegisterNewSupply');
+$routes->post('/gestionProyectos/gestionComedores/comedor/registrarComedor','Controller_dining_area::registerDiningArea');
 
 /*
  * --------------------------------------------------------------------
