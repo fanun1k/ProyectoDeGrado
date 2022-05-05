@@ -41,6 +41,8 @@ $routes->get('/cerrar_sesion', 'Controller_login::logout');
 $routes->get('/recuperar_cuenta', 'Controller_login::recover_password_page');
 $routes->post('/gestionNutricional/tablaNutricional/registrarInsumo','Controller_nutritional_table::RegisterNewSupply');
 $routes->post('/gestionProyectos/gestionComedores/comedor/registrarComedor','Controller_dining_area::registerDiningArea');
+$routes->post('/gestionNutricional/tablaNutricional/editarInsumo','Controller_nutritional_table::EditSupply');
+$routes->get('/gestionNutricional/tablaNutricional/eliminarInsumo/(:num)','Controller_nutritional_table::DeleteSupply/$1');
 
 /*
  * --------------------------------------------------------------------
