@@ -302,6 +302,340 @@ CRITICAL - 2022-04-27 09:37:00 --> Argument 1 passed to CodeIgniter\HTTP\Redirec
 #3 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
 #4 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
 #5 {main}
+ERROR - 2022-04-27 22:51:45 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 22:51:45 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(16): view('View_add_dining...', Array)
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 22:53:33 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 22:53:33 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(16): view('View_add_dining...')
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 22:53:34 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 22:53:34 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(16): view('View_add_dining...')
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 23:03:01 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:03:01 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(16): view('View_add_dining...')
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 23:03:03 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:03:03 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(16): view('View_add_dining...')
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 23:17:12 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:17:12 --> Argument 2 passed to view() must be of the type array, bool given, called in C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php on line 21
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...', false)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+ERROR - 2022-04-27 23:17:13 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:17:13 --> Argument 2 passed to view() must be of the type array, bool given, called in C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php on line 21
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...', false)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+ERROR - 2022-04-27 23:17:37 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:17:37 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...', Array)
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 23:21:00 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:21:00 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...', Array)
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 23:21:01 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:21:01 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...', Array)
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 23:22:22 --> Not unique table/alias: 'tiempos_de_comida'
+ERROR - 2022-04-27 23:24:02 --> Not unique table/alias: 'tiempos_de_comida'
+ERROR - 2022-04-27 23:25:55 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:25:55 --> Call to a member function getResultArray() on bool
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+ERROR - 2022-04-27 23:26:06 --> Not unique table/alias: 'tiempos_de_comida'
+ERROR - 2022-04-27 23:27:30 --> Not unique table/alias: 'tiempos_de_comida'
+ERROR - 2022-04-27 23:29:41 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:29:41 --> Call to a member function result() on bool
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include()
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#3 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(22): view('View_add_dining...', Array)
+#4 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+ERROR - 2022-04-27 23:31:39 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:31:39 --> Call to a member function result() on bool
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include()
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#3 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(22): view('View_add_dining...', Array)
+#4 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+ERROR - 2022-04-27 23:31:40 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:31:40 --> Call to a member function result() on bool
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include()
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#3 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(22): view('View_add_dining...', Array)
+#4 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-04-27 23:31:44 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\view_nutritional_table.php(62): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 62, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('view_nutritiona...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_nutritional_table.php(16): view('view_nutritiona...')
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_nutritional_table->index()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_nutritional_table))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 23:31:51 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:31:51 --> Call to a member function result() on bool
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include()
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#3 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(22): view('View_add_dining...', Array)
+#4 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+ERROR - 2022-04-27 23:33:34 --> Not unique table/alias: 'tiempos_de_comida'
+ERROR - 2022-04-27 23:34:25 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:34:25 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...', Array)
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 23:34:30 --> Not unique table/alias: 'tiempos_de_comida'
+ERROR - 2022-04-27 23:34:43 --> Not unique table/alias: 'tiempos_de_comida'
+ERROR - 2022-04-27 23:36:18 --> Not unique table/alias: 'tiempos_de_comida'
+ERROR - 2022-04-27 23:37:15 --> Not unique table/alias: 'tiempos_de_comida'
+ERROR - 2022-04-27 23:38:01 --> Not unique table/alias: 'tiempos_de_comida'
+ERROR - 2022-04-27 23:38:41 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:38:41 --> Call to a member function result() on bool
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include()
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#3 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...', Array)
+#4 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+ERROR - 2022-04-27 23:38:54 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:38:54 --> Call to a member function result() on bool
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include()
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#3 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...', Array)
+#4 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+ERROR - 2022-04-27 23:41:44 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:41:44 --> Argument 2 passed to view() must be of the type array, bool given, called in C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php on line 21
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...', false)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+ERROR - 2022-04-27 23:42:42 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:42:42 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...', Array)
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 23:43:00 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:43:00 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...', Array)
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 23:43:01 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:43:01 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...', Array)
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 23:43:51 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:43:51 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...')
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 23:43:52 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:43:52 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...')
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 23:49:25 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:49:25 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...')
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 23:52:11 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:52:11 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...')
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 23:55:11 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:55:11 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...')
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 23:59:43 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:59:43 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...', Array)
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
 ERROR - 2022-04-27 22:47:41 --> Email: sendWithMail throwed mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set()
 ERROR - 2022-04-27 22:52:30 --> Email: sendWithMail throwed mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set()
 CRITICAL - 2022-04-27 23:16:56 --> Cannot redeclare App\Models\user_model::login()
