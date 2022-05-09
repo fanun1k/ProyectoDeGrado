@@ -4,22 +4,26 @@ use CodeIgniter\Model;
 
 class supply_model extends Model
 {
-    protected $table='insumo';
+    protected $table='supply';
     //El nombre del ID en la tabla
-    protected $primaryKey= 'id_insumo';
+    protected $primaryKey= 'supplyId';
     //Last columnas que van a afectar
-    protected $allowedFields= ['id_tipo_insumo','nombre_insumo','valor_calorico','proteinas','grasas','carbohidratos','estado','fecha_actualizacion'];
+    protected $allowedFields= ['supplyTypeId','supplyName','caloricValue','proteinValue','fatValue','carbohydratesValue','status','lastUpdate'];
 
-    public function getAllSupplies($limit,$offset){
-        return $this->where('estado','1')->findAll();
+    public function getAllSupplies($limit, $offset){
+        return $this->where('status', '1')->findAll();
     }
-    public function InsertSupply($data){
+
+    public function insertSupply($data){
         return $this->insert($data);
     }
-    public function EditSupply($id,$data){
+
+    public function editSupply($id, $data){
+        
     }
+
     public function deleteSupply($id){
-       return $this->update($id,['estado'=>'0']);
+       return $this->update($id,['status'=>'0']);
     }
 }
 

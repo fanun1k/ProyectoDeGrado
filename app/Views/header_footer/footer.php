@@ -1,33 +1,33 @@
-<div class="footer">
-				<div class="footer-inner">
-					<div class="footer-content">
-						<span class="bigger-120">
-							<span class="blue bolder">Ace</span>
-							Application &copy; 2013-2014
-						</span>
+	<div class="footer">
+		<div class="footer-inner">
+			<div class="footer-content">
+				<span class="bigger-120">
+					<span class="blue bolder">Ace</span>
+					Application &copy; 2013-2014
+				</span>
 
-						&nbsp; &nbsp;
-						<span class="action-buttons">
-							<a href="#">
-								<i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
-							</a>
+				&nbsp; &nbsp;
+				<span class="action-buttons">
+					<a href="#">
+						<i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
+					</a>
 
-							<a href="#">
-								<i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
-							</a>
+					<a href="#">
+						<i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
+					</a>
 
-							<a href="#">
-								<i class="ace-icon fa fa-rss-square orange bigger-150"></i>
-							</a>
-						</span>
-					</div>
-				</div>
+					<a href="#">
+						<i class="ace-icon fa fa-rss-square orange bigger-150"></i>
+					</a>
+				</span>
 			</div>
+		</div>
+	</div>
 
-			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-			</a>
-		</div><!-- /.main-container -->
+	<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+		<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+	</a>
+</div><!-- /.main-container -->
 
 		<!-- basic scripts -->
 
@@ -43,13 +43,6 @@
 			if('ontouchstart' in document.documentElement) document.write("<script src='<?php echo base_url().'/assets/'?>/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 		</script>
 		<script src="<?php echo base_url().'/assets/'?>/js/bootstrap.min.js"></script>
-
-		<!-- page specific plugin scripts -->
-
-		<!-- ace scripts -->
-		<script src="<?php echo base_url().'/assets/'?>/js/ace-elements.min.js"></script>
-		<script src="<?php echo base_url().'/assets/'?>/js/ace.min.js"></script>
-		<!-- inline scripts related to this page -->
 		
 		<!-- page specific plugin scripts -->
 		<script src="<?php echo base_url().'/assets/'?>/js/jquery.dataTables.min.js"></script>
@@ -111,7 +104,6 @@
 						style: 'multi'
 					}
 			    } );
-			
 				
 				
 				$.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
@@ -162,7 +154,6 @@
 					$('.dt-button-info').addClass('gritter-item-wrapper gritter-info gritter-center white');
 				});
 				
-				
 				var defaultColvisAction = myTable.button(0).action();
 				myTable.button(0).action(function (e, dt, button, config) {
 					
@@ -187,10 +178,6 @@
 					});
 				}, 500);
 				
-				
-				
-				
-				
 				myTable.on( 'select', function ( e, dt, type, index ) {
 					if ( type === 'row' ) {
 						$( myTable.row( index ).node() ).find('input:checkbox').prop('checked', true);
@@ -201,10 +188,7 @@
 						$( myTable.row( index ).node() ).find('input:checkbox').prop('checked', false);
 					}
 				} );
-			
-			
-			
-			
+
 				/////////////////////////////////
 				//table checkboxes
 				$('th input[type=checkbox], td input[type=checkbox]').prop('checked', false);
@@ -227,15 +211,11 @@
 					else myTable.row(row).select();
 				});
 			
-			
-			
 				$(document).on('click', '#dynamic-table .dropdown-toggle', function(e) {
 					e.stopImmediatePropagation();
 					e.stopPropagation();
 					e.preventDefault();
 				});
-				
-				
 				
 				//And for the first simple table, which doesn't have TableTools or dataTables
 				//select/deselect all rows according to table header checkbox
@@ -278,9 +258,6 @@
 					return 'left';
 				}
 				
-				
-				
-				
 				/***************/
 				$('.show-details-btn').on('click', function(e) {
 					e.preventDefault();
@@ -288,10 +265,6 @@
 					$(this).find(ace.vars['.icon']).toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
 				});
 				/***************/
-				
-				
-				
-				
 				
 				/**
 				//add horizontal scrollbars to a simple table
@@ -342,7 +315,6 @@
 						});
 					}
 				})
-			
 			})
 		</script>
 	</body>

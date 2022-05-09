@@ -4,12 +4,11 @@ use CodeIgniter\Model;
 
 class dining_area_model extends Model
 {
-    protected $table='comedor';
+    protected $table='dining_area';
     //El nombre del ID en la tabla
     protected $primaryKey= 'id_comedor';
     //Last columnas que van a afectar
-    protected $allowedFields= ['id_comedor','id_empresa','nombre_comedor','latitud','longitud','media_calorica','fecha_creacion', 'fecha_actualizacion','estado'];
-
+    protected $allowedFields= ['diningAreaId','companyId','diningAreaName','latitude','longitude','averageCalorie','createDate', 'lastUpdate','status'];
 
     public function getDiningArea()
 	{
@@ -23,9 +22,7 @@ class dining_area_model extends Model
         $id = $this->insert($diningArea);
 
         foreach($diningAreaFoodTimes as $value) {
-            
-            $this->db->query('INSERT INTO comedor_tiempos_de_comida (id_tiempos_de_comida, id_comedor, hora_inicio, hora_fin, porcentaje_nutricional) VALUES ('.$value.','.$id.', "08:00:00", "10:00:00", 100);');
-            
+            $this->db->query('INSERT INTO dining_area_food_times (foodTimesId, diningAreaId, startTime, endTime, nutritionalPercentage) VALUES ('.$value.','.$id.', "08:00:00", "10:00:00", 100);');
         }
 
         $this->db->transComplete();
@@ -38,7 +35,6 @@ class dining_area_model extends Model
             return 1;
         }
 	}
-
 }
 
 ?>

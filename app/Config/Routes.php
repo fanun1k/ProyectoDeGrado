@@ -17,7 +17,7 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Controller_login');
+$routes->setDefaultController('Login_controller');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -31,18 +31,21 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Controller_login::index');
-$routes->get('/login','Controller_login::index');
-$routes->get('/home', 'Home::index');
-$routes->get('/gestionProyectos/gestionComedores/comedor', 'Controller_dining_area::diningArea');
-$routes->get('/gestionProyectos/gestionComedores/visualizarComedores', 'Controller_dining_area::index');
-$routes->get('/gestionNutricional/tablaNutricional','Controller_nutritional_table::index');
-$routes->get('/cerrar_sesion', 'Controller_login::logout');
-$routes->get('/recuperar_cuenta', 'Controller_login::recover_password_page');
-$routes->post('/gestionNutricional/tablaNutricional/registrarInsumo','Controller_nutritional_table::RegisterNewSupply');
-$routes->post('/gestionProyectos/gestionComedores/comedor/registrarComedor','Controller_dining_area::registerDiningArea');
-$routes->post('/gestionNutricional/tablaNutricional/editarInsumo','Controller_nutritional_table::EditSupply');
-$routes->get('/gestionNutricional/tablaNutricional/eliminarInsumo/(:num)','Controller_nutritional_table::DeleteSupply/$1');
+$routes->get('/', 'Login_controller::index');
+$routes->get('/inicio', 'Home_controller::index');
+$routes->get('/iniciar_sesion', 'Login_controller::index');
+$routes->post('/iniciando_sesion', 'Login_controller::login');
+$routes->get('/cerrando_sesion', 'Login_controller::logout');
+$routes->post('/recuperando_cuenta', 'Login_controller::recoverPassword');
+$routes->get('/recuperar_cuenta', 'Login_controller::recoverPasswordPage');
+$routes->post('/cambiar_contrasena', 'Login_controller::changePassword');
+$routes->get('/gestion_proyectos/gestion_comedores/comedor', 'Dining_area_controller::diningArea');
+$routes->get('/gestion_proyectos/gestion_comedores/visualizar_comedores', 'Dining_area_controller::index');
+$routes->post('/gestion_proyectos/gestion_comedores/comedor/registrar_comedor', 'Dining_area_controller::registerDiningArea');
+$routes->get('/gestion_nutricional/tabla_nutricional', 'Nutritional_table_controller::index');
+$routes->post('/gestion_nutricional/tabla_nutricional/registrar_insumo', 'Nutritional_table_controller::registerNewSupply');
+$routes->post('/gestion_nutricional/tabla_nutricional/editar_insumo', 'Nutritional_table_controller::editSupply');
+$routes->get('/gestion_nutricional/tabla_nutricional/eliminar_insumo/(:num)', 'Nutritional_table_controller::deleteSupply/$1');
 
 /*
  * --------------------------------------------------------------------

@@ -28,17 +28,18 @@
 							<div class="widget-box">
 								<div class="widget-body">
 									<div class="widget-main">
-										<form class="form-horizontal" role="form" method="POST" action="comedor/registrarComedor">
+										<!-- FORM BEGINS -->
+										<form class="form-horizontal" role="form" method="POST" action="comedor/registrar_comedor">
 											<div class="form-group">
 												<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Nombre: </label>
 												<div class="col-sm-9">
-													<input type="text" id="form-field-1" name="nombre_comedor" placeholder="Nombre del Comedor" class="col-xs-10 col-sm-5" />
+													<input type="text" id="form-field-1" name="diningAreaName" placeholder="Nombre del Comedor" class="col-xs-10 col-sm-5" />
 												</div>
 											</div>
 											<div class="form-group">
 												<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Media Calórica: </label>
 												<div class="col-sm-9">
-													<input type="text" id="form-field-1" name="media_calorica" placeholder="Media Calórica" class="col-xs-5 col-sm-3" />
+													<input type="text" id="form-field-1" name="averageCalorie" placeholder="Media Calórica" class="col-xs-5 col-sm-3" />
 												</div>
 											</div>
 											<div class="form-group">
@@ -63,8 +64,8 @@
 											?>
 											<div class="checkbox">
 												<label>
-													<input name="food_time[]" value="<?php echo $value["id_tiempos_de_comida"]; ?>" type="checkbox" class="ace" />
-													<span class="lbl"> <?php echo $value["nombre_tiempos_de_comida"]; ?></span>
+													<input name="foodTime[]" value="<?php echo $value["foodTimesId"]; ?>" type="checkbox" class="ace" />
+													<span class="lbl"> <?php echo $value["foodTimesName"]; ?></span>
 												</label>
 											</div>
 										<?php
@@ -88,6 +89,7 @@
 							</div>
 						</div>
 						</form>
+						<!-- FORM ENDS -->
 					</div>
 					<!-- PAGE CONTENT ENDS -->
 				</div><!-- /.col -->
@@ -112,5 +114,4 @@
 			map: map,
 		});
 	}
-
 </script>

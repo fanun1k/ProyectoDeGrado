@@ -4,17 +4,16 @@ use CodeIgniter\Model;
 
 class food_times_model extends Model
 {
-    protected $table='tiempos_de_comida';
+    protected $table='food_times';
     //El nombre del ID en la tabla
-    protected $primaryKey= 'id_tiempos_de_comida';
+    protected $primaryKey= 'foodTimesId';
     //Last columnas que van a afectar
-    protected $allowedFields= ['id_tiempos_de_comida','nombre_tiempos_de_comida','fecha_creacion', 'fecha_actualizacion','estado'];
+    protected $allowedFields= ['foodTimesId', 'foodTimesName', 'createDate', 'lastUpdate', 'status'];
 
     public function getFoodTimes()
 	{
-        return $this->where('estado',1)->findAll();
+        return $this->where('status', 1)->findAll();
 	}
-
 }
 
 ?>
