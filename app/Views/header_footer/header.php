@@ -355,7 +355,7 @@
 								<li class="divider"></li>
 
 								<li>
-									<a href="<?php echo base_url('cerrar_sesion')?>">
+									<a href="<?php echo base_url('cerrando_sesion')?>">
 										<i class="ace-icon fa fa-power-off"></i>
 										Cerrar Sesión
 									</a>

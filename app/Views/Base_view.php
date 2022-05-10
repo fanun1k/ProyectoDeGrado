@@ -1,4 +1,3 @@
-
 <div class="main-content">
 	<div class="main-content-inner">
 		<div class="breadcrumbs ace-save-state" id="breadcrumbs">
@@ -16,9 +15,9 @@
 		<div class="page-content">
 			<div class="row">
 				<div class="col-xs-12">
-								<!-- PAGE CONTENT BEGINS -->
-
-								<!-- PAGE CONTENT ENDS -->
+					<!-- PAGE CONTENT BEGINS -->
+					<h1>Página Inicial</h1>
+					<!-- PAGE CONTENT ENDS -->
 				</div><!-- /.col -->
 			</div><!-- /.row -->
 		</div><!-- /.page-content -->

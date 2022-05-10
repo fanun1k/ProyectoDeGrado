@@ -4,16 +4,17 @@ use CodeIgniter\Model;
 
 class type_supply_model extends Model
 {
-    protected $table='tipo_insumo';
+    protected $table='supply_type';
     //El nombre del ID en la tabla
-    protected $primaryKey= 'id_tipo_insumo';
+    protected $primaryKey= 'supplyTypeId';
     //Last columnas que van a afectar
-    protected $allowedFields= ['nombre_tipo_insumo','fecha_actualizacion','estado'];
+    protected $allowedFields= ['supplyTypeName','lastUpdate','status'];
 
-    public function getAllTypeSupplies($limit,$offset){
+    public function getAllTypeSupplies($limit, $offset){
         return $this->findAll();
     }
-    public function InsertTypeSupply($data){
+
+    public function insertTypeSupply($data){
         return $this->insert($data);
     }
 }

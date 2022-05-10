@@ -37,23 +37,23 @@
 									<thead>
 										<tr>
 											<th class="center">
-													<label class="pos-rel">
-														<input type="checkbox" class="ace" />
-														<span class="lbl"></span>
-													</label>
-												</th>
-												<th>Domain</th>
-												<th>Price</th>
-												<th class="hidden-480">Clicks</th>
-
-												<th>
-													<i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
-													Update
-												</th>
-												<th class="hidden-480">Status</th>
-
-												<th></th>
+												<label class="pos-rel">
+													<input type="checkbox" class="ace" />
+													<span class="lbl"></span>
+												</label>
 											</th>
+											<th>Domain</th>
+											<th>Price</th>
+											<th class="hidden-480">Clicks</th>
+
+											<th>
+												<i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
+												Update
+											</th>
+											<th class="hidden-480">Status</th>
+
+											<th></th>
+											<!--</th>-->
 										</tr>
 									</thead>
 								</table>

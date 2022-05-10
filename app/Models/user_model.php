@@ -4,72 +4,76 @@ use CodeIgniter\Model;
 
 class user_model extends Model
 {
-    protected $table='usuario';
+    protected $table='user';
     //El nombre del ID en la tabla
-    protected $primaryKey= 'id_usuario';
+    protected $primaryKey= 'userId';
     //Last columnas que van a afectar
-    protected $allowedFields= ['contrasena'];
+    protected $allowedFields= ['password'];
 
-    public function login($correo_electronico, $contrasena){
+    public function login($email, $password){
         $db = db_connect();
-        $builder = $db->table('usuario u');
-        $builder->select('u.id_usuario, u.correo_electronico, u.contrasena, e.nombre, e.primer_apellido, e.segundo_apellido, e.codigo_empleado');
-        $builder->join('empleado e', 'u.id_usuario = e.id_empleado');
-        $builder->where('u.correo_electronico', $correo_electronico);
-        $builder->where('u.contrasena', $contrasena);
-        $builder->where('e.estado', 1);
+        $builder = $db->table('user u');
+        $builder->select('u.userId, u.email, u.password, e.name, e.lastName1, e.lastName2, e.employeeCode');
+        $builder->join('employee e', 'u.userId = e.employeeId');
+        $builder->where('u.email', $email);
+        $builder->where('u.password', $password);
+        $builder->where('e.status', 1);
         $query = $builder->get();
 
         return $query;
     }
 
-    public function get_num_user_by_email($correo_electronico){
+    public function getNumUserByEmail($email){
         $db = db_connect();
-        $builder = $db->table('usuario');
-        $builder->select('id_usuario');
-        $builder->where('correo_electronico', $correo_electronico);
-        $builder->where('estado', 1);
+        $builder = $db->table('user');
+        $builder->select('userId');
+        $builder->where('email', $email);
+        $builder->where('status', 1);
 
         return $builder->countAllResults();
     }
 
-    public function get_id_from_email($correo_electronico){
+    public function getIdFromEmail($email){
         $db = db_connect();
-        $builder = $db->table('usuario');
-        $builder->select('id_usuario');
-        $builder->where('correo_electronico', $correo_electronico);
+        $builder = $db->table('user');
+        $builder->select('userId');
+        $builder->where('email', $email);
+        $builder->where('status', 1);
+        
         $query = $builder->get();
         foreach ($query->getResult() as $row) {
-            $usuario_id = $row->id_usuario;
+            $userId = $row->userId;
         }
-        return $usuario_id;
+        return $userId;
     }
 
-    public function insert_token($email_recover_password, $token){
-        $id_usuario = $this->get_id_from_email($email_recover_password);
+    public function insertToken($email_recover_password, $token){
+        $userId = $this->getIdFromEmail($email_recover_password);
 
         $db = db_connect();
         $builder = $db->table('token');
-        $builder->insert(['token_string' => $token, 'id_usuario' => $id_usuario]);
+        $builder->insert(['tokenString' => $token, 'userId' => $userId]);
+
+        return $token;
     }
 
-    public function update_password($token, $password){
+    public function updatePassword($token, $password){
         $db = db_connect();
         $builder = $db->table('token');
-        $builder->where('token_string', $token);
+        $builder->where('tokenString', $token);
         $builder->update(['status' => 0]);
 
         $builder1 = $db->table('token');
-        $builder1->select('id_usuario');
-        $builder1->where('token_string', $token);
+        $builder1->select('userId');
+        $builder1->where('tokenString', $token);
         $query = $builder1->get();
         foreach ($query->getResult() as $row) {
-            $usuario_id = $row->id_usuario;
+            $userId = $row->userId;
         }
 
-        $builder2 = $db->table('usuario');
-        $builder2->where('id_usuario', $usuario_id);
-        $builder2->update(['contrasena' => $password]);
+        $builder2 = $db->table('user');
+        $builder2->where('userId', $userId);
+        $builder2->update(['password' => $password]);
     }
 
     public function getUsers(){
