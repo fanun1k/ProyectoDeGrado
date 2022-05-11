@@ -12,7 +12,7 @@ class dining_area_model extends Model
 
     public function getDiningArea()
 	{
-        
+        return $this->where('status', '1')->findAll();
 	}
 
     public function insertDiningArea($diningArea, $diningAreaFoodTimes)
