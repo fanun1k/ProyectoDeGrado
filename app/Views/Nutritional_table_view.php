@@ -49,10 +49,10 @@
                   <i class="ace-icon glyphicon-plus icon-animated-hand-pointer blue"></i>
                   <a href="#modal-form" role="button" class="green" data-toggle="modal"> Agregar Nuevo Insumo </a>
                 </h4>
+                <!--To edit the elements of the table, edit jquery.dataTables.min.js and jquery.dataTables.bootstrap.min.js-->
                 <table id="dynamic-table" class="table table-striped table-bordered table-hover">
                   <thead>
                     <tr>
-
                       <th>Nombre</th>
                       <th>Tipo</th>
                       <th>Klc</th>
@@ -86,23 +86,17 @@
                                       class="btn btn-minier btn-yellow dropdown-toggle"
                                       data-toggle="dropdown"
                                       data-position="auto">
-                                      <i
-                                        class="ace-icon fa fa-caret-down icon-only bigger-120"
-                                      ></i>
+                                      <i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
                                     </button>
                                     <ul
                                       class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
                                       <li>
-                                        <a
-                                          href="#"
+                                        <a href="#"
                                           class="tooltip-info"
                                           data-rel="tooltip"
-                                          title="View"
-                                        >
+                                          title="View">
                                           <span class="blue">
-                                            <i
-                                              class="ace-icon fa fa-search-plus bigger-120"
-                                            ></i>
+                                            <i class="ace-icon fa fa-search-plus bigger-120"></i>
                                           </span>
                                         </a>
                                       </li>
@@ -115,8 +109,7 @@
                                           data-rel="tooltip"
                                           title="Edit">
                                           <span class="green">
-                                            
-                                            <iclass="ace-icon fa fa-pencil-square-o bigger-120"></i>
+                                            <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
                                           </span>
                                         </button>
                                         </form>
@@ -128,12 +121,9 @@
                                           type="submit"
                                           class="tooltip-error"
                                           data-rel="tooltip"
-                                          title="Delete"
-                                        >
+                                          title="Delete">
                                           <span class="red">
-                                            <i
-                                              class="ace-icon fa fa-trash-o bigger-120"
-                                            ></i>
+                                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
                                           </span>
                                         </button>
                                         </form>
@@ -143,10 +133,7 @@
                                 </div>
                               </td>
                             </tr>';
-                    }
-
-                    ?>
-
+                    } ?>
                   </tbody>
                 </table>
 
