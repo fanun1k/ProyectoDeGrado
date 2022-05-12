@@ -10,9 +10,9 @@ class Dining_area_model extends Model
     //Last columnas que van a afectar
     protected $allowedFields= ['diningAreaId','companyId','diningAreaName','latitude','longitude','averageCalorie','createDate', 'lastUpdate','status'];
 
-    public function getDiningArea()
+    public function getAllDiningArea($limit, $offset)
 	{
-        
+        return $this->where('status', '1')->findAll();
 	}
 
     public function insertDiningArea($diningArea, $diningAreaFoodTimes)
