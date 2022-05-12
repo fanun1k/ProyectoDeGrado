@@ -96,6 +96,21 @@
 									</div><!-- /.widget-body -->
 								</div><!-- /.login-box -->
 							</div><!-- /.position-relative -->
+							
+							<?php if (session()->has('error')) { ?>
+							
+								<div class="space-12"></div>
+
+								<div class="alert alert-danger alert-dismissible" role="alert">
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<strong>¡Atención!</strong>
+									<?php echo session()->get('error'); ?>
+								</div>
+
+							<?php session()->remove('error'); } ?>
+
 						</div>
 					</div><!-- /.col -->
 				</div><!-- /.row -->

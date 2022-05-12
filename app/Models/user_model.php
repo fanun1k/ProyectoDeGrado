@@ -57,6 +57,19 @@ class user_model extends Model
         return $token;
     }
 
+    public function getTokenStatus($tokenString){
+        $db = db_connect();
+        $builder = $db->table('token');
+        $builder->select('status');
+        $builder->where('tokenString', $tokenString);
+        
+        $query = $builder->get();
+        foreach ($query->getResult() as $row) {
+            return $row->status;
+        }
+        return -1;
+    }
+
     public function updatePassword($token, $password){
         $db = db_connect();
         $builder = $db->table('token');
