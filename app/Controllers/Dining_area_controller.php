@@ -13,8 +13,8 @@ class Dining_area_controller extends ResourceController
 
     public function index()
     {
-        $data = $this->model->getDiningArea();
-        $view = view('header_footer/header').view('header_footer/sidebar').view('List_dining_area_view', compact('data')).view('header_footer/footer');
+        $data = $this->getDiningAreaData(10,1);
+        $view = view('header_footer/header').view('header_footer/sidebar',compact('data')).view('List_dining_area_view').view('header_footer/footer');
         return $view;
     }
         
@@ -24,6 +24,11 @@ class Dining_area_controller extends ResourceController
         $data = $this->foodTimesModel->getFoodTimes();
         $view = view('header_footer/header').view('header_footer/sidebar').view('Add_dining_area_view',compact('data')).view('header_footer/footer');
         return $view;
+    }
+
+    public function getDiningAreaData($limit, $offset)
+    {
+        return $this->model->getAllDiningArea($limit, $offset);
     }
 
     public function registerDiningArea()
