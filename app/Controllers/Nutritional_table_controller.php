@@ -10,6 +10,7 @@ class Nutritional_table_controller extends ResourceController
     protected $modelName = 'App\Models\Supply_model';
     protected $format    = 'json';
     
+    
     public function index()
     {
         $data= $this->getSupplyTable(10, 1);
