@@ -33,6 +33,7 @@
 		<script src="assets/js/html5shiv.min.js"></script>
 		<script src="assets/js/respond.min.js"></script>
 		<![endif]-->
+		<script src="assets/js/ace-extra.min.js"></script>
 	</head>
 
 	<body class="login-layout">
@@ -67,14 +68,14 @@
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Nombre de Usuario" name="username" />
+															<input type="email" name="username" class="form-control" aria-describedby="emailHelp" placeholder="Nombre de Usuario" required/>
 															<i class="ace-icon fa fa-user"></i>
 														</span>
 													</label>
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="Password" name="password" class="form-control" placeholder="Contraseña" required />
+															<input type="Password" name="password" class="form-control" placeholder="Contraseña" required/>
 															<i class="ace-icon fa fa-lock"></i>
 														</span>
 													</label>
@@ -150,6 +151,29 @@
 									</div><!-- /.widget-body -->
 								</div><!-- /.forgot-box -->
 							</div><!-- /.position-relative -->
+							
+							<?php if (session()->has('error') || session()->has('alert') || session()->has('success')) { ?>
+							
+								<div class="space-12"></div>
+
+								<div class="alert
+									<?php if (session()->has('error')) { ?> alert-danger
+									<?php } else if (session()->has('alert')) { ?> alert-warning
+									<?php } else if (session()->has('success')) { ?> alert-success <?php } ?>
+									alert-dismissible" role="alert">
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<strong>¡Atención!</strong>
+									<?php if (session()->has('error')) { echo session()->get('error'); }
+									else if (session()->has('alert')) { echo session()->get('alert'); }
+									else if (session()->has('success')) { echo session()->get('success'); } ?>
+								</div>
+
+							<?php session()->remove('error');
+							session()->remove('alert');
+							session()->remove('success'); } ?>
+
 						</div>
 					</div><!-- /.col -->
 				</div><!-- /.row -->
@@ -183,7 +207,10 @@
 			$('body').attr('class', 'login-layout blur-login');
 			$('#id-text2').attr('class', 'white');
 			$('#id-company-text').attr('class', 'light-blue');
-			e.preventDefault();
+			//e.preventDefault();
 		</script>
+		
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 	</body>
 </html>
