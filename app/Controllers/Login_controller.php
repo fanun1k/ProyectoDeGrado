@@ -36,7 +36,8 @@ class Login_controller extends ResourceController
         }
 
         if($verifiedUserId == NULL) { //Wrong username or password
-            return redirect()->route('inicio');
+            session()->set('error', 'No se pudo encontrar su cuenta. Verifique su nombre de usuario y/o contraseña y vuelva a intentarlo.');
+            return redirect()->route('/');
         }
         else {
             if(isset($_POST['rememberMe'])){ //Use Cookie
@@ -76,7 +77,7 @@ class Login_controller extends ResourceController
         setcookie('lastName1', '', time() - 3600, '/');
         setcookie('lastName2', '', time() - 3600, '/');
         setcookie('employeeCode', '', time() - 3600, '/');
-        return redirect()->route('inicio'); //->withInput()->with('validation',$this->validator);;
+        return redirect()->route('/');
     }
 
     public function recoverPassword(){
@@ -90,25 +91,46 @@ class Login_controller extends ResourceController
             $email->setFrom('elpadGastronomico@gmail.com', 'ELPAD & L.G.');
             $email->setTo($emailRecoverPassword);
             $email->setSubject('Recuperar su cuenta');
-            $email->setMessage("<a href='".base_url()."/recuperar_cuenta?tk=".$tokenVar."'>Cambiar de Contraseña</a>");
+            $email->setMessage("Haga clic en el siguiente enlace para cambiar su contraseña: <a href='".base_url()."/recuperar_cuenta?tk=".$tokenVar."'>Cambiar de Contraseña</a>");
             $email->send();
+
+            session()->set('alert', 'Revisa el correo electrónico que ha escrito para que pueda cambiar su contraseña.');
         }
-        return redirect()->route('inicio');
+        else{
+            session()->set('error', 'No se pudo encontrar el correo electrónico que ha escrito. Verifique su correo electrónico y vuelva a intentarlo.');
+        }
+        return redirect()->route('/');
     }
 
     public function recoverPasswordPage(){
         $urlComponents = parse_url("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
         parse_str($urlComponents['query'], $params);
         $data['tk'] = $params['tk'];
-        return view('Recover_password_view', $data);
+
+        $query = $this->model->getTokenStatus($params['tk']);
+
+        switch ($query) {
+            case -1:
+                session()->set('error', 'Enlace no permitido.');
+                return redirect()->route('/');
+                break;
+            case 0:
+                session()->set('error', 'Ya ha hecho clic en ese enlace y ha cambiado su contraseña.');
+                return redirect()->route('/');
+                break;
+            default:
+                return view('Recover_password_view', $data);
+        }
     }
 
     public function changePassword(){
         if(md5($_POST['password']) == md5($_POST['password2'])){
             $query = $this->model->updatePassword($_POST['token'], md5($_POST['password']));
-            return redirect()->route('inicio');
+            session()->set('success', 'Logró cambiar la contraseña.');
+            return redirect()->route('/');
         }
         else{
+            session()->set('error', 'Las contraseñas deben coincidir.');
             return redirect()->to($_SERVER['HTTP_REFERER']);
         }
     }
