@@ -1,9 +1,8 @@
 <?php
 
 namespace App\Controllers;
-use App\Models\supply_model;
-use App\Models\supply_type_model;
-use App\Models\type_supply_model;
+use App\Models\Supply_model;
+use App\Models\Type_supply_model;
 use CodeIgniter\RESTful\ResourceController;
 
 class Nutritional_table_controller extends ResourceController
@@ -40,7 +39,7 @@ class Nutritional_table_controller extends ResourceController
 
     public function getTypeSupplies()
     {
-        $type_supplies=new type_supply_model();
+        $type_supplies=new Type_supply_model();
         return $type_supplies->getAllTypeSupplies(10,1);
     }
 

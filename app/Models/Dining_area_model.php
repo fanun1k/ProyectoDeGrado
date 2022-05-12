@@ -2,7 +2,7 @@
 
 use CodeIgniter\Model;
 
-class dining_area_model extends Model
+class Dining_area_model extends Model
 {
     protected $table='dining_area';
     //El nombre del ID en la tabla
