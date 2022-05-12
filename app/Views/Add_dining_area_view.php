@@ -43,6 +43,18 @@
 												</div>
 											</div>
 											<div class="form-group">
+												<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Lat: </label>
+												<div class="col-sm-9">
+													<input type="text" id="form-field-1" name="lat" placeholder="Media Calórica" class="col-xs-5 col-sm-3" />
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Lng: </label>
+												<div class="col-sm-9">
+													<input type="text" id="form-field-1" name="lng" placeholder="Media Calórica" class="col-xs-5 col-sm-3" />
+												</div>
+											</div>
+											<div class="form-group">
 												<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Ubicación: </label>
 												<div class="col-sm-9">
 													<div id="googleMap" style="width:100%;height:250px;"></div>
@@ -99,19 +111,38 @@
 </div><!-- /.main-content -->
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoUXfTkBg00OwY-cuCpa-HWkYwBL9dhLA&callback=initMap"></script>
 <script type="text/javascript">
-	// Initialize and add the map
+	var marker;
+
 	function initMap() {
-		// The location of Uluru
-		const uluru = { lat: -25.344, lng: 131.031 };
-		// The map, centered at Uluru
+		const bangalore = { lat: 12.97, lng: 77.59 };
 		const map = new google.maps.Map(document.getElementById("googleMap"), {
-			zoom: 4,
-			center: uluru,
+			zoom: 12,
+			center: bangalore,
 		});
-		// The marker, positioned at Uluru
-		const marker = new google.maps.Marker({
-			position: uluru,
-			map: map,
+
+		// This event listener calls addMarker() when the map is clicked.
+		google.maps.event.addListener(map, "click", (event) => {
+			addMarker(event.latLng, map);
+			
 		});
+
+		
 	}
+
+		// Adds a marker to the map.
+		function addMarker(location, map) {
+			if(!marker || !marker.setPosition) {
+				marker = new google.maps.Marker({
+					position: location,
+					map: map,
+				});
+			}
+			else {
+				marker.setPosition(location,map);
+			}
+			alert(location.lat() + ' ' + location.lng());
+		
+	}
+
+
 </script>
