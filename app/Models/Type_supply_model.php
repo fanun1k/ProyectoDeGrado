@@ -2,7 +2,7 @@
 
 use CodeIgniter\Model;
 
-class type_supply_model extends Model
+class Type_supply_model extends Model
 {
     protected $table='supply_type';
     //El nombre del ID en la tabla

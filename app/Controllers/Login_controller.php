@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\user_model;
+use App\Models\User_model;
 use CodeIgniter\RESTful\ResourceController;
 
 class Login_controller extends ResourceController

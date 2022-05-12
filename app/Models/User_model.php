@@ -2,7 +2,7 @@
 
 use CodeIgniter\Model;
 
-class user_model extends Model
+class User_model extends Model
 {
     protected $table='user';
     //El nombre del ID en la tabla
