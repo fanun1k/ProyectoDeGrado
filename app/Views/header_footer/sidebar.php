@@ -188,9 +188,9 @@
 			<ul class="submenu">
 
 				<li class="">
-					<a href="content-slider.html">
+					<a href="<?php echo base_url('/recursos_humanos/personal_de_trabajo') ?>">
 						<i class="menu-icon fa fa-caret-right"></i>
-						Planif. Horarios
+						Personal de trabajo
 					</a>
 
 					<b class="arrow"></b>
