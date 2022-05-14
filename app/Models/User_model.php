@@ -23,6 +23,51 @@ class User_model extends Model
         return $query;
     }
 
+    public function insertToken($email_recover_password, $token){
+        $userId = $this->getIdFromEmail($email_recover_password);
+
+        $db = db_connect();
+        $builder = $db->table('token');
+        $builder->insert(['tokenString' => $token, 'userId' => $userId]);
+
+        return $token;
+    }
+
+    public function updatePassword($token, $password){
+        $db = db_connect();
+        $builder = $db->table('token');
+        $builder->where('tokenString', $token);
+        $builder->update(['status' => 0]);
+
+        $builder1 = $db->table('token');
+        $builder1->select('userId');
+        $builder1->where('tokenString', $token);
+        $query = $builder1->get();
+        foreach ($query->getResult() as $row) {
+            $userId = $row->userId;
+        }
+
+        $builder2 = $db->table('user');
+        $builder2->where('userId', $userId);
+        $builder2->update(['password' => $password]);
+    }
+
+    public function getUsers(){
+        return $this->findAll();
+    }
+
+    public function getUserStatus($userId) {
+        $db = db_connect();
+        $builder = $db->table('user');
+        $builder->select('status');
+        $builder->where('userId', $userId);
+        $query = $builder->get();
+        foreach ($query->getResult() as $row) {
+            return $row->status;
+        }
+        return -1;
+    }
+
     public function getNumUserByEmail($email){
         $db = db_connect();
         $builder = $db->table('user');
@@ -47,16 +92,6 @@ class User_model extends Model
         return $userId;
     }
 
-    public function insertToken($email_recover_password, $token){
-        $userId = $this->getIdFromEmail($email_recover_password);
-
-        $db = db_connect();
-        $builder = $db->table('token');
-        $builder->insert(['tokenString' => $token, 'userId' => $userId]);
-
-        return $token;
-    }
-
     public function getTokenStatus($tokenString){
         $db = db_connect();
         $builder = $db->table('token');
@@ -68,29 +103,6 @@ class User_model extends Model
             return $row->status;
         }
         return -1;
-    }
-
-    public function updatePassword($token, $password){
-        $db = db_connect();
-        $builder = $db->table('token');
-        $builder->where('tokenString', $token);
-        $builder->update(['status' => 0]);
-
-        $builder1 = $db->table('token');
-        $builder1->select('userId');
-        $builder1->where('tokenString', $token);
-        $query = $builder1->get();
-        foreach ($query->getResult() as $row) {
-            $userId = $row->userId;
-        }
-
-        $builder2 = $db->table('user');
-        $builder2->where('userId', $userId);
-        $builder2->update(['password' => $password]);
-    }
-
-    public function getUsers(){
-        return $this->findAll();
     }
 }
 

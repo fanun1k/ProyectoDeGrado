@@ -14,7 +14,7 @@ class Home_controller extends ResourceController
             return $view;
         }
         else {
-            return redirect()->route('iniciar_sesion');
+            return redirect()->route('/');
         }
     }
 }
