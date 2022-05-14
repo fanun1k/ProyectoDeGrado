@@ -57,7 +57,7 @@
 				</button>
 
 				<div class="navbar-header pull-left">
-					<a href="index.html" class="navbar-brand">
+					<a href="<?php echo base_url(); ?>/inicio" class="navbar-brand">
 						<small>
 							<i class="fa fa-leaf"></i>
 							ELPAD & L.G

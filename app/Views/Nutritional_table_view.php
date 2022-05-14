@@ -74,9 +74,9 @@
                               <td class="hidden-480">' . $value["carbohydratesValue"] . '</td>
                               <td>
                                 <div class="hidden-sm hidden-xs action-buttons">                                                            
-                                    <a class="green" href="#">
+                                    <a href="#" class="green">
                                     <i class="ace-icon fa fa-pencil bigger-130"></i>
-                                    <a class="red" href="tabla_nutricional/eliminar_insumo/'.$value["supplyId"].'">
+                                    <a href="#modalDeleteSupply'.$value["supplyId"].'" role="button" class="red" data-toggle="modal">
                                     <i class="ace-icon fa fa-trash-o bigger-130"></i>
                                   </a>
                                 </div>
@@ -122,10 +122,10 @@
                                           class="tooltip-error"
                                           data-rel="tooltip"
                                           title="Delete">
-                                          <span class="red">
-                                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                                          </span>
-                                        </button>
+                                            <span class="red">
+                                              <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                            </span>
+                                          </button>
                                         </form>
                                       </li>
                                     </ul>
@@ -168,7 +168,7 @@
                                   <option value=""> </option>
                                   <?php
                                   foreach ($dataTypeSupply as $key => $value) {
-                                    echo '<option value="' . $value["supplyTypeId"] . '">' . $value["supplyTypeName"] . '  </option>';
+                                    echo '<option value="' . $value["supplyTypeId"] . '">' . $value["supplyTypeName"] . '</option>';
                                   }
                                   ?>
                                 </select>
@@ -196,12 +196,12 @@
                         <div class="modal-footer">
                           <button class="btn btn-sm" data-dismiss="modal">
                             <i class="ace-icon fa fa-times"></i>
-                            Cancel
+                            Cancelar
                           </button>
 
                           <button class="btn btn-sm btn-primary" type="submit">
                             <i class="ace-icon fa fa-check"></i>
-                            Save
+                            Guardar
                           </button>
                         </div>
                       </form>
@@ -209,6 +209,37 @@
                     </div>
                   </div>
                 </div><!-- PAGE CONTENT ENDS -->
+
+                <?php foreach ($data as $value) { ?>
+                <div id="modalDeleteSupply<?php echo $value["supplyId"]; ?>" class="modal" tabindex="-1">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="blue bigger">Eliminar Insumo</h4>
+                      </div>
+                      <div class="modal-body">
+                        <div class="row">
+                          <div class="col-xs-12">
+                            <label>¿Estás seguro de que quiere eliminar este insumo?</label>
+                          </div>
+                        </div>
+                        <div class="space"></div>
+                        <div class="row">
+                          <div class="col-xs-12 col-sm-6">
+                            <button class="btn btn-block" type="button" data-dismiss="modal" aria-label="Close">No</button>
+                          </div>
+                          <div class="col-xs-12 col-sm-6">
+                            <form action="<?php echo 'tabla_nutricional/eliminar_insumo/' . $value["supplyId"]; ?>" method="get">
+                              <button type="submit" class="btn btn-danger btn-block">Sí, elimina este insumo</button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <?php } ?>
               </div>
             </div>
           </div>
