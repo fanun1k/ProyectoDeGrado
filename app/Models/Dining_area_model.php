@@ -35,6 +35,27 @@ class Dining_area_model extends Model
             return 1;
         }
 	}
+
+    public function updateDiningArea($diningArea, $diningAreaFoodTimes)
+    {
+        $this->db->transStart();
+
+        $id = $this->update($diningArea);
+
+        foreach($diningAreaFoodTimes as $value) {
+            $this->db->query("UPDATE" . " dining_area_food_times (foodTimesId, diningAreaId, startTime, endTime, nutritionalPercentage) VALUES ('.$value.','.$id.', '08:00:00', '10:00:00', 100);");
+        }
+
+        $this->db->transComplete();
+        
+        if ($this->db->transStatus() === false) {
+            $this->db->transRollback();
+            return 0;
+        } else {
+            $this->db->transCommit();
+            return 1;
+        }
+    }
 }
 
 ?>

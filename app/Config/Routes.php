@@ -44,7 +44,7 @@ $routes->get('/gestion_proyectos/gestion_comedores/visualizar_comedores', 'Dinin
 $routes->post('/gestion_proyectos/gestion_comedores/comedor/registrar_comedor', 'Dining_area_controller::registerDiningArea');
 $routes->get('/gestion_nutricional/tabla_nutricional', 'Nutritional_table_controller::index');
 $routes->post('/gestion_nutricional/tabla_nutricional/registrar_insumo', 'Nutritional_table_controller::registerNewSupply');
-$routes->post('/gestion_nutricional/tabla_nutricional/editar_insumo', 'Nutritional_table_controller::editSupply');
+$routes->post('/gestion_nutricional/tabla_nutricional/editar_insumo/(:num)', 'Nutritional_table_controller::updateSupply/$1');
 $routes->get('/gestion_nutricional/tabla_nutricional/eliminar_insumo/(:num)', 'Nutritional_table_controller::deleteSupply/$1');
 
 /*

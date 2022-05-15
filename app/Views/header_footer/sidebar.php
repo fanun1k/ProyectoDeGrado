@@ -100,8 +100,7 @@
 		<li class="">
 			<a href="#" class="dropdown-toggle">
 				<i class="menu-icon fa fa-archive"></i>
-				<span style=" font-size: 11.5px;" class="menu-text"> Cadena de Suministros </span>
-
+				<span class="menu-text" style="font-size:12px;">Cadena de Suministro</span>
 				<b class="arrow fa fa-angle-down"></b>
 			</a>
 
@@ -188,9 +187,11 @@
 			<ul class="submenu">
 
 				<li class="">
-					<a href="content-slider.html">
+					<a href="#">
 						<i class="menu-icon fa fa-caret-right"></i>
-						Planif. Horarios
+						<span class="menu-text">
+							Planificar Horarios
+						</span>
 					</a>
 
 					<b class="arrow"></b>
@@ -263,9 +264,7 @@
 		<li class="">
 			<a href="#" class="dropdown-toggle">
 				<i class="menu-icon fa fa-tasks"></i>
-				<span class="menu-text" style="font-size: 11.5px;">
-					Gestión de Proyectos
-				</span>
+				<span class="menu-text" style="font-size:12px;">Gestión de Proyectos</span>
 				<b class="arrow fa fa-angle-down"></b>
 			</a>
 			<b class="arrow"></b>
@@ -273,8 +272,8 @@
 				<li class="">
 					<a href="#" class="dropdown-toggle">
 						<i class="menu-icon fa fa-caret-right"></i>
-						<span class="menu-text" style="font-size: 11.5px;">
-							Gestión de Comedores
+						<span class="menu-text">
+							Gestión - Comedores
 						</span>
 						<b class="arrow fa fa-angle-down"></b>
 					</a>
@@ -283,7 +282,12 @@
 						<li class="">
 							<a href="<?php echo base_url('gestion_proyectos/gestion_comedores/comedor'); ?>">
 								<i class="menu-icon fa fa-caret-right"></i>
-								Agregar Nuevo Comedor
+								<span class="menu-text">
+									Agregar Nuevo
+								</span>
+								<span class="menu-text" style="padding-left: 12px;">
+									Comedor
+								</span>
 							</a>
 							<b class="arrow"></b>
 						</li>

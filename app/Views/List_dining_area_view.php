@@ -4,19 +4,15 @@
       	<ul class="breadcrumb">
         	<li>
           		<i class="ace-icon fa fa-home home-icon"></i>
-          		<a href="#">Home</a>
-        	</li>
-
-        	<li>
-          		<a href="#">Gestión de Proyectos</a>
+				<a href="<?php echo base_url(); ?>/inicio">Inicio</a>
         	</li>
         	<li>
-          		<a href="#">Gestión de Comedores</a>
+          		<a>Gestión de Proyectos</a>
         	</li>
         	<li>
-          		<a href="#">Visualizar Comedores</a>
+          		<a>Gestión de Comedores</a>
         	</li>
-
+        	<li class="active">Visualizar Comedores</li>
       	</ul>
       	<!-- /.breadcrumb -->
       	<!-- /.nav-search -->
@@ -45,9 +41,7 @@
 					<table id="dynamic-table" class="table table-striped table-bordered table-hover">
 						<thead>
 							<tr>
-								<th class="center">
-									#
-								</th>
+								<th class="center">#</th>
 								<th>Nombre</th>
 								<th class="collapse">Empresa</th>
 								<th>Media Calórica</th>

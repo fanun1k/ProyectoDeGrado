@@ -83,6 +83,24 @@ class Dining_area_controller extends ResourceController
             echo "hello";
         }
     }
+
+    public function updateDiningArea() //LATER
+    {
+        $diningArea = array('companyId' => 1,
+                            'diningAreaName' => $this->request->getPost('diningAreaName'),
+                            'latitude' => -16.987645,
+                            'longitude' => -66.234325,
+                            'averageCalorie' => $this->request->getPost('averageCalorie'));
+        
+        $foodTimes = $this->request->getPost('foodTime');
+        
+        if($this->model->updateDiningArea($diningArea, array_filter($foodTimes)) > 0){
+            return redirect()->to('Dining_area_controller/index');
+        }
+        else{
+            echo "hello";
+        }
+    }
 }
 
 ?>

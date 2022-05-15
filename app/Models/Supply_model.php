@@ -18,8 +18,8 @@ class Supply_model extends Model
         return $this->insert($data);
     }
 
-    public function editSupply($id, $data){
-        
+    public function updateSupply($id, $data){
+        return $this->update($id, $data);
     }
 
     public function deleteSupply($id){
