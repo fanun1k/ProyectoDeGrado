@@ -31,9 +31,9 @@ class Nutritional_table_controller extends ResourceController
             return redirect()->route('/');
         }
         else if ($status == 1) {
-            $data= $this->getSupplyTable(10, 1);
+            $dataSupply= $this->getSupplyTable(10, 1);
             $dataTypeSupply=$this->getTypeSupplies();
-            $view= view('header_footer/header').view('header_footer/sidebar',compact('data','dataTypeSupply')).view('Nutritional_table_view').view('header_footer/footer');
+            $view= view('header_footer/header').view('header_footer/sidebar',compact('dataSupply','dataTypeSupply')).view('Nutritional_table_view').view('header_footer/footer');
             return $view; 
         }
     }
@@ -61,6 +61,19 @@ class Nutritional_table_controller extends ResourceController
     {
         $type_supplies=new Type_supply_model();
         return $type_supplies->getAllTypeSupplies(10,1);
+    }
+
+    public function updateSupply($id){
+        $data = array('supplyName' => $this->request->getPost('supplyName'),
+                    'supplyTypeId' => $this->request->getPost('supplyType'),
+                    'caloricValue' => $this->request->getPost('caloricValue'), 
+                    'proteinValue'=>$this->request->getPost('proteinValue'),
+                    'fatValue'=>$this->request->getPost('fatValue'),
+                    'carbohydratesValue'=>$this->request->getPost('carbohydratesValue'),
+                    'lastUpdate'=>date('Y-m-d H:i:s'));
+        if($this->model->updateSupply($id, $data) > 0){
+           return redirect()->route('gestion_nutricional/tabla_nutricional');
+        }
     }
 
     public function deleteSupply($id)
