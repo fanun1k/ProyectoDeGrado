@@ -12,23 +12,31 @@
         	<li>
           		<a>Gestión de Comedores</a>
         	</li>
-        	<li class="active">Visualizar Comedores</li>
+        	<li class="active">Tabla de Comedores</li>
       	</ul>
       	<!-- /.breadcrumb -->
       	<!-- /.nav-search -->
     </div>
 
-    <div class="page-content">
-      	<div class="page-header">
-        	<h1>
-          		Visualizar Comedores
-        	</h1>
-      	</div>
-      	<!-- /.page-header -->
+	<div class="page-content">
+		<div class="page-header">
+			<h1>
+				Tabla de Comedores
+			</h1>
+		</div>
+		<!-- /.page-header -->
 		<div class="row">
 			<div class="col-xs-12">
-				<div class="clearfix">
-					<div class="pull-right tableTools-container"></div>
+				<div class="row">
+					<div class="col-sm-8 col-xs-12 clearfix">
+						<h4 class="pink">
+						<i class="ace-icon glyphicon-plus icon-animated-hand-pointer blue"></i>
+						<a href="<?php echo base_url(); ?>/gestion_proyectos/gestion_comedores/comedor" role="button" class="green" data-toggle="modal"> Agregar Nuevo Comedor </a>
+						</h4>
+					</div>
+					<div class="col-sm-4 col-xs-12 clearfix">
+						<div class="pull-right tableTools-container"></div>
+					</div>
 				</div>
 				<div class="table-header">
 					Comedores Registrados
@@ -47,7 +55,7 @@
 								<th>Media Calórica</th>
 								<th>Fecha Registro</th>
 								<th>Fecha Actualización</th>
-								<td>Acciones</td>
+								<th>Acciones</th>
 							</tr>
 						</thead>
 

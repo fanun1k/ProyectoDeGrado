@@ -9,6 +9,9 @@
 				<li>
 					<a>Gestión de Proyectos</a>
 				</li>
+				<li>
+					<a>Gestión de Comedores</a>
+				</li>
 				<li class="active">Agregar Nuevo Comedor</li>
 			</ul><!-- /.breadcrumb -->
 		</div>
