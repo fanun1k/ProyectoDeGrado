@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+
 use App\Models\Supply_model;
 use App\Models\Type_supply_model;
 use App\Models\User_model;

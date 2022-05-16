@@ -273,12 +273,19 @@
 					<a href="#" class="dropdown-toggle">
 						<i class="menu-icon fa fa-caret-right"></i>
 						<span class="menu-text">
-							Gestión - Comedores
+							Gestión Comedores
 						</span>
 						<b class="arrow fa fa-angle-down"></b>
 					</a>
 					<b class="arrow"></b>
 					<ul class="submenu">
+						<li class="">
+							<a href="<?php echo base_url('gestion_proyectos/gestion_comedores/visualizar_comedores'); ?>">
+								<i class="menu-icon fa fa-caret-right"></i>
+								Visualizar Comedores
+							</a>
+							<b class="arrow"></b>
+						</li>
 						<li class="">
 							<a href="<?php echo base_url('gestion_proyectos/gestion_comedores/comedor'); ?>">
 								<i class="menu-icon fa fa-caret-right"></i>
@@ -288,13 +295,6 @@
 								<span class="menu-text" style="padding-left: 12px;">
 									Comedor
 								</span>
-							</a>
-							<b class="arrow"></b>
-						</li>
-						<li class="">
-							<a href="<?php echo base_url('gestion_proyectos/gestion_comedores/visualizar_comedores'); ?>">
-								<i class="menu-icon fa fa-caret-right"></i>
-								Visualizar Comedores
 							</a>
 							<b class="arrow"></b>
 						</li>
@@ -310,7 +310,7 @@
 						<li class="">
 							<a href="<?php echo base_url('gestion_nutricional/tabla_nutricional')?>">
 								<i class="menu-icon fa fa-caret-right"></i>
-								Insumos-Tabla Nutricional
+								Visualizar Insumos (Tabla Nutricional)
 							</a>
 
 							<b class="arrow"></b>

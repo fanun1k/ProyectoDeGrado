@@ -32,38 +32,44 @@
 
           <div class="row">
             <div class="col-xs-12">
-              <div class="clearfix">
-                <div class="pull-right tableTools-container"></div>
+              <div class="row">
+                <div class="col-xs-8 clearfix">
+                  <h4 class="pink">
+                    <i class="ace-icon glyphicon-plus icon-animated-hand-pointer blue"></i>
+                    <a href="#modal-form" role="button" class="green" data-toggle="modal"> Agregar Nuevo Insumo </a>
+                  </h4>
+                </div>
+                <div class="col-xs-4 clearfix">
+                  <div class="pull-right tableTools-container"></div>
+                </div>
+              </div>
+              <div class="table-header">
+                Insumos Registrados
               </div>
 
-              <!-- div.table-responsive -->
-
-              <!-- div.dataTables_borderWrap -->
+              <!-- div.table-responsive & div.dataTables_borderWrap -->
               <div>
-
-                <h4 class="pink">
-                  <i class="ace-icon glyphicon-plus icon-animated-hand-pointer blue"></i>
-                  <a href="#modal-form" role="button" class="green" data-toggle="modal"> Agregar Nuevo Insumo </a>
-                </h4>
                 <!--To edit the elements of the table, edit jquery.dataTables.min.js and jquery.dataTables.bootstrap.min.js-->
                 <table id="dynamic-table" class="table table-striped table-bordered table-hover">
                   <thead>
                     <tr>
+                      <th class="center">#</th>
                       <th>Nombre</th>
-                      <th>Tipo</th>
                       <th>Klc</th>
                       <th>Proteínas</th>
                       <th>Grasas</th>
                       <th>Carbohidratos</th>
+                      <th>Acciones</th>
                     </tr>
                   </thead>
 
                   <tbody>
                     <?php
+                    $index = 1;
                     foreach ($dataSupply as $value) {
                       echo '<tr>
-                              <td class="hidden-480">' . $value["supplyName"] . '</td>
-                              <td class="hidden-480">' . $value["supplyTypeId"] . '</td>
+                              <td class="center">' . $index . '</td>
+                              <td class="hidden-480">' . $value["supplyName"] . ' (Tipo: ' . $value["supplyTypeId"] . ') </td>
                               <td class="hidden-480">' . $value["caloricValue"] . '</td>
                               <td class="hidden-480">' . $value["proteinValue"] . '</td>
                               <td class="hidden-480">' . $value["fatValue"] . '</td>
@@ -129,7 +135,7 @@
                                 </div>
                               </td>
                             </tr>';
-                    } ?>
+                    $index++; } ?>
                   </tbody>
                 </table>
 
@@ -153,37 +159,45 @@
 
                             <div class="col-xs-12 col-sm-7">
                               <div class="row">
-                                <label>Nombre del insumo</label><br>
-                                <input type="text" placeholder="Nombre del insumo" name="supplyName" required />
+                                <div class="col-xs-12">
+                                  <label>Nombre del insumo</label><br>
+                                  <input type="text" placeholder="Nombre del insumo" name="supplyName" style="width:100%;" required/>
+                                </div>
                               </div>
                               <div class="row">
-                                <label for="form-field-select-3">Tipo De Insumo</label>
-
-                                <br />
-                                <select class="chosen-select form-control" id="form-field-select-3" required data-placeholder="Selecciona el tipo" name="supplyType">
-                                  <option value=""> </option>
-                                  <?php
-                                  foreach ($dataTypeSupply as $key => $value) {
-                                    echo '<option value="' . $value["supplyTypeId"] . '">' . $value["supplyTypeName"] . '</option>';
-                                  }
-                                  ?>
-                                </select>
+                                <div class="col-xs-12">
+                                  <label for="form-field-select-3">Tipo De Insumo</label><br>
+                                  <select class="chosen-select form-control" id="form-field-select-3" required data-placeholder="Selecciona el tipo" name="supplyType" style="width:100%;">
+                                    <option value=""> </option>
+                                    <?php foreach ($dataTypeSupply as $key => $value) {
+                                      echo '<option value="' . $value["supplyTypeId"] . '">' . $value["supplyTypeName"] . '</option>';
+                                    } ?>
+                                  </select>
+                                </div>
                               </div>
                               <div class="row">
-                                <label>Kcal</label><br>
-                                <input class="form" type="number" required placeholder="Valor de kilocalorías" name="caloricValue" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" required />
+                                <div class="col-xs-12">
+                                  <label>Kcal</label><br>
+                                  <input class="form" type="number" placeholder="Valor de kilocalorías" name="caloricValue" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" required style="width:100%;"/>
+                                </div>
                               </div>
                               <div class="row">
-                                <label>Proteínas</label><br>
-                                <input class="form" type="number" required placeholder="Valor de Proteínas" name="proteinValue" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" required />
+                                <div class="col-xs-12">
+                                  <label>Proteínas</label><br>
+                                  <input class="form" type="number" placeholder="Valor de Proteínas" name="proteinValue" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" required style="width:100%;"/>
+                                </div>
                               </div>
                               <div class="row">
-                                <label>Grasas</label><br>
-                                <input class="form" type="number" requiredplaceholder="Valor de Grasas" name="fatValue" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" required />
+                                <div class="col-xs-12">
+                                  <label>Grasas</label><br>
+                                  <input class="form" type="number" placeholder="Valor de Grasas" name="fatValue" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" required style="width:100%;"/>
+                                </div>
                               </div>
                               <div class="row">
-                                <label>Carbohidratos</label><br>
-                                <input class="form" type="number" required placeholder="Valor de Carbohidratos" name="carbohydratesValue" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" required />
+                                <div class="col-xs-12">
+                                  <label>Carbohidratos</label><br>
+                                  <input class="form" type="number" placeholder="Valor de Carbohidratos" name="carbohydratesValue" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" required style="width:100%;"/>
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -227,45 +241,55 @@
 
                             <div class="col-xs-12 col-sm-7">
                               <div class="row">
-                                <label>Nombre del insumo</label><br>
-                                <input type="text" placeholder="Nombre del insumo" name="supplyName" required value="<?php echo $value["supplyName"]; ?>"/>
+                                <div class="col-xs-12">
+                                  <label>Nombre del insumo</label><br>
+                                  <input type="text" placeholder="Nombre del insumo" name="supplyName" required value="<?php echo $value["supplyName"]; ?>" style="width: 100%;"/>
+                                </div>
                               </div>
 
                               <div class="row">
-                                <label for="form-field-select-3">Tipo De Insumo</label>
-
-                                <br />
-                                <select class="chosen-select form-control" id="form-field-select-3" required data-placeholder="Selecciona el tipo" name="supplyType" value="<?php echo $value["supplyTypeId"]; ?>">
-                                  <option value=""> </option>
-                                  <?php
-                                  foreach ($dataTypeSupply as $key => $value1) {
-                                    if($value["supplyTypeId"] == $value1["supplyTypeId"]) {
-                                      echo '<option value="' . $value1["supplyTypeId"] . '" selected>';
+                                <div class="col-xs-12">
+                                  <label for="form-field-select-3">Tipo De Insumo</label><br>
+                                  <select class="chosen-select form-control" id="form-field-select-3" required data-placeholder="Selecciona el tipo" name="supplyType" value="<?php echo $value["supplyTypeId"]; ?>">
+                                    <option value=""> </option>
+                                    <?php
+                                    foreach ($dataTypeSupply as $key => $value1) {
+                                      if($value["supplyTypeId"] == $value1["supplyTypeId"]) {
+                                        echo '<option value="' . $value1["supplyTypeId"] . '" selected>';
+                                      }
+                                      else {
+                                        echo '<option value="' . $value1["supplyTypeId"] . '">';
+                                      }
+                                      echo $value1["supplyTypeName"];
+                                      echo '</option>';
                                     }
-                                    else {
-                                      echo '<option value="' . $value1["supplyTypeId"] . '">';
-                                    }
-                                    echo $value1["supplyTypeName"];
-                                    echo '</option>';
-                                  }
-                                  ?>
-                                </select>
+                                    ?>
+                                  </select>
+                                </div>
                               </div>
                               <div class="row">
-                                <label>Kcal</label><br>
-                                <input class="form" type="number" required placeholder="Valor de kilocalorías" name="caloricValue" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" required value="<?php echo $value["caloricValue"]; ?>"/>
+                                <div class="col-xs-12">
+                                  <label>Kcal</label><br>
+                                  <input class="form" type="number" placeholder="Valor de kilocalorías" name="caloricValue" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" required value="<?php echo $value["caloricValue"]; ?>" style="width: 100%;"/>
+                                </div>
                               </div>
                               <div class="row">
-                                <label>Proteínas</label><br>
-                                <input class="form" type="number" required placeholder="Valor de Proteínas" name="proteinValue" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" required value="<?php echo $value["proteinValue"]; ?>"/>
+                                <div class="col-xs-12">
+                                  <label>Proteínas</label><br>
+                                  <input class="form" type="number" placeholder="Valor de Proteínas" name="proteinValue" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" required value="<?php echo $value["proteinValue"]; ?>" style="width: 100%;"/>
+                                </div>
                               </div>
                               <div class="row">
-                                <label>Grasas</label><br>
-                                <input class="form" type="number" requiredplaceholder="Valor de Grasas" name="fatValue" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" required value="<?php echo $value["fatValue"]; ?>"/>
+                                <div class="col-xs-12">
+                                  <label>Grasas</label><br>
+                                  <input class="form" type="number" placeholder="Valor de Grasas" name="fatValue" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" required value="<?php echo $value["fatValue"]; ?>" style="width: 100%;"/>
+                                </div>
                               </div>
                               <div class="row">
-                                <label>Carbohidratos</label><br>
-                                <input class="form" type="number" required placeholder="Valor de Carbohidratos" name="carbohydratesValue" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" required value="<?php echo $value["carbohydratesValue"]; ?>"/>
+                                <div class="col-xs-12">
+                                  <label>Carbohidratos</label><br>
+                                  <input class="form" type="number" placeholder="Valor de Carbohidratos" name="carbohydratesValue" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" required value="<?php echo $value["carbohydratesValue"]; ?>" style="width: 100%;"/>
+                                </div>
                               </div>
                             </div>
                           </div>

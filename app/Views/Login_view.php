@@ -127,7 +127,7 @@
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="email" name="emailRecoverPassword" class="form-control" placeholder="Email" />
+															<input type="email" name="emailRecoverPassword" class="form-control" placeholder="Correo Electrónico" />
 															<i class="ace-icon fa fa-envelope"></i>
 														</span>
 													</label>
@@ -164,10 +164,9 @@
 									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 										<span aria-hidden="true">&times;</span>
 									</button>
-									<strong>¡Atención!</strong>
-									<?php if (session()->has('error')) { echo session()->get('error'); }
-									else if (session()->has('alert')) { echo session()->get('alert'); }
-									else if (session()->has('success')) { echo session()->get('success'); } ?>
+									<?php if (session()->has('error')) { echo "<strong>¡Atención!</strong> " . session()->get('error'); }
+									else if (session()->has('alert')) { echo "<strong>¡Atención!</strong> " . session()->get('alert'); }
+									else if (session()->has('success')) { echo "<strong>¡Felicidades!</strong> " . session()->get('success'); } ?>
 								</div>
 
 							<?php session()->remove('error');
