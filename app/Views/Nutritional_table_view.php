@@ -69,11 +69,11 @@
                     foreach ($dataSupply as $value) {
                       echo '<tr>
                               <td class="center">' . $index . '</td>
-                              <td class="hidden-480">' . $value["supplyName"] . ' (Tipo: ' . $value["supplyTypeId"] . ') </td>
-                              <td class="hidden-480">' . $value["caloricValue"] . '</td>
-                              <td class="hidden-480">' . $value["proteinValue"] . '</td>
-                              <td class="hidden-480">' . $value["fatValue"] . '</td>
-                              <td class="hidden-480">' . $value["carbohydratesValue"] . '</td>
+                              <td>' . $value["supplyName"] . ' (Tipo: ' . $value["supplyTypeId"] . ') </td>
+                              <td>' . $value["caloricValue"] . '</td>
+                              <td>' . $value["proteinValue"] . '</td>
+                              <td>' . $value["fatValue"] . '</td>
+                              <td>' . $value["carbohydratesValue"] . '</td>
                               <td>
                                 <div class="hidden-sm hidden-xs action-buttons">                                                            
                                     <a href="#modalUpdateSupply'.$value["supplyId"].'" role="button" class="green" data-toggle="modal">
