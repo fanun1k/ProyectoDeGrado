@@ -45,24 +45,25 @@
 													<input type="text" id="form-field-1" name="averageCalorie" placeholder="Media Calórica" class="col-xs-5 col-sm-3" />
 												</div>
 											</div>
-											<div class="form-group">
-												<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Lat: </label>
-												<div class="col-sm-9">
-													<input type="text" id="form-field-1" name="lat" placeholder="Media Calórica" class="col-xs-5 col-sm-3" />
-												</div>
-											</div>
-											<div class="form-group">
-												<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Lng: </label>
-												<div class="col-sm-9">
-													<input type="text" id="form-field-1" name="lng" placeholder="Media Calórica" class="col-xs-5 col-sm-3" />
-												</div>
-											</div>
+											
 											<div class="form-group">
 												<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Ubicación: </label>
 												<div class="col-sm-9">
 													<div id="googleMap" style="width:100%;height:250px;"></div>
 												</div>
 												<div id="marker" class="collapse"></div>
+											</div>
+											<div class="form-group collapse">
+												<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Lat: </label>
+												<div class="col-sm-9">
+													<input type="text" id="lat" name="lat" placeholder="Media Calórica" class="col-xs-5 col-sm-3" />
+												</div>
+											</div>
+											<div class="form-group collapse">
+												<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Lng: </label>
+												<div class="col-sm-9">
+													<input type="text" id="lng" name="lng" placeholder="Media Calórica" class="col-xs-5 col-sm-3" />
+												</div>
 											</div>
 									</div>
 								</div>
@@ -74,17 +75,19 @@
 								<div class="widget-body">
 									<div class="widget-main">
 										<?php 
-											$cont=1;
 											foreach ($data as $value) {
 											?>
-											<div class="checkbox">
-												<label>
-													<input name="foodTime[]" value="<?php echo $value["foodTimesId"]; ?>" type="checkbox" class="ace" />
-													<span class="lbl"> <?php echo $value["foodTimesName"]; ?></span>
-												</label>
+											<div class="row">
+												<div class="col-xs-12 col-lg-6">
+													<div class="checkbox">
+														<label>
+															<input name="foodTime[]" id="<?php echo $value["foodTimesId"]; ?>" value="<?php echo $value["foodTimesId"]; ?>" type="checkbox" class="ace" />
+															<span class="lbl"> <?php echo $value["foodTimesName"]; ?></span>
+														</label>
+													</div>
+												</div>
 											</div>
 										<?php
-											$cont++;
 											}
 										?>
 									</div>
@@ -117,35 +120,32 @@
 	var marker;
 
 	function initMap() {
-		const bangalore = { lat: 12.97, lng: 77.59 };
+		const city = { lat: -17.3843238, lng: -66.1498131 };
 		const map = new google.maps.Map(document.getElementById("googleMap"), {
-			zoom: 12,
-			center: bangalore,
+			zoom: 11,
+			center: city,
 		});
 
 		// This event listener calls addMarker() when the map is clicked.
 		google.maps.event.addListener(map, "click", (event) => {
-			addMarker(event.latLng, map);
-			
+			addMarker(event.latLng, map);		
 		});
-
-		
 	}
 
-		// Adds a marker to the map.
-		function addMarker(location, map) {
-			if(!marker || !marker.setPosition) {
-				marker = new google.maps.Marker({
-					position: location,
-					map: map,
-				});
-			}
-			else {
-				marker.setPosition(location,map);
-			}
-			alert(location.lat() + ' ' + location.lng());
-		
+	// Adds a marker to the map.
+	function addMarker(location, map) {
+		if(!marker || !marker.setPosition) {
+			marker = new google.maps.Marker({
+				position: location,
+				map: map,
+			});
+		}
+		else {
+			marker.setPosition(location,map);
+		}
+		document.getElementById("lat").value = location.lat();
+		document.getElementById("lng").value = location.lng();
 	}
 
-
+	
 </script>

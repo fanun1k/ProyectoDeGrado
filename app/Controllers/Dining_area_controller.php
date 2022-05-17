@@ -70,8 +70,8 @@ class Dining_area_controller extends ResourceController
     {
         $diningArea = array('companyId' => 1,
                             'diningAreaName' => $this->request->getPost('diningAreaName'),
-                            'latitude' => -16.987645,
-                            'longitude' => -66.234325,
+                            'latitude' => $this->request->getPost('lat'),
+                            'longitude' => $this->request->getPost('lng'),
                             'averageCalorie' => $this->request->getPost('averageCalorie'));
         
         $foodTimes = $this->request->getPost('foodTime');
@@ -98,7 +98,33 @@ class Dining_area_controller extends ResourceController
             return redirect()->to('Dining_area_controller/index');
         }
         else{
-            echo "hello";
+            echo "Error";
+        }
+    }
+
+    public function deleteDiningArea($id) {
+        if (session()->has('userId')) {
+            $userId = session()->get('userId');
+        } else if (isset($_COOKIE['userId'])) {
+            $userId = $_COOKIE['userId'];
+        }
+        if ($userId == NULL) {
+            session()->set('error', 'Enlace no permitido. Debe iniciar sesión.');
+            return redirect()->route('/');
+        }
+        $this->userModel = new User_model();
+        $status = $this->userModel->getUserStatus($userId);
+        if ($status == -1 || $status == 0) {
+            session()->set('error', 'Enlace no permitido. Debe iniciar sesión.');
+            return redirect()->route('/');
+        }
+        else if ($status == 1) {
+            if($this->model->deleteDiningArea($id)>0){
+                echo "eliminado";
+            }
+            else{
+                echo "problemas";
+            }
         }
     }
 }

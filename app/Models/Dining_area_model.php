@@ -22,7 +22,7 @@ class Dining_area_model extends Model
         $id = $this->insert($diningArea);
 
         foreach($diningAreaFoodTimes as $value) {
-            $this->db->query('INSERT INTO dining_area_food_times (foodTimesId, diningAreaId, startTime, endTime, nutritionalPercentage) VALUES ('.$value.','.$id.', "08:00:00", "10:00:00", 100);');
+            $this->db->query('INSERT INTO dining_area_food_times (foodTimesId, diningAreaId, startTime, endTime, nutritionalPercentage) VALUES ('.$value.','.$id.',"10:00:00", "10:00:00", 100);');
         }
 
         $this->db->transComplete();
@@ -55,6 +55,10 @@ class Dining_area_model extends Model
             $this->db->transCommit();
             return 1;
         }
+    }
+
+    public function deleteDiningArea($id){
+        return $this->update($id,['status'=>'0']);
     }
 }
 
