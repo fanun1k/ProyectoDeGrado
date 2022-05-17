@@ -32,9 +32,6 @@
 		<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 	</a>
 </div><!-- /.main-container -->
-
-		<!-- basic scripts -->
-
 		<!--[if !IE]> -->
 		<script src="<?php echo base_url().'/assets/'?>/js/jquery-2.1.4.min.js"></script>
 
@@ -61,7 +58,8 @@
 		<!-- ace scripts -->
 		<script src="<?php echo base_url().'/assets/'?>/js/ace-elements.min.js"></script>
 		<script src="<?php echo base_url().'/assets/'?>/js/ace.min.js"></script>
-
+		<script src="assets/js/jquery.jqGrid.min.js"></script>
+		<script src="assets/js/grid.locale-en.js"></script>
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
 			jQuery(function($) {

@@ -47,6 +47,10 @@ $routes->post('/gestion_nutricional/tabla_nutricional/registrar_insumo', 'Nutrit
 $routes->post('/gestion_nutricional/tabla_nutricional/editar_insumo/(:num)', 'Nutritional_table_controller::updateSupply/$1');
 $routes->get('/gestion_nutricional/tabla_nutricional/eliminar_insumo/(:num)', 'Nutritional_table_controller::deleteSupply/$1');
 
+
+//RRHH
+$routes->get('/recursos_humanos/personal_de_trabajo','Employee_controller::index');
+$routes->post('/recursos_humanos/personal_de_trabajo/registrar_tipo_de_empleado','Employee_controller::registerEmployeeType');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
