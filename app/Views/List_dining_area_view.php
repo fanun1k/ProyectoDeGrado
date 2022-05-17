@@ -4,35 +4,39 @@
       	<ul class="breadcrumb">
         	<li>
           		<i class="ace-icon fa fa-home home-icon"></i>
-          		<a href="#">Home</a>
-        	</li>
-
-        	<li>
-          		<a href="#">Gestión de Proyectos</a>
+				<a href="<?php echo base_url(); ?>/inicio">Inicio</a>
         	</li>
         	<li>
-          		<a href="#">Gestión de Comedores</a>
+          		<a>Gestión de Proyectos</a>
         	</li>
         	<li>
-          		<a href="#">Visualizar Comedores</a>
+          		<a>Gestión de Comedores</a>
         	</li>
-
+        	<li class="active">Tabla de Comedores</li>
       	</ul>
       	<!-- /.breadcrumb -->
       	<!-- /.nav-search -->
     </div>
 
-    <div class="page-content">
-      	<div class="page-header">
-        	<h1>
-          		Visualizar Comedores
-        	</h1>
-      	</div>
-      	<!-- /.page-header -->
+	<div class="page-content">
+		<div class="page-header">
+			<h1>
+				Tabla de Comedores
+			</h1>
+		</div>
+		<!-- /.page-header -->
 		<div class="row">
 			<div class="col-xs-12">
-				<div class="clearfix">
-					<div class="pull-right tableTools-container"></div>
+				<div class="row">
+					<div class="col-sm-8 col-xs-12 clearfix">
+						<h4 class="pink">
+						<i class="ace-icon glyphicon-plus icon-animated-hand-pointer blue"></i>
+						<a href="<?php echo base_url(); ?>/gestion_proyectos/gestion_comedores/comedor" role="button" class="green" data-toggle="modal"> Agregar Nuevo Comedor </a>
+						</h4>
+					</div>
+					<div class="col-sm-4 col-xs-12 clearfix">
+						<div class="pull-right tableTools-container"></div>
+					</div>
 				</div>
 				<div class="table-header">
 					Comedores Registrados
@@ -45,15 +49,13 @@
 					<table id="dynamic-table" class="table table-striped table-bordered table-hover">
 						<thead>
 							<tr>
-								<th class="center">
-									#
-								</th>
+								<th class="center">#</th>
 								<th>Nombre</th>
 								<th class="collapse">Empresa</th>
 								<th>Media Calórica</th>
 								<th>Fecha Registro</th>
 								<th>Fecha Actualización</th>
-								<td>Acciones</td>
+								<th>Acciones</th>
 							</tr>
 						</thead>
 

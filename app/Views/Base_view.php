@@ -2,14 +2,10 @@
 	<div class="main-content-inner">
 		<div class="breadcrumbs ace-save-state" id="breadcrumbs">
 			<ul class="breadcrumb">
-				<li>
+				<li class="active">
 					<i class="ace-icon fa fa-home home-icon"></i>
-					<a href="#">Home</a>
+					Inicio
 				</li>
-				<li>
-					<a href="#">Other Pages</a>
-					</li>
-				<li class="active">Blank Page</li>
 			</ul><!-- /.breadcrumb -->
 		</div>
 		<div class="page-content">

@@ -4,11 +4,14 @@
 			<ul class="breadcrumb">
 				<li>
 					<i class="ace-icon fa fa-home home-icon"></i>
-					<a href="#">Home</a>
+					<a href="<?php echo base_url(); ?>/inicio">Inicio</a>
 				</li>
 				<li>
-					<a href="#">Gestión de Proyectos</a>
-					</li>
+					<a>Gestión de Proyectos</a>
+				</li>
+				<li>
+					<a>Gestión de Comedores</a>
+				</li>
 				<li class="active">Agregar Nuevo Comedor</li>
 			</ul><!-- /.breadcrumb -->
 		</div>
@@ -20,7 +23,7 @@
 				</h1>
 			</div><!-- /.page-header -->
 			<div class="row">
-				<div class="col-xs-12" >
+				<div class="col-xs-12">
 					<!-- PAGE CONTENT BEGINS -->
 					<div class="row">
 						<div class="col-xs-12 col-lg-6">
