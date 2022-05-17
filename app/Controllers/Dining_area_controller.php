@@ -120,7 +120,7 @@ class Dining_area_controller extends ResourceController
         }
         else if ($status == 1) {
             if($this->model->deleteDiningArea($id)>0){
-                echo "eliminado";
+                return redirect()->to('Dining_area_controller/index');
             }
             else{
                 echo "problemas";

@@ -150,7 +150,7 @@
 										<button class="btn btn-block" type="button" data-dismiss="modal" aria-label="Close">No</button>
 									</div>
 									<div class="col-xs-12 col-sm-6">
-										<form action="<?php echo 'visualizar_comedores/eliminar_comedor/'.$value["diningAreaId"]; ?>" method="get">
+										<form action="<?php echo 'visualizar_comedores/eliminar_comedor/' . $value["diningAreaId"]; ?>" method="get">
 											<button type="submit" class="btn btn-danger btn-block">Sí, eliminar este comedor</button>
 										</form>
 									</div>

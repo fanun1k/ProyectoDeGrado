@@ -6,7 +6,7 @@ class Dining_area_model extends Model
 {
     protected $table='dining_area';
     //El nombre del ID en la tabla
-    protected $primaryKey= 'id_comedor';
+    protected $primaryKey= 'diningAreaId';
     //Last columnas que van a afectar
     protected $allowedFields= ['diningAreaId','companyId','diningAreaName','latitude','longitude','averageCalorie','createDate', 'lastUpdate','status'];
 
