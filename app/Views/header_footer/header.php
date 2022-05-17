@@ -15,6 +15,7 @@
 		<!-- page specific plugin styles -->
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/chosen.min.css'?>" />
 		<!-- text fonts -->
+		<link rel="stylesheet" href="<?php echo base_url()?>/assets/css/fullcalendar.min.css" />
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/'?>/css/fonts.googleapis.com.css" />
 
 		<!-- ace styles -->
@@ -25,7 +26,7 @@
 		<![endif]-->
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/'?>/css/ace-skins.min.css" />
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/'?>/css/ace-rtl.min.css" />
-
+		<link rel="stylesheet" href="<?php echo base_url().'/assets/charts.css-0.9.0/'?>/dist/charts.min.css"
 		<!--[if lte IE 9]>
 		  <link rel="stylesheet" href="<?php echo base_url().'/assets/'?>/css/ace-ie.min.css" />
 		<![endif]-->
