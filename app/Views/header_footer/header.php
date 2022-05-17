@@ -15,6 +15,7 @@
 		<!-- page specific plugin styles -->
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/chosen.min.css'?>" />
 		<!-- text fonts -->
+		<link rel="stylesheet" href="<?php echo base_url()?>/assets/css/fullcalendar.min.css" />
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/'?>/css/fonts.googleapis.com.css" />
 
 		<!-- ace styles -->
