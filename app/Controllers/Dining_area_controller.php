@@ -6,6 +6,7 @@ use App\Models\Dining_area_model;
 use App\Models\Food_times_model;
 use App\Models\User_model;
 use CodeIgniter\RESTful\ResourceController;
+use Kint\Zval\Value;
 
 class Dining_area_controller extends ResourceController
 {
@@ -84,17 +85,23 @@ class Dining_area_controller extends ResourceController
     {
         $diningArea = array('companyId' => 1,
                             'diningAreaName' => $this->request->getPost('diningAreaName'),
-                            'latitude' => -16.987645,
-                            'longitude' => -66.234325,
+                            'latitude' => $this->request->getPost('lat'),
+                            'longitude' => $this->request->getPost('lng'),
                             'averageCalorie' => $this->request->getPost('averageCalorie'));
         
         $foodTimes = $this->request->getPost('foodTime');
+        $foodTimesStartTime = $this->request->getPost('startTime');
+        $foodTimesEndTime = $this->request->getPost('endTime');
+
+        $foodTimesStartTime = array_values(array_filter($foodTimesStartTime));
+        $foodTimesEndTime = array_values(array_filter($foodTimesEndTime));
+
         
-        if($this->model->insertDiningArea($diningArea, array_filter($foodTimes)) > 0){
-            return redirect()->to('Dining_area_controller/index');
+        if($this->model->insertDiningArea($diningArea, array_filter($foodTimes), $foodTimesStartTime, $foodTimesEndTime) > 0){
+            return redirect()->route('gestion_proyectos/gestion_comedores/visualizar_comedores');
         }
         else{
-            echo "hello";
+            echo "Error";
         }
     }
 
@@ -109,10 +116,36 @@ class Dining_area_controller extends ResourceController
         $foodTimes = $this->request->getPost('foodTime');
         
         if($this->model->updateDiningArea($diningArea, array_filter($foodTimes)) > 0){
-            return redirect()->to('Dining_area_controller/index');
+            return redirect()->route('gestion_proyectos/gestion_comedores/visualizar_comedores');
         }
         else{
-            echo "hello";
+            echo "Error";
+        }
+    }
+
+    public function deleteDiningArea($id) {
+        if (session()->has('userId')) {
+            $userId = session()->get('userId');
+        } else if (isset($_COOKIE['userId'])) {
+            $userId = $_COOKIE['userId'];
+        }
+        if ($userId == NULL) {
+            session()->set('error', 'Enlace no permitido. Debe iniciar sesión.');
+            return redirect()->route('/');
+        }
+        $this->userModel = new User_model();
+        $status = $this->userModel->getUserStatus($userId);
+        if ($status == -1 || $status == 0) {
+            session()->set('error', 'Enlace no permitido. Debe iniciar sesión.');
+            return redirect()->route('/');
+        }
+        else if ($status == 1) {
+            if($this->model->deleteDiningArea($id)>0){
+                return redirect()->route('gestion_proyectos/gestion_comedores/visualizar_comedores');
+            }
+            else{
+                echo "Error";
+            }
         }
     }
 }
