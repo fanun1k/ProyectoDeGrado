@@ -15,14 +15,16 @@ class Dining_area_model extends Model
         return $this->where('status', '1')->findAll();
 	}
 
-    public function insertDiningArea($diningArea, $diningAreaFoodTimes)
+    public function insertDiningArea($diningArea, $diningAreaFoodTimes, $foodTimesStartTime, $foodTimesEndTime)
 	{
         $this->db->transStart();
 
         $id = $this->insert($diningArea);
 
+        $cont=0;
         foreach($diningAreaFoodTimes as $value) {
-            $this->db->query('INSERT INTO dining_area_food_times (foodTimesId, diningAreaId, startTime, endTime, nutritionalPercentage) VALUES ('.$value.','.$id.',"10:00:00", "10:00:00", 100);');
+            $this->db->query('INSERT INTO dining_area_food_times (foodTimesId, diningAreaId, startTime, endTime, nutritionalPercentage) VALUES ('.$value.','.$id.',"'.$foodTimesStartTime[$cont].'", "'.$foodTimesEndTime[$cont].'", 100);');
+            $cont++;
         }
 
         $this->db->transComplete();
@@ -43,7 +45,7 @@ class Dining_area_model extends Model
         $id = $this->update($diningArea);
 
         foreach($diningAreaFoodTimes as $value) {
-            $this->db->query("UPDATE" . " dining_area_food_times (foodTimesId, diningAreaId, startTime, endTime, nutritionalPercentage) VALUES ('.$value.','.$id.', '08:00:00', '10:00:00', 100);");
+            $this->db->query("UPDATE" . " dining_area_food_times (foodTimesId, diningAreaId, startTime, endTime, nutritionalPercentage) VALUES ('.$value.','.$id.', '.$value.', '10:00:00', 100);");
         }
 
         $this->db->transComplete();

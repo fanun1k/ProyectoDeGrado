@@ -85,6 +85,8 @@
 															<span class="lbl"> <?php echo $value["foodTimesName"]; ?></span>
 														</label>
 													</div>
+													<input name="startTime[]" type="time"/>
+													<input name="endTime[]" type="time"/>
 												</div>
 											</div>
 										<?php

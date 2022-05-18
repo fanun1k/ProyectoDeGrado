@@ -6,6 +6,7 @@ use App\Models\Dining_area_model;
 use App\Models\Food_times_model;
 use App\Models\User_model;
 use CodeIgniter\RESTful\ResourceController;
+use Kint\Zval\Value;
 
 class Dining_area_controller extends ResourceController
 {
@@ -75,12 +76,14 @@ class Dining_area_controller extends ResourceController
                             'averageCalorie' => $this->request->getPost('averageCalorie'));
         
         $foodTimes = $this->request->getPost('foodTime');
+        $foodTimesStartTime = $this->request->getPost('startTime');
+        $foodTimesEndTime = $this->request->getPost('endTime');
         
-        if($this->model->insertDiningArea($diningArea, array_filter($foodTimes)) > 0){
-            return redirect()->to('Dining_area_controller/index');
+        if($this->model->insertDiningArea($diningArea, array_filter($foodTimes), array_filter($foodTimesStartTime), array_filter($foodTimesEndTime)) > 0){
+            return redirect()->route('gestion_proyectos/gestion_comedores/visualizar_comedores');
         }
         else{
-            echo "hello";
+            echo "Error";
         }
     }
 
@@ -95,7 +98,7 @@ class Dining_area_controller extends ResourceController
         $foodTimes = $this->request->getPost('foodTime');
         
         if($this->model->updateDiningArea($diningArea, array_filter($foodTimes)) > 0){
-            return redirect()->to('Dining_area_controller/index');
+            return redirect()->route('gestion_proyectos/gestion_comedores/visualizar_comedores');
         }
         else{
             echo "Error";
@@ -120,10 +123,10 @@ class Dining_area_controller extends ResourceController
         }
         else if ($status == 1) {
             if($this->model->deleteDiningArea($id)>0){
-                return redirect()->to('Dining_area_controller/index');
+                return redirect()->route('gestion_proyectos/gestion_comedores/visualizar_comedores');
             }
             else{
-                echo "problemas";
+                echo "Error";
             }
         }
     }
