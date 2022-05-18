@@ -78,8 +78,12 @@ class Dining_area_controller extends ResourceController
         $foodTimes = $this->request->getPost('foodTime');
         $foodTimesStartTime = $this->request->getPost('startTime');
         $foodTimesEndTime = $this->request->getPost('endTime');
+
+        $foodTimesStartTime = array_values(array_filter($foodTimesStartTime));
+        $foodTimesEndTime = array_values(array_filter($foodTimesEndTime));
+
         
-        if($this->model->insertDiningArea($diningArea, array_filter($foodTimes), array_filter($foodTimesStartTime), array_filter($foodTimesEndTime)) > 0){
+        if($this->model->insertDiningArea($diningArea, array_filter($foodTimes), $foodTimesStartTime, $foodTimesEndTime) > 0){
             return redirect()->route('gestion_proyectos/gestion_comedores/visualizar_comedores');
         }
         else{
