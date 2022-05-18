@@ -97,6 +97,17 @@ class User_model extends Model
 
         return -1;
     }
+
+    public function getUserAccess($userId){
+        $db = db_connect();
+        $builder = $db->table('user u')->select('a.accessId, a. accessName');
+        $builder->join('user_role ur', 'ur.userId = u.userId');
+        $builder->join('role r', 'r.roleId = ur.roleId');
+        $builder->join('role_has_access rha', 'rha.roleId = r.roleId');
+        $builder->join('access a', 'a.accessId = rha.accessId');
+        $builder->where('u.userId', $userId);
+        return $builder->get()->getResult();
+    }
 }
 
 ?>

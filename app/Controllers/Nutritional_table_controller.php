@@ -34,7 +34,14 @@ class Nutritional_table_controller extends ResourceController
         else if ($status == 1) {
             $dataSupply= $this->getSupplyTable(10, 1);
             $dataTypeSupply=$this->getTypeSupplies();
-            $view= view('header_footer/header').view('header_footer/sidebar',compact('dataSupply','dataTypeSupply')).view('Nutritional_table_view').view('header_footer/footer');
+            $this->userModel = new User_model();
+            if (session()->has('userId')) {
+                $userAccessArray = $this->userModel->getUserAccess(session()->get('userId'));
+            }
+            else if (isset($_COOKIE['userId'])) {
+                $userAccessArray = $this->userModel->getUserAccess($_COOKIE['userId']);
+            }
+            $view= view('header_footer/header').view('header_footer/sidebar',compact('dataSupply','dataTypeSupply', 'userAccessArray')).view('Nutritional_table_view').view('header_footer/footer');
             return $view; 
         }
     }
