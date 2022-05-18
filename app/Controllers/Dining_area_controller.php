@@ -31,7 +31,14 @@ class Dining_area_controller extends ResourceController
         }
         else if ($status == 1) {
             $data = $this->getDiningAreaData(10,1);
-            $view = view('header_footer/header').view('header_footer/sidebar',compact('data')).view('List_dining_area_view').view('header_footer/footer');
+            $this->userModel = new User_model();
+            if (session()->has('userId')) {
+                $userAccessArray = $this->userModel->getUserAccess(session()->get('userId'));
+            }
+            else if (isset($_COOKIE['userId'])) {
+                $userAccessArray = $this->userModel->getUserAccess($_COOKIE['userId']);
+            }
+            $view = view('header_footer/header').view('header_footer/sidebar', compact('data', 'userAccessArray')).view('List_dining_area_view').view('header_footer/footer');
             return $view;
         }
     }
@@ -56,7 +63,14 @@ class Dining_area_controller extends ResourceController
         else if ($status == 1) {
             $this->foodTimesModel = new Food_times_model();
             $data = $this->foodTimesModel->getFoodTimes();
-            $view = view('header_footer/header').view('header_footer/sidebar').view('Add_dining_area_view',compact('data')).view('header_footer/footer');
+            $this->userModel = new User_model();
+            if (session()->has('userId')) {
+                $userAccessArray = $this->userModel->getUserAccess(session()->get('userId'));
+            }
+            else if (isset($_COOKIE['userId'])) {
+                $userAccessArray = $this->userModel->getUserAccess($_COOKIE['userId']);
+            }
+            $view = view('header_footer/header').view('header_footer/sidebar', compact('userAccessArray')).view('Add_dining_area_view', compact('data')).view('header_footer/footer');
             return $view;
         }
     }
