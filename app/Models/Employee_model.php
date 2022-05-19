@@ -15,9 +15,5 @@ class Employee_model extends Model{
         return $this->where('status', '1')->findAll();
 	}
 
-    public function insertEmployeeMemorandum($data) {
-        return $this->table('work_memorandum')->insert($data);
-    }
-
 
 }

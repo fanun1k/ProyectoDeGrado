@@ -4,17 +4,18 @@ namespace App\Controllers;
 use App\Models\User_model;
 use App\Models\Employee_type_model;
 use App\Models\Employee_model;
+use App\Models\Employee_work_memorandum_model;
 use CodeIgniter\Controller;
 use CodeIgniter\RESTful\ResourceController;
 
 
-class Employee_controller extends Controller{
+class Employee_controller extends ResourceController{
 
     protected $modelName = 'App\Models\Employee_model';
     protected $format    = 'json';
     public function index(){
         $employeeTypeModel=new Employee_type_model();
-        $data=$employeeTypeModel->getNameAndCountAllEmmployeeTypes();
+        $data=$employeeTypeModel->getEmployeeTypes();
         $this->userModel = new User_model();
         if (session()->has('userId')) {
             $userAccessArray = $this->userModel->getUserAccess(session()->get('userId'));
@@ -27,6 +28,7 @@ class Employee_controller extends Controller{
 
     }
     public function registerEmployeeType(){
+        
         $employeeTypeName=$_POST['employeeTypeName'];
 
         $employeeTypeModel=new Employee_type_model();
@@ -54,13 +56,14 @@ class Employee_controller extends Controller{
     }
 
     public function registerEmployeeMemorandum() {
+        $this->userModel = new Employee_work_memorandum_model();
         
         $data = array('employeeId' => $this->request->getPost('employee'),
                     'workMemorandumDescription' => $this->request->getPost('description'));
 
-        if ($this->model->insertEmployeeMemorandum($data)>0) {
-            //return redirect()->route('gestion_nutricional/tabla_nutricional');
-            echo "insertado";
+        
+        if ($this->userModel->insertEmployeeMemorandum($data)>0) {
+            return redirect()->route('recursos_humanos/planillas/memorandum');
         }
     }
 }

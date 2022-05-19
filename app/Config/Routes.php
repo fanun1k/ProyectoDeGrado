@@ -68,6 +68,8 @@ $routes->get('/recursos_humanos/personal_de_trabajo','Employee_controller::index
 $routes->post('/recursos_humanos/personal_de_trabajo/registrar_tipo_de_empleado','Employee_controller::registerEmployeeType');
 $routes->get('/recursos_humanos/planillas/memorandum','Employee_controller::employeeMemorandum');
 $routes->post('/recursos_humanos/planillas/memorandum/registrar_memorandum','Employee_controller::registerEmployeeMemorandum');
+$routes->get('/recursos_humanos/nuevo_perfil','New_employee_profile_controller::index');
+$routes->post('/recursos_humanos/nuevo_perfil/registrar_empleado','New_employee_profile_controller::registerNewEmployee');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
