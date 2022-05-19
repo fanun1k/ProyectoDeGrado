@@ -75,21 +75,21 @@
 													<div class="profile-info-row">
 														<div class="profile-info-name"> Nombre </div>
 														<div class="profile-info-value">
-															<span><input required class="form-control" type="text"></span>
+															<span><input required class="form-control" type="text" name="name"></span>
 														</div>
 													</div>
 
 													<div class="profile-info-row">
 														<div class="profile-info-name"> Primer Apellido </div>
 														<div class="profile-info-value">
-															<span><input required class="form-control" type="text"></span>
+															<span><input required class="form-control" type="text" name="lastName1"></span>
 														</div>
 													</div>
 
 													<div class="profile-info-row">
 														<div class="profile-info-name"> Segundo Apellido </div>
 														<div class="profile-info-value">
-															<span><input required class="form-control" type="text"></span>
+															<span><input required class="form-control" type="text" name="lastName2"></span>
 														</div>
 													</div>
 
@@ -97,7 +97,7 @@
 														<div class="profile-info-name"> Género </div>
 
 														<div class="profile-info-value">
-															<span><input required class="form-control" type="text"></span>
+															<span><input required class="form-control" type="text" name="employeeGender"></span>
 														</div>
 													</div>
 
@@ -107,7 +107,7 @@
 														<div class="profile-info-value">
 															<span>
 																<div class="input-group">
-																	<input class="form-control date-picker" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy" />
+																	<input class="form-control date-picker" id="id-date-picker-1" type="text" data-date-format="yyyy-mm-dd" name="employeeDateOfBirth" />
 																	<span class="input-group-addon">
 																		<i class="fa fa-calendar bigger-110"></i>
 																	</span>
@@ -119,21 +119,21 @@
 														<div class="profile-info-name"> Nro de Carnet </div>
 
 														<div class="profile-info-value">
-															<span><input required class="form-control" type="text"></span>
+															<span><input required class="form-control" type="text" name="employeeCI"></span>
 														</div>
 													</div>
 													<div class="profile-info-row">
 														<div class="profile-info-name"> Nro de Celular </div>
 
 														<div class="profile-info-value">
-															<span><input required class="form-control" type="number"></span>
+															<span><input required class="form-control" type="number" name="employeePhoneNumber"></span>
 														</div>
 													</div>
 													<div class="profile-info-row">
 														<div class="profile-info-name"> Código de Empleado </div>
 
 														<div class="profile-info-value">
-															<span><input required class="form-control" type="number"></span>
+															<span><input required class="form-control" type="number" name="employeeCode"></span>
 														</div>
 													</div>
 												</div>
