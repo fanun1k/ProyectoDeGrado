@@ -36,6 +36,14 @@ class Validation
         'list'   => 'CodeIgniter\Validation\Views\list',
         'single' => 'CodeIgniter\Validation\Views\single',
     ];
+    public $registerNewEmployee = [
+        'name'=>'required|min_length[3]|max_length[60]',
+        'lastName1'=>'required|min_length[3]|max_length[60]',
+        'lastName2'=>'required|min_length[3]|max_length[60]',
+        'employeePhoneNumber'=>'required|alpha_numeric|min_length[7]|max_length[20]',
+        'employeeCI'=>'required|alpha_numeric|min_length[7]|max_length[13]',
+        'employeeGender'=>'required|alpha_numeric|min_length[7]|max_length[20]',
+    ];
 
     //--------------------------------------------------------------------
     // Rules
