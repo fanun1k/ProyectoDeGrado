@@ -83,7 +83,7 @@
 													<i class="ace-icon fa fa-pencil bigger-130"></i>
 												</a>
 
-												<a class="red" href="#">
+												<a class="red" href="#modalDeleteDiningArea<?php echo $value["diningAreaId"]; ?>" data-toggle="modal">
 													<i class="ace-icon fa fa-trash-o bigger-130"></i>
 												</a>
 											</div>
@@ -97,19 +97,25 @@
 													<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
 														
 														<li>
-															<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-																<span class="green">
-																	<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																</span>
-															</a>
+															<form action="" method="post">
+																<input type="hidden" value=""/>
+																<button	type="submit" class="tooltip-success" data-rel="tooltip"	title="Edit">
+																	<span class="green">
+																		<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+																	</span>
+																</button>
+															</form>
 														</li>
 
 														<li>
-															<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-																<span class="red">
-																	<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																</span>
-															</a>
+															<form>
+																<input type="hidden" value="">
+																<button	type="submit" class="tooltip-error"	data-rel="tooltip" title="Delete">
+																	<span class="red">
+																		<i class="ace-icon fa fa-trash-o bigger-120"></i>
+																	</span>
+																</button>
+															</form>
 														</li>
 													</ul>
 												</div>
@@ -124,8 +130,39 @@
 						</tbody>
 					</table>
 				</div>
+				<?php foreach ($data as $value) { ?> <!-- DELETE DINING AREA MODAL STARTS -->
+                <div id="modalDeleteDiningArea<?php echo $value["diningAreaId"]; ?>" class="modal" tabindex="-1">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="blue bigger">Eliminar Comedor</h4>
+							</div>
+							<div class="modal-body">
+								<div class="row">
+									<div class="col-xs-12">
+										<label>¿Estás seguro de que quieres eliminar este comedor?</label>
+									</div>
+								</div>
+								<div class="space"></div>
+								<div class="row">
+									<div class="col-xs-12 col-sm-6">
+										<button class="btn btn-block" type="button" data-dismiss="modal" aria-label="Close">No</button>
+									</div>
+									<div class="col-xs-12 col-sm-6">
+										<form action="<?php echo 'visualizar_comedores/eliminar_comedor/' . $value["diningAreaId"]; ?>" method="get">
+											<button type="submit" class="btn btn-danger btn-block">Sí, eliminar este comedor</button>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+                </div>
+                <?php } ?> <!-- DELETE DINING AREA MODAL ENDS -->
 			</div>
 		</div>
+
 	</div>
 
       
