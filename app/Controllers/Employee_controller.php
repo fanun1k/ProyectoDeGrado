@@ -12,7 +12,7 @@ class Employee_controller extends Controller{
     protected $format    = 'json';
     public function index(){
         $employeeTypeModel=new Employee_type_model();
-        $data=$employeeTypeModel->getNameAndCountAllEmmployeeTypes();
+        $data=$employeeTypeModel->getEmployeeTypes();
         $this->userModel = new User_model();
         if (session()->has('userId')) {
             $userAccessArray = $this->userModel->getUserAccess(session()->get('userId'));
@@ -25,6 +25,7 @@ class Employee_controller extends Controller{
 
     }
     public function registerEmployeeType(){
+        
         $employeeTypeName=$_POST['employeeTypeName'];
 
         $employeeTypeModel=new Employee_type_model();

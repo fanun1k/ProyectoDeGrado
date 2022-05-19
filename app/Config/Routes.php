@@ -52,6 +52,8 @@ $routes->get('/gestion_nutricional/tabla_nutricional/eliminar_insumo/(:num)', 'N
 //RRHH
 $routes->get('/recursos_humanos/personal_de_trabajo','Employee_controller::index');
 $routes->post('/recursos_humanos/personal_de_trabajo/registrar_tipo_de_empleado','Employee_controller::registerEmployeeType');
+$routes->get('/recursos_humanos/nuevo_perfil','New_employee_profile_controller::index');
+$routes->post('/recursos_humanos/nuevo_perfil/registrar_empleado','New_employee_profile_controller::registerNewEmployee');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

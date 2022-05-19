@@ -1,7 +1,9 @@
 <?php $hasAccess = FALSE; ?>
 <div id="sidebar" class="sidebar responsive ace-save-state">
 	<script type="text/javascript">
-		try{ace.settings.loadState('sidebar')}catch(e){}
+		try {
+			ace.settings.loadState('sidebar')
+		} catch (e) {}
 	</script>
 
 	<div class="sidebar-shortcuts" id="sidebar-shortcuts">
@@ -15,7 +17,7 @@
 			<?php foreach ($userAccessArray as $access) {
 				if ($access->accessId == 1) $hasAccess = TRUE;
 			} ?>
-			<a href="#" class="dropdown-toggle" <?php if(!$hasAccess) echo 'style="cursor:not-allowed;"'; ?>>
+			<a href="#" class="dropdown-toggle" <?php if (!$hasAccess) echo 'style="cursor:not-allowed;"'; ?>>
 				<i class="menu-icon fa fa-briefcase"></i>
 				<span class="menu-text">Contabilidad</span>
 				<?php if ($hasAccess) { ?>
@@ -73,14 +75,15 @@
 						<b class="arrow"></b>
 					</li>
 				</ul>
-			<?php } $hasAccess = FALSE; ?>
+			<?php }
+			$hasAccess = FALSE; ?>
 		</li>
 
 		<li class="">
 			<?php foreach ($userAccessArray as $access) {
 				if ($access->accessId == 2) $hasAccess = TRUE;
 			} ?>
-			<a href="#" class="dropdown-toggle" <?php if(!$hasAccess) echo 'style="cursor:not-allowed;"'; ?>>
+			<a href="#" class="dropdown-toggle" <?php if (!$hasAccess) echo 'style="cursor:not-allowed;"'; ?>>
 				<i class=" menu-icon fa fa-money "></i>
 				<span class="menu-text">Finanzas</span>
 				<?php if ($hasAccess) { ?>
@@ -108,14 +111,15 @@
 						<b class="arrow"></b>
 					</li>
 				</ul>
-			<?php } $hasAccess = FALSE; ?>
+			<?php }
+			$hasAccess = FALSE; ?>
 		</li>
 
 		<li class="">
 			<?php foreach ($userAccessArray as $access) {
 				if ($access->accessId == 3) $hasAccess = TRUE;
 			} ?>
-			<a href="#" class="dropdown-toggle" <?php if(!$hasAccess) echo 'style="cursor:not-allowed;"'; ?>>
+			<a href="#" class="dropdown-toggle" <?php if (!$hasAccess) echo 'style="cursor:not-allowed;"'; ?>>
 				<i class="menu-icon fa fa-archive"></i>
 				<span class="menu-text" style="font-size:10px;">Cadena de Suministro</span>
 				<?php if ($hasAccess) { ?>
@@ -146,14 +150,15 @@
 						<b class="arrow"></b>
 					</li>
 				</ul>
-			<?php } $hasAccess = FALSE; ?>
+			<?php }
+			$hasAccess = FALSE; ?>
 		</li>
 
 		<li class="">
 			<?php foreach ($userAccessArray as $access) {
 				if ($access->accessId == 4) $hasAccess = TRUE;
 			} ?>
-			<a href="#" class="dropdown-toggle" <?php if(!$hasAccess) echo 'style="cursor:not-allowed;"'; ?>>
+			<a href="#" class="dropdown-toggle" <?php if (!$hasAccess) echo 'style="cursor:not-allowed;"'; ?>>
 				<i class="menu-icon fa fa-truck"></i>
 				<span class="menu-text">Aprovisionamiento</span>
 				<?php if ($hasAccess) { ?>
@@ -165,7 +170,7 @@
 			<?php if ($hasAccess) { ?>
 				<b class="arrow"></b>
 				<ul class="submenu">
-					
+
 					<li class="">
 						<a href="buttons.html">
 							<i class="menu-icon fa fa-caret-right"></i>
@@ -193,14 +198,15 @@
 						<b class="arrow"></b>
 					</li>
 				</ul>
-			<?php } $hasAccess = FALSE; ?>
+			<?php }
+			$hasAccess = FALSE; ?>
 		</li>
 
 		<li class="">
 			<?php foreach ($userAccessArray as $access) {
 				if ($access->accessId == 5) $hasAccess = TRUE;
 			} ?>
-			<a href="#" class="dropdown-toggle" <?php if(!$hasAccess) echo 'style="cursor:not-allowed;"'; ?>>
+			<a href="#" class="dropdown-toggle" <?php if (!$hasAccess) echo 'style="cursor:not-allowed;"'; ?>>
 				<i class="menu-icon fa fa-users"></i>
 				<span class="menu-text">Recursos Humanos</span>
 				<?php if ($hasAccess) { ?>
@@ -233,7 +239,7 @@
 						<b class="arrow"></b>
 						<ul class="submenu">
 							<li class="">
-								<a href="jquery-ui.html">
+								<a href="<?php echo base_url('/recursos_humanos/nuevo_perfil') ?>">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Nuevo Perfil
 								</a>
@@ -283,14 +289,15 @@
 						</ul>
 					</li>
 				</ul>
-			<?php } $hasAccess = FALSE; ?>
+			<?php }
+			$hasAccess = FALSE; ?>
 		</li>
 
 		<li class="">
 			<?php foreach ($userAccessArray as $access) {
 				if ($access->accessId == 6) $hasAccess = TRUE;
 			} ?>
-			<a href="#" class="dropdown-toggle" <?php if(!$hasAccess) echo 'style="cursor:not-allowed;"'; ?>>
+			<a href="#" class="dropdown-toggle" <?php if (!$hasAccess) echo 'style="cursor:not-allowed;"'; ?>>
 				<i class="menu-icon fa fa-tasks"></i>
 				<span class="menu-text" style="font-size:12px;">Gestión de Proyectos</span>
 				<?php if ($hasAccess) { ?>
@@ -341,7 +348,7 @@
 						</a>
 						<ul class="submenu">
 							<li class="">
-								<a href="<?php echo base_url('gestion_nutricional/tabla_nutricional')?>">
+								<a href="<?php echo base_url('gestion_nutricional/tabla_nutricional') ?>">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Visualizar Insumos (Tabla Nutricional)
 								</a>
@@ -353,7 +360,7 @@
 					<li class="">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-caret-right"></i>
-							<span class="menu-text" >
+							<span class="menu-text">
 								Plan Alimenticio
 							</span>
 							<b class="arrow fa fa-angle-down"></b>
@@ -362,7 +369,7 @@
 						<b class="arrow"></b>
 
 						<ul class="submenu">
-							
+
 							<li class="">
 								<a href="elements.html">
 									<i class="menu-icon fa fa-caret-right"></i>
@@ -383,7 +390,8 @@
 						</ul>
 					</li>
 				</ul>
-			<?php } $hasAccess = FALSE; ?>
+			<?php }
+			$hasAccess = FALSE; ?>
 		</li>
 	</ul><!-- /.nav-list -->
 
