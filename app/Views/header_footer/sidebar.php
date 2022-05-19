@@ -206,7 +206,7 @@
 					<b class="arrow"></b>
 					<ul class="submenu">
 						<li class="">
-							<a href="<?php echo base_url('/recursos_humanos/nuevo_peril') ?>">
+							<a href="<?php echo base_url('/recursos_humanos/nuevo_perfil') ?>">
 								<i class="menu-icon fa fa-caret-right"></i>
 								Nuevo Perfil
 							</a>

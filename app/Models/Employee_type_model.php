@@ -12,7 +12,7 @@ class Employee_type_model extends Model{
     public function registerEmployeeType($employeeTypeName){
         return $this->insert(['employeeTypeName'=>$employeeTypeName]);
     }
-    public function getNameAndCountAllEmmployeeTypes(){ // faltaria el registro de empleados a los rolles para el count
+    public function getEmployeeTypes(){ // faltaria el registro de empleados a los rolles para el count
         return $this->where('status', 1)->findAll();
     }
 }

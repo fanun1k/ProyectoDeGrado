@@ -11,7 +11,7 @@ class Employee_controller extends Controller{
     protected $format    = 'json';
     public function index(){
         $employeeTypeModel=new Employee_type_model();
-        $data=$employeeTypeModel->getNameAndCountAllEmmployeeTypes();
+        $data=$employeeTypeModel->getEmployeeTypes();
         $vista=view('header_footer/header').view('header_footer/sidebar').view('Employee_view',compact('data'));
         return $vista;
 
