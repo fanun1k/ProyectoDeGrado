@@ -71,7 +71,7 @@ class Dining_area_controller extends ResourceController
             else if (isset($_COOKIE['userId'])) {
                 $userAccessArray = $this->userModel->getUserAccess($_COOKIE['userId']);
             }
-            $view = view('header_footer/header').view('header_footer/sidebar', compact('userAccessArray')).view('Add_dining_area_view', compact('data')).view('header_footer/footer');
+            $view = view('header_footer/header').view('header_footer/sidebar', compact('userAccessArray')).view('Add_dining_area_view', compact('data'));
             return $view;
         }
     }
