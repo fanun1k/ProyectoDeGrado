@@ -273,14 +273,14 @@
 								<b class="arrow"></b>
 							</li>
 							<li class="">
-								<a href="jquery-ui.html">
+								<a href="<?php echo base_url('recursos_humanos/planillas/permisos_vacaciones') ?>">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Permisos / Vacaciones
 								</a>
 								<b class="arrow"></b>
 							</li>
 							<li class="">
-								<a href="jquery-ui.html">
+								<a href="<?php echo base_url('recursos_humanos/planillas/memorandum') ?>">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Memorándums
 								</a>

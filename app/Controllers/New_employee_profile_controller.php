@@ -4,10 +4,13 @@ namespace App\Controllers;
 
 use App\Models\Employee_type_model;
 use App\Models\User_model;
+use App\Models\Employee_model;
 use CodeIgniter\RESTful\ResourceController;
 
 class New_employee_profile_controller extends ResourceController
 {
+    protected $modelName = 'App\Models\Employee_model';
+    protected $format    = 'json';
     public function index()
     {
         $employeeTypeModel=new Employee_type_model();
@@ -24,7 +27,23 @@ class New_employee_profile_controller extends ResourceController
         return $view;
     }
     public function registerNewEmployee(){
-        echo "gaaaaa";
+        $data=array('name'=>$_POST['name'],
+                'lastName1'=>$_POST['lastName1'],
+                'lastName2'=>$_POST['lastName2'],
+                'employeePhoneNumber'=>$_POST['employeePhoneNumber'],
+                'employeeLatitude'=>-17.3742,
+                'employeeLongitude'=>-66.1622,
+                'employeeCI'=>$_POST['employeeCI'],  
+                'employeeGender'=>$_POST['employeeGender'],
+                'employeeDateOfBirth'=>$_POST['employeeDateOfBirth'],
+                'employeeCode'=>$_POST['employeeCode']);
+        $msg=$this->model->registerNewEmployee($data);
+        if ($msg>0) {
+            return redirect()->route('recursos_humanos/nuevo_perfil');
+        }    
+        else{
+            echo 'error';
+        }
     }
 }
 
