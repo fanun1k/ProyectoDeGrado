@@ -14,6 +14,7 @@ class Employee_controller extends ResourceController{
 
     protected $modelName = 'App\Models\Employee_model';
     protected $format    = 'json';
+    
     public function index(){
         $employeeTypeModel=new Employee_type_model();
         $data=$employeeTypeModel->getEmployeeTypes();
@@ -28,8 +29,8 @@ class Employee_controller extends ResourceController{
         return $vista;
 
     }
-    public function registerEmployeeType(){
-        
+
+    public function registerEmployeeType() {
         $employeeTypeName=$_POST['employeeTypeName'];
 
         $employeeTypeModel=new Employee_type_model();
@@ -61,7 +62,6 @@ class Employee_controller extends ResourceController{
         
         $data = array('employeeId' => $this->request->getPost('employee'),
                     'workMemorandumDescription' => $this->request->getPost('description'));
-
         
         if ($this->userModel->insertEmployeeMemorandum($data)>0) {
             return redirect()->route('recursos_humanos/planillas/memorandum');

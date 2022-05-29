@@ -19,8 +19,7 @@ class Nutritional_table_controller extends ResourceController
             $userId = session()->get('userId');
         } else if (isset($_COOKIE['userId'])) {
             $userId = $_COOKIE['userId'];
-        }
-        if ($userId == NULL) {
+        } else {
             session()->set('error', 'Enlace no permitido. Debe iniciar sesión.');
             return redirect()->route('/');
         }
@@ -31,19 +30,12 @@ class Nutritional_table_controller extends ResourceController
             session()->set('error', 'Enlace no permitido. Debe iniciar sesión.');
             return redirect()->route('/');
         }
-        else if ($status == 1) {
-            $dataSupply= $this->getSupplyTable(10, 1);
-            $dataTypeSupply=$this->getTypeSupplies();
-            $this->userModel = new User_model();
-            if (session()->has('userId')) {
-                $userAccessArray = $this->userModel->getUserAccess(session()->get('userId'));
-            }
-            else if (isset($_COOKIE['userId'])) {
-                $userAccessArray = $this->userModel->getUserAccess($_COOKIE['userId']);
-            }
-            $view= view('header_footer/header').view('header_footer/sidebar',compact('dataSupply','dataTypeSupply', 'userAccessArray')).view('Nutritional_table_view').view('header_footer/footer');
-            return $view; 
-        }
+        
+        $dataSupply = $this->getSupplyTable(10, 1);
+        $dataTypeSupply = $this->getTypeSupplies();
+        $userAccessArray = $userModel->getUserAccess($userId);
+        $view= view('header_footer/header').view('header_footer/sidebar',compact('dataSupply', 'dataTypeSupply', 'userAccessArray')).view('Nutritional_table_view').view('header_footer/footer');
+        return $view;
     }
 
     public function getSupplyTable($limit, $offset)

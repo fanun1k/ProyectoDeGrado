@@ -46,18 +46,25 @@ $routes->post('/cambiar_contrasena', 'Login_controller::changePassword');
  * --------------------------------------------------------------------
  */
 
- //Gestion Comedores
+/*
+ * --------------------------------------------------------------------
+ * Gestion Comedores
+ * --------------------------------------------------------------------
+ */
 $routes->get('/gestion_proyectos/gestion_comedores/comedor', 'Dining_area_controller::diningArea');
 $routes->get('/gestion_proyectos/gestion_comedores/visualizar_comedores', 'Dining_area_controller::index');
 $routes->post('/gestion_proyectos/gestion_comedores/comedor/registrar_comedor', 'Dining_area_controller::registerDiningArea');
 $routes->get('/gestion_proyectos/gestion_comedores/visualizar_comedores/eliminar_comedor/(:num)', 'Dining_area_controller::deleteDiningArea/$1');
 
-//Gestion Nutricional
+/*
+ * --------------------------------------------------------------------
+ * Gestion Nutricional
+ * --------------------------------------------------------------------
+ */
 $routes->get('/gestion_nutricional/tabla_nutricional', 'Nutritional_table_controller::index');
 $routes->post('/gestion_nutricional/tabla_nutricional/registrar_insumo', 'Nutritional_table_controller::registerNewSupply');
 $routes->post('/gestion_nutricional/tabla_nutricional/editar_insumo/(:num)', 'Nutritional_table_controller::updateSupply/$1');
 $routes->get('/gestion_nutricional/tabla_nutricional/eliminar_insumo/(:num)', 'Nutritional_table_controller::deleteSupply/$1');
-
 
 /*
  * --------------------------------------------------------------------
@@ -72,6 +79,7 @@ $routes->get('/recursos_humanos/nuevo_perfil','New_employee_profile_controller::
 $routes->post('/recursos_humanos/nuevo_perfil/registrar_empleado','New_employee_profile_controller::registerNewEmployee');
 $routes->get('/recursos_humanos/planillas/permisos_vacaciones','Employee_controller::employeePermit');
 $routes->post('/recursos_humanos/planillas/permisos_vacaciones/registrar_permiso_vacacion','Employee_controller::registerEmployeePermit');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
