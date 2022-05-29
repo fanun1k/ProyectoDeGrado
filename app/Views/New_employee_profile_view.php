@@ -179,12 +179,12 @@
 																	<div class="widget-main">
 																		<?php
 																		$cont = 1;
-																		foreach ($data as $value) {
+																		foreach ($data->getResult() as $row) {
 																		?>
 																			<div class="checkbox">
 																				<label>
-																					<input required name="employeeType[]" value="<?php echo $value["employeeTypeId"]; ?>" type="checkbox" class="ace" />
-																					<span class="lbl"> <?php echo $value["employeeTypeName"]; ?></span>
+																					<input required name="employeeType[]" value="<?php echo $row->employeeTypeId; ?>" type="checkbox" class="ace" />
+																					<span class="lbl"> <?php echo $row->employeeTypeName; ?></span>
 																				</label>
 																			</div>
 																		<?php
