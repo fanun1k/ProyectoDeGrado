@@ -23,7 +23,6 @@
 
 		<!-- ace styles -->
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/'?>/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
-sdsds
 		<!--[if lte IE 9]>
 			<link rel="stylesheet" href="<?php echo base_url().'/assets/'?>/css/ace-part2.min.css" class="ace-main-stylesheet" />
 		<![endif]-->
