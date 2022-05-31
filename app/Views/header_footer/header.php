@@ -9,9 +9,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 		<!-- bootstrap & fontawesome -->
+		<link rel="stylesheet" href="<?php echo base_url()?>/assets/css/jquery-ui.min.css" />
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/'?>/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?php echo base_url()?>/assets/css/bootstrap-datepicker3.min.css" />
+		<link rel="stylesheet" href="<?php echo base_url()?>/assets/css/ui.jqgrid.min.css" />
 
 		<!-- page specific plugin styles -->
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/chosen.min.css'?>" />
@@ -21,7 +23,7 @@
 
 		<!-- ace styles -->
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/'?>/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
-
+sdsds
 		<!--[if lte IE 9]>
 			<link rel="stylesheet" href="<?php echo base_url().'/assets/'?>/css/ace-part2.min.css" class="ace-main-stylesheet" />
 		<![endif]-->

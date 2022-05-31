@@ -351,7 +351,7 @@
 						<b class="arrow"></b>
 						<ul class="submenu">
 							<li class="">
-								<a href="<?php echo base_url('gestion_proyectos/gestion_comedores/visualizar_comedores'); ?>">
+								<a href="<?php echo base_url('/gestion_proyectos/gestion_de_clientes/lista_de_clientes'); ?>">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Visualizar Clientes
 								</a>
