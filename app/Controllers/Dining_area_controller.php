@@ -148,6 +148,12 @@ class Dining_area_controller extends ResourceController
             }
         }
     }
+    public function getFoodTimes(){
+        $this->foodTimesModel = new Food_times_model();
+        $data = $this->foodTimesModel->getFoodTimes();
+        return $this->respond($data);
+    }
+    
 }
 
 ?>

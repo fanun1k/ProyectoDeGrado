@@ -83,7 +83,7 @@
 											</li>
 
 											<li>
-												<a data-toggle="tab" href="#faq-tab-2">
+												<a data-toggle="tab" href="#faq-tab-2" id="toggle-fooTdimes">
 													<i class="green ace-icon fa fa-pencil-square-o bigger-120"></i>
 													Editar
 												</a>
@@ -92,7 +92,7 @@
 
 										<div class="tab-content no-border" style="height: 355px;">
 											<div id="faq-tab-1" class="tab-pane fade in active">
-												<h4 class="blue">													
+												<h4 class="blue">
 													<div class="widget-main">
 														<?php
 														foreach ($data as $value) {
@@ -117,11 +117,17 @@
 											</div>
 
 											<div id="faq-tab-2" class="tab-pane fade">
-												<h4 class="blue">
-													
-												</h4>
-
-
+												<table id="simple-table" class="table  table-bordered table-hover">
+														<thead>
+															<tr>
+																<th>Nombre</th>
+																<th>Opciones</th>
+																</tr>
+														</thead>
+														<tbody id="foodTimesTable">
+															
+														</tbody>
+												</table>
 											</div>
 										</div>
 									</div>
@@ -244,9 +250,10 @@
 <!-- ace scripts -->
 <script src="<?php echo base_url() . '/assets/' ?>/js/ace-elements.min.js"></script>
 <script src="<?php echo base_url() . '/assets/' ?>/js/ace.min.js"></script>
-<script src="assets/js/jquery.jqGrid.min.js"></script>
-<script src="assets/js/grid.locale-en.js"></script>
-<!-- inline scripts related to this page -->
+<script src="<?php echo base_url()?>/assets/js/grid.locale-en.js"></script>
+<script src="<?php echo base_url()?>/assets/js/jquery.jqGrid.min.js"></script>
+<script src="<?php echo base_url()?>/js/foodTime.js"></script>
+
 </body>
 
 </html>

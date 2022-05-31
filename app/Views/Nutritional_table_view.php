@@ -356,6 +356,4 @@
   </div>
 </div>
 <!-- /.main-content -->
-
-<script src="<?php echo base_url() ?>/assets/js/script_new_supply.js"></script>
 <!-- /.main-content -->
