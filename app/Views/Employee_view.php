@@ -13,7 +13,7 @@
 			</ul><!-- /.breadcrumb -->
 		</div>
 		<div class="page-content">
-			<div class="row" style="margin: 25px;">
+			<div class="row" style="margin-top: 25px; margin-bottom: 25px;">
 				<div class="col-sm-2">
 					<select class="form-control">
 						<option>COBOCE</option>
@@ -23,33 +23,10 @@
 				</div>
 			</div><!-- /.row -->
 			<div class="row">
-				<div class="col-sm-8 chart-code">
-					<table class="table">
-						<thead>
-							<tr>
-								<th scope="col"> Tipo </th>
-								<th scope="col"> Cantidad </th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php 
-								foreach ($data as $value) {?>
-							<tr>
-								<th scope="row">
-									<?php echo $value['employeeTypeName'] ?>
-								</th>
-								<td style="--start:0; --size:1;">
-									<span class="data"> 10 </span>
-								</td>
-							</tr>
-							<?php }?>
-						</tbody>
-					</table>
-				</div>
-				<div class="col-sm-4 col-sm-4">
+				<div class="col-sm-6 chart-code widget-container-col">
 					<div class="widget-box">
 						<div class="widget-header">
-							<h4 class="widget-title">Registrar Rol</h4>
+							<h4 class="widget-title">Lista de Cargo de Personal</h4>
 
 							<div class="widget-toolbar">
 								<a href="#" data-action="collapse">
@@ -64,17 +41,61 @@
 
 						<div class="widget-body" style="padding: 10px;">
 							<div class="widget-main">
-								<form
-									action="<?php echo base_url('/recursos_humanos/personal_de_trabajo/registrar_tipo_de_empleado') ?>"
-									method="post">
+								<table class="table">
+									<thead>
+										<tr>
+											<th scope="col"> Tipo </th>
+											<th scope="col"> Cantidad </th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php foreach ($data->getResult() as $row) { ?>
+										<tr>
+											<th scope="row">
+												<?php echo $row->employeeTypeName; ?>
+											</th>
+											<td style="--start:0; --size:1;">
+												<span class="data"> <?php echo $row->numberOfEmployeeTypes; ?> </span>
+											</td>
+										</tr>
+										<?php } ?>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 widget-container-col">
+					<div class="widget-box">
+						<div class="widget-header">
+							<h4 class="widget-title">Registrar Cargo de Personal</h4>
+
+							<div class="widget-toolbar">
+								<a href="#" data-action="collapse">
+									<i class="ace-icon fa fa-chevron-up"></i>
+								</a>
+
+								<a href="#" data-action="close">
+									<i class="ace-icon fa fa-times"></i>
+								</a>
+							</div>
+						</div>
+
+						<div class="widget-body" style="padding: 10px;">
+							<div class="widget-main">
+								<form action="<?php echo base_url('/recursos_humanos/personal_de_trabajo/registrar_tipo_de_empleado') ?>" method="post">
 									<div class="row">
-										<label for="form-field-8">Nombre Roll</label>
-										<input class="form-control" id="form-field-8" name="employeeTypeName"
-											placeholder="Escriba el nombre del roll"></input>
+										<div class="col-xs-12">
+											<label for="form-field-8">Cargo</label>
+										</div>
 									</div>
 									<div class="row">
-										<button class="pull-right btn btn-sm btn-primary" type="submit"
-											style="margin: 5px;">Registrar</button>
+										<div class="col-xs-12 col-sm-9">
+											<input class="form-control" id="form-field-8" name="employeeTypeName" placeholder="Escriba el Cargo de Personal"></input>
+										</div>
+										<div class="col-xs-12 col-sm-3">
+											<button class="pull-right btn btn-sm btn-primary btn-block" type="submit">Registrar</button>
+										</div>
 									</div>
 								</form>
 							</div>
@@ -98,14 +119,14 @@
 									<table>
 										<thead>
 											<tr>
-												<td>5</td>
-												<td>0</td>
+												<th>5</th>
+												<th>0</th>
 											</tr>
 										</thead>
 										<tbody>
 											<tr>
 												<td>En el trabajo</td>
-												<td>Con Liencia</td>
+												<td>Con Licencia</td>
 												<td></td>
 											</tr>
 										</tbody>
@@ -179,7 +200,6 @@
 	<script src="<?php echo base_url().'/assets/'?>/js/ace-elements.min.js"></script>
 	<script src="<?php echo base_url().'/assets/'?>/js/ace.min.js"></script>
 
-
 	<script src="<?php echo base_url()?>/assets/js/jquery-ui.custom.min.js"></script>
 	<script src="<?php echo base_url()?>/assets/js/jquery.ui.touch-punch.min.js"></script>
 	<script src="<?php echo base_url()?>/assets/js/moment.min.js"></script>
@@ -211,8 +231,6 @@
 				});
 
 			});
-
-
 
 
 			/* initialize the calendar
@@ -296,8 +314,7 @@
 						$(this).remove();
 					}
 
-				}
-				,
+				},
 				selectable: true,
 				selectHelper: true,
 				select: function (start, end, allDay) {
@@ -317,7 +334,6 @@
 						}
 					});
 
-
 					calendar.fullCalendar('unselect');
 				}
 				,
@@ -326,24 +342,23 @@
 					//display a modal
 					var modal =
 						'<div class="modal fade">\
-				<div class="modal-dialog">\
-				<div class="modal-content">\
-					<div class="modal-body">\
-					<button type="button" class="close" data-dismiss="modal" style="margin-top:-10px;">&times;</button>\
-					<form class="no-margin">\
-						<label>Change event name &nbsp;</label>\
-						<input class="middle" autocomplete="off" type="text" value="' + calEvent.title + '" />\
-						<button type="submit" class="btn btn-sm btn-success"><i class="ace-icon fa fa-check"></i> Save</button>\
-					</form>\
-					</div>\
-					<div class="modal-footer">\
-						<button type="button" class="btn btn-sm btn-danger" data-action="delete"><i class="ace-icon fa fa-trash-o"></i> Delete Event</button>\
-						<button type="button" class="btn btn-sm" data-dismiss="modal"><i class="ace-icon fa fa-times"></i> Cancel</button>\
-					</div>\
-				</div>\
-				</div>\
-				</div>';
-
+							<div class="modal-dialog">\
+								<div class="modal-content">\
+									<div class="modal-body">\
+									<button type="button" class="close" data-dismiss="modal" style="margin-top:-10px;">&times;</button>\
+									<form class="no-margin">\
+										<label>Change event name &nbsp;</label>\
+										<input class="middle" autocomplete="off" type="text" value="' + calEvent.title + '" />\
+										<button type="submit" class="btn btn-sm btn-success"><i class="ace-icon fa fa-check"></i> Save</button>\
+									</form>\
+									</div>\
+									<div class="modal-footer">\
+										<button type="button" class="btn btn-sm btn-danger" data-action="delete"><i class="ace-icon fa fa-trash-o"></i> Delete Event</button>\
+										<button type="button" class="btn btn-sm" data-dismiss="modal"><i class="ace-icon fa fa-times"></i> Cancel</button>\
+									</div>\
+								</div>\
+							</div>\
+						</div>';
 
 					var modal = $(modal).appendTo('body');
 					modal.find('form').on('submit', function (ev) {
@@ -363,20 +378,49 @@
 					modal.modal('show').on('hidden', function () {
 						modal.remove();
 					});
-
-
-					//console.log(calEvent.id);
-					//console.log(jsEvent);
-					//console.log(view);
-
-					// change the border color just for fun
-					//$(this).css('border-color', 'red');
-
 				}
 
 			});
 
-
+			$('.widget-container-col').sortable({
+		        connectWith: '.widget-container-col',
+				items:'> .widget-box',
+				handle: ace.vars['touch'] ? '.widget-title' : false,
+				cancel: '.fullscreen',
+				opacity:0.8,
+				revert:true,
+				forceHelperSize:true,
+				placeholder: 'widget-placeholder',
+				forcePlaceholderSize:true,
+				tolerance:'pointer',
+				start: function(event, ui) {
+					//when an element is moved, it's parent becomes empty with almost zero height.
+					//we set a min-height for it to be large enough so that later we can easily drop elements back onto it
+					ui.item.parent().css({'min-height':ui.item.height()})
+					//ui.sender.css({'min-height':ui.item.height() , 'background-color' : '#F5F5F5'})
+				},
+				update: function(event, ui) {
+					ui.item.parent({'min-height':''})
+					//p.style.removeProperty('background-color');
+		
+					
+					//save widget positions
+					var widget_order = {}
+					$('.widget-container-col').each(function() {
+						var container_id = $(this).attr('id');
+						widget_order[container_id] = []
+						
+						
+						$(this).find('> .widget-box').each(function() {
+							var widget_id = $(this).attr('id');
+							widget_order[container_id].push(widget_id);
+							//now we know each container contains which widgets
+						});
+					});
+					
+					ace.data.set('demo', 'widget-order', widget_order, null, true);
+				}
+		    });
 		})
 	</script>
 </div>

@@ -11,6 +11,7 @@ class New_employee_profile_controller extends ResourceController
 {
     protected $modelName = 'App\Models\Employee_model';
     protected $format    = 'json';
+
     public function index()
     {
         $employeeTypeModel=new Employee_type_model();
@@ -26,6 +27,7 @@ class New_employee_profile_controller extends ResourceController
         $view=view('header_footer/header').view('header_footer/sidebar',compact('userAccessArray')).view('New_employee_profile_view',compact('data'));
         return $view;
     }
+    
     public function registerNewEmployee(){
         $data=array('name'=>$_POST['name'],
                 'lastName1'=>$_POST['lastName1'],

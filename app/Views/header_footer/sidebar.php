@@ -121,7 +121,7 @@
 			} ?>
 			<a href="#" class="dropdown-toggle" <?php if (!$hasAccess) echo 'style="cursor:not-allowed;"'; ?>>
 				<i class="menu-icon fa fa-archive"></i>
-				<span class="menu-text" style="font-size:10px;">Cadena de Suministro</span>
+				<span class="menu-text">Cadena de Suministro</span>
 				<?php if ($hasAccess) { ?>
 					<b class="arrow fa fa-angle-down"></b>
 				<?php } else { ?>
@@ -299,7 +299,7 @@
 			} ?>
 			<a href="#" class="dropdown-toggle" <?php if (!$hasAccess) echo 'style="cursor:not-allowed;"'; ?>>
 				<i class="menu-icon fa fa-tasks"></i>
-				<span class="menu-text" style="font-size:12px;">Gestión de Proyectos</span>
+				<span class="menu-text">Gestión de Proyectos</span>
 				<?php if ($hasAccess) { ?>
 					<b class="arrow fa fa-angle-down"></b>
 				<?php } else { ?>
