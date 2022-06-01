@@ -40,17 +40,13 @@ class Client_list_controller extends ResourceController
                 break;
             case 'edit':
                 $id=$_POST['id'];
-                if($_REQUEST['status']=='Activo')
-                    $_REQUEST['status']=1;
-                elseif ($_REQUEST['status']=="Inactivo")
-                    $_REQUEST['status']=0;
-
+                
                 unset($_REQUEST['id']);
                 print_r($_REQUEST);
                 return $this->model->UpdateClient($id,$_REQUEST);
                 break;
             case 'del':
-                print_r($_REQUEST);
+                return $this->respond($this->model->deletClient($_POST['id']));
                 break;
         }
     }

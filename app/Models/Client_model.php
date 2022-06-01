@@ -9,13 +9,13 @@ class Client_model extends Model{
     protected $primaryKey = 'clientId';
     protected $allowedFields=['clientId','dinningAreaId','clientName','clientLastName1','clientLastName2','dateOfBird','clientCode','clientCI','lastUpdate','status'];
     public function getClients(){
-        $data=$this->findAll();
+        $data=$this->where('status !=',0)->findAll();
         $aux=[];
         foreach ($data as $value) {
             
-            if($value['status']=='1')
+            if($value['status']==1)
                 $value['status']='Activo';
-            elseif($value['status']==0){
+            elseif($value['status']==2){
                 $value['status']='Inactivo'; 
                 
             }
@@ -25,6 +25,10 @@ class Client_model extends Model{
         return $aux;
     }
     public function UpdateClient($id,$data){
+        //$data['lastUpdate']=date('Y-m-d h:i:s a', time());
         return $this->update($id,$data);
+    }
+    public function deletClient($id){
+        return $this->update($id,['status'=>0,'lastUpdate'=>date('Y-m-d h:i:s a', time())]);
     }
 }

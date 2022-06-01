@@ -344,7 +344,7 @@
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-caret-right"></i>
 							<span class="menu-text">
-								Gestión Clientes
+								Clientes
 							</span>
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
@@ -353,19 +353,7 @@
 							<li class="">
 								<a href="<?php echo base_url('/gestion_proyectos/gestion_de_clientes/lista_de_clientes'); ?>">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Visualizar Clientes
-								</a>
-								<b class="arrow"></b>
-							</li>
-							<li class="">
-								<a href="<?php echo base_url('gestion_proyectos/gestion_comedores/comedor'); ?>">
-									<i class="menu-icon fa fa-caret-right"></i>
-									<span class="menu-text">
-										Agregar Nuevo
-									</span>
-									<span class="menu-text" style="padding-left: 12px;">
-										Cliente
-									</span>
+									Gestionar Clientes
 								</a>
 								<b class="arrow"></b>
 							</li>

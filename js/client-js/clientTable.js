@@ -60,7 +60,7 @@ jQuery(function ($) {
                 data: grid_data,
                 datatype: "local",
                 height: 250,
-                colNames: ['Opciones','ID', 'Codigo de Cliente', 'Nombre', 'Primer Apellido', 'Segundo Apellido','Fecha de Nacimiento', 'Nro. Carnet', 'Estado'],
+                colNames: ['','ID', 'Codigo de Cliente', 'Nombre', 'Primer Apellido', 'Segundo Apellido','Fecha de Nacimiento', 'Nro. Carnet', 'Estado'],
                 colModel: [{
                     name: 'myac',
                     index: '',
@@ -86,7 +86,7 @@ jQuery(function ($) {
                     {name: 'clientLastName2',index: 'clientLastName2',width: 90,editable: true,},
                     {name: 'dateOfBird',index: 'dateOfBird',width: 90,editable: true,sorttype:"date",unformat: pickDate},
                     {name: 'clientCI',index: 'clientCI',width: 90,editable: true,                                  },
-                    {name: 'status',index: 'status',width: 150,sortable: true,editable: true,edittype: "select",editoptions: {value: "Activo:Activo;Inactivo:Inactivo"},unformat: aceSwitch},
+                    {name: 'status',index: 'status',width: 150,sortable: true,editable: true,edittype: "select",editoptions: {value: "1:Activo;2:Inactivo"},unformat: aceSwitch},
                 ],
         
                 viewrecords: true,
@@ -171,7 +171,7 @@ jQuery(function ($) {
                 searchicon: 'ace-icon fa fa-search orange',
                 refresh: true,
                 refreshicon: 'ace-icon fa fa-refresh green',
-                view: false,
+                view: true,
                 viewicon: 'ace-icon fa fa-search-plus grey',
             }, {
                 //edit record form
