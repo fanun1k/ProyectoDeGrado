@@ -39,7 +39,7 @@ class Client_list_controller extends ResourceController
                 print_r($_REQUEST);
                 break;
             case 'edit':
-                $id=$_POST['id'];
+                $id=$_POST['clientId'];
                 
                 unset($_REQUEST['id']);
                 print_r($_REQUEST);
