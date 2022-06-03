@@ -12,26 +12,25 @@ class Client_model extends Model
     protected $allowedFields = ['clientId', 'dinningAreaId', 'clientName', 'clientLastName1', 'clientLastName2', 'dateOfBirth', 'clientCode', 'clientCI', 'lastUpdate', 'status'];
     public function getClients($sidx, $sord, $start, $limit)
     {
-        /*$db = db_connect();
+        $db = db_connect();
         $builder = $db->table('client c')->select('c.clientId, c.clientCode, c.clientName, c.clientLastName1, c.clientLastName2, c.dateOfBirth, c.clientCI, c.status');
+        $builder->where('c.status !=',0);
         $builder->orderBy('c.'.$sidx,$sord);
         $builder->limit($start,$limit);
-        $builder->where('c.status !=',0);
-        $query = $builder->get();
-        return $query;*/
-        $data=$this->where('status !=',0)->findAll();
+        $data = $builder->get();
+        //print_r ($query);
+        //return $query;
+        //$data=$this->where('status !=',0)->findAll();
         $aux=[];
-        foreach ($data as $value) {
-            $id=$value['clientId'];
-            if($value['status']==1)
-                $value['status']='Activo';
-            elseif($value['status']==2){
-                $value['status']='Inactivo'; 
-                
-            ;
+        foreach ($data->getResult() as $row) {
+            $id=$row->clientId;
+            if($row->status==1)
+                $row->status='Activo';
+            elseif($row->status==2){
+                $row->status='Inactivo'; 
             }
-            $b=['id'=>$id,'cell'=>$value];
-            array_push($aux,$b);             
+            $b=['id'=>$id,'cell'=>$row];
+            array_push($aux,$b);
         }
 
         return $aux;
