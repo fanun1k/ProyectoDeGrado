@@ -24,29 +24,73 @@ class Client_list_controller extends ResourceController
     }
     public function getClients()
     {
-        $data = $this->model->getClients();
-        return $this->respond($data);
-    }
-    public function crudClient()
-    {
         $page = $_GET['page']; // get the requested page
         $limit = $_GET['rows']; // get how many rows we want to have into the grid
         $sidx = $_GET['sidx']; // get index row - i.e. user click to sort
         $sord = $_GET['sord']; // get the direction
-        if(!$sidx) $sidx =1;
+        if (!$sidx) $sidx = 1;
+
+        $count = $this->model->where('status !=', 0)->countAll();
+
+        if ($count > 0 && $limit > 0) {
+            $total_pages = ceil($count / $limit);
+        } else {
+            $total_pages = 0;
+        }
+        if ($page > $total_pages) $page = $total_pages;
+        $start = $limit * $page - $limit;
+        if ($start < 0) $start = 0;        
+        $result = $this->model->getClients($sidx, $sord, $start, $limit);
+        /*header("Content-type: text/xml;charset=utf-8");
+
+        $s = "<?xml version='1.0' encoding='utf-8'?>";
+        $s .=  "<rows>";
+        $s .= "<page>" . $page . "</page>";
+        $s .= "<total>" . $total_pages . "</total>";
+        $s .= "<records>" . $count . "</records>";
+
+        foreach ($result as $key => $row) {
+            $s .= "<row id='" .$row['clientId'] . "'>";
+            $s .= "<cell>" . $row['clientId'] . "</cell>";
+            $s .= "<cell>" . $row['clientCode'] . "</cell>";
+            $s .= "<cell>" . $row['clientName'] . "</cell>";
+            $s .= "<cell>" . $row['clientLastName1'] . "</cell>";
+            $s .= "<cell>" . $row['clientLastName2'] . "</cell>";
+            $s .= "<cell>" . $row['dateOfBirth'] . "</cell>";
+            $s .= "<cell>" . $row['clientCI'] . "</cell>";
+            $s .= "<cell>" . $row['status'] . "</cell>";
+            $s .= "<cell><![CDATA[" . $row['note'] . "]]></cell>";
+            $s .= "</row>";
+        }
+        $s .= "</rows>";
+
+        echo $s;*/
+      
+        $data=[
+            'page'=>$page,
+            'total'=>$total_pages,
+            'records'=>$count,
+            'rows'=>$result        
+        ];           
+
+        return $this->respond($data);
+    }
+    public function crudClient()
+    {
+
         switch ($_POST['oper']) {
             case 'add':
                 print_r($_REQUEST);
                 break;
             case 'edit':
-                $id=$_POST['clientId'];
-                
+                $id = $_POST['id'];
+
                 unset($_REQUEST['id']);
                 print_r($_REQUEST);
-                return $this->model->UpdateClient($id,$_REQUEST);
+                return $this->model->UpdateClient($id, $_REQUEST);
                 break;
             case 'del':
-                return $this->respond($this->model->deletClient($_POST['id']));
+                return $this->respond($this->model->deleteClient($_POST['id']));
                 break;
         }
     }
