@@ -7,6 +7,7 @@ jQuery(function ($) {
   $(window).on("resize.jqGrid", function () {
     $(grid_selector).jqGrid("setGridWidth", parent_column.width());
   });
+
   //resize on sidebar collapse/expand
   $(document).on("settings.ace.jqGrid", function (ev, event_name, collapsed) {
     if (
@@ -20,14 +21,41 @@ jQuery(function ($) {
     }
   });
 
+  //if your grid is inside another element, for example a tab pane, you should use its parent's width:
+  /**
+    $(window).on('resize.jqGrid', function () {
+        var parent_width = $(grid_selector).closest('.tab-pane').width();
+        $(grid_selector).jqGrid( 'setGridWidth', parent_width );
+    })
+    //and also set width when tab pane becomes visible
+    $('#myTab a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+      if($(e.target).attr('href') == '#mygrid') {
+        var parent_width = $(grid_selector).closest('.tab-pane').width();
+        $(grid_selector).jqGrid( 'setGridWidth', parent_width );
+      }
+    })
+    */
   jQuery(grid_selector)
     .jqGrid({
-      //data: grid_data,
-      url: "./getClients",
+      //direction: "rtl",
+
+      //subgrid options
+      subGrid: false,
+      //subGridModel: [{ name : ['No','Item Name','Qty'], width : [55,200,80] }],
+      //datatype: "xml",
+      subGridOptions: {
+        plusicon: "ace-icon fa fa-plus center bigger-110 blue",
+        minusicon: "ace-icon fa fa-minus center bigger-110 blue",
+        openicon: "ace-icon fa fa-chevron-right center orange",
+      },
+      //for this example we are using local data
+
+      url: "getClients",
       datatype: "json",
       height: 250,
       colNames: [
         "",
+        "ID",
         "Codigo de Cliente",
         "Nombre",
         "Primer Apellido",
@@ -56,28 +84,54 @@ jQuery(function ($) {
             //editformbutton:true, editOptions:{recreateForm: true, beforeShowForm:beforeEditCallback}
           },
         },
-        { name: "clientCode", width: 90, editable: true },
-        { name: "clientName", width: 100, editable: true },
+        {
+          name: "clientId",
+          index: "clientId",
+          width: 60,
+          editable: true,
+          sorttype: "id",
+        },
+        {
+          name: "clientCode",
+          index: "clientCode",
+          width: 90,
+          editable: true,
+        },
+        {
+          name: "clientName",
+          index: "clientName",
+          width: 100,
+          editable: true,
+        },
         {
           name: "clientLastName1",
+          index: "clientLastName1",
           width: 120,
           editable: true,
         },
         {
           name: "clientLastName2",
+          index: "clientLastName2",
           width: 120,
           editable: true,
         },
         {
           name: "dateOfBirth",
+          index: "dateOfBirth",
           width: 110,
           editable: true,
           sorttype: "date",
           unformat: pickDate,
         },
-        { name: "clientCI", index: "clientCI", width: 90, editable: true },
+        {
+          name: "clientCI",
+          index: "clientCI",
+          width: 90,
+          editable: true,
+        },
         {
           name: "status",
+          index: "status",
           width: 80,
           sortable: true,
           editable: true,
@@ -90,12 +144,14 @@ jQuery(function ($) {
       pager: pager_selector,
       rowNum: 10,
       rowList: [10, 20, 30],
-      sortname: "clientCode",
-      sortorder: "desc",
-      viewrecords: true,
-      gridview: true,
-      autoencode: true,
-      
+      sortname:"clientCode",
+      sortorder:"asc",
+      viewrecords: true, 
+      gridview:true, 
+      autoencode:true, 
+      altRows: true, 
+      //toppager: true,
+
       loadComplete: function () {
         var table = this;
         setTimeout(function () {
@@ -107,10 +163,29 @@ jQuery(function ($) {
         }, 0);
       },
 
-      editurl: "crudClient",
+      editurl: "crudClient", //nothing is saved
       caption: "Lista de Clientes",
-    });
+
+      //,autowidth: true,
+
+      /**
+                ,
+                grouping:true, 
+                groupingView : { 
+                     groupField : ['name'],
+                     groupDataSorted : true,
+                     plusicon : 'fa fa-chevron-down bigger-110',
+                     minusicon : 'fa fa-chevron-up bigger-110'
+                },
+                caption: "Grouping"
+                */
+    })
+    .hideCol("clientId");
   $(window).triggerHandler("resize.jqGrid"); //trigger window resize to make the grid get the correct size
+
+  //enable search/filter toolbar
+  //jQuery(grid_selector).jqGrid('filterToolbar',{defaultSearch:true,stringResult:true})
+  //jQuery(grid_selector).filterToolbar({});
 
   //switch element when editing inline
   function aceSwitch(cellvalue, options, cell) {
@@ -130,6 +205,7 @@ jQuery(function ($) {
       });
     }, 0);
   }
+
   //navButtons
   jQuery(grid_selector).jqGrid(
     "navGrid",
@@ -232,7 +308,7 @@ jQuery(function ($) {
 
   function style_edit_form(form) {
     //enable datepicker on "sdate" field and switches for "stock" field
-    form.find("input[name=dateOfBird]").datepicker({
+    form.find("input[name=dateOfBirth]").datepicker({
       format: "yyyy-mm-dd",
       autoclose: true,
     });
