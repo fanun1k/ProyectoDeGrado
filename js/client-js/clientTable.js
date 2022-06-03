@@ -50,7 +50,7 @@ jQuery(function ($) {
       },
       //for this example we are using local data
 
-      url: "./getClients",
+      url: "getClients",
       datatype: "json",
       height: 250,
       colNames: [
@@ -145,10 +145,11 @@ jQuery(function ($) {
       rowNum: 10,
       rowList: [10, 20, 30],
       sortname:"clientCode",
-      sortorder:"desc",
+      sortorder:"asc",
       viewrecords: true, 
       gridview:true, 
-      autoencode:true,  
+      autoencode:true, 
+      altRows: true, 
       //toppager: true,
 
       loadComplete: function () {
@@ -307,7 +308,7 @@ jQuery(function ($) {
 
   function style_edit_form(form) {
     //enable datepicker on "sdate" field and switches for "stock" field
-    form.find("input[name=dateOfBird]").datepicker({
+    form.find("input[name=dateOfBirth]").datepicker({
       format: "yyyy-mm-dd",
       autoclose: true,
     });

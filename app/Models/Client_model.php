@@ -9,18 +9,24 @@ class Client_model extends Model
     protected $table = 'client';
     // Uncomment below if you want add primary key
     protected $primaryKey = 'clientId';
-    protected $allowedFields = ['clientId', 'dinningAreaId', 'clientName', 'clientLastName1', 'clientLastName2', 'dateOfBirth', 'clientCode', 'clientCI', 'lastUpdate', 'status'];
+    protected $allowedFields = ['clientId', 'diningAreaId', 'clientName', 'clientLastName1', 'clientLastName2', 'dateOfBirth', 'clientCode', 'clientCI', 'lastUpdate', 'status'];
+    
     public function getClients($sidx, $sord, $start, $limit)
     {
         $db = db_connect();
-        $builder = $db->table('client c')->select('c.clientId, c.clientCode, c.clientName, c.clientLastName1, c.clientLastName2, c.dateOfBirth, c.clientCI, c.status');
-        $builder->where('c.status !=',0);
-        $builder->orderBy('c.'.$sidx,$sord);
-        $builder->limit($start,$limit);
+        $builder = $db->table("client")->select('clientId, 
+                                                clientCode,
+                                                clientName,
+                                                clientLastName1,
+                                                clientLastName2,
+                                                dateOfBirth,
+                                                clientCI,
+                                                status');
+        $builder->where('status !=',0);
+        $builder->orderBy($sidx,$sord);
+        $builder->limit($limit,$start);
+
         $data = $builder->get();
-        //print_r ($query);
-        //return $query;
-        //$data=$this->where('status !=',0)->findAll();
         $aux=[];
         foreach ($data->getResult() as $row) {
             $id=$row->clientId;
@@ -30,7 +36,7 @@ class Client_model extends Model
                 $row->status='Inactivo'; 
             }
             $b=['id'=>$id,'cell'=>$row];
-            array_push($aux,$b);
+            array_push($aux,$b);             
         }
 
         return $aux;
@@ -43,5 +49,8 @@ class Client_model extends Model
     public function deleteClient($id)
     {
         return $this->update($id, ['status' => 0, 'lastUpdate' => date('Y-m-d h:i:s a', time())]);
+    }
+    public function insertClient($data){
+        return $this->insert($data);
     }
 }

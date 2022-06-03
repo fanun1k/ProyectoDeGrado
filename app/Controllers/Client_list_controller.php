@@ -30,7 +30,7 @@ class Client_list_controller extends ResourceController
         $sord = $_GET['sord']; // get the direction
         if (!$sidx) $sidx = 1;
 
-        $count = $this->model->where('status !=', 0)->countAll();
+        $count = $this->model->where('status !=', 0)->countAllResults();
 
         if ($count > 0 && $limit > 0) {
             $total_pages = ceil($count / $limit);
@@ -39,33 +39,10 @@ class Client_list_controller extends ResourceController
         }
         if ($page > $total_pages) $page = $total_pages;
         $start = $limit * $page - $limit;
-        if ($start < 0) $start = 0;        
+        if ($start < 0) $start = 0;
+       
         $result = $this->model->getClients($sidx, $sord, $start, $limit);
-        /*header("Content-type: text/xml;charset=utf-8");
-
-        $s = "<?xml version='1.0' encoding='utf-8'?>";
-        $s .=  "<rows>";
-        $s .= "<page>" . $page . "</page>";
-        $s .= "<total>" . $total_pages . "</total>";
-        $s .= "<records>" . $count . "</records>";
-
-        foreach ($result as $key => $row) {
-            $s .= "<row id='" .$row['clientId'] . "'>";
-            $s .= "<cell>" . $row['clientId'] . "</cell>";
-            $s .= "<cell>" . $row['clientCode'] . "</cell>";
-            $s .= "<cell>" . $row['clientName'] . "</cell>";
-            $s .= "<cell>" . $row['clientLastName1'] . "</cell>";
-            $s .= "<cell>" . $row['clientLastName2'] . "</cell>";
-            $s .= "<cell>" . $row['dateOfBirth'] . "</cell>";
-            $s .= "<cell>" . $row['clientCI'] . "</cell>";
-            $s .= "<cell>" . $row['status'] . "</cell>";
-            $s .= "<cell><![CDATA[" . $row['note'] . "]]></cell>";
-            $s .= "</row>";
-        }
-        $s .= "</rows>";
-
-        echo $s;*/
-      
+        
         $data=[
             'page'=>$page,
             'total'=>$total_pages,
@@ -80,7 +57,12 @@ class Client_list_controller extends ResourceController
 
         switch ($_POST['oper']) {
             case 'add':
+                unset($_REQUEST['id']);
+                unset($_REQUEST['clientId']);
+                unset($_REQUEST['oper']);
+                $_REQUEST['diningAreaId']=1; //estatico, se tiene que hacer de manera dinamica
                 print_r($_REQUEST);
+                return $this->model->insertClient($_REQUEST);
                 break;
             case 'edit':
                 $id = $_POST['id'];
