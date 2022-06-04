@@ -35,6 +35,55 @@ jQuery(function ($) {
       }
     })
     */
+  function validate_name(value, colname) {
+    value=value.toLowerCase();
+    if (value=="")
+    {
+      return [false,"El nombre no puede estar vacío"];
+    }
+    if (/^[a-z\s]+$/.test(value) && value.length <=60) {
+      return [true,""]
+    }
+    else{
+      return [false,"nombre no válido"];
+    }
+  }
+  function validate_last_name(value, colname) {
+    value=value.toLowerCase();
+    if (colname=="Primer Apellido" && value=="")
+    {
+      return [false,"El apellido no puede estar vacío"];
+    }
+    if(colname=="Segundo Apellido" && value=="" ) {
+      return [true,""];
+    } 
+    if (/^[a-z\s]+$/.test(value) && value.length <=60 ) {
+      return [true,""]
+    }
+    else{
+      return [false,"apellido no válido"];
+    }
+  }
+  function validate_date_of_birth(value, colname){
+    
+    var fecha = value.split("-");
+    var fecha_select=new Date(fecha[0],fecha[1]-1,fecha[2]);
+    var fecha_min=new Date();
+    fecha_min.setMonth(fecha_min.getMonth()-840)
+    var today = new Date();
+    if (fecha_select>fecha_min && fecha_select < today )   
+      return [true,""];    
+    else
+    return [false,"la fecha de nacimiento no válida"];
+  }
+  function validate_ci(value, colname){
+    if (/^[0-9]+$/.test(value) && value.length <=13) {
+      return [true,""]
+    }
+    else{
+      return [false,"C.I no válido "];
+    }
+  }
   jQuery(grid_selector)
     .jqGrid({
       //direction: "rtl",
@@ -49,10 +98,9 @@ jQuery(function ($) {
         openicon: "ace-icon fa fa-chevron-right center orange",
       },
       //for this example we are using local data
-
       url: "getClients",
       datatype: "json",
-      height: 250,
+      height: 400,
       colNames: [
         "",
         "ID",
@@ -102,10 +150,13 @@ jQuery(function ($) {
           index: "clientName",
           width: 100,
           editable: true,
+          editrules: { custom: true, custom_func: validate_name },
+          edittype: "text",
         },
         {
           name: "clientLastName1",
           index: "clientLastName1",
+          editrules: { custom: true, custom_func: validate_last_name},
           width: 120,
           editable: true,
         },
@@ -113,6 +164,7 @@ jQuery(function ($) {
           name: "clientLastName2",
           index: "clientLastName2",
           width: 120,
+          editrules: { custom: true, custom_func: validate_last_name},
           editable: true,
         },
         {
@@ -120,6 +172,7 @@ jQuery(function ($) {
           index: "dateOfBirth",
           width: 110,
           editable: true,
+          editrules: { custom: true, custom_func: validate_date_of_birth},
           sorttype: "date",
           unformat: pickDate,
         },
@@ -128,6 +181,7 @@ jQuery(function ($) {
           index: "clientCI",
           width: 90,
           editable: true,
+          editrules: { custom: true, custom_func: validate_ci},
         },
         {
           name: "status",
@@ -144,12 +198,12 @@ jQuery(function ($) {
       pager: pager_selector,
       rowNum: 10,
       rowList: [10, 20, 30],
-      sortname:"clientCode",
-      sortorder:"asc",
-      viewrecords: true, 
-      gridview:true, 
-      autoencode:true, 
-      altRows: true, 
+      sortname: "clientCode",
+      sortorder: "asc",
+      viewrecords: true,
+      gridview: true,
+      autoencode: true,
+      altRows: true,
       //toppager: true,
 
       loadComplete: function () {
