@@ -83,7 +83,7 @@
 											</li>
 
 											<li>
-												<a data-toggle="tab" href="#faq-tab-2" id="toggle-fooTdimes">
+												<a data-toggle="tab" href="#faq-tab-2" id="toggle-fooTdimes" class="grid_tab">
 													<i class="green ace-icon fa fa-pencil-square-o bigger-120"></i>
 													Editar
 												</a>
@@ -117,43 +117,38 @@
 											</div>
 
 											<div id="faq-tab-2" class="tab-pane fade">
-												<table id="simple-table" class="table  table-bordered table-hover">
-														<thead>
-															<tr>
-																<th>Nombre</th>
-																<th>Opciones</th>
-																</tr>
-														</thead>
-														<tbody id="foodTimesTable">
-															
-														</tbody>
-												</table>
+												<div id="jqgrid2" class="jqgrid_box">
+													<table id="foodTimes-table">
+													</table>
+													<div id="pager"></div>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-xs-12">
-								<div class="clearfix form-actions">
-									<div class="col-xs-12 center">
-										<button class="btn btn-info" type="submit" style="width: 250px;">
-											<i class="ace-icon fa fa-check bigger-110"></i>
-											Agregar
-										</button>
-									</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="clearfix form-actions">
+								<div class="col-xs-12 center">
+									<button class="btn btn-info" type="submit" style="width: 250px;">
+										<i class="ace-icon fa fa-check bigger-110"></i>
+										Agregar
+									</button>
 								</div>
 							</div>
 						</div>
-						</form>
-						<!-- FORM ENDS -->
 					</div>
-					<!-- PAGE CONTENT ENDS -->
-				</div><!-- /.col -->
-			</div><!-- /.row -->
-		</div><!-- /.page-content -->
-	</div>
+					</form>
+					<!-- FORM ENDS -->
+				</div>
+				<!-- PAGE CONTENT ENDS -->
+			</div><!-- /.col -->
+		</div><!-- /.row -->
+	</div><!-- /.page-content -->
+</div>
 </div><!-- /.main-content -->
 <div class="footer">
 	<div class="footer-inner">
@@ -225,7 +220,7 @@
 	}
 </script>
 
-<script src="<?php echo base_url() . '/assets/' ?>/js/jquery-2.1.4.min.js"></script>
+<script src="<?php echo base_url(); ?>/assets/js/jquery-2.1.4.min.js"></script>
 
 <!-- <![endif]-->
 
@@ -235,24 +230,16 @@
 <script type="text/javascript">
 	if ('ontouchstart' in document.documentElement) document.write("<script src='<?php echo base_url() . '/assets/' ?>/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
 </script>
-<script src="<?php echo base_url() . '/assets/' ?>/js/bootstrap.min.js"></script>
-
 <!-- page specific plugin scripts -->
-<script src="<?php echo base_url() . '/assets/' ?>/js/jquery.dataTables.min.js"></script>
-<script src="<?php echo base_url() . '/assets/' ?>/js/jquery.dataTables.bootstrap.min.js"></script>
-<script src="<?php echo base_url() . '/assets/' ?>/js/dataTables.buttons.min.js"></script>
-<script src="<?php echo base_url() . '/assets/' ?>/js/buttons.flash.min.js"></script>
-<script src="<?php echo base_url() . '/assets/' ?>/js/buttons.html5.min.js"></script>
-<script src="<?php echo base_url() . '/assets/' ?>/js/buttons.print.min.js"></script>
-<script src="<?php echo base_url() . '/assets/' ?>/js/buttons.colVis.min.js"></script>
-<script src="<?php echo base_url() . '/assets/' ?>/js/dataTables.select.min.js"></script>
+<script src="<?php echo base_url(); ?>/assets/js/bootstrap.min.js"></script>
 <script src="<?php echo base_url() . '/assets/' ?>/js/chosen.jquery.min.js"></script>
 <!-- ace scripts -->
+<script src="<?php echo base_url(); ?>/assets/js/bootstrap-datepicker.min.js"></script>
+<script src="<?php echo base_url() ?>/assets/js/jquery.jqGrid.min.js"></script>
+<script src="<?php echo base_url() ?>/assets/js/grid.locale-en.js"></script>
 <script src="<?php echo base_url() . '/assets/' ?>/js/ace-elements.min.js"></script>
 <script src="<?php echo base_url() . '/assets/' ?>/js/ace.min.js"></script>
-<script src="<?php echo base_url()?>/assets/js/grid.locale-en.js"></script>
-<script src="<?php echo base_url()?>/assets/js/jquery.jqGrid.min.js"></script>
-<script src="<?php echo base_url()?>/js/foodTime.js"></script>
+<script src="<?php echo base_url() ?>/js/foodTime.js"></script>
 
 </body>
 
