@@ -81,17 +81,35 @@ $routes->post('/recursos_humanos/nuevo_perfil/registrar_empleado','New_employee_
 $routes->get('/recursos_humanos/planillas/permisos_vacaciones','Employee_controller::employeePermit');
 $routes->post('/recursos_humanos/planillas/permisos_vacaciones/registrar_permiso_vacacion','Employee_controller::registerEmployeePermit');
 
-//Gestion de clientes
+/*
+ * --------------------------------------------------------------------
+ * Gestion de Clientes
+ * --------------------------------------------------------------------
+ */
 $routes->get('/gestion_proyectos/gestion_de_clientes/lista_de_clientes','Client_list_controller::index');
 $routes->get('/gestion_proyectos/gestion_de_clientes/getClients','Client_list_controller::getClients');
 $routes->post('/gestion_proyectos/gestion_de_clientes/crudClient','Client_list_controller::crudClient');
 
 /*
  * --------------------------------------------------------------------
- * Aprovisionamiento
+ * Gestion de Proveedores
  * --------------------------------------------------------------------
  */
 $routes->get('/aprovisionamiento/proveedores/lista_proveedores','Supplier_controller::index');
+/*
+ * --------------------------------------------------------------------
+ * Gestion de Contabilidad
+ * --------------------------------------------------------------------
+ */
+$routes->get('/contabilidad/caja_chica','Accounting_controller::index');
+$routes->post('/contabilidad/registrar_caja_chica','Accounting_controller::registerPettyCash');
+
+/*
+ * --------------------------------------------------------------------
+ * Aprovisionamiento
+ * --------------------------------------------------------------------
+ */
+$routes->get('/aprovisionamiento/productos','Products_controller::index');
 
 /*
  * --------------------------------------------------------------------
