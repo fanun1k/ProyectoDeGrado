@@ -61,12 +61,10 @@ class Client_list_controller extends ResourceController
                 unset($_REQUEST['clientId']);
                 unset($_REQUEST['oper']);
                 $_REQUEST['diningAreaId']=1; //estatico, se tiene que hacer de manera dinamica
-                print_r($_REQUEST);
                 return $this->model->insertClient($_REQUEST);
                 break;
             case 'edit':
                 $id = $_POST['id'];
-
                 unset($_REQUEST['id']);
                 print_r($_REQUEST);
                 return $this->model->UpdateClient($id, $_REQUEST);
