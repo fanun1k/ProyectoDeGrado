@@ -85,6 +85,14 @@ $routes->post('/recursos_humanos/planillas/permisos_vacaciones/registrar_permiso
 $routes->get('/gestion_proyectos/gestion_de_clientes/lista_de_clientes','Client_list_controller::index');
 $routes->get('/gestion_proyectos/gestion_de_clientes/getClients','Client_list_controller::getClients');
 $routes->post('/gestion_proyectos/gestion_de_clientes/crudClient','Client_list_controller::crudClient');
+
+/*
+ * --------------------------------------------------------------------
+ * Aprovisionamiento
+ * --------------------------------------------------------------------
+ */
+$routes->get('/aprovisionamiento/productos','Products_controller::index');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

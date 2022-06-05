@@ -172,9 +172,9 @@
 				<ul class="submenu">
 
 					<li class="">
-						<a href="buttons.html">
+						<a href="<?php echo base_url("aprovisionamiento/productos") ?>">
 							<i class="menu-icon fa fa-caret-right"></i>
-							Buttons &amp; Icons
+							Productos
 						</a>
 
 						<b class="arrow"></b>
