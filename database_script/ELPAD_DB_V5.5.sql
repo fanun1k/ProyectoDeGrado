@@ -637,7 +637,7 @@ CREATE TABLE IF NOT EXISTS `elpad_db`.`product` (
   `productId` INT NOT NULL AUTO_INCREMENT,
   `productName` VARCHAR(60) NOT NULL,
   `productCategoryId` INT NOT NULL,
-  `productPrice` DECIMAL(5,2) NOT NULL,
+  `productPrice` DECIMAL(6,2) NOT NULL,
   `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastUpdate` DATETIME NULL DEFAULT NULL,
   `status` TINYINT NOT NULL DEFAULT '1',

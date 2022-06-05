@@ -103,8 +103,10 @@ $routes->post('/contabilidad/registrar_caja_chica','Accounting_controller::regis
  * Aprovisionamiento
  * --------------------------------------------------------------------
  */
-$routes->get('/aprovisionamiento/productos','Products_controller::index');
-
+$routes->get('/aprovisionamiento/productos','Products_list_controller::index');
+$routes->get('/aprovisionamiento/productos/getProducts','Products_list_controller::getProducts');
+$routes->get('/aprovisionamiento/productos/getOptionsProductCategory','Products_list_controller::getOptionsProductCategory');
+$routes->post('/aprovisionamiento/productos/crudProduct','Products_list_controller::crudProduct');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
