@@ -29,7 +29,7 @@ class Supplier_controller extends ResourceController{
             session()->set('error', 'Enlace no permitido. Debe iniciar sesión.');
             return redirect()->route('/');
         } else if ($status == 1) {
-            $data = $this->getSuppliers(10, 1);
+            $data = $this->getSuppliers();
             $this->userModel = new User_model();
             if (session()->has('userId')) {
                 $userAccessArray = $this->userModel->getUserAccess(session()->get('userId'));
@@ -41,8 +41,35 @@ class Supplier_controller extends ResourceController{
         }
     }
 
-    public function getSuppliers($limit, $offset)
+    public function getSuppliers()
     {
-        return $this->model->getAllSuppliers($limit, $offset);
+        return $this->model->getAllSuppliers();
+    }
+
+    public function deleteSupplier($id)
+    {
+        if (session()->has('userId')) {
+            $userId = session()->get('userId');
+        } else if (isset($_COOKIE['userId'])) {
+            $userId = $_COOKIE['userId'];
+        }
+        if ($userId == NULL) {
+            session()->set('error', 'Enlace no permitido. Debe iniciar sesión.');
+            return redirect()->route('/');
+        }
+        $this->userModel = new User_model();
+        $status = $this->userModel->getUserStatus($userId);
+        if ($status == -1 || $status == 0) {
+            session()->set('error', 'Enlace no permitido. Debe iniciar sesión.');
+            return redirect()->route('/');
+        }
+        else if ($status == 1) {
+            if($this->model->deleteSupplier($id)>0){
+                return redirect()->route('aprovisionamiento/proveedores/lista_proveedores');
+            }
+            else{
+
+            }
+        }
     }
 }

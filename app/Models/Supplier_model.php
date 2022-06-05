@@ -10,17 +10,16 @@ class Supplier_model extends Model
     //Last columnas que van a afectar
     protected $allowedFields= ['supplierId','type','name','address','phone1','phone2','phone3','createDate','lastUpdate','status'];
 
-    public function getAllSuppliers($limit, $offset)
+    public function getAllSuppliers()
     {
         $db = db_connect();
         $builder = $db->table('supplier S');
-        $builder->select('S.supplierId,S.name, SP.supplierTypeName, S.address, S.phone1, S.phone2,S.phone2, S.gmail, S.status');
-        $builder->join('supplier_type SP', 'SP.supplierTypeId = S.type');
+        $builder->select('S.supplierId,IFNULL(LE.legalEntityName, CONCAT(NP.name," ",NP.lastName1," ",IFNULL(NP.lastName2,""))) AS name,S.treatment, S.address, S.phone1, S.phone2,S.phone3, S.gmail, S.status');
+        $builder->join('legal_entity LE', 'LE.legalEntityId = S.supplierId', 'left');
+        $builder->join('natural_person NP', 'NP.naturalPersonId = S.supplierId', 'left');
         $builder->where('S.status', '1');
         $data =  $builder->get()->getResultArray();
         return $data;
-        echo "<pre>";
-        print_r($data);
 
         //return $query;
 
@@ -35,7 +34,7 @@ class Supplier_model extends Model
         return $this->update($id, $data);
     }
 
-    public function deleteSupply($id){
+    public function deleteSupplier($id){
        return $this->update($id,['status'=>'0']);
     }
 }
