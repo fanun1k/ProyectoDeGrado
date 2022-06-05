@@ -52,11 +52,11 @@ $routes->post('/cambiar_contrasena', 'Login_controller::changePassword');
  * --------------------------------------------------------------------
  */
 $routes->get('/gestion_proyectos/gestion_comedores/comedor', 'Dining_area_controller::diningArea');
-$routes->get('/gestion_proyectos/gestion_comedores/getFoodTimes', 'Dining_area_controller::getFoodTimes');
 $routes->get('/gestion_proyectos/gestion_comedores/visualizar_comedores', 'Dining_area_controller::index');
 $routes->post('/gestion_proyectos/gestion_comedores/comedor/registrar_comedor', 'Dining_area_controller::registerDiningArea');
 $routes->get('/gestion_proyectos/gestion_comedores/visualizar_comedores/eliminar_comedor/(:num)', 'Dining_area_controller::deleteDiningArea/$1');
-
+$routes->get('/gestion_proyectos/gestion_comedores/getFoodTimes', 'Dining_area_controller::getFoodTimes');
+$routes->post('/gestion_proyectos/gestion_comedores/crudFoodTimes', 'Dining_area_controller::crudFoodTimes');
 /*
  * --------------------------------------------------------------------
  * Gestion Nutricional
@@ -98,6 +98,12 @@ $routes->post('/gestion_proyectos/gestion_de_clientes/crudClient','Client_list_c
 $routes->get('/contabilidad/caja_chica','Accounting_controller::index');
 $routes->post('/contabilidad/registrar_caja_chica','Accounting_controller::registerPettyCash');
 
+/*
+ * --------------------------------------------------------------------
+ * Aprovisionamiento
+ * --------------------------------------------------------------------
+ */
+$routes->get('/aprovisionamiento/productos','Products_controller::index');
 
 /*
  * --------------------------------------------------------------------
