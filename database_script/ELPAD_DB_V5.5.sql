@@ -773,6 +773,7 @@ CREATE TABLE IF NOT EXISTS `elpad_db`.`petty_cash_record` (
   `pettyCashId` INT NOT NULL,
   `userId` INT NOT NULL,
   `amount` DECIMAL(6,2) NOT NULL,
+  `motive` VARCHAR(255) NOT NULL,
   `type` TINYINT NOT NULL,
   `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastUpdate` DATETIME NULL DEFAULT NULL,
@@ -834,6 +835,8 @@ INSERT INTO supply_type (supplyTypeName)
 VALUES ('Carne');
 
 INSERT INTO dining_area (companyId, diningAreaName, latitude, longitude, averageCalorie) VALUES(1, 'Comedor Coboce', -17.391426, -66.213131, 100);
+
+INSERT INTO petty_cash (diningAreaId, fund) VALUES (1, 69);
 
 INSERT INTO client (diningAreaId,clientCode,clientName,clientLastName1,clientLastName2,dateOfBirth,clientCI) VALUES (1,'0001','Pablo','Rodriguez','Solis','1998-07-05','13623834');
 INSERT INTO client (diningAreaId,clientCode,clientName,clientLastName1,clientLastName2,dateOfBirth,clientCI) VALUES (1,'0002','Pedro','Candia','Rodriguez','2009-06-10','1458263');

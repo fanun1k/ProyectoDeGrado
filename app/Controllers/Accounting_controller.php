@@ -17,10 +17,11 @@ class Accounting_controller extends ResourceController
 		if (session()->has('userId')) $userAccessArray = $userModel->getUserAccess(session()->get('userId'));
 		else if (isset($_COOKIE['userId'])) $userAccessArray = $userModel->getUserAccess($_COOKIE['userId']);
 
-		$diningArea = 1;
-		$fund = $this->model->getDiningAreaFund($diningArea);
+		$diningAreaId = 1;
+		$fund = $this->model->getDiningAreaFund($diningAreaId);
+		$pettyCashRecord = $this->model->getPettyCashRecordList($diningAreaId);
 
-		$view = view('header_footer/header') . view('header_footer/sidebar', compact('userAccessArray')) . view('Accounting_view', compact('fund'));
+		$view = view('header_footer/header') . view('header_footer/sidebar', compact('userAccessArray')) . view('Accounting_view', compact('fund', 'pettyCashRecord'));
 		return $view;
 	}
 
@@ -36,12 +37,13 @@ class Accounting_controller extends ResourceController
 		$fund = $this->model->getDiningAreaFund($diningAreaId);
 		$withdrawAmount = $this->request->getPost('quantity');
 		$newAmount = $fund - $withdrawAmount;
+		$motive = $this->request->getPost('motive');
 
 		if($newAmount < 0) {
 			//Error Message
 		}
 		else {
-			$this->model->withdrawPettyCash($diningAreaId, $newAmount, $withdrawAmount, $userId, 0);
+			$this->model->depositAndWithdrawPettyCash($diningAreaId, $newAmount, $withdrawAmount, $motive, $userId, 0);
 		}
 		return redirect()->route('contabilidad/caja_chica');
 	}
@@ -58,12 +60,13 @@ class Accounting_controller extends ResourceController
 		$fund = $this->model->getDiningAreaFund($diningAreaId);
 		$withdrawAmount = $this->request->getPost('quantity');
 		$newAmount = $fund + $withdrawAmount;
+		$motive = $this->request->getPost('motive');
 
 		if($newAmount > 9999) {
 			//Error Message
 		}
 		else {
-			$this->model->withdrawPettyCash($diningAreaId, $newAmount, $withdrawAmount, $userId, 1);
+			$this->model->depositAndWithdrawPettyCash($diningAreaId, $newAmount, $withdrawAmount, $motive, $userId, 1);
 		}
 		return redirect()->route('contabilidad/caja_chica');
 	}
