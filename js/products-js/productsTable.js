@@ -35,6 +35,30 @@ jQuery(function ($) {
         }
       })
       */
+  function validate_product_name(value, colname) {
+    value = value.toLowerCase();
+    if (value == "") {
+      return [false, "El nombre no puede estar vacío"];
+    }
+    if (/^[0-9a-zA-Z]+$/.test(value) && value.length <= 45) {
+      return [true, ""];
+    } else {
+      return [false, "Solo se admite letras y números"];
+    }
+  }
+  function validate_product_price(value, colname) {
+    if (value == "") {
+      return [false, "El precio no puede estar vacío"];
+    }
+    if (value ==0) {
+      return [false, "El precio no puede ser 0"];
+    }
+    if (/^(\d{1,4})(\.\d{1,2})?$/.test(value)) {
+      return [true, ""];
+    } else {
+      return [false, "formato de moneda incorrecto"];
+    }
+  }
   jQuery(grid_selector)
     .jqGrid({
       //direction: "rtl",
@@ -49,19 +73,19 @@ jQuery(function ($) {
         openicon: "ace-icon fa fa-chevron-right center orange",
       },
       //for this example we are using local data
-      url: "getProducts",
+      url: "productos/getProducts",
       datatype: "json",
       height: 400,
       colNames: [
         "",
-        "productId",
-        "productName",
-        "productCategoryId",
-        "productPrice",
+        "ID",
+        "Nombre del producto",
+        "Categoría",
+        "Precio Unitario",
       ],
       colModel: [
         {
-          name: "myac",
+          name: "",
           index: "",
           width: 80,
           fixed: true,
@@ -91,41 +115,37 @@ jQuery(function ($) {
           index: "productName",
           width: 90,
           editable: true,
+          editrules: { custom: true, custom_func: validate_product_name },
         },
         {
-          name: "productCategoryId",
-          index: "productCategoryId",
+          name: "categoryName",
+          index: "categoryName",
           width: 100,
           editable: true,
-          //editrules: { custom: true, custom_func: validate_name },
-          edittype: "text",
+          //editrules: { custom: true, custom_func: validate_product_price },
+          edittype: "select",
+          editoptions: { dataUrl: "productos/getOptionsProductCategory" },
+          unformat: aceSwitch,
         },
         {
           name: "productPrice",
           index: "productPrice",
-          //editrules: { custom: true, custom_func: validate_last_name },
           width: 120,
-          editable: true,
+          editable: true, 
+          formatter:'currency', formatoptions:{decimalSeparator:".", decimalPlaces: 2, suffix: "Bs. "},
+          editrules: { custom: true, custom_func: validate_product_price },
         },
-        {
-          name: "status",
-          index: "status",
-          width: 120,
-          editrules: { custom: true, custom_func: validate_last_name },
-          editable: true,
-        }
       ],
 
       pager: pager_selector,
       rowNum: 10,
       rowList: [10, 20, 30],
-      sortname: "clientCode",
+      sortname: "productName",
       sortorder: "asc",
       viewrecords: true,
       gridview: true,
       autoencode: true,
       altRows: true,
-      //toppager: true,
 
       loadComplete: function () {
         var table = this;
@@ -138,24 +158,19 @@ jQuery(function ($) {
         }, 0);
       },
 
-      editurl: "crudClient", //nothing is saved
-      caption: "Lista de Clientes",
-
-      //,autowidth: true,
-
-      /**
-                  ,
-                  grouping:true, 
-                  groupingView : { 
-                       groupField : ['name'],
-                       groupDataSorted : true,
-                       plusicon : 'fa fa-chevron-down bigger-110',
-                       minusicon : 'fa fa-chevron-up bigger-110'
-                  },
-                  caption: "Grouping"
-                  */
+      editurl: "productos/crudProduct", //nothing is saved
+      caption: "Lista de Productos",
+      autowidth: true,
+      /*grouping: true,
+      groupingView: {
+        groupField: ["productCategoryId"],
+        groupDataSorted: true,
+        plusicon: "fa fa-chevron-down bigger-110",
+        minusicon: "fa fa-chevron-up bigger-110",
+      },
+      caption: "Grouping",*/
     })
-    .hideCol("clientId");
+    .hideCol("productId");
   $(window).triggerHandler("resize.jqGrid"); //trigger window resize to make the grid get the correct size
 
   //enable search/filter toolbar

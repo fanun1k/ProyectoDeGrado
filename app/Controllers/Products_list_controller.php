@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Product_category_model;
 use CodeIgniter\RESTful\ResourceController;
 use App\Models\User_model;
 use App\Models\Product_model;
@@ -49,6 +50,31 @@ class Products_list_controller extends ResourceController
 
         return $this->respond($data);
     }
+    public function crudProduct(){
+        switch ($_POST['oper']) {
+            case 'add':
+                unset($_REQUEST['id']);
+                unset($_REQUEST['productId']);
+                unset($_REQUEST['oper']);
+                $_REQUEST['productCategoryId']=$_REQUEST['categoryName'];
+                unset($_REQUEST['categoryName']);
+            return $this->model->insert($_REQUEST);    
+                break;
+            case 'edit':
+                $id = $_POST['id'];
+
+                unset($_REQUEST['id']);
+                
+                break;
+            case 'del':
+                
+                break;
+        }
+    }
+    public function getOptionsProductCategory(){
+        $product_ategory=new Product_category_model();
+        echo $product_ategory->getOptionsProductCategory();
+    } 
 }
 
 ?>
