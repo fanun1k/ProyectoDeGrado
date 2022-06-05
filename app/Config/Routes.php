@@ -96,7 +96,8 @@ $routes->post('/gestion_proyectos/gestion_de_clientes/crudClient','Client_list_c
  * --------------------------------------------------------------------
  */
 $routes->get('/contabilidad/caja_chica','Accounting_controller::index');
-$routes->post('/contabilidad/registrar_caja_chica','Accounting_controller::registerPettyCash');
+$routes->post('/contabilidad/retirar_caja_chica','Accounting_controller::withdrawPettyCash');
+$routes->post('/contabilidad/depositar_caja_chica','Accounting_controller::depositPettyCash');
 
 /*
  * --------------------------------------------------------------------

@@ -750,11 +750,11 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `elpad_db`.`petty_cash` (
   `pettyCashId` INT NOT NULL AUTO_INCREMENT,
-  `fund` DECIMAL(6) NOT NULL DEFAULT 0,
+  `diningAreaId` INT NOT NULL,
+  `fund` DECIMAL(6,2) NOT NULL DEFAULT 0,
   `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastUpdate` DATETIME NULL DEFAULT NULL,
   `status` TINYINT NOT NULL DEFAULT '1',
-  `diningAreaId` INT NOT NULL,
   PRIMARY KEY (`pettyCashId`),
   INDEX `fk_petty_cash_dining_area1_idx` (`diningAreaId` ASC),
   CONSTRAINT `fk_petty_cash_dining_area1`
@@ -769,14 +769,16 @@ ENGINE = InnoDB;
 -- Table `elpad_db`.`petty_cash_record`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `elpad_db`.`petty_cash_record` (
-  `userId` INT NOT NULL,
+  `pettyCashRecordId` INT NOT NULL AUTO_INCREMENT,
   `pettyCashId` INT NOT NULL,
-  `amount` DECIMAL(6) NOT NULL,
+  `userId` INT NOT NULL,
+  `amount` DECIMAL(6,2) NOT NULL,
+  `motive` VARCHAR(255) NOT NULL,
   `type` TINYINT NOT NULL,
   `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastUpdate` DATETIME NULL DEFAULT NULL,
   `status` TINYINT NOT NULL DEFAULT '1',
-  PRIMARY KEY (`userId`, `pettyCashId`),
+  PRIMARY KEY (`pettyCashRecordId`, `userId`, `pettyCashId`),
   INDEX `fk_user_has_petty_cash_petty_cash1_idx` (`pettyCashId` ASC),
   INDEX `fk_user_has_petty_cash_user1_idx` (`userId` ASC),
   CONSTRAINT `fk_user_has_petty_cash_user1`
@@ -833,6 +835,8 @@ INSERT INTO supply_type (supplyTypeName)
 VALUES ('Carne');
 
 INSERT INTO dining_area (companyId, diningAreaName, latitude, longitude, averageCalorie) VALUES(1, 'Comedor Coboce', -17.391426, -66.213131, 100);
+
+INSERT INTO petty_cash (diningAreaId, fund) VALUES (1, 69);
 
 INSERT INTO client (diningAreaId,clientCode,clientName,clientLastName1,clientLastName2,dateOfBirth,clientCI) VALUES (1,'0001','Pablo','Rodriguez','Solis','1998-07-05','13623834');
 INSERT INTO client (diningAreaId,clientCode,clientName,clientLastName1,clientLastName2,dateOfBirth,clientCI) VALUES (1,'0002','Pedro','Candia','Rodriguez','2009-06-10','1458263');
