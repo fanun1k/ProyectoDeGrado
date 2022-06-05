@@ -18,7 +18,7 @@
 			</div>
 			<div class="row">
 				<div class="col-xs-12 col-sm-5">
-					<h4 class="green clearfix" style="margin-bottom:20px;">Caja Chica: 69 bs.</h4>
+					<h4 class="green clearfix" style="margin-bottom:20px;">Caja Chica: <?php echo $fund . " bs."; ?> </h4>
 					<div class="widget-box widget-container-col" style="margin-bottom:20px;">
 						<div class="widget-header">
 							<h4 class="widget-title">Retirar Fondos</h4>
@@ -30,7 +30,7 @@
 						</div>
 						<div class="widget-body" style="padding: 10px;">
 							<div class="widget-main">
-								<form action="<?php echo base_url('//') ?>" method="post">
+								<form action="<?php echo base_url('/contabilidad/retirar_caja_chica') ?>" method="post">
 									<div class="row">
 										<div class="col-xs-12">
 											<label for="form-field-8">Fondos</label>
@@ -39,7 +39,7 @@
 									<div class="row">
 										<div class="col-xs-12 col-sm-8">
 											<div class="input-group">
-												<input class="form-control" id="form-field-8" name="employeeTypeName" placeholder="Escriba cantidad"></input>
+												<input class="form-control" id="form-field-1" name="quantity" placeholder="Escriba cantidad"></input>
 												<span class="input-group-addon">bs.</span>
 											</div>
 										</div>
@@ -62,7 +62,7 @@
 						</div>
 						<div class="widget-body" style="padding: 10px;">
 							<div class="widget-main">
-								<form action="<?php echo base_url('//') ?>" method="post">
+								<form action="<?php echo base_url('/contabilidad/depositar_caja_chica') ?>" method="post">
 									<div class="row">
 										<div class="col-xs-12">
 											<label for="form-field-8">Fondos</label>
@@ -71,7 +71,7 @@
 									<div class="row">
 										<div class="col-xs-12 col-sm-8">
 											<div class="input-group">
-												<input class="form-control" id="form-field-8" name="employeeTypeName" placeholder="Escriba cantidad"></input>
+												<input class="form-control" id="form-field-2" name="quantity" placeholder="Escriba cantidad"></input>
 												<span class="input-group-addon">bs.</span>
 											</div>
 										</div>
