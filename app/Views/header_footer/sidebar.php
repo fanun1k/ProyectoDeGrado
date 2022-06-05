@@ -13,6 +13,7 @@
 	</div><!-- /.sidebar-shortcuts -->
 
 	<ul class="nav nav-list">
+		<!-- Contabilidad -->
 		<li class="">
 			<?php foreach ($userAccessArray as $access) {
 				if ($access->accessId == 1) $hasAccess = TRUE;
@@ -20,59 +21,38 @@
 			<a href="#" class="dropdown-toggle" <?php if (!$hasAccess) echo 'style="cursor:not-allowed;"'; ?>>
 				<i class="menu-icon fa fa-briefcase"></i>
 				<span class="menu-text">Contabilidad</span>
-				<?php if ($hasAccess) { ?>
-					<b class="arrow fa fa-angle-down"></b>
-				<?php } else { ?>
-					<b class="arrow fa fa-lock"></b>
-				<?php } ?>
+				<?php if ($hasAccess) { ?> <b class="arrow fa fa-angle-down"></b>
+				<?php } else { ?> <b class="arrow fa fa-lock"></b> <?php } ?>
 			</a>
 			<?php if ($hasAccess) { ?>
 				<b class="arrow"></b>
 				<ul class="submenu">
 					<li class="">
+						<a href="<?php echo base_url('/contabilidad/caja_chica') ?>">
+							<i class="menu-icon fa fa-caret-right"></i>Caja Chica
+						</a>
+						<b class="arrow"></b>
+					</li>
+					<li class="">
 						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-caret-right"></i>
-							Layouts
+							<i class="menu-icon fa fa-caret-right"></i>Costos
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
 						<b class="arrow"></b>
 						<ul class="submenu">
 							<li class="">
 								<a href="top-menu.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Top Menu
+									<i class="menu-icon fa fa-caret-right"></i>Costos Fijos
 								</a>
-
 								<b class="arrow"></b>
 							</li>
-
 							<li class="">
 								<a href="two-menu-1.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Two Menus 1
+									<i class="menu-icon fa fa-caret-right"></i>Costos Variables
 								</a>
-
 								<b class="arrow"></b>
 							</li>
 						</ul>
-					</li>
-
-					<li class="">
-						<a href="treeview.html">
-							<i class="menu-icon fa fa-caret-right"></i>
-							Treeview
-						</a>
-
-						<b class="arrow"></b>
-					</li>
-
-					<li class="">
-						<a href="jquery-ui.html">
-							<i class="menu-icon fa fa-caret-right"></i>
-							jQuery UI
-						</a>
-
-						<b class="arrow"></b>
 					</li>
 				</ul>
 			<?php }
@@ -330,10 +310,7 @@
 								<a href="<?php echo base_url('gestion_proyectos/gestion_comedores/comedor'); ?>">
 									<i class="menu-icon fa fa-caret-right"></i>
 									<span class="menu-text">
-										Agregar Nuevo
-									</span>
-									<span class="menu-text" style="padding-left: 12px;">
-										Comedor
+										Agregar Nuevo Comedor
 									</span>
 								</a>
 								<b class="arrow"></b>
