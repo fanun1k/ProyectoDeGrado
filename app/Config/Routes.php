@@ -91,7 +91,8 @@ $routes->post('/gestion_proyectos/gestion_de_clientes/crudClient','Client_list_c
  * Aprovisionamiento
  * --------------------------------------------------------------------
  */
-$routes->get('/aprovisionamiento/productos','Products_controller::index');
+$routes->get('/aprovisionamiento/productos','Products_list_controller::index');
+$routes->get('/aprovisionamiento/productos/getProducts','Products_list_controller::getProducts');
 
 /*
  * --------------------------------------------------------------------

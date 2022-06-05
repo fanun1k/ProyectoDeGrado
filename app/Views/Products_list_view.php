@@ -12,7 +12,10 @@
             <div class="row">
                 <div class="col-xs-12">
                     <!-- PAGE CONTENT BEGINS -->
-                    <h1>Página Inicial</h1>
+                        <table id="products_table">
+
+                        </table>
+                        <div id="pager"></div>
                     <!-- PAGE CONTENT ENDS -->
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -75,7 +78,7 @@
 <!-- ace scripts -->
 <script src="<?php echo base_url(); ?>/assets/js/ace-elements.min.js"></script>
 <script src="<?php echo base_url(); ?>/assets/js/ace.min.js"></script>
-
+<script src="<?php echo base_url(); ?>/js/products-js/productsTable.js"></script>
 <!-- inline scripts related to this page -->
 <!-- inline scripts related to this page -->
 
