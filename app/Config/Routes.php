@@ -104,8 +104,10 @@ $routes->post('/contabilidad/depositar_caja_chica','Accounting_controller::depos
  * Aprovisionamiento
  * --------------------------------------------------------------------
  */
-$routes->get('/aprovisionamiento/productos','Products_controller::index');
-
+$routes->get('/aprovisionamiento/productos','Products_list_controller::index');
+$routes->get('/aprovisionamiento/productos/getProducts','Products_list_controller::getProducts');
+$routes->get('/aprovisionamiento/productos/getOptionsProductCategory','Products_list_controller::getOptionsProductCategory');
+$routes->post('/aprovisionamiento/productos/crudProduct','Products_list_controller::crudProduct');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
