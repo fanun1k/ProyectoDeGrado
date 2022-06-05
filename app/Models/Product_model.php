@@ -35,4 +35,7 @@ class Product_model extends Model
 
         return $aux;
     }
+    public function deleteProduct($id){
+        return $this->update($id, ['status' => 0, 'lastUpdate' => date('Y-m-d h:i:s a', time())]);
+    }
 }

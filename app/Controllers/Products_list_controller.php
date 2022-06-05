@@ -62,12 +62,12 @@ class Products_list_controller extends ResourceController
                 break;
             case 'edit':
                 $id = $_POST['id'];
-
                 unset($_REQUEST['id']);
+                unset($_REQUEST['productId']);
                 
                 break;
             case 'del':
-                
+                $this->model->deleteProduct($_REQUEST['id']);
                 break;
         }
     }
