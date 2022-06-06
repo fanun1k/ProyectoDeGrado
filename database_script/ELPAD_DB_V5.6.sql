@@ -806,7 +806,6 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `elpad_db`.`supplier` (
   `supplierId` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(120) NOT NULL,
   `address` VARCHAR(60) NOT NULL,
   `phone1` VARCHAR(60) NOT NULL,
   `phone2` VARCHAR(60) NOT NULL,
@@ -815,6 +814,7 @@ CREATE TABLE IF NOT EXISTS `elpad_db`.`supplier` (
   `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastUpdate` DATETIME NULL DEFAULT NULL,
   `status` TINYINT(4) NOT NULL DEFAULT '1',
+  `treatment` TINYINT(4) NOT NULL,
   PRIMARY KEY (`supplierId`))
 ENGINE = InnoDB;
 

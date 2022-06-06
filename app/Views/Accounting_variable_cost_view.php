@@ -17,43 +17,7 @@
 			</div>
 			<div class="row">
 				<div class="col-xs-12 col-sm-12">
-					<table id="dynamic-table" class="table table-striped table-bordered table-hover">
-						<thead>
-							<tr>
-								<th class="center">#</th>
-								<th>Descripción</th>
-								<th>Número de cuenta a pagar</th>
-								<th>Monto (bs.)</th>
-								<th>Fecha Límite de Pago</th>
-								<th>Meses de Plazo</th>
-								<th>Estado</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>1</td>
-								<td>Electricidad</td>
-								<td>69696969</td>
-								<td>200</td>
-								<td>25/06/2022</td>
-								<td>3</td>
-								<td class="hidden-480">
-									<span class="label label-warning">Pendiente</span>
-								</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>Agua</td>
-								<td>69696969</td>
-								<td>300</td>
-								<td>24/06/2022</td>
-								<td>2</td>
-								<td class="hidden-480">
-									<span class="label label-success arrowed-in arrowed-in-right">Pagado</span>
-								</td>
-							</tr>
-						</tbody>
-					</table>
+					<h4>Esta en construcción. Vuelva el siguiente semestre (Atte. Rodri)</h4>
 				</div>
 			</div>
 		</div>

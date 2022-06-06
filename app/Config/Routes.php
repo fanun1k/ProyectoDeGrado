@@ -39,6 +39,7 @@ $routes->get('/cerrando_sesion', 'Login_controller::logout');
 $routes->post('/recuperando_cuenta', 'Login_controller::recoverPassword');
 $routes->get('/recuperar_cuenta', 'Login_controller::recoverPasswordPage');
 $routes->post('/cambiar_contrasena', 'Login_controller::changePassword');
+$routes->get('/prueba_de_qr', 'QR_test_controller::index');
 
 /*
  * --------------------------------------------------------------------
@@ -91,6 +92,15 @@ $routes->get('/gestion_proyectos/gestion_de_clientes/lista_de_clientes','Client_
 $routes->get('/gestion_proyectos/gestion_de_clientes/getClients','Client_list_controller::getClients');
 $routes->post('/gestion_proyectos/gestion_de_clientes/crudClient','Client_list_controller::crudClient');
 
+/*
+ * --------------------------------------------------------------------
+ * Gestion de Proveedores
+ * --------------------------------------------------------------------
+ */
+$routes->get('/aprovisionamiento/proveedores/lista_proveedores','Supplier_controller::index');
+$routes->post('/aprovisionamiento/proveedores/lista_proveedores/registrar_proveedor', 'Supplier_controller::registerSupplier');
+$routes->post('/aprovisionamiento/proveedores/lista_proveedores/editar_proveedor/(:num)', 'Supplier_controller::updateSupplier/$1');
+$routes->get('/aprovisionamiento/proveedores/lista_proveedores/eliminar_proveedor/(:num)', 'Supplier_controller::deleteSupplier/$1');
 /*
  * --------------------------------------------------------------------
  * Gestion de Contabilidad

@@ -152,6 +152,15 @@
 				<ul class="submenu">
 
 					<li class="">
+						<a href="<?php echo base_url('/aprovisionamiento/proveedores/lista_proveedores') ?>">
+							<i class="menu-icon fa fa-caret-right"></i>
+							Proveedores
+						</a>
+
+						<b class="arrow"></b>
+					</li>
+
+					<li class="">
 						<a href="<?php echo base_url("aprovisionamiento/productos") ?>">
 							<i class="menu-icon fa fa-caret-right"></i>
 							Productos
@@ -163,7 +172,7 @@
 					<li class="">
 						<a href="content-slider.html">
 							<i class="menu-icon fa fa-caret-right"></i>
-							Content Sliders
+							Pedidos
 						</a>
 
 						<b class="arrow"></b>
@@ -172,7 +181,7 @@
 					<li class="">
 						<a href="treeview.html">
 							<i class="menu-icon fa fa-caret-right"></i>
-							Treeview
+							Entrada de mercancías
 						</a>
 
 						<b class="arrow"></b>
