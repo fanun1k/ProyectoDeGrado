@@ -12,7 +12,7 @@ USE `elpad_db` ;
 -- Table `elpad_db`.`access`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `elpad_db`.`access` (
-  `accessId` TINYINT NOT NULL AUTO_INCREMENT,
+  `accessId` TINYINT(4) NOT NULL AUTO_INCREMENT,
   `accessName` VARCHAR(60) NOT NULL,
   PRIMARY KEY (`accessId`))
 ENGINE = InnoDB
@@ -20,15 +20,58 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `elpad_db`.`category`
+-- Table `elpad_db`.`product_category`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `elpad_db`.`category` (
-  `categoryId` INT NOT NULL AUTO_INCREMENT,
-  `categoryName` VARCHAR(60) NOT NULL,
+CREATE TABLE IF NOT EXISTS `elpad_db`.`product_category` (
+  `productCategoryId` INT(11) NOT NULL AUTO_INCREMENT,
+  `categoryName` VARCHAR(35) NOT NULL,
   `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastUpdate` DATETIME NULL DEFAULT NULL,
-  `status` TINYINT NOT NULL DEFAULT '1',
-  PRIMARY KEY (`categoryId`))
+  `status` TINYINT(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`productCategoryId`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `elpad_db`.`product`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `elpad_db`.`product` (
+  `productId` INT(11) NOT NULL AUTO_INCREMENT,
+  `productName` VARCHAR(60) NOT NULL,
+  `productCategoryId` INT(11) NOT NULL,
+  `productPrice` DECIMAL(6,2) NOT NULL,
+  `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `lastUpdate` DATETIME NULL DEFAULT NULL,
+  `status` TINYINT(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`productId`),
+  INDEX `fk_product_product_category1_idx` (`productCategoryId` ASC),
+  CONSTRAINT `fk_product_product_category1`
+    FOREIGN KEY (`productCategoryId`)
+    REFERENCES `elpad_db`.`product_category` (`productCategoryId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `elpad_db`.`batch`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `elpad_db`.`batch` (
+  `batchId` INT(11) NOT NULL AUTO_INCREMENT,
+  `productProductId` INT(11) NOT NULL,
+  `productQuantity` VARCHAR(45) NOT NULL,
+  `productUnitPrice` DECIMAL(5,2) NOT NULL,
+  `totalPaid` DECIMAL(8,2) NOT NULL,
+  `stock` INT(11) NOT NULL,
+  PRIMARY KEY (`batchId`),
+  INDEX `fk_batch_product1_idx` (`productProductId` ASC),
+  CONSTRAINT `fk_batch_product1`
+    FOREIGN KEY (`productProductId`)
+    REFERENCES `elpad_db`.`product` (`productId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -37,12 +80,12 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `elpad_db`.`company`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `elpad_db`.`company` (
-  `companyId` INT NOT NULL AUTO_INCREMENT,
+  `companyId` INT(11) NOT NULL AUTO_INCREMENT,
   `companyName` VARCHAR(60) NOT NULL,
   `companyDirection` VARCHAR(100) NOT NULL,
   `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastUpdate` DATETIME NULL DEFAULT NULL,
-  `status` TINYINT NOT NULL DEFAULT '1',
+  `status` TINYINT(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`companyId`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
@@ -52,15 +95,15 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `elpad_db`.`dining_area`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `elpad_db`.`dining_area` (
-  `diningAreaId` INT NOT NULL AUTO_INCREMENT,
-  `companyId` INT NOT NULL,
+  `diningAreaId` INT(11) NOT NULL AUTO_INCREMENT,
+  `companyId` INT(11) NOT NULL,
   `diningAreaName` VARCHAR(100) NOT NULL,
   `latitude` FLOAT NOT NULL,
   `longitude` FLOAT NOT NULL,
   `averageCalorie` FLOAT NOT NULL,
   `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastUpdate` DATETIME NULL DEFAULT NULL,
-  `status` TINYINT NOT NULL DEFAULT '1',
+  `status` TINYINT(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`diningAreaId`),
   INDEX `fk_dining_area_company1_idx` (`companyId` ASC),
   CONSTRAINT `fk_dining_area_company1`
@@ -74,8 +117,8 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `elpad_db`.`client`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `elpad_db`.`client` (
-  `clientId` INT NOT NULL AUTO_INCREMENT,
-  `diningAreaId` INT NOT NULL,
+  `clientId` INT(11) NOT NULL AUTO_INCREMENT,
+  `diningAreaId` INT(11) NOT NULL,
   `clientCode` VARCHAR(60) NULL DEFAULT NULL,
   `clientName` VARCHAR(60) NOT NULL,
   `clientLastName1` VARCHAR(60) NOT NULL,
@@ -84,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `elpad_db`.`client` (
   `clientCI` VARCHAR(20) NOT NULL,
   `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastUpdate` DATETIME NULL DEFAULT NULL,
-  `status` TINYINT NOT NULL DEFAULT '1',
+  `status` TINYINT(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`clientId`),
   INDEX `fk_client_dining_area1_idx` (`diningAreaId` ASC),
   CONSTRAINT `fk_client_dining_area1`
@@ -95,14 +138,147 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
+-- Table `elpad_db`.`employee`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `elpad_db`.`employee` (
+  `employeeId` INT(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(60) NOT NULL,
+  `lastName1` VARCHAR(60) NOT NULL,
+  `lastName2` VARCHAR(60) NULL DEFAULT NULL,
+  `employeePhoneNumber` VARCHAR(20) NOT NULL,
+  `employeeLatitude` FLOAT NOT NULL,
+  `employeeLongitude` FLOAT NOT NULL,
+  `employeeCI` VARCHAR(20) NOT NULL,
+  `employeeGender` CHAR(1) NOT NULL,
+  `employeeDateOfBirth` DATETIME NOT NULL,
+  `employeeCode` VARCHAR(45) NOT NULL,
+  `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `lastUpdate` DATETIME NULL DEFAULT NULL,
+  `status` TINYINT(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`employeeId`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `elpad_db`.`user`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `elpad_db`.`user` (
+  `userId` INT(11) NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
+  `password` VARCHAR(60) NOT NULL,
+  `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `lastUpdate` DATETIME NULL DEFAULT NULL,
+  `status` TINYINT(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`userId`),
+  INDEX `fk_user_employee1_idx` (`userId` ASC),
+  CONSTRAINT `fk_user_employee1`
+    FOREIGN KEY (`userId`)
+    REFERENCES `elpad_db`.`employee` (`employeeId`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `elpad_db`.`sale`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `elpad_db`.`sale` (
+  `saleId` INT(11) NOT NULL,
+  `total` DECIMAL(8,2) NOT NULL,
+  `userId` INT(11) NOT NULL,
+  `client_clientId` INT(11) NOT NULL,
+  `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `lastUpdate` DATETIME NULL DEFAULT NULL,
+  `status` TINYINT(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`saleId`),
+  INDEX `fk_sale_user1_idx` (`userId` ASC),
+  INDEX `fk_sale_client1_idx` (`client_clientId` ASC),
+  CONSTRAINT `fk_sale_client1`
+    FOREIGN KEY (`client_clientId`)
+    REFERENCES `elpad_db`.`client` (`clientId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_sale_user1`
+    FOREIGN KEY (`userId`)
+    REFERENCES `elpad_db`.`user` (`userId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `elpad_db`.`sale_detail`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `elpad_db`.`sale_detail` (
+  `saleId` INT(11) NOT NULL,
+  `productId` INT(11) NOT NULL,
+  `quantity` VARCHAR(45) NOT NULL,
+  `unitPrice` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`saleId`, `productId`),
+  INDEX `fk_sale_has_product_product1_idx` (`productId` ASC),
+  INDEX `fk_sale_has_product_sale1_idx` (`saleId` ASC),
+  CONSTRAINT `fk_sale_has_product_product1`
+    FOREIGN KEY (`productId`)
+    REFERENCES `elpad_db`.`product` (`productId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_sale_has_product_sale1`
+    FOREIGN KEY (`saleId`)
+    REFERENCES `elpad_db`.`sale` (`saleId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `elpad_db`.`batch_has_sale_detail`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `elpad_db`.`batch_has_sale_detail` (
+  `batchId` INT(11) NOT NULL,
+  `saleId` INT(11) NOT NULL,
+  `stockObtained` INT(11) NOT NULL,
+  PRIMARY KEY (`batchId`, `saleId`),
+  INDEX `fk_batch_has_sale_detail_sale_detail1_idx` (`saleId` ASC),
+  INDEX `fk_batch_has_sale_detail_batch1_idx` (`batchId` ASC),
+  CONSTRAINT `fk_batch_has_sale_detail_batch1`
+    FOREIGN KEY (`batchId`)
+    REFERENCES `elpad_db`.`batch` (`batchId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_batch_has_sale_detail_sale_detail1`
+    FOREIGN KEY (`saleId`)
+    REFERENCES `elpad_db`.`sale_detail` (`saleId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `elpad_db`.`category`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `elpad_db`.`category` (
+  `categoryId` INT(11) NOT NULL AUTO_INCREMENT,
+  `categoryName` VARCHAR(60) NOT NULL,
+  `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `lastUpdate` DATETIME NULL DEFAULT NULL,
+  `status` TINYINT(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`categoryId`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
 -- Table `elpad_db`.`food_times`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `elpad_db`.`food_times` (
-  `foodTimesId` INT NOT NULL AUTO_INCREMENT,
+  `foodTimesId` INT(11) NOT NULL AUTO_INCREMENT,
   `foodTimesName` VARCHAR(60) NOT NULL,
   `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastUpdate` DATETIME NULL DEFAULT NULL,
-  `status` TINYINT NOT NULL DEFAULT '1',
+  `status` TINYINT(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`foodTimesId`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
@@ -112,15 +288,15 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `elpad_db`.`dining_area_food_times`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `elpad_db`.`dining_area_food_times` (
-  `diningAreaFoodTimesId` INT NOT NULL AUTO_INCREMENT,
-  `diningAreaId` INT NOT NULL,
-  `foodTimesId` INT NOT NULL,
+  `diningAreaFoodTimesId` INT(11) NOT NULL AUTO_INCREMENT,
+  `diningAreaId` INT(11) NOT NULL,
+  `foodTimesId` INT(11) NOT NULL,
   `startTime` TIME NOT NULL,
   `endTime` TIME NOT NULL,
-  `nutritionalPercentage` TINYINT NOT NULL,
+  `nutritionalPercentage` TINYINT(4) NOT NULL,
   `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastUpdate` DATETIME NULL DEFAULT NULL,
-  `status` TINYINT NOT NULL DEFAULT '1',
+  `status` TINYINT(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`diningAreaFoodTimesId`),
   INDEX `fk_dining_area_food_times_dining_area1_idx` (`diningAreaId` ASC),
   INDEX `fk_dining_area_food_times_food_times1_idx` (`foodTimesId` ASC),
@@ -140,12 +316,12 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `elpad_db`.`menu`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `elpad_db`.`menu` (
-  `menuId` INT NOT NULL AUTO_INCREMENT,
+  `menuId` INT(11) NOT NULL AUTO_INCREMENT,
   `menuName` VARCHAR(60) NOT NULL,
   `startDate` DATE NOT NULL,
   `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastUpdate` DATETIME NULL DEFAULT NULL,
-  `status` TINYINT NOT NULL DEFAULT '1',
+  `status` TINYINT(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`menuId`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
@@ -155,15 +331,15 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `elpad_db`.`dining_area_menu`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `elpad_db`.`dining_area_menu` (
-  `diningAreaMenuId` INT NOT NULL AUTO_INCREMENT,
-  `diningAreaId` INT NOT NULL,
-  `menuId` INT NOT NULL,
-  `active` TINYINT NOT NULL,
+  `diningAreaMenuId` INT(11) NOT NULL AUTO_INCREMENT,
+  `diningAreaId` INT(11) NOT NULL,
+  `menuId` INT(11) NOT NULL,
+  `active` TINYINT(4) NOT NULL,
   `startDate` DATE NOT NULL,
   `endDate` DATE NOT NULL,
   `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastUpdate` DATETIME NULL DEFAULT NULL,
-  `status` TINYINT NOT NULL DEFAULT '1',
+  `status` TINYINT(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`diningAreaMenuId`),
   INDEX `fk_dining_area_menu_menu1_idx` (`menuId` ASC),
   INDEX `fk_dining_area_menu_dining_area1_idx` (`diningAreaId` ASC),
@@ -175,190 +351,6 @@ CREATE TABLE IF NOT EXISTS `elpad_db`.`dining_area_menu` (
     REFERENCES `elpad_db`.`menu` (`menuId`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `elpad_db`.`employee`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `elpad_db`.`employee` (
-  `employeeId` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(60) NOT NULL,
-  `lastName1` VARCHAR(60) NOT NULL,
-  `lastName2` VARCHAR(60) NULL DEFAULT NULL,
-  `employeePhoneNumber` VARCHAR(20) NOT NULL,
-  `employeeLatitude` FLOAT NOT NULL,
-  `employeeLongitude` FLOAT NOT NULL,
-  `employeeCI` VARCHAR(20) NOT NULL,
-  `employeeGender` CHAR(1) NOT NULL,
-  `employeeDateOfBirth` DATETIME NOT NULL,
-  `employeeCode` VARCHAR(45) NOT NULL,
-  `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `lastUpdate` DATETIME NULL DEFAULT NULL,
-  `status` TINYINT NOT NULL DEFAULT '1',
-  PRIMARY KEY (`employeeId`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `elpad_db`.`employee_type`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `elpad_db`.`employee_type` (
-  `employeeTypeId` INT NOT NULL AUTO_INCREMENT,
-  `employeeTypeName` VARCHAR(45) NOT NULL,
-  `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `lastUpdate` DATETIME NULL DEFAULT NULL,
-  `status` TINYINT NOT NULL DEFAULT '1',
-  PRIMARY KEY (`employeeTypeId`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `elpad_db`.`employee_has_employee_type`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `elpad_db`.`employee_has_employee_type` (
-  `employeeId` INT NOT NULL,
-  `employeeTypeId` INT NOT NULL,
-  `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `lastUpdate` DATETIME NULL DEFAULT NULL,
-  `status` TINYINT NOT NULL DEFAULT '1',
-  PRIMARY KEY (`employeeId`, `employeeTypeId`),
-  INDEX `fk_employee_has_employee_type_employee_type1_idx` (`employeeTypeId` ASC),
-  INDEX `fk_employee_has_employee_type_employee1_idx` (`employeeId` ASC),
-  CONSTRAINT `fk_employee_has_employee_type_employee1`
-    FOREIGN KEY (`employeeId`)
-    REFERENCES `elpad_db`.`employee` (`employeeId`),
-  CONSTRAINT `fk_employee_has_employee_type_employee_type1`
-    FOREIGN KEY (`employeeTypeId`)
-    REFERENCES `elpad_db`.`employee_type` (`employeeTypeId`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `elpad_db`.`job_material`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `elpad_db`.`job_material` (
-  `jobMaterialId` INT NOT NULL AUTO_INCREMENT,
-  `categoryId` INT NOT NULL,
-  `jobMaterialName` VARCHAR(45) NOT NULL,
-  `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `lastUpdate` DATETIME NULL DEFAULT NULL,
-  `status` TINYINT NOT NULL DEFAULT '1',
-  PRIMARY KEY (`jobMaterialId`),
-  INDEX `fk_job_material_category1_idx` (`categoryId` ASC),
-  CONSTRAINT `fk_job_material_category1`
-    FOREIGN KEY (`categoryId`)
-    REFERENCES `elpad_db`.`category` (`categoryId`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `elpad_db`.`employee_has_job_material`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `elpad_db`.`employee_has_job_material` (
-  `employeeHasJobMaterialId` INT NOT NULL AUTO_INCREMENT,
-  `jobMaterialId` INT NOT NULL,
-  `employeeId` INT NOT NULL,
-  `deliveryDate` DATETIME NOT NULL,
-  `renewalDate` DATETIME NULL DEFAULT NULL,
-  `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `lastUpdate` DATETIME NULL DEFAULT NULL,
-  `status` TINYINT NOT NULL DEFAULT '1',
-  PRIMARY KEY (`employeeHasJobMaterialId`),
-  INDEX `fk_employee_has_job_material_job_material1_idx` (`jobMaterialId` ASC),
-  INDEX `fk_employee_has_job_material_employee1_idx` (`employeeId` ASC),
-  CONSTRAINT `fk_employee_has_job_material_employee1`
-    FOREIGN KEY (`employeeId`)
-    REFERENCES `elpad_db`.`employee` (`employeeId`),
-  CONSTRAINT `fk_employee_has_job_material_job_material1`
-    FOREIGN KEY (`jobMaterialId`)
-    REFERENCES `elpad_db`.`job_material` (`jobMaterialId`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `elpad_db`.`employee_in_dining_area`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `elpad_db`.`employee_in_dining_area` (
-  `employeeInDiningAreaId` INT NOT NULL AUTO_INCREMENT,
-  `diningAreaId` INT NOT NULL,
-  `employeeId` INT NOT NULL,
-  `startDate` DATETIME NOT NULL,
-  `endDate` DATETIME NULL DEFAULT NULL,
-  `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `lastUpdate` DATETIME NULL DEFAULT NULL,
-  `status` TINYINT NOT NULL DEFAULT '1',
-  PRIMARY KEY (`employeeInDiningAreaId`),
-  INDEX `fk_employee_in_dining_area_employee1_idx` (`employeeId` ASC),
-  INDEX `fk_employee_in_dining_area_dining_area1_idx` (`diningAreaId` ASC),
-  CONSTRAINT `fk_employee_in_dining_area_dining_area1`
-    FOREIGN KEY (`diningAreaId`)
-    REFERENCES `elpad_db`.`dining_area` (`diningAreaId`),
-  CONSTRAINT `fk_employee_in_dining_area_employee1`
-    FOREIGN KEY (`employeeId`)
-    REFERENCES `elpad_db`.`employee` (`employeeId`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `elpad_db`.`work_schedule`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `elpad_db`.`work_schedule` (
-  `workScheduleId` INT NOT NULL AUTO_INCREMENT,
-  `workScheduleName` VARCHAR(60) NOT NULL,
-  `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `lastUpdate` DATETIME NULL DEFAULT NULL,
-  `status` TINYINT NOT NULL DEFAULT '1',
-  PRIMARY KEY (`workScheduleId`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `elpad_db`.`employee_work_schedule`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `elpad_db`.`employee_work_schedule` (
-  `employeeWorkScheduleId` INT NOT NULL AUTO_INCREMENT,
-  `diningAreaId` INT NOT NULL,
-  `workScheduleId` INT NOT NULL,
-  `startTime` TIME NOT NULL,
-  `endTime` TIME NOT NULL,
-  `numberOfDay` TINYINT NOT NULL,
-  `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `lastUpdate` DATETIME NULL DEFAULT NULL,
-  `status` TINYINT NOT NULL DEFAULT '1',
-  PRIMARY KEY (`employeeWorkScheduleId`),
-  INDEX `fk_employee_work_schedule_diningArea1_idx` (`diningAreaId` ASC),
-  INDEX `fk_employee_work_schedule_workSchedule1_idx` (`workScheduleId` ASC),
-  CONSTRAINT `fk_employee_work_schedule_dining_area1`
-    FOREIGN KEY (`diningAreaId`)
-    REFERENCES `elpad_db`.`dining_area` (`diningAreaId`),
-  CONSTRAINT `fk_employee_work_schedule_work_schedule1`
-    FOREIGN KEY (`workScheduleId`)
-    REFERENCES `elpad_db`.`work_schedule` (`workScheduleId`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `elpad_db`.`inventario`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `elpad_db`.`inventario` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `fecha` DATE NOT NULL,
-  `cliente` VARCHAR(30) CHARACTER SET 'utf8' NOT NULL,
-  `cantidad` INT UNSIGNED NOT NULL,
-  `taza` TINYINT UNSIGNED NOT NULL,
-  `total` INT UNSIGNED NOT NULL,
-  `nota` TEXT CHARACTER SET 'utf8' NOT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = MyISAM
-DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
@@ -408,14 +400,14 @@ CREATE TABLE IF NOT EXISTS `elpad_db`.`dish_in_menu` (
     REFERENCES `elpad_db`.`dining_area_food_times` (`diningAreaFoodTimesId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_dish_in_menu_menu1`
-    FOREIGN KEY (`menuId`)
-    REFERENCES `elpad_db`.`menu` (`menuId`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `fk_dish_in_menu_dish1`
     FOREIGN KEY (`dishId`)
     REFERENCES `elpad_db`.`dish` (`dishId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_dish_in_menu_menu1`
+    FOREIGN KEY (`menuId`)
+    REFERENCES `elpad_db`.`menu` (`menuId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -423,15 +415,213 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `elpad_db`.`product_category`
+-- Table `elpad_db`.`employee_type`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `elpad_db`.`product_category` (
-  `productCategoryId` INT NOT NULL AUTO_INCREMENT,
-  `categoryName` VARCHAR(35) NOT NULL,
+CREATE TABLE IF NOT EXISTS `elpad_db`.`employee_type` (
+  `employeeTypeId` INT(11) NOT NULL AUTO_INCREMENT,
+  `employeeTypeName` VARCHAR(45) NOT NULL,
   `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastUpdate` DATETIME NULL DEFAULT NULL,
-  `status` TINYINT NOT NULL DEFAULT '1',
-  PRIMARY KEY (`productCategoryId`))
+  `status` TINYINT(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`employeeTypeId`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `elpad_db`.`employee_has_employee_type`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `elpad_db`.`employee_has_employee_type` (
+  `employeeId` INT(11) NOT NULL,
+  `employeeTypeId` INT(11) NOT NULL,
+  `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `lastUpdate` DATETIME NULL DEFAULT NULL,
+  `status` TINYINT(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`employeeId`, `employeeTypeId`),
+  INDEX `fk_employee_has_employee_type_employee_type1_idx` (`employeeTypeId` ASC),
+  INDEX `fk_employee_has_employee_type_employee1_idx` (`employeeId` ASC),
+  CONSTRAINT `fk_employee_has_employee_type_employee1`
+    FOREIGN KEY (`employeeId`)
+    REFERENCES `elpad_db`.`employee` (`employeeId`),
+  CONSTRAINT `fk_employee_has_employee_type_employee_type1`
+    FOREIGN KEY (`employeeTypeId`)
+    REFERENCES `elpad_db`.`employee_type` (`employeeTypeId`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `elpad_db`.`job_material`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `elpad_db`.`job_material` (
+  `jobMaterialId` INT(11) NOT NULL AUTO_INCREMENT,
+  `categoryId` INT(11) NOT NULL,
+  `jobMaterialName` VARCHAR(45) NOT NULL,
+  `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `lastUpdate` DATETIME NULL DEFAULT NULL,
+  `status` TINYINT(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`jobMaterialId`),
+  INDEX `fk_job_material_category1_idx` (`categoryId` ASC),
+  CONSTRAINT `fk_job_material_category1`
+    FOREIGN KEY (`categoryId`)
+    REFERENCES `elpad_db`.`category` (`categoryId`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `elpad_db`.`employee_has_job_material`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `elpad_db`.`employee_has_job_material` (
+  `employeeHasJobMaterialId` INT(11) NOT NULL AUTO_INCREMENT,
+  `jobMaterialId` INT(11) NOT NULL,
+  `employeeId` INT(11) NOT NULL,
+  `deliveryDate` DATETIME NOT NULL,
+  `renewalDate` DATETIME NULL DEFAULT NULL,
+  `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `lastUpdate` DATETIME NULL DEFAULT NULL,
+  `status` TINYINT(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`employeeHasJobMaterialId`),
+  INDEX `fk_employee_has_job_material_job_material1_idx` (`jobMaterialId` ASC),
+  INDEX `fk_employee_has_job_material_employee1_idx` (`employeeId` ASC),
+  CONSTRAINT `fk_employee_has_job_material_employee1`
+    FOREIGN KEY (`employeeId`)
+    REFERENCES `elpad_db`.`employee` (`employeeId`),
+  CONSTRAINT `fk_employee_has_job_material_job_material1`
+    FOREIGN KEY (`jobMaterialId`)
+    REFERENCES `elpad_db`.`job_material` (`jobMaterialId`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `elpad_db`.`employee_in_dining_area`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `elpad_db`.`employee_in_dining_area` (
+  `employeeInDiningAreaId` INT(11) NOT NULL AUTO_INCREMENT,
+  `diningAreaId` INT(11) NOT NULL,
+  `employeeId` INT(11) NOT NULL,
+  `startDate` DATETIME NOT NULL,
+  `endDate` DATETIME NULL DEFAULT NULL,
+  `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `lastUpdate` DATETIME NULL DEFAULT NULL,
+  `status` TINYINT(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`employeeInDiningAreaId`),
+  INDEX `fk_employee_in_dining_area_employee1_idx` (`employeeId` ASC),
+  INDEX `fk_employee_in_dining_area_dining_area1_idx` (`diningAreaId` ASC),
+  CONSTRAINT `fk_employee_in_dining_area_dining_area1`
+    FOREIGN KEY (`diningAreaId`)
+    REFERENCES `elpad_db`.`dining_area` (`diningAreaId`),
+  CONSTRAINT `fk_employee_in_dining_area_employee1`
+    FOREIGN KEY (`employeeId`)
+    REFERENCES `elpad_db`.`employee` (`employeeId`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `elpad_db`.`work_schedule`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `elpad_db`.`work_schedule` (
+  `workScheduleId` INT(11) NOT NULL AUTO_INCREMENT,
+  `workScheduleName` VARCHAR(60) NOT NULL,
+  `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `lastUpdate` DATETIME NULL DEFAULT NULL,
+  `status` TINYINT(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`workScheduleId`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `elpad_db`.`employee_work_schedule`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `elpad_db`.`employee_work_schedule` (
+  `employeeWorkScheduleId` INT(11) NOT NULL AUTO_INCREMENT,
+  `diningAreaId` INT(11) NOT NULL,
+  `workScheduleId` INT(11) NOT NULL,
+  `startTime` TIME NOT NULL,
+  `endTime` TIME NOT NULL,
+  `numberOfDay` TINYINT(4) NOT NULL,
+  `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `lastUpdate` DATETIME NULL DEFAULT NULL,
+  `status` TINYINT(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`employeeWorkScheduleId`),
+  INDEX `fk_employee_work_schedule_diningArea1_idx` (`diningAreaId` ASC),
+  INDEX `fk_employee_work_schedule_workSchedule1_idx` (`workScheduleId` ASC),
+  CONSTRAINT `fk_employee_work_schedule_dining_area1`
+    FOREIGN KEY (`diningAreaId`)
+    REFERENCES `elpad_db`.`dining_area` (`diningAreaId`),
+  CONSTRAINT `fk_employee_work_schedule_work_schedule1`
+    FOREIGN KEY (`workScheduleId`)
+    REFERENCES `elpad_db`.`work_schedule` (`workScheduleId`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `elpad_db`.`inventario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `elpad_db`.`inventario` (
+  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `fecha` DATE NOT NULL,
+  `cliente` VARCHAR(30) CHARACTER SET 'utf8' NOT NULL,
+  `cantidad` INT(10) UNSIGNED NOT NULL,
+  `taza` TINYINT(3) UNSIGNED NOT NULL,
+  `total` INT(10) UNSIGNED NOT NULL,
+  `nota` TEXT CHARACTER SET 'utf8' NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = MyISAM
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `elpad_db`.`petty_cash`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `elpad_db`.`petty_cash` (
+  `pettyCashId` INT(11) NOT NULL AUTO_INCREMENT,
+  `diningAreaId` INT(11) NOT NULL,
+  `fund` DECIMAL(6,2) NOT NULL DEFAULT '0.00',
+  `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `lastUpdate` DATETIME NULL DEFAULT NULL,
+  `status` TINYINT(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`pettyCashId`),
+  INDEX `fk_petty_cash_dining_area1_idx` (`diningAreaId` ASC),
+  CONSTRAINT `fk_petty_cash_dining_area1`
+    FOREIGN KEY (`diningAreaId`)
+    REFERENCES `elpad_db`.`dining_area` (`diningAreaId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `elpad_db`.`petty_cash_record`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `elpad_db`.`petty_cash_record` (
+  `pettyCashRecordId` INT(11) NOT NULL AUTO_INCREMENT,
+  `pettyCashId` INT(11) NOT NULL,
+  `userId` INT(11) NOT NULL,
+  `amount` DECIMAL(6,2) NOT NULL,
+  `motive` VARCHAR(255) NOT NULL,
+  `type` TINYINT(4) NOT NULL,
+  `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `lastUpdate` DATETIME NULL DEFAULT NULL,
+  `status` TINYINT(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`pettyCashRecordId`, `userId`, `pettyCashId`),
+  INDEX `fk_user_has_petty_cash_petty_cash1_idx` (`pettyCashId` ASC),
+  INDEX `fk_user_has_petty_cash_user1_idx` (`userId` ASC),
+  CONSTRAINT `fk_user_has_petty_cash_petty_cash1`
+    FOREIGN KEY (`pettyCashId`)
+    REFERENCES `elpad_db`.`petty_cash` (`pettyCashId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_user_has_petty_cash_user1`
+    FOREIGN KEY (`userId`)
+    REFERENCES `elpad_db`.`user` (`userId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -440,11 +630,11 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `elpad_db`.`role`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `elpad_db`.`role` (
-  `roleId` TINYINT NOT NULL AUTO_INCREMENT,
+  `roleId` TINYINT(4) NOT NULL AUTO_INCREMENT,
   `roleName` VARCHAR(60) NOT NULL,
   `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastUpdate` DATETIME NULL DEFAULT NULL,
-  `status` TINYINT NOT NULL DEFAULT '1',
+  `status` TINYINT(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`roleId`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
@@ -454,8 +644,8 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `elpad_db`.`role_has_access`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `elpad_db`.`role_has_access` (
-  `roleId` TINYINT NOT NULL,
-  `accessId` TINYINT NOT NULL,
+  `roleId` TINYINT(4) NOT NULL,
+  `accessId` TINYINT(4) NOT NULL,
   PRIMARY KEY (`roleId`, `accessId`),
   INDEX `fk_role_has_access_access1_idx` (`accessId` ASC),
   INDEX `fk_role_has_access_role1_idx` (`roleId` ASC),
@@ -473,11 +663,11 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `elpad_db`.`supply_type`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `elpad_db`.`supply_type` (
-  `supplyTypeId` TINYINT NOT NULL AUTO_INCREMENT,
+  `supplyTypeId` TINYINT(4) NOT NULL AUTO_INCREMENT,
   `supplyTypeName` VARCHAR(60) NOT NULL,
   `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastUpdate` DATETIME NULL DEFAULT NULL,
-  `status` TINYINT NOT NULL DEFAULT '1',
+  `status` TINYINT(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`supplyTypeId`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
@@ -487,8 +677,8 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `elpad_db`.`supply`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `elpad_db`.`supply` (
-  `supplyId` INT NOT NULL AUTO_INCREMENT,
-  `supplyTypeId` TINYINT NOT NULL,
+  `supplyId` INT(11) NOT NULL AUTO_INCREMENT,
+  `supplyTypeId` TINYINT(4) NOT NULL,
   `supplyName` VARCHAR(60) NOT NULL,
   `caloricValue` FLOAT NOT NULL,
   `proteinValue` FLOAT NOT NULL,
@@ -496,7 +686,7 @@ CREATE TABLE IF NOT EXISTS `elpad_db`.`supply` (
   `carbohydratesValue` FLOAT NOT NULL,
   `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastUpdate` DATETIME NULL DEFAULT NULL,
-  `status` TINYINT NOT NULL DEFAULT '1',
+  `status` TINYINT(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`supplyId`),
   INDEX `fk_supply_supply_type1_idx` (`supplyTypeId` ASC),
   CONSTRAINT `fk_supply_supply_type1`
@@ -535,31 +725,12 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `elpad_db`.`user`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `elpad_db`.`user` (
-  `userId` INT NOT NULL,
-  `email` VARCHAR(255) NOT NULL,
-  `password` VARCHAR(60) NOT NULL,
-  `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `lastUpdate` DATETIME NULL DEFAULT NULL,
-  `status` TINYINT NOT NULL DEFAULT '1',
-  PRIMARY KEY (`userId`),
-  INDEX `fk_user_employee1_idx` (`userId` ASC),
-  CONSTRAINT `fk_user_employee1`
-    FOREIGN KEY (`userId`)
-    REFERENCES `elpad_db`.`employee` (`employeeId`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
 -- Table `elpad_db`.`token`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `elpad_db`.`token` (
-  `userId` INT NOT NULL,
+  `userId` INT(11) NOT NULL,
   `tokenString` VARCHAR(55) NOT NULL,
-  `status` TINYINT NOT NULL DEFAULT '1',
+  `status` TINYINT(4) NOT NULL DEFAULT '1',
   INDEX `fk_token_user1_idx` (`userId` ASC),
   CONSTRAINT `fk_token_user1`
     FOREIGN KEY (`userId`)
@@ -572,11 +743,11 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `elpad_db`.`user_role`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `elpad_db`.`user_role` (
-  `userId` INT NOT NULL,
-  `roleId` TINYINT NOT NULL,
+  `userId` INT(11) NOT NULL,
+  `roleId` TINYINT(4) NOT NULL,
   `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastUpdate` DATETIME NULL DEFAULT NULL,
-  `status` TINYINT NOT NULL DEFAULT '1',
+  `status` TINYINT(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`userId`, `roleId`),
   INDEX `fk_user_has_role_role1_idx` (`roleId` ASC),
   INDEX `fk_user_has_role_user1_idx` (`userId` ASC),
@@ -594,12 +765,12 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `elpad_db`.`work_memorandum`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `elpad_db`.`work_memorandum` (
-  `workMemorandumId` INT NOT NULL AUTO_INCREMENT,
-  `employeeId` INT NOT NULL,
+  `workMemorandumId` INT(11) NOT NULL AUTO_INCREMENT,
+  `employeeId` INT(11) NOT NULL,
   `workMemorandumDescription` VARCHAR(145) NOT NULL,
   `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastUpdate` DATETIME NULL DEFAULT NULL,
-  `status` TINYINT NOT NULL DEFAULT '1',
+  `status` TINYINT(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`workMemorandumId`),
   INDEX `fk_work_memorandum_employee1_idx` (`employeeId` ASC),
   CONSTRAINT `fk_work_memorandum_employee1`
@@ -613,14 +784,14 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `elpad_db`.`work_permit`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `elpad_db`.`work_permit` (
-  `workPermitId` INT NOT NULL AUTO_INCREMENT,
-  `employeeId` INT NOT NULL,
+  `workPermitId` INT(11) NOT NULL AUTO_INCREMENT,
+  `employeeId` INT(11) NOT NULL,
   `startDate` DATETIME NOT NULL,
   `endDate` DATETIME NOT NULL,
   `workPermitDescription` VARCHAR(145) NOT NULL,
   `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastUpdate` DATETIME NULL DEFAULT NULL,
-  `status` TINYINT NOT NULL DEFAULT '1',
+  `status` TINYINT(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`workPermitId`),
   INDEX `fk_work_permit_employee1_idx` (`employeeId` ASC),
   CONSTRAINT `fk_work_permit_employee1`
@@ -631,173 +802,65 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `elpad_db`.`product`
+-- Table `elpad_db`.`supplier`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `elpad_db`.`product` (
-  `productId` INT NOT NULL AUTO_INCREMENT,
-  `productName` VARCHAR(60) NOT NULL,
-  `productCategoryId` INT NOT NULL,
-  `productPrice` DECIMAL(6,2) NOT NULL,
+CREATE TABLE IF NOT EXISTS `elpad_db`.`supplier` (
+  `supplierId` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(120) NOT NULL,
+  `address` VARCHAR(60) NOT NULL,
+  `phone1` VARCHAR(60) NOT NULL,
+  `phone2` VARCHAR(60) NOT NULL,
+  `phone3` VARCHAR(60) NULL,
+  `gmail` VARCHAR(145) NULL,
   `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastUpdate` DATETIME NULL DEFAULT NULL,
-  `status` TINYINT NOT NULL DEFAULT '1',
-  PRIMARY KEY (`productId`),
-  INDEX `fk_product_product_category1_idx` (`productCategoryId` ASC),
-  CONSTRAINT `fk_product_product_category1`
-    FOREIGN KEY (`productCategoryId`)
-    REFERENCES `elpad_db`.`product_category` (`productCategoryId`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  `status` TINYINT(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`supplierId`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `elpad_db`.`sale`
+-- Table `elpad_db`.`legal_entity`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `elpad_db`.`sale` (
-  `saleId` INT NOT NULL,
-  `total` DECIMAL(8,2) NOT NULL,
-  `userId` INT NOT NULL,
-  `client_clientId` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `elpad_db`.`legal_entity` (
+  `legalEntityId` INT NOT NULL,
+  `legalEntityName` VARCHAR(60) NOT NULL,
   `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastUpdate` DATETIME NULL DEFAULT NULL,
-  `status` TINYINT NOT NULL DEFAULT '1',
-  PRIMARY KEY (`saleId`),
-  INDEX `fk_sale_user1_idx` (`userId` ASC),
-  INDEX `fk_sale_client1_idx` (`client_clientId` ASC),
-  CONSTRAINT `fk_sale_user1`
-    FOREIGN KEY (`userId`)
-    REFERENCES `elpad_db`.`user` (`userId`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_sale_client1`
-    FOREIGN KEY (`client_clientId`)
-    REFERENCES `elpad_db`.`client` (`clientId`)
+  `status` TINYINT(4) NOT NULL DEFAULT '1',
+  INDEX `fk_table1_supplier1_idx` (`legalEntityId` ASC),
+  CONSTRAINT `fk_table1_supplier1`
+    FOREIGN KEY (`legalEntityId`)
+    REFERENCES `elpad_db`.`supplier` (`supplierId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `elpad_db`.`sale_detail`
+-- Table `elpad_db`.`natural_person`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `elpad_db`.`sale_detail` (
-  `saleId` INT NOT NULL,
-  `productId` INT NOT NULL,
-  `quantity` VARCHAR(45) NOT NULL,
-  `unitPrice` VARCHAR(45) NOT NULL,
-  INDEX `fk_sale_has_product_product1_idx` (`productId` ASC),
-  INDEX `fk_sale_has_product_sale1_idx` (`saleId` ASC),
-  PRIMARY KEY (`saleId`, `productId`),
-  CONSTRAINT `fk_sale_has_product_sale1`
-    FOREIGN KEY (`saleId`)
-    REFERENCES `elpad_db`.`sale` (`saleId`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_sale_has_product_product1`
-    FOREIGN KEY (`productId`)
-    REFERENCES `elpad_db`.`product` (`productId`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `elpad_db`.`batch`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `elpad_db`.`batch` (
-  `batchId` INT NOT NULL AUTO_INCREMENT,
-  `productProductId` INT NOT NULL,
-  `productQuantity` VARCHAR(45) NOT NULL,
-  `productUnitPrice` DECIMAL(5,2) NOT NULL,
-  `totalPaid` DECIMAL(8,2) NOT NULL,
-  `stock` INT NOT NULL,
-  PRIMARY KEY (`batchId`),
-  INDEX `fk_batch_product1_idx` (`productProductId` ASC),
-  CONSTRAINT `fk_batch_product1`
-    FOREIGN KEY (`productProductId`)
-    REFERENCES `elpad_db`.`product` (`productId`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `elpad_db`.`batch_has_sale_detail`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `elpad_db`.`batch_has_sale_detail` (
-  `batchId` INT NOT NULL,
-  `saleId` INT NOT NULL,
-  `stockObtained` INT NOT NULL,
-  PRIMARY KEY (`batchId`, `saleId`),
-  INDEX `fk_batch_has_sale_detail_sale_detail1_idx` (`saleId` ASC),
-  INDEX `fk_batch_has_sale_detail_batch1_idx` (`batchId` ASC),
-  CONSTRAINT `fk_batch_has_sale_detail_batch1`
-    FOREIGN KEY (`batchId`)
-    REFERENCES `elpad_db`.`batch` (`batchId`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_batch_has_sale_detail_sale_detail1`
-    FOREIGN KEY (`saleId`)
-    REFERENCES `elpad_db`.`sale_detail` (`saleId`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `elpad_db`.`petty_cash`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `elpad_db`.`petty_cash` (
-  `pettyCashId` INT NOT NULL AUTO_INCREMENT,
-  `diningAreaId` INT NOT NULL,
-  `fund` DECIMAL(6,2) NOT NULL DEFAULT 0,
+CREATE TABLE IF NOT EXISTS `elpad_db`.`natural_person` (
+  `naturalPersonId` INT NOT NULL,
+  `name` VARCHAR(120) NOT NULL,
+  `lastName1` VARCHAR(45) NOT NULL,
+  `lastName2` VARCHAR(45) NULL,
   `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastUpdate` DATETIME NULL DEFAULT NULL,
-  `status` TINYINT NOT NULL DEFAULT '1',
-  PRIMARY KEY (`pettyCashId`),
-  INDEX `fk_petty_cash_dining_area1_idx` (`diningAreaId` ASC),
-  CONSTRAINT `fk_petty_cash_dining_area1`
-    FOREIGN KEY (`diningAreaId`)
-    REFERENCES `elpad_db`.`dining_area` (`diningAreaId`)
+  `status` TINYINT(4) NOT NULL DEFAULT '1',
+  INDEX `fk_table2_supplier1_idx` (`naturalPersonId` ASC),
+  CONSTRAINT `fk_table2_supplier1`
+    FOREIGN KEY (`naturalPersonId`)
+    REFERENCES `elpad_db`.`supplier` (`supplierId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `elpad_db`.`petty_cash_record`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `elpad_db`.`petty_cash_record` (
-  `pettyCashRecordId` INT NOT NULL AUTO_INCREMENT,
-  `pettyCashId` INT NOT NULL,
-  `userId` INT NOT NULL,
-  `amount` DECIMAL(6,2) NOT NULL,
-  `motive` VARCHAR(255) NOT NULL,
-  `type` TINYINT NOT NULL,
-  `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `lastUpdate` DATETIME NULL DEFAULT NULL,
-  `status` TINYINT NOT NULL DEFAULT '1',
-  PRIMARY KEY (`pettyCashRecordId`, `userId`, `pettyCashId`),
-  INDEX `fk_user_has_petty_cash_petty_cash1_idx` (`pettyCashId` ASC),
-  INDEX `fk_user_has_petty_cash_user1_idx` (`userId` ASC),
-  CONSTRAINT `fk_user_has_petty_cash_user1`
-    FOREIGN KEY (`userId`)
-    REFERENCES `elpad_db`.`user` (`userId`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_user_has_petty_cash_petty_cash1`
-    FOREIGN KEY (`pettyCashId`)
-    REFERENCES `elpad_db`.`petty_cash` (`pettyCashId`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
 
 
 
