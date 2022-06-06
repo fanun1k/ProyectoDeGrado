@@ -93,6 +93,15 @@ $routes->post('/gestion_proyectos/gestion_de_clientes/crudClient','Client_list_c
 
 /*
  * --------------------------------------------------------------------
+ * Gestion de Proveedores
+ * --------------------------------------------------------------------
+ */
+$routes->get('/aprovisionamiento/proveedores/lista_proveedores','Supplier_controller::index');
+$routes->post('/aprovisionamiento/proveedores/lista_proveedores/registrar_proveedor', 'Supplier_controller::registerSupplier');
+$routes->post('/aprovisionamiento/proveedores/lista_proveedores/editar_proveedor/(:num)', 'Supplier_controller::updateSupplier/$1');
+$routes->get('/aprovisionamiento/proveedores/lista_proveedores/eliminar_proveedor/(:num)', 'Supplier_controller::deleteSupplier/$1');
+/*
+ * --------------------------------------------------------------------
  * Gestion de Contabilidad
  * --------------------------------------------------------------------
  */
