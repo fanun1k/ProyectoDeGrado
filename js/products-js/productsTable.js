@@ -40,7 +40,7 @@ jQuery(function ($) {
     if (value == "") {
       return [false, "El nombre no puede estar vacío"];
     }
-    if (/^[0-9a-zA-Z]+$/.test(value) && value.length <= 45) {
+    if (/^[0-9a-zA-Z\s]+$/.test(value) && value.length <= 45) {
       return [true, ""];
     } else {
       return [false, "Solo se admite letras y números"];
@@ -50,7 +50,7 @@ jQuery(function ($) {
     if (value == "") {
       return [false, "El precio no puede estar vacío"];
     }
-    if (value ==0) {
+    if (value == 0) {
       return [false, "El precio no puede ser 0"];
     }
     if (/^(\d{1,4})(\.\d{1,2})?$/.test(value)) {
@@ -58,6 +58,12 @@ jQuery(function ($) {
     } else {
       return [false, "formato de moneda incorrecto"];
     }
+  }
+  function imageFormat(cellvalue, options, rowObject) {
+    return '<img src="' + cellvalue + '" style="height:50px" />';
+  }
+  function imageUnFormat(cellvalue, options, cell) {
+    return $("img", cell).attr("src");
   }
   jQuery(grid_selector)
     .jqGrid({
@@ -74,35 +80,16 @@ jQuery(function ($) {
       },
       //for this example we are using local data
       url: "productos/getProducts",
-      datatype: "json",
+      datatype: "JSON",
       height: 400,
       colNames: [
-        "",
         "ID",
+        "Imagen",
         "Nombre del producto",
         "Categoría",
         "Precio Unitario",
       ],
       colModel: [
-        {
-          name: "",
-          index: "",
-          width: 80,
-          fixed: true,
-          sortable: false,
-          resize: false,
-          formatter: "actions",
-          formatoptions: {
-            keys: true,
-            //delbutton: false,//disable delete button
-
-            delOptions: {
-              recreateForm: true,
-              beforeShowForm: beforeDeleteCallback,
-            },
-            //editformbutton:true, editOptions:{recreateForm: true, beforeShowForm:beforeEditCallback}
-          },
-        },
         {
           name: "productId",
           index: "productId",
@@ -111,11 +98,24 @@ jQuery(function ($) {
           sorttype: "id",
         },
         {
+          name: "image",
+          index: "image",
+          width: 60,
+          editable: true,         
+          edittype: "file",
+          editoptions: {
+            enctype: "multipart/form-data",
+            accept:"image/*"
+          },
+          formatter: imageFormat,
+          unformat: fileStyle,
+        },
+        {
           name: "productName",
           index: "productName",
           width: 90,
           editable: true,
-          editrules: { custom: true, custom_func: validate_product_name },
+          editrules: { custom: true, custom_func: validate_product_name,required:true },
         },
         {
           name: "categoryName",
@@ -125,14 +125,20 @@ jQuery(function ($) {
           //editrules: { custom: true, custom_func: validate_product_price },
           edittype: "select",
           editoptions: { dataUrl: "productos/getOptionsProductCategory" },
+          
           unformat: aceSwitch,
         },
         {
           name: "productPrice",
           index: "productPrice",
           width: 120,
-          editable: true, 
-          formatter:'currency', formatoptions:{decimalSeparator:".", decimalPlaces: 2, suffix: "Bs. "},
+          editable: true,
+          formatter: "currency",
+          formatoptions: {
+            decimalSeparator: ".",
+            decimalPlaces: 2,
+            suffix: "Bs. ",
+          },
           editrules: { custom: true, custom_func: validate_product_price },
         },
       ],
@@ -186,6 +192,13 @@ jQuery(function ($) {
         .after('<span class="lbl"></span>');
     }, 0);
   }
+  function fileStyle(cellvalue, options, cell) {
+    setTimeout(function () {
+      $(cell)
+        .find("input[type=file]")
+        .addClass(" ace-icon ace-icon fa fa-cloud-upload")        
+    }, 0);
+  }
   //enable datepicker
   function pickDate(cellvalue, options, cell) {
     setTimeout(function () {
@@ -202,11 +215,11 @@ jQuery(function ($) {
     pager_selector,
     {
       //navbar options
-      edit: false,
+      edit: true,
       editicon: "ace-icon fa fa-pencil blue",
       add: true,
       addicon: "ace-icon fa fa-plus-circle purple",
-      del: false,
+      del: true,
       delicon: "ace-icon fa fa-trash-o red",
       search: true,
       searchicon: "ace-icon fa fa-search orange",
@@ -219,7 +232,15 @@ jQuery(function ($) {
       //edit record form
       //closeAfterEdit: true,
       //width: 700,
+      editCaption: "Editar Registro",
+      bSubmit: "Editar",
+      bCancel: "Cancelar",
+      closeAfterEdit: true,
       recreateForm: true,
+      onInitializeForm: function (formid) {
+        $(formid).attr("method", "POST");
+        $(formid).attr("enctype", "multipart/form-data");
+      },
       beforeShowForm: function (e) {
         var form = $(e[0]);
         form
@@ -228,13 +249,30 @@ jQuery(function ($) {
           .wrapInner('<div class="widget-header" />');
         style_edit_form(form);
       },
+      afterSubmit: function (response, postdata) {
+        if ($("#image").val() != "") {
+          console.log("entro");
+          ajaxFileUpload(postdata["id"],postdata["oper"]);
+        } else {
+          console.log("no entro img");
+        }
+
+        return [true, ""];
+      },
     },
     {
       //new record form
       //width: 700,
+      addCaption: "Agregar Registro",
+      bSubmit: "Agregar",
+      bCancel: "Cancelar",
       closeAfterAdd: true,
       recreateForm: true,
       viewPagerButtons: false,
+      onInitializeForm: function (formid) {
+        $(formid).attr("method", "POST");
+        $(formid).attr("enctype", "multipart/form-data");
+      },
       beforeShowForm: function (e) {
         var form = $(e[0]);
         form
@@ -242,6 +280,15 @@ jQuery(function ($) {
           .find(".ui-jqdialog-titlebar")
           .wrapInner('<div class="widget-header" />');
         style_edit_form(form);
+      },
+      afterSubmit: function (response, postdata) {
+        id=response["responseText"];
+        if ($("#image").val() != "") {
+          ajaxFileUpload(id,postdata["oper"]);
+        } else {
+          console.log("no entro img");
+        }
+        return [true, ""];
       },
     },
     {
@@ -292,6 +339,9 @@ jQuery(function ($) {
           .closest(".ui-jqdialog")
           .find(".ui-jqdialog-title")
           .wrap('<div class="widget-header" />');
+        form
+            .find("img")
+            .css("height","250");
       },
     }
   );
@@ -367,7 +417,6 @@ jQuery(function ($) {
       .find(".ui-icon")
       .attr("class", "ace-icon fa fa-search");
   }
-
   function beforeDeleteCallback(e) {
     var form = $(e[0]);
     if (form.data("styled")) return false;
@@ -460,4 +509,21 @@ jQuery(function ($) {
     $.jgrid.gridDestroy(grid_selector);
     $(".ui-jqdialog").remove();
   });
+
+  function ajaxFileUpload(id,oper) {
+    
+    $.ajaxFileUpload({
+      url: 'productos/crudProduct',
+      secureuri: false,
+      fileElementId: "image",
+      dataType: "JSON",
+      data: { id: id,oper:oper },
+      success: function (data, status) {
+        return true;        
+      },
+      error: function (data, status, e) {
+        return alert(e);
+      },
+    });
+  }
 });

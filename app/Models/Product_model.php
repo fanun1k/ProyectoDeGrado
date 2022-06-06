@@ -29,6 +29,7 @@ class Product_model extends Model
         $aux = [];
         foreach ($data->getResult() as $row) {
             $id = $row->productId;
+            $row->image=base_url("images/product-images")."/".$id.".jpg";
             $b = ['id' => $id, 'cell' => $row];
             array_push($aux, $b);
         }
