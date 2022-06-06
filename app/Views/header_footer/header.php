@@ -79,7 +79,7 @@
 							<ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
 								<li class="dropdown-header">
 									<i class="ace-icon fa fa-check"></i>
-									4 Tasks to complete
+									Comedores
 								</li>
 
 								<li class="dropdown-content">
@@ -156,7 +156,7 @@
 							<ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
 								<li class="dropdown-header">
 									<i class="ace-icon fa fa-exclamation-triangle"></i>
-									8 Notifications
+									Notificaciones
 								</li>
 
 								<li class="dropdown-content">
