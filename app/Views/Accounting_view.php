@@ -112,6 +112,9 @@
 					<div id="timeline-1">
 						<?php
 							$currentDateForTimeline = date('Y-m-d', strtotime('2999-06-09'));
+							$countPettyCashRecord = 0;
+							foreach($pettyCashRecord->getResult() as $row) { $countPettyCashRecord++; }
+							if ($countPettyCashRecord == 0) { echo "<h4>No existe registro de transacciones de caja chica.</h4>"; }
 							foreach($pettyCashRecord->getResult() as $row) { $d = date("Y-m-d", strtotime($row->createDate));
 						?>
 						<div class="timeline-container">
@@ -173,6 +176,7 @@
 				<span class="blue bolder">Ace</span> Application &copy; 2013-2014
 			</span> &nbsp; &nbsp;
 			<span class="action-buttons">
+				<a href="https://www.youtube.com/c/Irizam"><i class="ace-icon fa fa-youtube-square red bigger-150"></i></a>
 				<a href="#"> <i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i> </a>
 				<a href="#"> <i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i> </a>
 				<a href="#"> <i class="ace-icon fa fa-rss-square orange bigger-150"></i> </a>
