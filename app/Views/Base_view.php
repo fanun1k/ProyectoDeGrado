@@ -16,6 +16,13 @@
 					<!-- PAGE CONTENT ENDS -->
 				</div><!-- /.col -->
 			</div><!-- /.row -->
+			<div class="row">
+				<div class="col-xs-12">
+					<!-- PAGE CONTENT BEGINS -->
+					<a href="<?php echo base_url('/prueba_de_qr'); ?>" class="btn btn-primary">Hello Pablo</a>
+					<!-- PAGE CONTENT ENDS -->
+				</div><!-- /.col -->
+			</div><!-- /.row -->
 		</div><!-- /.page-content -->
 	</div>
 </div><!-- /.main-content -->

@@ -39,6 +39,7 @@ $routes->get('/cerrando_sesion', 'Login_controller::logout');
 $routes->post('/recuperando_cuenta', 'Login_controller::recoverPassword');
 $routes->get('/recuperar_cuenta', 'Login_controller::recoverPasswordPage');
 $routes->post('/cambiar_contrasena', 'Login_controller::changePassword');
+$routes->get('/prueba_de_qr', 'QR_test_controller::index');
 
 /*
  * --------------------------------------------------------------------
