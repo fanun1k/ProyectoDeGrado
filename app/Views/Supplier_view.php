@@ -62,14 +62,22 @@
                                         foreach($data as $value) { ?>
                                             <tr>
                                                 <td class="center"><?php echo $index; ?></td>
-                                                <td><?php echo $value['name']; ?></td>
+                                                <td>
+                                                    <?php 
+                                                        if($value['legalEntityName']!=null){
+                                                            echo $value['legalEntityName'];
+                                                        }
+                                                        elseif($value['name']!=null)
+                                                            echo $value['name']." ".$value['lastName1']." ".$value['lastName2']; 
+                                                    ?>
+                                                </td>
                                                 <td><?php echo $value['address']; ?></td>
                                                 <td><?php echo $value['phone1']; ?></td>
                                                 <td><?php echo $value['phone2']; ?></td>
                                                 <td><?php echo $value['gmail']; ?></td>
                                                 <td>
                                                     <div class="hidden-sm hidden-xs action-buttons">
-                                                        <a class="green" href="#">
+                                                        <a class="green" href="#modalUpdateSupplier<?php echo $value["supplierId"]; ?>" data-toggle="modal">
                                                             <i class="ace-icon fa fa-pencil bigger-130"></i>
                                                         </a>
 
@@ -216,6 +224,105 @@
                             </div>
                         </div>
                         <!-- ADD SUPPLIER MODAL ENDS -->
+                        <!-- UPDATE SUPPLIER MODAL STARTS -->
+                        <?php foreach ($data as $value) { ?>
+                        <div id="modalUpdateSupplier<?php echo $value["supplierId"]; ?>" class="modal" tabindex="-1">
+                            <div class="modal-dialog" >
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="blue bigger">Editar Proveedor</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <form class="form-horizontal" id="form" role="form" action="<?php echo 'lista_proveedores/editar_proveedor/' . $value["supplierId"]; ?>" method="POST">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label no-padding-right" for="form-field-select-1"> Tratamiento: </label>
+                                                        <div class="col-sm-9">
+                                                            <select class="form-control" id="form-field-select-2" disabled  >
+                                                                <option value="" disabled>Seleccionar tipo de tratado</option>
+                                                                <option value="1" <?php if($value['treatment']==1) echo "selected" ?>>Empresa</option>
+                                                                <option value="2" <?php if($value['treatment']==2) echo "selected" ?>>Persona Natural</option>
+                                                            </select>
+                                                        </div>
+                                                        <input hidden value="<?php echo $value['treatment']; ?>" name="treatment"/>
+                                                    </div>
+                                                    <div class="form-group" id="divLegalEntity" <?php if($value['treatment']==2) echo "hidden"; ?>>
+                                                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Nombre: </label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" id="form-field-1" value="<?php echo $value["legalEntityName"]; ?>" name="legalEntityName" placeholder="Nombre de la Empresa" class="col-xs-10 col-sm-7" />
+                                                        </div>
+                                                    </div>
+                                                    <div id="divNaturalPerson" <?php if($value['treatment']==1) echo "hidden"; ?>>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Nombre: </label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" id="form-field-1" value="<?php echo $value["name"]; ?>" name="name" placeholder="Nombre" class="col-xs-10 col-sm-5" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Primer Apellido: </label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" id="form-field-1" name="lastName1" value="<?php echo $value["lastName1"]; ?>" placeholder="Primer Apellido" class="col-xs-10 col-sm-5" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Segundo Apellido: </label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" id="form-field-1" name="lastName2" value="<?php echo $value["lastName2"]; ?>" placeholder="Segundo Apellido" class="col-xs-10 col-sm-5" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Dirección: </label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" id="form-field-1" name="address" value="<?php echo $value["address"]; ?>" placeholder="Dirección" class="col-xs-10 col-sm-7" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label no-padding-right" for="form-field-mask-2"> Teléfono 1: </label>
+                                                        <div class="col-sm-9">
+                                                            <input class="input-mask-phone col-xs-10 col-sm-5" value="<?php echo $value["phone1"]; ?>" name="phone1" placeholder="Teléfono 1" type="text" id="form-field-mask-2" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Teléfono 2: </label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" id="form-field-1" name="phone2" value="<?php echo $value["phone2"]; ?>" placeholder="Teléfono 2" class=" input-mask-phone col-xs-10 col-sm-5" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Teléfono 3: </label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" id="form-field-1" name="phone3" value="<?php echo $value["phone3"]; ?>" placeholder="Teléfono 3" class="input-mask-phone col-xs-10 col-sm-5" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Correo electrónico: </label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" id="form-field-1" name="gmail" value="<?php echo $value["gmail"]; ?>" placeholder="Correo electrónico" class="col-xs-10 col-sm-7" />
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                        <div class="space"></div>
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-6">
+                                                <button class="btn btn-block" type="button" data-dismiss="modal" aria-label="Close">Cancelar</button>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6">
+                                                    <button type="submit" class="btn btn-success btn-block">Añadir Proveedor</button>
+                                                
+                                            </div>
+                                        </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php } ?>
+                        <!-- UPDATE SUPPLIER MODAL ENDS -->
                         <!-- DELETE DINING AREA MODAL STARTS -->
                         <?php foreach ($data as $value) { ?> 
                         <div id="modalDeleteSupplier<?php echo $value["supplierId"]; ?>" class="modal" tabindex="-1">
@@ -551,6 +658,10 @@
 			
                 $.mask.definitions['~']='[+-]';
                 $('.input-mask-phone').mask('99999999');
+
+                $("#form").submit(function() {
+                    $("#form-field-select-2").prop("disabled", false);
+                });
 			})
 </script>
 

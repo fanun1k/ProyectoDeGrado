@@ -67,6 +67,30 @@ class Supplier_controller extends ResourceController{
         echo "error";
     }
 
+    public function updateSupplier($id)
+    {
+        $supplier = array('address'=>$this->request->getPost('address'),
+                        'phone1'=>$this->request->getPost('phone1'),
+                        'phone2'=>$this->request->getPost('phone2'),
+                        'phone3'=>$this->request->getPost('phone3'),
+                        'gmail'=>$this->request->getPost('gmail'),
+                        'treatment'=>$this->request->getPost('treatment'),
+                        'lastUpdate'=>date('Y-m-d H:i:s'));
+
+        $naturalPerson = array('name' => $this->request->getPost('name'),
+                    'lastName1' => $this->request->getPost('lastName1'),
+                    'lastName2' => $this->request->getPost('lastName2'),
+                    'lastUpdate'=>date('Y-m-d H:i:s'));
+
+        $legalEntity = array('legalEntityName' => $this->request->getPost('legalEntityName'),
+                            'lastUpdate'=>date('Y-m-d H:i:s'));  
+
+        if ($this->model->updateSupplier($id,$supplier, $naturalPerson, $legalEntity)>0) {
+            return redirect()->route('aprovisionamiento/proveedores/lista_proveedores');
+        }
+        echo "error";
+    }
+
     public function deleteSupplier($id)
     {
         if (session()->has('userId')) {
