@@ -128,6 +128,7 @@ $routes->post('/aprovisionamiento/productos/crudProduct','Products_list_controll
  * --------------------------------------------------------------------
  */
 $routes->get('/ventas/realizar_venta','Make_sale_controller::index');
+$routes->get('/ventas/get_products','Make_sale_controller::getProductsForSale');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
