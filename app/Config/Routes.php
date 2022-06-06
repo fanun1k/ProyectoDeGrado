@@ -57,6 +57,7 @@ $routes->post('/gestion_proyectos/gestion_comedores/comedor/registrar_comedor', 
 $routes->get('/gestion_proyectos/gestion_comedores/visualizar_comedores/eliminar_comedor/(:num)', 'Dining_area_controller::deleteDiningArea/$1');
 $routes->get('/gestion_proyectos/gestion_comedores/getFoodTimes', 'Dining_area_controller::getFoodTimes');
 $routes->post('/gestion_proyectos/gestion_comedores/crudFoodTimes', 'Dining_area_controller::crudFoodTimes');
+
 /*
  * --------------------------------------------------------------------
  * Gestion Nutricional
@@ -104,15 +105,20 @@ $routes->get('/aprovisionamiento/proveedores/lista_proveedores/eliminar_proveedo
  * --------------------------------------------------------------------
  */
 $routes->get('/contabilidad/caja_chica','Accounting_controller::index');
-$routes->post('/contabilidad/registrar_caja_chica','Accounting_controller::registerPettyCash');
+$routes->get('/contabilidad/costos_fijos','Accounting_controller::fixedCost');
+$routes->get('/contabilidad/costos_variables','Accounting_controller::variableCost');
+$routes->post('/contabilidad/retirar_caja_chica','Accounting_controller::withdrawPettyCash');
+$routes->post('/contabilidad/depositar_caja_chica','Accounting_controller::depositPettyCash');
 
 /*
  * --------------------------------------------------------------------
  * Aprovisionamiento
  * --------------------------------------------------------------------
  */
-$routes->get('/aprovisionamiento/productos','Products_controller::index');
-
+$routes->get('/aprovisionamiento/productos','Products_list_controller::index');
+$routes->get('/aprovisionamiento/productos/getProducts','Products_list_controller::getProducts');
+$routes->get('/aprovisionamiento/productos/getOptionsProductCategory','Products_list_controller::getOptionsProductCategory');
+$routes->post('/aprovisionamiento/productos/crudProduct','Products_list_controller::crudProduct');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
