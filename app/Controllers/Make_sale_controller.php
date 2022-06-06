@@ -2,14 +2,13 @@
 
 namespace App\Controllers;
 
-use App\Models\Supply_model;
-use App\Models\Type_supply_model;
+use App\Models\Product_model;
 use App\Models\User_model;
 use CodeIgniter\RESTful\ResourceController;
 
 class Make_sale_controller extends ResourceController
 {
-    protected $modelName = 'App\Models\Supply_model';
+    protected $modelName = 'App\Models\Sale_controller';
     protected $format    = 'json';
     
     
@@ -35,6 +34,16 @@ class Make_sale_controller extends ResourceController
         $userAccessArray = $userModel->getUserAccess($userId);
         $view= view('header_footer/header').view('header_footer/sidebar',compact('userAccessArray')).view('Make_sale_view');
         return $view;
+    }
+    public function getProductsForSale(){
+        $product_model=new Product_model();
+        $products=[];
+        foreach ($product_model->getProductForSale() as $value) {
+
+            array_push($products,$value); 
+        }
+        
+        return $this->respond($products);
     }
 }
 
