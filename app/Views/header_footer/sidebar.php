@@ -28,7 +28,7 @@
 				<b class="arrow"></b>
 				<ul class="submenu">
 					<li class="">
-						<a href="<?php echo base_url('/contabilidad/caja_chica') ?>">
+						<a href="<?php echo base_url('/contabilidad/caja_chica'); ?>">
 							<i class="menu-icon fa fa-caret-right"></i>Caja Chica
 						</a>
 						<b class="arrow"></b>
@@ -41,13 +41,13 @@
 						<b class="arrow"></b>
 						<ul class="submenu">
 							<li class="">
-								<a href="top-menu.html">
+								<a href="<?php echo base_url('/contabilidad/costos_fijos'); ?>">
 									<i class="menu-icon fa fa-caret-right"></i>Costos Fijos
 								</a>
 								<b class="arrow"></b>
 							</li>
 							<li class="">
-								<a href="two-menu-1.html">
+								<a href="<?php echo base_url('/contabilidad/costos_variables'); ?>">
 									<i class="menu-icon fa fa-caret-right"></i>Costos Variables
 								</a>
 								<b class="arrow"></b>

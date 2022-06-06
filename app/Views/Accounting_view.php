@@ -51,7 +51,7 @@
 									<div class="row">
 										<div class="col-xs-12 col-sm-8">
 											<div class="input-group" style="margin-bottom: 20px;">
-												<input class="form-control" name="quantity" required placeholder="Escriba cantidad"></input>
+												<input class="form-control" name="quantity" required placeholder="Escriba cantidad" required pattern="^\d*(\.\d{0,2})?$" autocomplete="off"></input>
 												<span class="input-group-addon">bs.</span>
 											</div>
 										</div>
@@ -95,7 +95,7 @@
 									<div class="row">
 										<div class="col-xs-12 col-sm-8" style="margin-bottom: 20px;">
 											<div class="input-group">
-												<input class="form-control" name="quantity" placeholder="Escriba cantidad" required pattern="^\d*(\.\d{0,2})?$"></input>
+												<input class="form-control" name="quantity" placeholder="Escriba cantidad" required pattern="^\d*(\.\d{0,2})?$" autocomplete="off"></input>
 												<span class="input-group-addon">bs.</span>
 											</div>
 										</div>

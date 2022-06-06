@@ -70,6 +70,28 @@ class Accounting_controller extends ResourceController
 		}
 		return redirect()->route('contabilidad/caja_chica');
 	}
+
+	public function fixedCost()
+	{
+		$userModel = new User_model();
+		if (session()->has('userId')) $userAccessArray = $userModel->getUserAccess(session()->get('userId'));
+		else if (isset($_COOKIE['userId'])) $userAccessArray = $userModel->getUserAccess($_COOKIE['userId']);
+		else return redirect()->route('inicio');
+
+		$view = view('header_footer/header') . view('header_footer/sidebar', compact('userAccessArray')) . view('Accounting_fixed_cost_view');
+		return $view;
+	}
+
+	public function variableCost()
+	{
+		$userModel = new User_model();
+		if (session()->has('userId')) $userAccessArray = $userModel->getUserAccess(session()->get('userId'));
+		else if (isset($_COOKIE['userId'])) $userAccessArray = $userModel->getUserAccess($_COOKIE['userId']);
+		else return redirect()->route('inicio');
+
+		$view = view('header_footer/header') . view('header_footer/sidebar', compact('userAccessArray')) . view('Accounting_variable_cost_view');
+		return $view;
+	}
 }
 
 ?>
