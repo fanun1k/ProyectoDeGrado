@@ -25,10 +25,10 @@
                     </div><!-- /.page-header -->
                     <div class="row">
                         <div class="col-sm-8 col-xs-12 clearfix">
-                            <button class="btn btn-lg btn-success">
-								<i class="ace-icon fa fa-check"></i>
-								Success
-							</button>
+                            <a href="#modalAddSupplier" class="btn btn-sm btn-success" data-toggle="modal">
+								<i class="ace-icon fa fa-plus"></i>
+								Nuevo Proveedor
+                            </a>
                         </div>
                         <div class="col-sm-4 col-xs-12 clearfix">
                             <div class="pull-right tableTools-container"></div>
@@ -120,7 +120,104 @@
                                 </tbody>
                             </table>
                         </div>
-                        <?php foreach ($data as $value) { ?> <!-- DELETE DINING AREA MODAL STARTS -->
+                        <!-- ADD SUPPLIER MODAL STARTS -->
+                        <div id="modalAddSupplier" class="modal" tabindex="-1">
+                            <div class="modal-dialog" >
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="blue bigger">Nuevo Proveedor</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <form class="form-horizontal" role="form" action="lista_proveedores/registrar_proveedor" method="POST">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label no-padding-right" for="form-field-select-1"> Tratamiento: </label>
+                                                        <div class="col-sm-9">
+                                                            <select class="form-control" id="form-field-select-1" onChange="treatmentType()" name="treatment">
+                                                                <option value="" selected disabled>Seleccionar tipo de tratado</option>
+                                                                <option value="1">Empresa</option>
+                                                                <option value="2">Persona Natural</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group" id="divLegalEntity" hidden>
+                                                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Nombre: </label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" id="form-field-1" name="legalEntityName" placeholder="Nombre de la Empresa" class="col-xs-10 col-sm-7" />
+                                                        </div>
+                                                    </div>
+                                                    <div id="divNaturalPerson" hidden>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Nombre: </label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" id="form-field-1" name="name" placeholder="Nombre" class="col-xs-10 col-sm-5" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Primer Apellido: </label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" id="form-field-1" name="lastName1" placeholder="Primer Apellido" class="col-xs-10 col-sm-5" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Segundo Apellido: </label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" id="form-field-1" name="lastName2" placeholder="Segundo Apellido" class="col-xs-10 col-sm-5" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Dirección: </label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" id="form-field-1" name="address" placeholder="Dirección" class="col-xs-10 col-sm-7" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label no-padding-right" for="form-field-mask-2"> Teléfono 1: </label>
+                                                        <div class="col-sm-9">
+                                                            <input class="input-mask-phone col-xs-10 col-sm-5" name="phone1" placeholder="Teléfono 1" type="text" id="form-field-mask-2" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Teléfono 2: </label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" id="form-field-1" name="phone2" placeholder="Teléfono 2" class=" input-mask-phone col-xs-10 col-sm-5" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Teléfono 3: </label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" id="form-field-1" name="phone3" placeholder="Teléfono 3" class="input-mask-phone col-xs-10 col-sm-5" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Correo electrónico: </label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" id="form-field-1" name="gmail"  placeholder="Correo electrónico" class="col-xs-10 col-sm-7" />
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                        <div class="space"></div>
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-6">
+                                                <button class="btn btn-block" type="button" data-dismiss="modal" aria-label="Close">Cancelar</button>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6">
+                                                    <button type="submit" class="btn btn-success btn-block">Añadir Proveedor</button>
+                                                
+                                            </div>
+                                        </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ADD SUPPLIER MODAL ENDS -->
+                        <!-- DELETE DINING AREA MODAL STARTS -->
+                        <?php foreach ($data as $value) { ?> 
                         <div id="modalDeleteSupplier<?php echo $value["supplierId"]; ?>" class="modal" tabindex="-1">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -149,7 +246,8 @@
                                 </div>
                             </div>
                         </div>
-                        <?php } ?> <!-- DELETE DINING AREA MODAL ENDS -->
+                        <?php } ?>
+                        <!-- DELETE DINING AREA MODAL ENDS -->
                     </div>
 				</div><!-- /.col -->
 			</div><!-- /.row -->
@@ -212,9 +310,12 @@
 <script src="<?php echo base_url().'/assets/'?>/js/buttons.colVis.min.js"></script>
 <script src="<?php echo base_url().'/assets/'?>/js/dataTables.select.min.js"></script>
 <script src="<?php echo base_url().'/assets/'?>/js/chosen.jquery.min.js"></script>
+<script src="<?php echo base_url().'/assets/'?>/js/jquery.maskedinput.min.js"></script>
 <!-- ace scripts -->
 <script src="<?php echo base_url().'/assets/'?>/js/ace-elements.min.js"></script>
 <script src="<?php echo base_url().'/assets/'?>/js/ace.min.js"></script>
+
+<script src="<?php echo base_url()?>/js/supplier.js"></script>
 
 <!-- inline scripts related to this page -->
 <script type="text/javascript">
@@ -243,7 +344,7 @@
 			
 					"sScrollX": "100%",
 					"sScrollXInner": "100%",
-					//"bScrollCollapse": true,
+					"bScrollCollapse": true,
 					//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
 					//you may want to wrap the table inside a "div.dataTables_borderWrap" element
 			
@@ -448,7 +549,8 @@
 				).css('padding-top', '12px');
 				*/
 			
-			
+                $.mask.definitions['~']='[+-]';
+                $('.input-mask-phone').mask('99999999');
 			})
 </script>
 

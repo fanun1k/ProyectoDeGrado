@@ -26,8 +26,37 @@ class Supplier_model extends Model
         //return $this->where('status', '1')->findAll();
     }
 
-    public function insertSupply($data){
-        return $this->insert($data);
+    public function insertSupplier($supplier, $naturalPerson, $legalEntity){
+        $this->db->transStart();
+
+        $this->db->table('supplier')->insert($supplier);
+
+        $id = $this->db->insertID();
+        
+        if($supplier['treatment'] == 1) {
+            $legalEntity['legalEntityId'] = $id;
+            /*foreach($legalEntity as $row){
+                echo $row."  ";
+            }*/
+            $this->db->table('legal_entity')->insert($legalEntity);
+        }
+        elseif($supplier['treatment'] == 2) {
+            $naturalPerson['naturalPersonId'] = $id;
+            /*foreach($naturalPerson as $row){
+                echo $row."  ";
+            }*/
+            $this->db->table('natural_person')->insert($naturalPerson);
+        }
+
+        $this->db->transComplete();
+        
+        if ($this->db->transStatus() === false) {
+            $this->db->transRollback();
+            return 0;
+        } else {
+            $this->db->transCommit();
+            return 1;
+        }
     }
 
     public function updateSupply($id, $data){

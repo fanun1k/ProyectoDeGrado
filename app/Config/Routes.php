@@ -96,6 +96,7 @@ $routes->post('/gestion_proyectos/gestion_de_clientes/crudClient','Client_list_c
  * --------------------------------------------------------------------
  */
 $routes->get('/aprovisionamiento/proveedores/lista_proveedores','Supplier_controller::index');
+$routes->post('/aprovisionamiento/proveedores/lista_proveedores/registrar_proveedor', 'Supplier_controller::registerSupplier');
 $routes->get('/aprovisionamiento/proveedores/lista_proveedores/eliminar_proveedor/(:num)', 'Supplier_controller::deleteSupplier/$1');
 /*
  * --------------------------------------------------------------------
