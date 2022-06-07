@@ -210,8 +210,11 @@ function changeList(button) {
                         </form>`;
         document.getElementById("productListButton").appendChild(createElementFromHTML(addMedia));
     }
-
-    $('#myarray').val( JSON.stringify(products));
+    var res=[];
+    for (let index = 0; index < products.length; index++) {
+        res.push([products[index][0],products[index][1]]);     
+    }
+    $('#myarray').val( JSON.stringify(res));
 }
 
 function createElementFromHTML(htmlString) {

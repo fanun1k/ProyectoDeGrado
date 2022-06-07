@@ -183,7 +183,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `elpad_db`.`sale`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `elpad_db`.`sale` (
-  `saleId` INT(11) NOT NULL,
+  `saleId` INT(11) NOT NULL AUTO_INCREMENT,
   `total` DECIMAL(8,2) NOT NULL,
   `userId` INT(11) NOT NULL,
   `client_clientId` INT(11) NOT NULL,
