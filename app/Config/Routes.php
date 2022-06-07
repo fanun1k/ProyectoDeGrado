@@ -65,9 +65,10 @@ $routes->post('/gestion_proyectos/gestion_comedores/crudFoodTimes', 'Dining_area
  * --------------------------------------------------------------------
  */
 $routes->get('/gestion_nutricional/tabla_nutricional', 'Nutritional_table_controller::index');
-$routes->post('/gestion_nutricional/tabla_nutricional/registrar_insumo', 'Nutritional_table_controller::registerNewSupply');
-$routes->post('/gestion_nutricional/tabla_nutricional/editar_insumo/(:num)', 'Nutritional_table_controller::updateSupply/$1');
-$routes->get('/gestion_nutricional/tabla_nutricional/eliminar_insumo/(:num)', 'Nutritional_table_controller::deleteSupply/$1');
+$routes->get('/gestion_nutricional/getSupplyTable', 'Nutritional_table_controller::getSupplyTable');
+$routes->post('/gestion_nutricional/crudSupply', 'Nutritional_table_controller::crudSupply');
+$routes->get('/gestion_nutricional/getOptionsSupplyType', 'Nutritional_table_controller::getOptionsSupplyType');
+
 
 /*
  * --------------------------------------------------------------------
