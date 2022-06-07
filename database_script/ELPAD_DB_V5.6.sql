@@ -856,6 +856,123 @@ CREATE TABLE IF NOT EXISTS `elpad_db`.`natural_person` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `elpad_db`.`order_product_detail`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `elpad_db`.`order_product_detail` (
+  `orderId` INT NOT NULL,
+  `productId` INT NOT NULL,
+  `quantity` SMALLINT NOT NULL,
+  `unitMeasurement` TINYINT NOT NULL,
+  `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `lastUpdate` DATETIME NULL,
+  `status` TINYINT NOT NULL DEFAULT 1,
+  INDEX `fk_order_detail_order1_idx` (`orderId` ASC) VISIBLE,
+  PRIMARY KEY (`orderId`, `productId`),
+  INDEX `fk_order_detail_product1_idx` (`productId` ASC) VISIBLE,
+  CONSTRAINT `fk_order_detail_order1`
+    FOREIGN KEY (`orderId`)
+    REFERENCES `elpad_db`.`order` (`idorder`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_order_detail_product1`
+    FOREIGN KEY (`productId`)
+    REFERENCES `elpad_db`.`product` (`productId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `elpad_db`.`warehouse`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `elpad_db`.`warehouse` (
+  `warehouseId` INT NOT NULL AUTO_INCREMENT,
+  `warehouseName` VARCHAR(45) NOT NULL,
+  `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `lastUpdate` DATETIME NULL,
+  `status` TINYINT NOT NULL DEFAULT 1,
+  PRIMARY KEY (`warehouseId`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `elpad_db`.`supply_warehouse`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `elpad_db`.`supply_warehouse` (
+  `supplyId` INT NOT NULL,
+  `warehouseId` INT NOT NULL,
+  `stock` INT NOT NULL,
+  `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `lastUpdate` VARCHAR(45) NULL,
+  `status` TINYINT NOT NULL,
+  INDEX `fk_supply_warehouse_supply1_idx` (`supplyId` ASC) VISIBLE,
+  INDEX `fk_supply_warehouse_warehouse1_idx` (`warehouseId` ASC) VISIBLE,
+  PRIMARY KEY (`supplyId`, `warehouseId`),
+  CONSTRAINT `fk_supply_warehouse_supply1`
+    FOREIGN KEY (`supplyId`)
+    REFERENCES `elpad_db`.`supply` (`supplyId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_supply_warehouse_warehouse1`
+    FOREIGN KEY (`warehouseId`)
+    REFERENCES `elpad_db`.`warehouse` (`warehouseId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `elpad_db`.`order_supply_detail`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `elpad_db`.`order_supply_detail` (
+  `orderId` INT NOT NULL,
+  `supplyId` INT NOT NULL,
+  `quantity` SMALLINT NOT NULL,
+  `unitMeasurement` TINYINT NOT NULL,
+  `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `lastUpdate` DATETIME NULL,
+  `status` TINYINT NOT NULL DEFAULT 1,
+  INDEX `fk_order_supply_detail_order1_idx` (`orderId` ASC) VISIBLE,
+  INDEX `fk_order_supply_detail_supply1_idx` (`supplyId` ASC) VISIBLE,
+  PRIMARY KEY (`orderId`, `supplyId`),
+  CONSTRAINT `fk_order_supply_detail_order1`
+    FOREIGN KEY (`orderId`)
+    REFERENCES `elpad_db`.`order` (`idorder`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_order_supply_detail_supply1`
+    FOREIGN KEY (`supplyId`)
+    REFERENCES `elpad_db`.`supply` (`supplyId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `elpad_db`.`supplier_order`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `elpad_db`.`supplier_order` (
+  `supplierId` INT NOT NULL,
+  `orderId` INT NOT NULL,
+  `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `lastUpdate` DATETIME NULL,
+  `status` TINYINT NOT NULL DEFAULT 1,
+  INDEX `fk_supplier_order_supplier1_idx` (`supplierId` ASC) VISIBLE,
+  INDEX `fk_supplier_order_order1_idx` (`orderId` ASC) VISIBLE,
+  PRIMARY KEY (`supplierId`, `orderId`),
+  CONSTRAINT `fk_supplier_order_supplier1`
+    FOREIGN KEY (`supplierId`)
+    REFERENCES `elpad_db`.`supplier` (`supplierId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_supplier_order_order1`
+    FOREIGN KEY (`orderId`)
+    REFERENCES `elpad_db`.`order` (`idorder`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

@@ -120,6 +120,21 @@ $routes->get('/aprovisionamiento/productos','Products_list_controller::index');
 $routes->get('/aprovisionamiento/productos/getProducts','Products_list_controller::getProducts');
 $routes->get('/aprovisionamiento/productos/getOptionsProductCategory','Products_list_controller::getOptionsProductCategory');
 $routes->post('/aprovisionamiento/productos/crudProduct','Products_list_controller::crudProduct');
+
+/*
+ * --------------------------------------------------------------------
+ * Pedidos
+ * --------------------------------------------------------------------
+ */
+/*
+* Pedidos Productos
+*/
+$routes->get('/aprovisionamiento/pedidos/pedido_productos','Order_controller::index');
+/*
+* Pedidos Insumos
+*/
+$routes->get('/aprovisionamiento/pedidos/pedido_insumos','Order_controller::indexSupply');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
