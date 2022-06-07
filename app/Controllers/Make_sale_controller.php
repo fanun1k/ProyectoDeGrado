@@ -14,7 +14,6 @@ class Make_sale_controller extends ResourceController
     
     public function index()
     {
-        
         if (session()->has('userId')) {
             $userId = session()->get('userId');
         } else if (isset($_COOKIE['userId'])) {
@@ -32,14 +31,17 @@ class Make_sale_controller extends ResourceController
         }
     
         $userAccessArray = $userModel->getUserAccess($userId);
-        $view= view('header_footer/header').view('header_footer/sidebar',compact('userAccessArray')).view('Make_sale_view');
+
+        $product_model = new Product_model();
+        $productsList = $product_model->getProductForSale();
+        $view = view('header_footer/header').view('header_footer/sidebar',compact('userAccessArray')).view('Make_sale_view',compact('productsList'));
         return $view;
     }
+    
     public function getProductsForSale(){
         $product_model=new Product_model();
         $products=[];
         foreach ($product_model->getProductForSale() as $value) {
-
             array_push($products,$value); 
         }
         

@@ -1083,3 +1083,26 @@ INSERT INTO client (diningAreaId,clientCode,clientName,clientLastName1,clientLas
 INSERT INTO client (diningAreaId,clientCode,clientName,clientLastName1,clientLastName2,dateOfBirth,clientCI) VALUES (1,'0063','Leonel','Messi','Coca','2022-06-15','15696375');
 INSERT INTO client (diningAreaId,clientCode,clientName,clientLastName1,clientLastName2,dateOfBirth,clientCI) VALUES (1,'0064','Pedrito','Infante','Mamani','2022-06-18','1569123');
 INSERT INTO client (diningAreaId,clientCode,clientName,clientLastName1,clientLastName2,dateOfBirth,clientCI) VALUES (1,'0065','asdas','asda','asd','2022-06-04','1569134');
+
+INSERT INTO product_category (`categoryName`) VALUES ('Helados');
+INSERT INTO product_category (`categoryName`) VALUES ('Refrescos');
+INSERT INTO product_category (`categoryName`) VALUES ('Jugos');
+INSERT INTO product_category (`categoryName`) VALUES ('Extras');
+INSERT INTO product_category (`categoryName`) VALUES ('Varios');
+
+INSERT INTO product (`productName`,`productCategoryId`,`productPrice`) VALUES ('Coca Cola',2,10.0000);
+INSERT INTO product (`productName`,`productCategoryId`,`productPrice`) VALUES ('Simba',2,9.00);
+INSERT INTO product (`productName`,`productCategoryId`,`productPrice`) VALUES ('Sprite',2,10.00);
+INSERT INTO product (`productName`,`productCategoryId`,`productPrice`) VALUES ('Fanta',2,10.00);
+INSERT INTO product (`productName`,`productCategoryId`,`productPrice`) VALUES ('Pepsi',2,11.00);
+INSERT INTO product (`productName`,`productCategoryId`,`productPrice`) VALUES ('Seven Up',2,10.00);
+INSERT INTO product (`productName`,`productCategoryId`,`productPrice`) VALUES ('Coca Cola 3lts',2,12.00);
+INSERT INTO product (`productName`,`productCategoryId`,`productPrice`) VALUES ('Negrito',1,2.50);
+INSERT INTO product (`productName`,`productCategoryId`,`productPrice`) VALUES ('Rocky',1,3.00);
+INSERT INTO product (`productName`,`productCategoryId`,`productPrice`) VALUES ('Tentacion',1,5.00);
+INSERT INTO product (`productName`,`productCategoryId`,`productPrice`) VALUES ('Ricoco',1,1.50);
+INSERT INTO product (`productName`,`productCategoryId`,`productPrice`) VALUES ('Mega Cono',1,3.50);
+INSERT INTO product (`productName`,`productCategoryId`,`productPrice`) VALUES ('Salsero',1,1.00);
+INSERT INTO product (`productName`,`productCategoryId`,`productPrice`) VALUES ('Del Valle',3,10.00);
+INSERT INTO product (`productName`,`productCategoryId`,`productPrice`) VALUES ('Tampico',3,12.00);
+INSERT INTO product (`productName`,`productCategoryId`,`productPrice`) VALUES ('Ades',3,6.00);

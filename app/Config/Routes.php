@@ -102,6 +102,7 @@ $routes->get('/aprovisionamiento/proveedores/lista_proveedores','Supplier_contro
 $routes->post('/aprovisionamiento/proveedores/lista_proveedores/registrar_proveedor', 'Supplier_controller::registerSupplier');
 $routes->post('/aprovisionamiento/proveedores/lista_proveedores/editar_proveedor/(:num)', 'Supplier_controller::updateSupplier/$1');
 $routes->get('/aprovisionamiento/proveedores/lista_proveedores/eliminar_proveedor/(:num)', 'Supplier_controller::deleteSupplier/$1');
+
 /*
  * --------------------------------------------------------------------
  * Gestion de Contabilidad
@@ -148,6 +149,8 @@ $routes->get('/ventas/anular_ventas','Cancel_sale_controller::index');
 $routes->get('/ventas/getSales','Cancel_sale_controller::getSales');
 $routes->get('/ventas/getSaleDetails/(:num)','Cancel_sale_controller::getSaleDetails/$1');
 $routes->post('/ventas/cancel_sale','Cancel_sale_controller::cancel_sale');
+
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
