@@ -129,6 +129,10 @@ $routes->post('/aprovisionamiento/productos/crudProduct','Products_list_controll
  */
 $routes->get('/ventas/realizar_venta','Make_sale_controller::index');
 $routes->get('/ventas/get_products','Make_sale_controller::getProductsForSale');
+$routes->get('/ventas/anular_ventas','Cancel_sale_controller::index');
+$routes->get('/ventas/getSales','Cancel_sale_controller::getSales');
+$routes->get('/ventas/getSaleDetails/(:num)','Cancel_sale_controller::getSaleDetails/$1');
+$routes->post('/ventas/cancel_sale','Cancel_sale_controller::cancel_sale');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
