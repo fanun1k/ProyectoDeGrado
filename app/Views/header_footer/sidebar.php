@@ -427,9 +427,9 @@
 				</li>
 
 				<li class="">
-					<a href="">
+					<a href="<?php echo base_url("/ventas/anular_ventas") ?>">
 						<i class="menu-icon fa fa-caret-right"></i>
-						Registro de ventas
+						Anular Ventas
 					</a>
 					<b class="arrow"></b>
 				</li>
