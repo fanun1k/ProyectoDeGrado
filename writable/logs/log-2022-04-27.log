@@ -1,0 +1,648 @@
+CRITICAL - 2022-04-27 00:00:52 --> Call to a member function login() on null
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_login->login()
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_login))
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-04-27 00:12:39 --> Cannot call constructor
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(809): App\Controllers\Controller_login->__construct()
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->createController()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-04-27 00:12:49 --> Call to a member function model() on null
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(809): App\Controllers\Controller_login->__construct()
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->createController()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-04-27 00:13:00 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\Database\BaseBuilder.php(374): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 374, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\Model.php(728): CodeIgniter\Database\BaseBuilder->select(NULL)
+#2 C:\xampp\htdocs\ProyectoDeGrado\app\Models\user_model.php(20): CodeIgniter\Model->__call('select', Array)
+#3 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_login.php(22): App\Models\user_model->login('rodrigo.iriarte...', '0cc175b9c0f1b6a...')
+#4 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_login->login()
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_login))
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-04-27 00:17:31 --> Call to a member function table() on null
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_login.php(22): App\Models\user_model->login('rodrigo.iriarte...', '0cc175b9c0f1b6a...')
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_login->login()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_login))
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-27 00:18:39 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\Database\BaseBuilder.php(374): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 374, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\Model.php(728): CodeIgniter\Database\BaseBuilder->select(NULL)
+#2 C:\xampp\htdocs\ProyectoDeGrado\app\Models\user_model.php(19): CodeIgniter\Model->__call('select', Array)
+#3 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_login.php(22): App\Models\user_model->login('rodrigo.iriarte...', '0cc175b9c0f1b6a...')
+#4 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_login->login()
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_login))
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-04-27 00:19:00 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\Database\BaseBuilder.php(374): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 374, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\Model.php(728): CodeIgniter\Database\BaseBuilder->select(NULL)
+#2 C:\xampp\htdocs\ProyectoDeGrado\app\Models\user_model.php(19): CodeIgniter\Model->__call('select', Array)
+#3 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_login.php(22): App\Models\user_model->login('rodrigo.iriarte...', '827ccb0eea8a706...')
+#4 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_login->login()
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_login))
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-04-27 00:21:01 --> Call to undefined method CodeIgniter\Database\MySQLi\Connection::select()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_login.php(22): App\Models\user_model->login('rodrigo.iriarte...', '0cc175b9c0f1b6a...')
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_login->login()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_login))
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-27 00:21:45 --> Call to a member function table() on null
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_login.php(22): App\Models\user_model->login('rodrigo.iriarte...', '0cc175b9c0f1b6a...')
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_login->login()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_login))
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-27 00:22:42 --> Call to undefined method CodeIgniter\Database\MySQLi\Connection::from()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_login.php(22): App\Models\user_model->login('rodrigo.iriarte...', '0cc175b9c0f1b6a...')
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_login->login()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_login))
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-27 00:25:10 --> Argument 1 passed to CodeIgniter\HTTP\RedirectResponse::to() must be of the type string, null given, called in C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_login.php on line 23
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_login.php(23): CodeIgniter\HTTP\RedirectResponse->to(NULL)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_login->login()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_login))
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-27 00:25:18 --> Argument 1 passed to CodeIgniter\HTTP\RedirectResponse::to() must be of the type string, null given, called in C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_login.php on line 23
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_login.php(23): CodeIgniter\HTTP\RedirectResponse->to(NULL)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_login->login()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_login))
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-27 00:27:28 --> Argument 1 passed to CodeIgniter\HTTP\RedirectResponse::to() must be of the type string, null given, called in C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_login.php on line 23
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_login.php(23): CodeIgniter\HTTP\RedirectResponse->to(NULL)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_login->login()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_login))
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-27 00:30:13 --> Argument 1 passed to CodeIgniter\HTTP\RedirectResponse::to() must be of the type string, null given, called in C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_login.php on line 23
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_login.php(23): CodeIgniter\HTTP\RedirectResponse->to(NULL)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_login->login()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_login))
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-27 00:30:14 --> Argument 1 passed to CodeIgniter\HTTP\RedirectResponse::to() must be of the type string, null given, called in C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_login.php on line 23
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_login.php(23): CodeIgniter\HTTP\RedirectResponse->to(NULL)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_login->login()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_login))
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-27 00:36:00 --> Argument 1 passed to CodeIgniter\HTTP\RedirectResponse::to() must be of the type string, null given, called in C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_login.php on line 23
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_login.php(23): CodeIgniter\HTTP\RedirectResponse->to(NULL)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_login->login()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_login))
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-27 00:37:39 --> Argument 1 passed to CodeIgniter\HTTP\RedirectResponse::to() must be of the type string, null given, called in C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_login.php on line 23
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_login.php(23): CodeIgniter\HTTP\RedirectResponse->to(NULL)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_login->login()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_login))
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-27 00:38:44 --> Argument 1 passed to CodeIgniter\HTTP\RedirectResponse::to() must be of the type string, null given, called in C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_login.php on line 23
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_login.php(23): CodeIgniter\HTTP\RedirectResponse->to(NULL)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_login->login()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_login))
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-27 00:38:48 --> Argument 1 passed to CodeIgniter\HTTP\RedirectResponse::to() must be of the type string, null given, called in C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_login.php on line 23
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_login.php(23): CodeIgniter\HTTP\RedirectResponse->to(NULL)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_login->login()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_login))
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-27 00:46:46 --> Call to a member function set() on null
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_login->login()
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_login))
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-04-27 00:47:49 --> syntax error, unexpected 'parent' (T_STRING), expecting function (T_FUNCTION) or const (T_CONST)
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\Router\Router.php(175): CodeIgniter\Router\Router->autoRoute('Controller_logi...')
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(726): CodeIgniter\Router\Router->handle('Controller_logi...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-27 00:47:51 --> syntax error, unexpected 'parent' (T_STRING), expecting function (T_FUNCTION) or const (T_CONST)
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\Router\Router.php(175): CodeIgniter\Router\Router->autoRoute('Controller_logi...')
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(726): CodeIgniter\Router\Router->handle('Controller_logi...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-27 00:47:51 --> syntax error, unexpected 'parent' (T_STRING), expecting function (T_FUNCTION) or const (T_CONST)
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\Router\Router.php(175): CodeIgniter\Router\Router->autoRoute('Controller_logi...')
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(726): CodeIgniter\Router\Router->handle('Controller_logi...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-27 00:47:52 --> syntax error, unexpected 'parent' (T_STRING), expecting function (T_FUNCTION) or const (T_CONST)
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\Autoloader\Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\Autoloader\Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(797): class_exists('\\App\\Controller...', true)
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(406): CodeIgniter\CodeIgniter->startController()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-04-27 00:47:53 --> syntax error, unexpected 'parent' (T_STRING), expecting function (T_FUNCTION) or const (T_CONST)
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\Autoloader\Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\Autoloader\Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(797): class_exists('\\App\\Controller...', true)
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(406): CodeIgniter\CodeIgniter->startController()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-04-27 00:48:02 --> syntax error, unexpected '$session' (T_VARIABLE), expecting function (T_FUNCTION) or const (T_CONST)
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\Autoloader\Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\Autoloader\Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(797): class_exists('\\App\\Controller...', true)
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(406): CodeIgniter\CodeIgniter->startController()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-04-27 00:48:12 --> syntax error, unexpected '$session' (T_VARIABLE), expecting function (T_FUNCTION) or const (T_CONST)
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\Autoloader\Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\Autoloader\Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(797): class_exists('\\App\\Controller...', true)
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(406): CodeIgniter\CodeIgniter->startController()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-04-27 00:48:14 --> syntax error, unexpected '$session' (T_VARIABLE), expecting function (T_FUNCTION) or const (T_CONST)
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\Autoloader\Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\Autoloader\Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(797): class_exists('\\App\\Controller...', true)
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(406): CodeIgniter\CodeIgniter->startController()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-04-27 00:48:28 --> Cannot access parent:: when current class scope has no parent
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\Autoloader\Autoloader.php(264): include_once()
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\Autoloader\Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\Autoloader\Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#4 [internal function]: spl_autoload_call('App\\Controllers...')
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(797): class_exists('\\App\\Controller...', true)
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(406): CodeIgniter\CodeIgniter->startController()
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-04-27 00:48:39 --> syntax error, unexpected 'parent' (T_STRING), expecting function (T_FUNCTION) or const (T_CONST)
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\Autoloader\Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\Autoloader\Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(797): class_exists('\\App\\Controller...', true)
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(406): CodeIgniter\CodeIgniter->startController()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-04-27 02:03:08 --> Call to undefined function App\Controllers\delete_cookie()
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_login->logout()
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_login))
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-04-27 02:03:49 --> Call to undefined function App\Controllers\get_cookie()
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-04-27 02:16:37 --> Call to undefined function App\Controllers\set_cookie()
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_login->login()
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_login))
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-04-27 09:28:53 --> Argument 1 passed to CodeIgniter\HTTP\RedirectResponse::route() must be of the type string, null given, called in C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Home.php on line 12
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Home.php(12): CodeIgniter\HTTP\RedirectResponse->route(NULL)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-27 09:32:05 --> Argument 1 passed to CodeIgniter\HTTP\RedirectResponse::route() must be of the type string, null given, called in C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Home.php on line 12
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Home.php(12): CodeIgniter\HTTP\RedirectResponse->route(NULL)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-27 09:34:23 --> Argument 1 passed to CodeIgniter\HTTP\RedirectResponse::route() must be of the type string, null given, called in C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Home.php on line 12
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Home.php(12): CodeIgniter\HTTP\RedirectResponse->route(NULL)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-27 09:36:42 --> Argument 1 passed to CodeIgniter\HTTP\RedirectResponse::route() must be of the type string, null given, called in C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Home.php on line 12
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Home.php(12): CodeIgniter\HTTP\RedirectResponse->route(NULL)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-27 09:36:45 --> Argument 1 passed to CodeIgniter\HTTP\RedirectResponse::route() must be of the type string, null given, called in C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Home.php on line 12
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Home.php(12): CodeIgniter\HTTP\RedirectResponse->route(NULL)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-27 09:36:46 --> Argument 1 passed to CodeIgniter\HTTP\RedirectResponse::route() must be of the type string, null given, called in C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Home.php on line 12
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Home.php(12): CodeIgniter\HTTP\RedirectResponse->route(NULL)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-27 09:37:00 --> Argument 1 passed to CodeIgniter\HTTP\RedirectResponse::route() must be of the type string, null given, called in C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Home.php on line 12
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Home.php(12): CodeIgniter\HTTP\RedirectResponse->route(NULL)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+ERROR - 2022-04-27 22:51:45 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 22:51:45 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(16): view('View_add_dining...', Array)
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 22:53:33 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 22:53:33 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(16): view('View_add_dining...')
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 22:53:34 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 22:53:34 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(16): view('View_add_dining...')
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 23:03:01 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:03:01 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(16): view('View_add_dining...')
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 23:03:03 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:03:03 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(16): view('View_add_dining...')
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 23:17:12 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:17:12 --> Argument 2 passed to view() must be of the type array, bool given, called in C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php on line 21
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...', false)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+ERROR - 2022-04-27 23:17:13 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:17:13 --> Argument 2 passed to view() must be of the type array, bool given, called in C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php on line 21
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...', false)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+ERROR - 2022-04-27 23:17:37 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:17:37 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...', Array)
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 23:21:00 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:21:00 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...', Array)
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 23:21:01 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:21:01 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...', Array)
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 23:22:22 --> Not unique table/alias: 'tiempos_de_comida'
+ERROR - 2022-04-27 23:24:02 --> Not unique table/alias: 'tiempos_de_comida'
+ERROR - 2022-04-27 23:25:55 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:25:55 --> Call to a member function getResultArray() on bool
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+ERROR - 2022-04-27 23:26:06 --> Not unique table/alias: 'tiempos_de_comida'
+ERROR - 2022-04-27 23:27:30 --> Not unique table/alias: 'tiempos_de_comida'
+ERROR - 2022-04-27 23:29:41 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:29:41 --> Call to a member function result() on bool
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include()
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#3 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(22): view('View_add_dining...', Array)
+#4 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+ERROR - 2022-04-27 23:31:39 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:31:39 --> Call to a member function result() on bool
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include()
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#3 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(22): view('View_add_dining...', Array)
+#4 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+ERROR - 2022-04-27 23:31:40 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:31:40 --> Call to a member function result() on bool
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include()
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#3 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(22): view('View_add_dining...', Array)
+#4 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-04-27 23:31:44 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\view_nutritional_table.php(62): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 62, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('view_nutritiona...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_nutritional_table.php(16): view('view_nutritiona...')
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_nutritional_table->index()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_nutritional_table))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 23:31:51 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:31:51 --> Call to a member function result() on bool
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include()
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#3 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(22): view('View_add_dining...', Array)
+#4 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+ERROR - 2022-04-27 23:33:34 --> Not unique table/alias: 'tiempos_de_comida'
+ERROR - 2022-04-27 23:34:25 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:34:25 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...', Array)
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 23:34:30 --> Not unique table/alias: 'tiempos_de_comida'
+ERROR - 2022-04-27 23:34:43 --> Not unique table/alias: 'tiempos_de_comida'
+ERROR - 2022-04-27 23:36:18 --> Not unique table/alias: 'tiempos_de_comida'
+ERROR - 2022-04-27 23:37:15 --> Not unique table/alias: 'tiempos_de_comida'
+ERROR - 2022-04-27 23:38:01 --> Not unique table/alias: 'tiempos_de_comida'
+ERROR - 2022-04-27 23:38:41 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:38:41 --> Call to a member function result() on bool
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include()
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#3 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...', Array)
+#4 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+ERROR - 2022-04-27 23:38:54 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:38:54 --> Call to a member function result() on bool
+#0 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include()
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#3 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...', Array)
+#4 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+ERROR - 2022-04-27 23:41:44 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:41:44 --> Argument 2 passed to view() must be of the type array, bool given, called in C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php on line 21
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...', false)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+ERROR - 2022-04-27 23:42:42 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:42:42 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...', Array)
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 23:43:00 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:43:00 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...', Array)
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 23:43:01 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:43:01 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...', Array)
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 23:43:51 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:43:51 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...')
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 23:43:52 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:43:52 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...')
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 23:49:25 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:49:25 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...')
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 23:52:11 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:52:11 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...')
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 23:55:11 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:55:11 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...')
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 23:59:43 --> Not unique table/alias: 'tiempos_de_comida'
+CRITICAL - 2022-04-27 23:59:43 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\ProyectoDeGrado\app\Views\View_add_dining_area.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ProyectoDeGrado\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ProyectoDeGrado\system\Common.php(1089): CodeIgniter\View\View->render('View_add_dining...', Array, true)
+#4 C:\xampp\htdocs\ProyectoDeGrado\app\Controllers\Controller_dining_area.php(21): view('View_add_dining...', Array)
+#5 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(832): App\Controllers\Controller_dining_area->add_dining_area()
+#6 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Controller_dining_area))
+#7 C:\xampp\htdocs\ProyectoDeGrado\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ProyectoDeGrado\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2022-04-27 22:47:41 --> Email: sendWithMail throwed mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set()
+ERROR - 2022-04-27 22:52:30 --> Email: sendWithMail throwed mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set()
+CRITICAL - 2022-04-27 23:16:56 --> Cannot redeclare App\Models\user_model::login()
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+ERROR - 2022-04-27 23:18:02 --> Unknown column 'e.estado' in 'where clause'
+ERROR - 2022-04-27 23:25:50 --> Unknown column 'e.estado' in 'where clause'
+ERROR - 2022-04-27 23:26:00 --> Unknown column 'e.estado' in 'where clause'
+ERROR - 2022-04-27 23:26:31 --> Unknown column 'e.estado' in 'where clause'
+ERROR - 2022-04-27 23:26:36 --> Unknown column 'e.estado' in 'where clause'

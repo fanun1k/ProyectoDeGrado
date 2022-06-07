@@ -23,7 +23,9 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $baseURL = 'http://localhost:8080/';
+
+    //Dynamic URL
+    public $baseURL = BASESEURL; //'http://localhost:8080/ProyectoDeGrado/';
 
     /**
      * --------------------------------------------------------------------------
@@ -36,7 +38,7 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $indexPage = 'index.php';
+    public $indexPage = '';
 
     /**
      * --------------------------------------------------------------------------
