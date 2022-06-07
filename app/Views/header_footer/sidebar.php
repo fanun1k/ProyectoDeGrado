@@ -75,72 +75,18 @@
 			<?php if ($hasAccess) { ?>
 				<b class="arrow"></b>
 				<ul class="submenu">
-					<li class="">
-						<a href="tables.html">
-							<i class="menu-icon fa fa-caret-right"></i>
-							Simple &amp; Dynamic
-						</a>
-						<b class="arrow"></b>
-					</li>
-
-					<li class="">
-						<a href="jqgrid.html">
-							<i class="menu-icon fa fa-caret-right"></i>
-							jqGrid plugin
-						</a>
-						<b class="arrow"></b>
-					</li>
+					
 				</ul>
 			<?php }
 			$hasAccess = FALSE; ?>
 		</li>
-
-		<li class="">
-			<?php foreach ($userAccessArray as $access) {
-				if ($access->accessId == 3) $hasAccess = TRUE;
-			} ?>
-			<a href="#" class="dropdown-toggle" <?php if (!$hasAccess) echo 'style="cursor:not-allowed;"'; ?>>
-				<i class="menu-icon fa fa-archive"></i>
-				<span class="menu-text">Cadena de Suministro</span>
-				<?php if ($hasAccess) { ?>
-					<b class="arrow fa fa-angle-down"></b>
-				<?php } else { ?>
-					<b class="arrow fa fa-lock"></b>
-				<?php } ?>
-			</a>
-			<?php if ($hasAccess) { ?>
-				<b class="arrow"></b>
-				<ul class="submenu">
-
-					<li class="">
-						<a href="form-elements-2.html">
-							<i class="menu-icon fa fa-caret-right"></i>
-							Form Elements 2
-						</a>
-
-						<b class="arrow"></b>
-					</li>
-
-					<li class="">
-						<a href="dropzone.html">
-							<i class="menu-icon fa fa-caret-right"></i>
-							Dropzone File Upload
-						</a>
-
-						<b class="arrow"></b>
-					</li>
-				</ul>
-			<?php }
-			$hasAccess = FALSE; ?>
-		</li>
-
 		<li class="">
 			<?php foreach ($userAccessArray as $access) {
 				if ($access->accessId == 4) $hasAccess = TRUE;
 			} ?>
 			<a href="#" class="dropdown-toggle" <?php if (!$hasAccess) echo 'style="cursor:not-allowed;"'; ?>>
 				<i class="menu-icon fa fa-truck"></i>
-				<span class="menu-text">Aprovisionamiento</span>
+				<span class="menu-text">Cadena de Suministro</span>
 				<?php if ($hasAccess) { ?>
 					<b class="arrow fa fa-angle-down"></b>
 				<?php } else { ?>
@@ -373,7 +319,7 @@
 							<li class="">
 								<a href="<?php echo base_url('gestion_nutricional/tabla_nutricional') ?>">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Visualizar Insumos (Tabla Nutricional)
+									Insumos
 								</a>
 
 								<b class="arrow"></b>
@@ -413,11 +359,51 @@
 						</ul>
 					</li>
 				</ul>
-			<?php }
-			$hasAccess = FALSE; ?>
 		</li>
-	</ul><!-- /.nav-list -->
 
+	</ul>
+	<li class="">
+		<?php foreach ($userAccessArray as $access) {
+					if ($access->accessId == 2) {
+						$hasAccess = true;
+					}
+				} ?>
+		<a href="#" class="dropdown-toggle" <?php if (!$hasAccess) {
+												echo 'style="cursor:not-allowed;"';
+											} ?>>
+			<i class=" menu-icon fa fa-money "></i>
+			<span class="menu-text">Ventas</span>
+			<?php if ($hasAccess) { ?>
+				<b class="arrow fa fa-angle-down"></b>
+			<?php } else { ?>
+				<b class="arrow fa fa-lock"></b>
+			<?php } ?>
+		</a>
+		<?php if ($hasAccess) { ?>
+			<b class="arrow"></b>
+			<ul class="submenu">
+				<li class="">
+					<a href="<?php echo base_url("ventas/realizar_venta") ?>">
+						<i class="menu-icon fa fa-caret-right"></i>
+						Realizar Venta
+					</a>
+					<b class="arrow"></b>
+				</li>
+
+				<li class="">
+					<a href="<?php echo base_url("/ventas/anular_ventas") ?>">
+						<i class="menu-icon fa fa-caret-right"></i>
+						Anular Ventas
+					</a>
+					<b class="arrow"></b>
+				</li>
+			</ul>
+	<?php }
+				$hasAccess = false;
+			} ?>
+	</li>
+
+	</ul><!-- /.nav-list -->
 	<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
 		<i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
 	</div>

@@ -46,4 +46,19 @@ class Product_model extends Model
         $data["lastUpdate"]=date('Y-m-d h:i:s a', time());
         return $this->update($id,$data);
     }
+    public function getProductForSale(){
+        $db = db_connect();
+        $builder = $db->table("product p")->select('p.productId, 
+                                                    p.productName,
+                                                    p.productCategoryId,
+                                                    pc.categoryName,
+                                                    p.productPrice');
+        $builder->join('product_category pc', 'pc.productCategoryId = p.productCategoryId');
+        $builder->where('p.status !=', 0);
+        $builder->orderBy('p.productName', 'asc');
+
+
+        $data = $builder->get();
+        return $data->getResult();
+    }
 }

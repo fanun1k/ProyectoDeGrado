@@ -54,10 +54,6 @@ class Products_list_controller extends ResourceController
     }
     public function crudProduct()
     {
-
-        if (isset($_POST['image'])) {
-            echo "existe";
-        }
         switch ($_POST['oper']) {
             case 'add':
                 unset($_REQUEST['productId']);

@@ -39,6 +39,7 @@ $routes->get('/cerrando_sesion', 'Login_controller::logout');
 $routes->post('/recuperando_cuenta', 'Login_controller::recoverPassword');
 $routes->get('/recuperar_cuenta', 'Login_controller::recoverPasswordPage');
 $routes->post('/cambiar_contrasena', 'Login_controller::changePassword');
+$routes->get('/prueba_de_qr', 'QR_test_controller::index');
 
 /*
  * --------------------------------------------------------------------
@@ -64,9 +65,10 @@ $routes->post('/gestion_proyectos/gestion_comedores/crudFoodTimes', 'Dining_area
  * --------------------------------------------------------------------
  */
 $routes->get('/gestion_nutricional/tabla_nutricional', 'Nutritional_table_controller::index');
-$routes->post('/gestion_nutricional/tabla_nutricional/registrar_insumo', 'Nutritional_table_controller::registerNewSupply');
-$routes->post('/gestion_nutricional/tabla_nutricional/editar_insumo/(:num)', 'Nutritional_table_controller::updateSupply/$1');
-$routes->get('/gestion_nutricional/tabla_nutricional/eliminar_insumo/(:num)', 'Nutritional_table_controller::deleteSupply/$1');
+$routes->get('/gestion_nutricional/getSupplyTable', 'Nutritional_table_controller::getSupplyTable');
+$routes->post('/gestion_nutricional/crudSupply', 'Nutritional_table_controller::crudSupply');
+$routes->get('/gestion_nutricional/getOptionsSupplyType', 'Nutritional_table_controller::getOptionsSupplyType');
+
 
 /*
  * --------------------------------------------------------------------
@@ -135,6 +137,17 @@ $routes->get('/aprovisionamiento/pedidos/pedido_productos','Order_controller::in
 */
 $routes->get('/aprovisionamiento/pedidos/pedido_insumos','Order_controller::indexSupply');
 
+/*
+ * --------------------------------------------------------------------
+ * Ventas
+ * --------------------------------------------------------------------
+ */
+$routes->get('/ventas/realizar_venta','Make_sale_controller::index');
+$routes->get('/ventas/get_products','Make_sale_controller::getProductsForSale');
+$routes->get('/ventas/anular_ventas','Cancel_sale_controller::index');
+$routes->get('/ventas/getSales','Cancel_sale_controller::getSales');
+$routes->get('/ventas/getSaleDetails/(:num)','Cancel_sale_controller::getSaleDetails/$1');
+$routes->post('/ventas/cancel_sale','Cancel_sale_controller::cancel_sale');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
