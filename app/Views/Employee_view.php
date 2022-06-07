@@ -13,6 +13,7 @@
 			</ul><!-- /.breadcrumb -->
 		</div>
 		<div class="page-content">
+            <div class="page-header"><h1>Personal de Trabajo</h1></div>
 			<div class="row" style="margin-top: 25px; margin-bottom: 25px;">
 				<div class="col-sm-2">
 					<select class="form-control">

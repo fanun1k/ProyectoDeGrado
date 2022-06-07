@@ -47,6 +47,11 @@ class Make_sale_controller extends ResourceController
         
         return $this->respond($products);
     }
+
+    public function insertSale(){
+        echo $_POST['myarray'];
+
+    }
 }
 
 ?>

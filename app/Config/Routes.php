@@ -130,6 +130,7 @@ $routes->post('/aprovisionamiento/productos/crudProduct','Products_list_controll
  * --------------------------------------------------------------------
  */
 $routes->get('/ventas/realizar_venta','Make_sale_controller::index');
+$routes->post('/ventas/procesando_venta','Make_sale_controller::insertSale');
 $routes->get('/ventas/get_products','Make_sale_controller::getProductsForSale');
 $routes->get('/ventas/anular_ventas','Cancel_sale_controller::index');
 $routes->get('/ventas/getSales','Cancel_sale_controller::getSales');

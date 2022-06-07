@@ -12,6 +12,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <!-- PAGE CONTENT BEGINS -->
+                        <div class="page-header"><h1>Lista de Productos</h1></div>
                         <table id="products_table">
 
                         </table>
