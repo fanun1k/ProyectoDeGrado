@@ -2,10 +2,12 @@
     <div class="main-content-inner">
         <div class="breadcrumbs ace-save-state" id="breadcrumbs">
             <ul class="breadcrumb">
-                <li class="active">
+                <li>
                     <i class="ace-icon fa fa-home home-icon"></i>
-                    Inicio
+                    <a href="<?php echo base_url(); ?>/inicio">Inicio</a>
                 </li>
+                <li><a href="#">Ventas</a></li>
+                <li class="active">Realizar Ventas</li>
             </ul><!-- /.breadcrumb -->
         </div>
         <div class="page-content">
@@ -200,11 +202,16 @@ function changeList(button) {
         var addMedia = `<b class="gray bigger-150">Debe agregar productos a la lista</b>`;
         document.getElementById("productListDiv").appendChild(createElementFromHTML(addMedia));
     } else {
-        var addMedia = `<button class="btn btn-lg btn-success pull-right">
+        var addMedia = `<form id='form' action="<?php echo base_url('ventas/procesando_venta') ?>" method="post">
+                        <input id='myarray' name='myarray' type='hidden' value=''>
+                        <button type="submit" class="btn btn-lg btn-success pull-right">
                             Realizar Venta<i class="ace-icon fa fa-arrow-right icon-on-right"></i>
-                        </button>`;
+                        </button>
+                        </form>`;
         document.getElementById("productListButton").appendChild(createElementFromHTML(addMedia));
     }
+
+    $('#myarray').val( JSON.stringify(products));
 }
 
 function createElementFromHTML(htmlString) {
