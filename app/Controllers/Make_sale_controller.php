@@ -15,7 +15,6 @@ class Make_sale_controller extends ResourceController
     
     public function index()
     {
-        
         if (session()->has('userId')) {
             $userId = session()->get('userId');
         } else if (isset($_COOKIE['userId'])) {
