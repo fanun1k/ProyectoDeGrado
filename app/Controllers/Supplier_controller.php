@@ -36,7 +36,7 @@ class Supplier_controller extends ResourceController{
             } else if (isset($_COOKIE['userId'])) {
                 $userAccessArray = $this->userModel->getUserAccess($_COOKIE['userId']);
             }
-            $view = view('header_footer/header').view('header_footer/sidebar', compact('data', 'userAccessArray')).view('Supplier_View');
+            $view = view('header_footer/header').view('header_footer/sidebar', compact('data', 'userAccessArray')).view('Supplier_view');
             return $view;
         }
     }
