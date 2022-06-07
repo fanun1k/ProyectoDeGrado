@@ -125,6 +125,20 @@ $routes->post('/aprovisionamiento/productos/crudProduct','Products_list_controll
 
 /*
  * --------------------------------------------------------------------
+ * Pedidos
+ * --------------------------------------------------------------------
+ */
+/*
+* Pedidos Productos
+*/
+$routes->get('/aprovisionamiento/pedidos/pedido_productos','Order_controller::index');
+/*
+* Pedidos Insumos
+*/
+$routes->get('/aprovisionamiento/pedidos/pedido_insumos','Order_controller::indexSupply');
+
+/*
+ * --------------------------------------------------------------------
  * Ventas
  * --------------------------------------------------------------------
  */

@@ -116,12 +116,30 @@
 					</li>
 
 					<li class="">
-						<a href="content-slider.html">
+						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-caret-right"></i>
-							Pedidos
+							<span class="menu-text">
+								Pedidos
+							</span>
+							<b class="arrow fa fa-angle-down"></b>
 						</a>
-
 						<b class="arrow"></b>
+						<ul class="submenu">
+							<li class="">
+								<a href="<?php echo base_url('/aprovisionamiento/pedidos/pedido_productos') ?>">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Pedido de Productos
+								</a>
+								<b class="arrow"></b>
+							</li>
+							<li class="">
+								<a href="<?php echo base_url('/aprovisionamiento/pedidos/pedido_insumos') ?>">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Pedido de Insumos
+								</a>
+								<b class="arrow"></b>
+							</li>
+						</ul>
 					</li>
 
 					<li class="">
