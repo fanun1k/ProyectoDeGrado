@@ -18,10 +18,10 @@
                                 <img class="media-object" src="<?php echo base_url("images/product-images")."/".$value->productId.".jpg"; ?>" style="width:200px; height:200px;" />
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <button class="ace-icon btn btn-success btn-block" id="add_<?php echo $value->productId; ?>" onclick="changeList(this)"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                        <button class="ace-icon btn btn-success btn-block" id="add_<?php echo $value->productId."_".$value->productName."_".$value->categoryName."_".$value->productPrice; ?>" onclick="changeList(this)"><i class="fa fa-plus" aria-hidden="true"></i></button>
                                     </div>
                                     <div class="col-sm-6">
-                                        <button class="ace-icon btn btn-danger btn-block" id="subtract_<?php echo $value->productId; ?>" onclick="changeList(this)"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                        <button class="ace-icon btn btn-danger btn-block" id="subtract_<?php echo $value->productId."_".$value->productName."_".$value->categoryName."_".$value->productPrice; ?>" onclick="changeList(this)"><i class="fa fa-minus" aria-hidden="true"></i></button>
                                     </div>
                                 </div>
                                 <div class="caption">
@@ -36,6 +36,9 @@
                 <div class="col-xs-12 col-sm-6">
                     <div class="search-area well well-sm" id="productListDiv">
                         <b class="gray bigger-150">Debe agregar productos a la lista</b>
+                    </div>
+                    <div id="productListButton">
+                        <b class="gray bigger-150">Total: Bs. 0</b>
                     </div>
                 </div>
             </div>
@@ -103,20 +106,20 @@
 <script src="<?php echo base_url() . '/assets/' ?>/js/ace-elements.min.js"></script>
 <script src="<?php echo base_url() . '/assets/' ?>/js/ace.min.js"></script>
 
-
-
-<style type="text/css">
-</style>
-
 <script type="text/javascript">
 var products = [];
 function changeList(button) {
+
     const getIDandAction = (button.id).split("_");
     let action = getIDandAction[0];
     let productId = getIDandAction[1];
+    let productName = getIDandAction[2];
+    let categoryName = getIDandAction[3];
+    let productPrice = getIDandAction[4];
     let productQuantity = 0;
     let productExist = false;
     let productIndex = -1;
+    let buttonExist = false;
 
     for (var i = 0; i < Object.keys(products).length; i++) {
         if(products[i][0] == productId) {
@@ -134,16 +137,14 @@ function changeList(button) {
     }
 
     if(productQuantity >= 0){
-        product = [productId, productQuantity];
+        product = [productId, productQuantity, productName, categoryName, productPrice];
         if(productExist) products[productIndex] = product;
         else products.push(product);
     }
 
     document.getElementById("productListDiv").innerHTML = "";
-    if(products.length == 0){
-        var addMedia = `<b class="gray bigger-150">Debe agregar productos a la lista</b>`;
-        document.getElementById("productListDiv").appendChild(createElementFromHTML(addMedia));
-    }
+    document.getElementById("productListButton").innerHTML = "";
+
     for (var i = 0; i < products.length; i++) {
         if(products[i][1] > 0){
             var addMedia = `<div class="media search-media" style="background-color:white;">
@@ -156,7 +157,7 @@ function changeList(button) {
                                 <h3 class="search-title">
                                     <div class="row">
                                         <div class="col-sm-6">
-                                            <a class="blue bolder" style="font-size:18px;">Nombre de Comida Aquí</a>
+                                            <a class="blue bolder" style="font-size:18px;">` + products[i][2] + `</a>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -172,7 +173,7 @@ function changeList(button) {
                         <div class="search-actions text-center">
                             
                             <span class="blue bigger-150">Bs.</span>
-                            <span class="blue bigger-150">?</span>
+                            <span class="blue bigger-150">` + products[i][4] + `</span>
                             <div class="action-buttons bigger-125">
                                 <a href="#">
                                     <i class="ace-icon fa fa-phone green"></i>
@@ -193,7 +194,17 @@ function changeList(button) {
         }
     }
 
-    console.log(products);
+    if(productQuantity == 0) products.splice(productIndex, 1);
+    
+    if(products.length == 0){
+        var addMedia = `<b class="gray bigger-150">Debe agregar productos a la lista</b>`;
+        document.getElementById("productListDiv").appendChild(createElementFromHTML(addMedia));
+    } else {
+        var addMedia = `<button class="btn btn-lg btn-success pull-right">
+                            Realizar Venta<i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+                        </button>`;
+        document.getElementById("productListButton").appendChild(createElementFromHTML(addMedia));
+    }
 }
 
 function createElementFromHTML(htmlString) {
@@ -201,7 +212,6 @@ function createElementFromHTML(htmlString) {
     div.innerHTML = htmlString.trim();
     return div.firstChild;
 }
-
 </script>
 
 </body>
