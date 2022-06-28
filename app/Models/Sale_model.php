@@ -38,6 +38,30 @@ class Sale_model extends Model
 
         return $res;
     }
+    public function insertSale($total,$userId,$data)
+    {
+        print_r($data);
+        $this->db->transStart();
+
+        $idSale = $this->insert(['total'=>$total,'client_clientId'=>1,'userId'=>$userId]);
+        foreach($data as $product) {
+            $this->db->query('INSERT INTO sale_detail(saleId, 
+                                                      productId, 
+                                                      quantity, 
+                                                      unitPrice) 
+                                            VALUES ('.$idSale.','.$product[0].','.$product[1].','.$product[2].');');           
+        }
+
+        $this->db->transComplete();
+        
+        if ($this->db->transStatus() === false) {
+            $this->db->transRollback();
+            return 0;
+        } else {
+            $this->db->transCommit();
+            return 1;
+        }
+    }
     public function getSaleDetails($id)
     {
         $db = db_connect();

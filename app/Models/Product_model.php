@@ -36,6 +36,9 @@ class Product_model extends Model
 
         return $aux;
     }
+    public function getProductForOrder() {
+        return $this->where('status',1)->findAll();
+    }
     public function deleteProduct($id){
         return $this->update($id, ['status' => 0, 'lastUpdate' => date('Y-m-d h:i:s a', time())]);
     }
@@ -57,5 +60,17 @@ class Product_model extends Model
 
         $data = $builder->get();
         return $data->getResult();
+    }
+    public function getPrice($id)
+    {
+        $db = db_connect();
+        $builder = $db->table("product p")->select('p.productPrice');
+        $builder->where('p.productId =', $id);
+        $data=$builder->get();
+        $res=0;
+        foreach($data->getResult() as $price){
+            $res=$price->productPrice;
+        }
+        return $res;
     }
 }
