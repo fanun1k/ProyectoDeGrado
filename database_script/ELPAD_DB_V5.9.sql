@@ -154,6 +154,7 @@ CREATE TABLE IF NOT EXISTS `elpad_db`.`employee` (
   `employeeGender` CHAR(1) NOT NULL,
   `employeeDateOfBirth` DATETIME NOT NULL,
   `employeeCode` VARCHAR(45) NOT NULL,
+  `employeProfileCompleted` TINYINT NOT NULL DEFAULT 0,
   `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastUpdate` DATETIME NULL DEFAULT NULL,
   `status` TINYINT(4) NOT NULL DEFAULT '1',
@@ -1287,6 +1288,46 @@ CREATE TABLE IF NOT EXISTS `elpad_db`.`sale_detail_dish` (
   CONSTRAINT `fk_sale_has_dish_in_menu_dish_in_menu1`
     FOREIGN KEY (`dishInMenuId`)
     REFERENCES `elpad_db`.`dish_in_menu` (`dishInMenuId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `elpad_db`.`skill`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `elpad_db`.`skill` (
+  `skillId` INT NOT NULL AUTO_INCREMENT,
+  `skillName` VARCHAR(60) NOT NULL,
+  `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateDate` DATETIME NULL,
+  `status` TINYINT NOT NULL DEFAULT 1,
+  PRIMARY KEY (`skillId`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `elpad_db`.`employee_skills`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `elpad_db`.`employee_skills` (
+  `employeeId` INT NOT NULL,
+  `skillId` INT NOT NULL,
+  `value` INT NOT NULL,
+  `createDate` VARCHAR(45) NOT NULL DEFAULT 'CURRENT_TIMESTAMP',
+  `updateDate` DATETIME NULL,
+  `status` DATETIME NOT NULL DEFAULT 1,
+  INDEX `fk_employee_skills_employee1_idx` (`employeeId` ASC) VISIBLE,
+  INDEX `fk_employee_skills_skill1_idx` (`skillId` ASC) VISIBLE,
+  CONSTRAINT `fk_employee_skills_employee1`
+    FOREIGN KEY (`employeeId`)
+    REFERENCES `elpad_db`.`employee` (`employeeId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_employee_skills_skill1`
+    FOREIGN KEY (`skillId`)
+    REFERENCES `elpad_db`.`skill` (`skillId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB

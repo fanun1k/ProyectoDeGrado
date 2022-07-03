@@ -113,7 +113,7 @@ class Supplier_controller extends ResourceController{
                 return redirect()->route('aprovisionamiento/proveedores/lista_proveedores');
             }
             else{
-
+                echo "error";
             }
         }
     }

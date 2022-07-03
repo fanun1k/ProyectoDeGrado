@@ -94,4 +94,45 @@ class Employee_controller extends ResourceController{
             return redirect()->route('recursos_humanos/planillas/permisos_vacaciones');
         }
     }
+
+    public function deleteEmployee($id)
+    {
+        if (session()->has('userId')) {
+            $userId = session()->get('userId');
+        } else if (isset($_COOKIE['userId'])) {
+            $userId = $_COOKIE['userId'];
+        }
+        if ($userId == NULL) {
+            session()->set('error', 'Enlace no permitido. Debe iniciar sesión.');
+            return redirect()->route('/');
+        }
+        $this->userModel = new User_model();
+        $status = $this->userModel->getUserStatus($userId);
+        if ($status == -1 || $status == 0) {
+            session()->set('error', 'Enlace no permitido. Debe iniciar sesión.');
+            return redirect()->route('/');
+        }
+        else if ($status == 1) {
+            if($this->model->deleteEmployee($id)>0){
+                return redirect()->route('aprovisionamiento/proveedores/lista_proveedores');
+            }
+            else{
+                echo "error";
+            }
+        }
+    }
+
+    public function listEmployees(){
+        $data=$this->model->getAllEmployees();
+        $this->userModel = new User_model();
+        if (session()->has('userId')) {
+            $userAccessArray = $this->userModel->getUserAccess(session()->get('userId'));
+        }
+        else if (isset($_COOKIE['userId'])) {
+            $userAccessArray = $this->userModel->getUserAccess($_COOKIE['userId']);
+        }
+        $vista=view('header_footer/header').view('header_footer/sidebar', compact('userAccessArray')).view('Employees_list_view',compact('data'));
+        return $vista;
+
+    }
 }
