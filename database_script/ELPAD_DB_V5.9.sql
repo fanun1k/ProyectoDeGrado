@@ -144,6 +144,7 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `elpad_db`.`employee` (
   `employeeId` INT(11) NOT NULL AUTO_INCREMENT,
+  `encryptedEmployeeId` VARCHAR(13) NOT NULL,
   `name` VARCHAR(60) NOT NULL,
   `lastName1` VARCHAR(60) NOT NULL,
   `lastName2` VARCHAR(60) NULL DEFAULT NULL,
@@ -1301,7 +1302,7 @@ CREATE TABLE IF NOT EXISTS `elpad_db`.`skill` (
   `skillId` INT NOT NULL AUTO_INCREMENT,
   `skillName` VARCHAR(60) NOT NULL,
   `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updateDate` DATETIME NULL,
+  `lastUpdate` DATETIME NULL,
   `status` TINYINT NOT NULL DEFAULT 1,
   PRIMARY KEY (`skillId`))
 ENGINE = InnoDB
@@ -1315,11 +1316,11 @@ CREATE TABLE IF NOT EXISTS `elpad_db`.`employee_skills` (
   `employeeId` INT NOT NULL,
   `skillId` INT NOT NULL,
   `value` INT NOT NULL,
-  `createDate` VARCHAR(45) NOT NULL DEFAULT 'CURRENT_TIMESTAMP',
-  `updateDate` DATETIME NULL,
-  `status` DATETIME NOT NULL DEFAULT 1,
-  INDEX `fk_employee_skills_employee1_idx` (`employeeId` ASC) VISIBLE,
-  INDEX `fk_employee_skills_skill1_idx` (`skillId` ASC) VISIBLE,
+  `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `lastUpdate` DATETIME NULL,
+  `status` TINYINT NOT NULL DEFAULT 1,
+  INDEX `fk_employee_skills_employee1_idx` (`employeeId` ASC),
+  INDEX `fk_employee_skills_skill1_idx` (`skillId` ASC),
   CONSTRAINT `fk_employee_skills_employee1`
     FOREIGN KEY (`employeeId`)
     REFERENCES `elpad_db`.`employee` (`employeeId`)
@@ -1344,8 +1345,8 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- QUERIES
 INSERT INTO employee_type (employeeTypeName) VALUES ('Administrador');
 
-INSERT INTO employee (`name`, lastName1, lastName2, employeePhoneNumber, employeeLatitude, employeeLongitude, employeeCI, employeeGender, employeeDateOfBirth, employeeCode)
-VALUES ('Rodrigo', 'Iriarte', 'Zamorano', '68464817', -17.3742284, -66.1622121, '13419279', 'M', '2000-09-24', '6969');
+INSERT INTO employee (encryptedEmployeeId, `name`, lastName1, lastName2, employeePhoneNumber, employeeLatitude, employeeLongitude, employeeCI, employeeGender, employeeDateOfBirth, employeeCode)
+VALUES ('st5dXs2w76pZE', 'Rodrigo', 'Iriarte', 'Zamorano', '68464817', -17.3742284, -66.1622121, '13419279', 'M', '2000-09-24', '6969');
 
 INSERT INTO employee_has_employee_type (employeeId, employeeTypeId)
 VALUES (1, 1);
@@ -1364,6 +1365,12 @@ VALUES (1, 'rodrigo.iriarte14@gmail.com', MD5('12345'));
 
 INSERT INTO user_role (userId, roleId)
 VALUES (1, 1);
+
+INSERT INTO skill (skillName)
+VALUES ('Cocinar');
+
+INSERT INTO employee_skills (employeeId, skillId, `value`)
+VALUES (1, 1, 10);
 
 INSERT INTO food_times (foodTimesName)
 VALUES ('Desayuno'), ('Almuerzo'), ('Cena');

@@ -95,6 +95,10 @@ class Employee_controller extends ResourceController{
         }
     }
 
+    public function showEmployeeProfile(){
+        echo $_GET['id'];
+    }
+
     public function deleteEmployee($id)
     {
         if (session()->has('userId')) {
@@ -133,6 +137,5 @@ class Employee_controller extends ResourceController{
         }
         $vista=view('header_footer/header').view('header_footer/sidebar', compact('userAccessArray')).view('Employees_list_view',compact('data'));
         return $vista;
-
     }
 }
