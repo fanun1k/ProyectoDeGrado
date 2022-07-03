@@ -185,7 +185,7 @@
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-caret-right"></i>
 							<span class="menu-text">
-								Perfiles del Personal
+								Personal de Trabajo
 							</span>
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
@@ -194,14 +194,14 @@
 							<li class="">
 								<a href="<?php echo base_url('/recursos_humanos/nuevo_perfil') ?>">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Nuevo Perfil
+									Nuevo Personal
 								</a>
 								<b class="arrow"></b>
 							</li>
 							<li class="">
-								<a href="jquery-ui.html">
+								<a href="<?php echo base_url('/recursos_humanos/personal_de_trabajo/lista_de_personal') ?>">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Visualizar Perfiles
+									Lista de Personal
 								</a>
 								<b class="arrow"></b>
 							</li>

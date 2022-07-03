@@ -19,5 +19,9 @@ class Employee_model extends Model{
         return $this->where('status', '1')->findAll();
 	}
 
+    public function deleteEmployee($id){
+        return $this->update($id,['status'=>'0']);
+     }
+
 
 }
