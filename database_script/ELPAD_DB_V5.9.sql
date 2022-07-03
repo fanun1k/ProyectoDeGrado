@@ -144,6 +144,7 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `elpad_db`.`employee` (
   `employeeId` INT(11) NOT NULL AUTO_INCREMENT,
+  `encryptedEmployeeId` VARCHAR(13) NOT NULL,
   `name` VARCHAR(60) NOT NULL,
   `lastName1` VARCHAR(60) NOT NULL,
   `lastName2` VARCHAR(60) NULL DEFAULT NULL,
@@ -1293,6 +1294,45 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 
+-- -----------------------------------------------------
+-- Table `elpad_db`.`skills`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `elpad_db`.`skills` (
+  `skillsId` INT NOT NULL AUTO_INCREMENT,
+  `skillName` VARCHAR(50) NOT NULL,
+  `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `lastUpdate` DATETIME NULL DEFAULT NULL,
+  `status` TINYINT(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`skillsId`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `elpad_db`.`employee_has_skills`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `elpad_db`.`employee_skills` (
+  `employeeId` INT(11) NOT NULL,
+  `skillsId` INT NOT NULL,
+  `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `lastUpdate` DATETIME NULL DEFAULT NULL,
+  `status` TINYINT(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`employeeId`, `skillsId`),
+  INDEX `fk_employee_has_skills_skills1_idx` (`skillsId` ASC),
+  INDEX `fk_employee_has_skills_employee1_idx` (`employeeId` ASC),
+  CONSTRAINT `fk_employee_has_skills_employee1`
+    FOREIGN KEY (`employeeId`)
+    REFERENCES `elpad_db`.`employee` (`employeeId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_employee_has_skills_skills1`
+    FOREIGN KEY (`skillsId`)
+    REFERENCES `elpad_db`.`skills` (`skillsId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
@@ -1303,8 +1343,8 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- QUERIES
 INSERT INTO employee_type (employeeTypeName) VALUES ('Administrador');
 
-INSERT INTO employee (`name`, lastName1, lastName2, employeePhoneNumber, employeeLatitude, employeeLongitude, employeeCI, employeeGender, employeeDateOfBirth, employeeCode)
-VALUES ('Rodrigo', 'Iriarte', 'Zamorano', '68464817', -17.3742284, -66.1622121, '13419279', 'M', '2000-09-24', '6969');
+INSERT INTO employee (encryptedEmployeeId, `name`, lastName1, lastName2, employeePhoneNumber, employeeLatitude, employeeLongitude, employeeCI, employeeGender, employeeDateOfBirth, employeeCode)
+VALUES ('stRzWz066yzUE', 'Rodrigo', 'Iriarte', 'Zamorano', '68464817', -17.3742284, -66.1622121, '13419279', 'M', '2000-09-24', '6969');
 
 INSERT INTO employee_has_employee_type (employeeId, employeeTypeId)
 VALUES (1, 1);
@@ -1323,6 +1363,11 @@ VALUES (1, 'rodrigo.iriarte14@gmail.com', MD5('12345'));
 
 INSERT INTO user_role (userId, roleId)
 VALUES (1, 1);
+
+INSERT INTO skills(skillName)
+VALUES ('Cocinar');
+
+INSERT INTO employee_has_skills (employeeId, skillsId) VALUES (1, 1);
 
 INSERT INTO food_times (foodTimesName)
 VALUES ('Desayuno'), ('Almuerzo'), ('Cena');
@@ -1403,11 +1448,7 @@ INSERT INTO client (diningAreaId,clientCode,clientName,clientLastName1,clientLas
 INSERT INTO client (diningAreaId,clientCode,clientName,clientLastName1,clientLastName2,dateOfBirth,clientCI) VALUES (1,'0064','Pedrito','Infante','Mamani','2022-06-18','1569123');
 INSERT INTO client (diningAreaId,clientCode,clientName,clientLastName1,clientLastName2,dateOfBirth,clientCI) VALUES (1,'0065','asdas','asda','asd','2022-06-04','1569134');
 
-INSERT INTO product_category (`categoryName`) VALUES ('Helados');
-INSERT INTO product_category (`categoryName`) VALUES ('Refrescos');
-INSERT INTO product_category (`categoryName`) VALUES ('Jugos');
-INSERT INTO product_category (`categoryName`) VALUES ('Extras');
-INSERT INTO product_category (`categoryName`) VALUES ('Varios');
+INSERT INTO product_category (`categoryName`) VALUES ('Helados'), ('Refrescos'), ('Jugos'), ('Extras'), ('Varios');
 
 INSERT INTO product (`productName`,`productCategoryId`,`productPrice`) VALUES ('Coca Cola',2,10.0000);
 INSERT INTO product (`productName`,`productCategoryId`,`productPrice`) VALUES ('Simba',2,9.00);

@@ -83,6 +83,7 @@ $routes->get('/recursos_humanos/nuevo_perfil','New_employee_profile_controller::
 $routes->post('/recursos_humanos/nuevo_perfil/registrar_empleado','New_employee_profile_controller::registerNewEmployee');
 $routes->get('/recursos_humanos/planillas/permisos_vacaciones','Employee_controller::employeePermit');
 $routes->post('/recursos_humanos/planillas/permisos_vacaciones/registrar_permiso_vacacion','Employee_controller::registerEmployeePermit');
+$routes->get('/recursos_humanos/empleado', 'Employee_controller::showEmployeeProfile');
 
 /*
  * --------------------------------------------------------------------

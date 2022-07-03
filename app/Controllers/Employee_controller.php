@@ -94,4 +94,8 @@ class Employee_controller extends ResourceController{
             return redirect()->route('recursos_humanos/planillas/permisos_vacaciones');
         }
     }
+
+    public function showEmployeeProfile(){
+        echo $_GET['id'];
+    }
 }
