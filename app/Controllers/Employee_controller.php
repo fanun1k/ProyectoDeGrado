@@ -30,6 +30,46 @@ class Employee_controller extends ResourceController{
 
     }
 
+    public function registerEmployeeView() {
+        helper("site");
+        $userAccessArray = getUserAccessArrayHELPER();
+        $view = view('header_footer/header').view('header_footer/sidebar',compact('userAccessArray')).view('Employee_register_view');
+        return $view;
+    }
+
+    public function registerEmployee(){
+        $data=array('name'=>$_POST['name'],
+                'lastName1'=>$_POST['lastName1'],
+                'lastName2'=>$_POST['lastName2'],
+                'employeePhoneNumber'=>$_POST['employeePhoneNumber'],
+                'employeeLatitude'=>-17.3742,
+                'employeeLongitude'=>-66.1622,
+                'employeeCI'=>$_POST['employeeCI'],  
+                'employeeGender'=>$_POST['employeeGender'],
+                'employeeDateOfBirth'=>$_POST['employeeDateOfBirth'],
+                'employeeCode'=>$_POST['employeeCode']);
+        $msg=$this->model->registerEmployee($data);
+        if ($msg>0) {
+            return redirect()->route('recursos_humanos/nuevo_perfil');
+        }    
+        else{
+            echo 'error';
+        }
+    }
+
+    public function listEmployees(){
+        $data=$this->model->getAllEmployees();
+        $this->userModel = new User_model();
+        if (session()->has('userId')) {
+            $userAccessArray = $this->userModel->getUserAccess(session()->get('userId'));
+        }
+        else if (isset($_COOKIE['userId'])) {
+            $userAccessArray = $this->userModel->getUserAccess($_COOKIE['userId']);
+        }
+        $vista=view('header_footer/header').view('header_footer/sidebar', compact('userAccessArray')).view('Employees_list_view',compact('data'));
+        return $vista;
+    }
+
     public function registerEmployeeType() {
         $employeeTypeName=$_POST['employeeTypeName'];
 
@@ -130,16 +170,5 @@ class Employee_controller extends ResourceController{
         }
     }
 
-    public function listEmployees(){
-        $data=$this->model->getAllEmployees();
-        $this->userModel = new User_model();
-        if (session()->has('userId')) {
-            $userAccessArray = $this->userModel->getUserAccess(session()->get('userId'));
-        }
-        else if (isset($_COOKIE['userId'])) {
-            $userAccessArray = $this->userModel->getUserAccess($_COOKIE['userId']);
-        }
-        $vista=view('header_footer/header').view('header_footer/sidebar', compact('userAccessArray')).view('Employees_list_view',compact('data'));
-        return $vista;
-    }
+    
 }

@@ -10,7 +10,7 @@ class Employee_model extends Model{
 
     protected $allowedFields=['name','lastName1','lastName2','employeePhoneNumber','employeeCI','employeeLatitude','employeeLongitude','employeeGender','employeeDateOfBirth','employeeCode'];
     
-    public function registerNewEmployee($data){
+    public function registerEmployee($data){
         return $this->insert($data);
     }
     

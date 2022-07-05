@@ -25,7 +25,7 @@
                     </div><!-- /.page-header -->
                     <div class="row">
                         <div class="col-sm-8 col-xs-12 clearfix">
-                            <a href="<?php echo base_url('/recursos_humanos/nuevo_perfil') ?>" class="btn btn-sm btn-success">
+                            <a href="<?php echo base_url('/recursos_humanos/empleados/nuevo_registro') ?>" class="btn btn-sm btn-success">
 								<i class="ace-icon fa fa-plus"></i>
 								Nuevo Registro de Personal
                             </a>
