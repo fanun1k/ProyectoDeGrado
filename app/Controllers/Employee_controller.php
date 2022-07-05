@@ -96,7 +96,11 @@ class Employee_controller extends ResourceController{
     }
 
     public function showEmployeeProfile(){
-        echo $_GET['id'];
+        //echo $_GET['id'];
+        helper("site");
+        $userAccessArray = getUserAccessArrayHELPER();
+        $view = view('header_footer/header').view('header_footer/sidebar',compact('userAccessArray')).view('Employee_profile');
+        return $view;
     }
 
     public function deleteEmployee($id)
