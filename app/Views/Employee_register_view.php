@@ -28,7 +28,7 @@
 				</div><!-- /.col -->
 			</div><!-- /.row -->
 			<div id="user-profile-1" class="user-profile row">
-				<div class="col-xs-12 col-sm-5">
+				<div class="col-xs-12 col-sm-6">
 
 
                     <div class="widget-box transparent">
@@ -48,7 +48,7 @@
 						<div class="widget-header widget-header-small">
 							<h4 class="widget-title blue smaller"><i class="ace-icon fa fa-users orange"></i>Datos Personales</h4>
 						</div>
-                        <form class="form-horizontal" style="padding-top: 20px;">
+                        <form class="form-horizontal" style="padding-top: 20px;" action="nuevo_registro/registrar_empleado" method="POST">
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label control-label">Nombre Completo</label>
                                 <div class="col-sm-3">
@@ -91,7 +91,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label control-label">Género</label>
                                 <div class="col-sm-3">
-                                        <select class="form-control" name="employeePhoneGender">
+                                        <select class="form-control" name="employeeGender">
                                             <option selected disabled value="">Género</option>
                                             <option value="M">Masculino</option>
                                             <option value="F">Femenino</option>
@@ -102,17 +102,17 @@
                                 <label class="col-sm-3 col-form-label control-label">Fecha de Nacimiento</label>
                                 <div class="col-sm-9">
                                     <span class="input-icon">
-                                        <input type="text" class="form-control date-picker" id="id-date-picker-1" data-date-format="dd/mm/yyyy">
+                                        <input type="text" name="employeeDateOfBirth" class="form-control date-picker" id="id-date-picker-1" data-date-format="dd/mm/yyyy">
                                         <i class="ace-icon fa fa-calendar light-orange"></i>
                                     </span>
                                 </div>
                             </div>
-                        </form>
+                        
 					</div>
 				</div>
 
 
-				<div class="col-xs-12 col-sm-7">
+				<div class="col-xs-12 col-sm-6">
 					<div class="widget-box transparent">
 						<div class="widget-header widget-header-small">
 							<h4 class="widget-title blue smaller"><i class="ace-icon fa fa-map orange"></i>Dirección</h4>
@@ -138,43 +138,32 @@
 							<h4 class="widget-title blue smaller"><i class="ace-icon fa fa-tachometer orange"></i>Habilidades</h4>
                         </div>
                             <div class="row" style="padding-top: 20px;">
-                                <div class="col-xs-3 center">
-                                    
-                                    <div class="knob-container inline">
-                                        <input type="text" class="input-small knob" value="15" data-min="0" data-max="100" data-step="10" data-width="80" data-height="80" data-thickness=".2" />
-                                    </div>
-                                    <div class="space-2"></div>
-                                    Cocinar
-                                </div>
-
-                                <div class="col-xs-3  center">
-                                    <div class="knob-container inline">
-                                        <input type="text" class="input-small knob" value="41" data-min="0" data-max="100" data-width="80" data-height="80" data-thickness=".2" data-fgcolor="#87B87F" data-displayprevious="true" data-anglearc="250" data-angleoffset="-125" />
-                                    </div>
-                                    <div class="space-2"></div>
-                                    Trapear
-                                </div>
-
-                                <div class="col-xs-3  center">
-                                    <div class="knob-container inline">
-                                        <input type="text" class="input-small knob" value="41" data-min="0" data-max="100" data-width="80" data-height="80" data-thickness=".2" data-fgcolor="#87B87F" data-displayprevious="true" data-anglearc="250" data-angleoffset="-125" />
-                                    </div>
-                                    <div class="space-2"></div>
-                                    Dar Putazos
-                                </div>
-
-                                <div class="col-xs-3  center">
-                                    <div class="knob-container inline">
-                                        <input type="text" class="input-small knob" value="41" data-min="0" data-max="100" data-width="80" data-height="80" data-thickness=".2" data-fgcolor="#87B87F" data-displayprevious="true" data-anglearc="250" data-angleoffset="-125" />
-                                    </div>
-                                    <div class="space-2"></div>
-                                    Barrer
-                                </div>
+                                <?php 
+                                    foreach ($skills as $value) { 
+                                        ?>
+                                        <div class="col-xs-3 center">
+                                            <div class="knob-container inline">
+                                                <input type="text" id="knob<?php echo $value['skillId']; ?>" onchange="cambio()" value="0" class="input-small knob" data-min="0" data-max="10" data-step="1" data-width="80" data-height="80" data-thickness=".2" />
+                                                <input  type="text" class="collapse" name="skillsId[]" value="<?php echo $value['skillId']; ?>">
+                                                <input  type="text" class="collapse" name="skillsNumber[]" id="valor<?php echo $value['skillId']; ?>" >
+                                            </div>
+                                            <div class="space-2"></div>
+                                            <?php echo $value['skillName']; ?>
+                                        </div>
+                                        <?php
+                                    }
+                                ?>
                             </div>
 						</div>
 					</div>
 				</div>
 			</div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 center">
+                    <button type="submit" style="width: 500px;" class="btn btn-success btn-block">Registrar</button>
+                </div>
+            </div>
+            </form>
 		</div><!-- /.page-content -->
 	</div>
 </div><!-- /.main-content -->
@@ -242,6 +231,11 @@
 <script type="text/javascript">
     var marker;
 
+    function cambio(){
+        var valor = documentElement.getElementById("skillsNumber").value;
+        document.getElementById("valor").value = valor;
+    }
+
     function initMap() {
         const city = {
             lat: -17.3843238,
@@ -273,21 +267,30 @@
     }
 
 	jQuery(function($) {
-
         $.fn.editable.defaults.mode = 'inline';
 		$.fn.editableform.loading = "<div class='editableform-loading'><i class='ace-icon fa fa-spinner fa-spin fa-2x light-blue'></i></div>";
 		$.fn.editableform.buttons = '<button type="submit" class="btn btn-info editable-submit"><i class="ace-icon fa fa-check"></i></button>'+'<button type="button" class="btn editable-cancel"><i class="ace-icon fa fa-times"></i></button>';
 
         $('.date-picker').datepicker({
             autoclose: true,
-            todayHighlight: true
+            todayHighlight: true,
         })
         //show datepicker when clicking on the icon
         .next().on(ace.click_event, function(){
             $(this).prev().focus();
         });
 
-        $(".knob").knob();
+        <?php 
+        foreach($skills as $value) {
+            ?>
+                $('#knob<?php echo $value['skillId']; ?>').knob({
+                    change : function (value) {
+                            $('#valor<?php echo $value['skillId']; ?>').attr('value', value.toFixed())
+                        }
+                });
+            <?php
+        }
+        ?>
 
         $('#name1').editable({type: 'text', url: 'post.php', name: 'name1',
             validate: function(value) {

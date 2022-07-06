@@ -88,6 +88,7 @@ $routes->get('/recursos_humanos/empleado', 'Employee_controller::showEmployeePro
 $routes->post('/recursos_humanos/personal_de_trabajo/lista_de_personal/eliminar_empleado/(:num)', 'Employee_controller::deleteEmployee/$1');
 
 $routes->get('/recursos_humanos/empleados/nuevo_registro', 'Employee_controller::registerEmployeeView');
+$routes->post('/recursos_humanos/empleados/nuevo_registro/registrar_empleado', 'Employee_controller::registerEmployee');
 
 /*
  * --------------------------------------------------------------------

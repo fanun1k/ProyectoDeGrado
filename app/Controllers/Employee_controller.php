@@ -6,6 +6,7 @@ use App\Models\Employee_type_model;
 use App\Models\Employee_model;
 use App\Models\Employee_work_memorandum_model;
 use App\Models\Employee_work_permit_model;
+use App\Models\Skill_model;
 use CodeIgniter\Controller;
 use CodeIgniter\RESTful\ResourceController;
 
@@ -32,28 +33,37 @@ class Employee_controller extends ResourceController{
 
     public function registerEmployeeView() {
         helper("site");
+        $this->skillModel = new Skill_model();
+        $skills = $this->skillModel->getAllSkills();
         $userAccessArray = getUserAccessArrayHELPER();
-        $view = view('header_footer/header').view('header_footer/sidebar',compact('userAccessArray')).view('Employee_register_view');
+        $view = view('header_footer/header').view('header_footer/sidebar',compact('userAccessArray','skills')).view('Employee_register_view');
         return $view;
     }
 
     public function registerEmployee(){
-        $data=array('name'=>$_POST['name'],
-                'lastName1'=>$_POST['lastName1'],
-                'lastName2'=>$_POST['lastName2'],
-                'employeePhoneNumber'=>$_POST['employeePhoneNumber'],
-                'employeeLatitude'=>-17.3742,
-                'employeeLongitude'=>-66.1622,
-                'employeeCI'=>$_POST['employeeCI'],  
-                'employeeGender'=>$_POST['employeeGender'],
-                'employeeDateOfBirth'=>$_POST['employeeDateOfBirth'],
-                'employeeCode'=>$_POST['employeeCode']);
-        $msg=$this->model->registerEmployee($data);
-        if ($msg>0) {
-            return redirect()->route('recursos_humanos/nuevo_perfil');
+        $dateOfBirth = $this->request->getPost('employeeDateOfBirth');
+        $dateOfBirth = str_replace('/', '-', $dateOfBirth);
+        $dateOfBirth = date("Y-m-d", strtotime($dateOfBirth));
+        $data=array(
+                'name'=>$this->request->getPost('name'),
+                'lastName1'=>$this->request->getPost('lastName1'),
+                'lastName2'=>$this->request->getPost('lastName2'),
+                'employeePhoneNumber'=>$this->request->getPost('employeePhoneNumber'),
+                'employeeLatitude'=>$this->request->getPost('lat'),
+                'employeeLongitude'=>$this->request->getPost('lng'),
+                'employeeCI'=>$this->request->getPost('employeeCI'),  
+                'employeeGender'=>$this->request->getPost('employeeGender'),
+                'employeeDateOfBirth'=>$dateOfBirth,
+                'employeeCode'=>6765);
+
+        $skillsId = $this->request->getPost('skillsId');
+        $skillsValue = $this->request->getPost('skillsNumber');
+
+        if ($this->model->registerEmployee($data,$skillsId,$skillsValue)>0) {
+            return redirect()->route('recursos_humanos/personal_de_trabajo/lista_de_personal');
         }    
         else{
-            echo 'error';
+            
         }
     }
 

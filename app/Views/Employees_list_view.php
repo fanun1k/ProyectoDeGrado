@@ -65,7 +65,10 @@
                                                 <td><?php echo $value['name']." ".$value['lastName1']." ".$value['lastName2']; ?></td>
                                                 <td><?php echo $value['employeePhoneNumber']; ?></td>
                                                 <td><?php echo $value['employeeCI']; ?></td>
-                                                <td><?php echo $value['employeeDateOfBirth']; ?></td>
+                                                <td><?php 
+														$dateOfBirth = str_replace('-', '/', $value['employeeDateOfBirth']);
+														$dateOfBirth = date("d/m/Y",strtotime($dateOfBirth));
+												 	echo $dateOfBirth; ?></td>
                                                 <td>
 													<?php 
 														if($value['status']==0) { 
