@@ -34,7 +34,7 @@ class Database extends Config
         'DSN'      => '',
         'hostname' => '127.0.0.1',
         'username' => 'root',
-        'password' => 'hellothere',
+        'password' => 'root',
         'database' => 'elpad_db',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
