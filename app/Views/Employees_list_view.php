@@ -81,26 +81,20 @@
 															?>
 															<span class="label label-md label-success">Activo</span>
 															<?php
+															if($value['employeeProfileCompleted']==0) {
+																?>
+																<span class="label label-md label-warning">Perfil Incompleto</span>
+																<?php
+															}
 														}
 													?>
 												</td>
                                                 <td>
                                                     <div class="hidden-sm hidden-xs action-buttons">
                                                         <!-- Redireccion para completar el perfil del personal (adicion de material, asignacion de horarios...) -->
-														<?php 
-															if($value['employeProfileCompleted']==0) { 
-																?>
-																<a class="blue" href="#" data-toggle="modal">
-																	<i class="ace-icon fa fa-plus bigger-130"></i>
-																</a> 
-																<?php
-															}
-														?>
-                                                        
-                                                        <a class="green" href="#" data-toggle="modal">
-                                                            <i class="ace-icon fa fa-pencil bigger-130"></i>
-                                                        </a>
-
+														<a class="green" href="<?php echo base_url('/recursos_humanos/empleados/perfil_empleado') ?>">
+															<i class="ace-icon fa fa-pencil bigger-130"></i>
+														</a> 
                                                         <a class="red" href="#modalDeleteEmployee<?php echo $value["employeeId"]; ?>" data-toggle="modal">
                                                             <i class="ace-icon fa fa-trash-o bigger-130"></i>
                                                         </a>
@@ -160,7 +154,7 @@
                                     <div class="modal-body">
                                         <div class="row">
                                             <div class="col-xs-12">
-                                                <label>¿Estás seguro de que quieres eliminar el proveedor?</label>
+                                                <label>¿Estás seguro de que quieres eliminar el proveedor? <?php echo $value["employeeId"]; ?> </label>
                                             </div>
                                         </div>
                                         <div class="space"></div>

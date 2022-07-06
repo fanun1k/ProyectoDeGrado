@@ -76,17 +76,14 @@ $routes->get('/gestion_nutricional/getOptionsSupplyType', 'Nutritional_table_con
  * --------------------------------------------------------------------
  */
 $routes->get('/recursos_humanos/personal_de_trabajo','Employee_controller::index');
-$routes->get('/recursos_humanos/personal_de_trabajo/lista_de_personal','Employee_controller::listEmployees');
 $routes->post('/recursos_humanos/personal_de_trabajo/registrar_tipo_de_empleado','Employee_controller::registerEmployeeType');
 $routes->get('/recursos_humanos/planillas/memorandum','Employee_controller::employeeMemorandum');
 $routes->post('/recursos_humanos/planillas/memorandum/registrar_memorandum','Employee_controller::registerEmployeeMemorandum');
-$routes->get('/recursos_humanos/nuevo_perfil','New_employee_profile_controller::index');
-$routes->post('/recursos_humanos/nuevo_perfil/registrar_empleado','New_employee_profile_controller::registerNewEmployee');
 $routes->get('/recursos_humanos/planillas/permisos_vacaciones','Employee_controller::employeePermit');
 $routes->post('/recursos_humanos/planillas/permisos_vacaciones/registrar_permiso_vacacion','Employee_controller::registerEmployeePermit');
-$routes->get('/recursos_humanos/empleado', 'Employee_controller::showEmployeeProfile');
-$routes->post('/recursos_humanos/personal_de_trabajo/lista_de_personal/eliminar_empleado/(:num)', 'Employee_controller::deleteEmployee/$1');
-
+$routes->get('/recursos_humanos/empleados/perfil_empleado', 'Employee_controller::showEmployeeProfile');
+$routes->get('/recursos_humanos/empleados','Employee_controller::listEmployees');
+$routes->post('/recursos_humanos/empleados/eliminar_empleado/(:num)', 'Employee_controller::deleteEmployee/$1');
 $routes->get('/recursos_humanos/empleados/nuevo_registro', 'Employee_controller::registerEmployeeView');
 $routes->post('/recursos_humanos/empleados/nuevo_registro/registrar_empleado', 'Employee_controller::registerEmployee');
 

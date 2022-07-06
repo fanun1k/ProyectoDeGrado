@@ -182,30 +182,11 @@
 					</li>
 
 					<li class="">
-						<a href="#" class="dropdown-toggle">
+						<a href="<?php echo base_url('/recursos_humanos/empleados') ?>" >
 							<i class="menu-icon fa fa-caret-right"></i>
-							<span class="menu-text">
-								Personal de Trabajo
-							</span>
-							<b class="arrow fa fa-angle-down"></b>
+								Empleados
 						</a>
 						<b class="arrow"></b>
-						<ul class="submenu">
-							<li class="">
-								<a href="<?php echo base_url('/recursos_humanos/nuevo_perfil') ?>">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Nuevo Personal
-								</a>
-								<b class="arrow"></b>
-							</li>
-							<li class="">
-								<a href="<?php echo base_url('/recursos_humanos/personal_de_trabajo/lista_de_personal') ?>">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Lista de Personal
-								</a>
-								<b class="arrow"></b>
-							</li>
-						</ul>
 					</li>
 
 					<li class="">

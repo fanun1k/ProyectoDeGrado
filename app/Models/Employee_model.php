@@ -8,7 +8,7 @@ class Employee_model extends Model{
     // Uncomment below if you want add primary key
     protected $primaryKey = 'employeeId';
 
-    protected $allowedFields=['name','lastName1','lastName2','employeePhoneNumber','employeeCI','employeeLatitude','employeeLongitude','employeeGender','employeeDateOfBirth','employeeCode'];
+    protected $allowedFields=['name','lastName1','lastName2','employeePhoneNumber','employeeCI','employeeLatitude','employeeLongitude','employeeGender','employeeDateOfBirth','employeeCode','employeeProfileCompleted','lastUpdate','status'];
     
     public function registerEmployee($data,$skillsId,$skillsValue){
         //return $this->insert($data);
@@ -48,7 +48,7 @@ class Employee_model extends Model{
 
     public function deleteEmployee($id){
         return $this->update($id,['status'=>'0']);
-     }
+    }
 
 
 }

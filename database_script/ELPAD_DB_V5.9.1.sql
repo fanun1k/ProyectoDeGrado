@@ -144,7 +144,7 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `elpad_db`.`employee` (
   `employeeId` INT(11) NOT NULL AUTO_INCREMENT,
-  `encryptedEmployeeId` VARCHAR(13) NOT NULL,
+  `encryptedEmployeeId` VARCHAR(13) NULL DEFAULT NULL,
   `name` VARCHAR(60) NOT NULL,
   `lastName1` VARCHAR(60) NOT NULL,
   `lastName2` VARCHAR(60) NULL DEFAULT NULL,
@@ -604,7 +604,7 @@ CREATE TABLE IF NOT EXISTS `elpad_db`.`employee_document` (
   `employeeId` INT(11) NOT NULL,
   `employeeDocumentTypeId` INT(11) NOT NULL,
   `employeeDocumentName` VARCHAR(45) NULL DEFAULT NULL,
-  `document_extension` VARCHAR(10) NOT NULL,
+  `employeeDocumentExtension` VARCHAR(10) NOT NULL,
   `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastUpdate` DATETIME NULL DEFAULT NULL,
   `status` TINYINT(4) NOT NULL DEFAULT '1',
@@ -1315,7 +1315,7 @@ DEFAULT CHARACTER SET = utf8;
 CREATE TABLE IF NOT EXISTS `elpad_db`.`employee_skills` (
   `employeeId` INT NOT NULL,
   `skillId` INT NOT NULL,
-  `value` INT NOT NULL,
+  `skillValue` INT NOT NULL,
   `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastUpdate` DATETIME NULL,
   `status` TINYINT NOT NULL DEFAULT 1,

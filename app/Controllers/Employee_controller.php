@@ -155,29 +155,14 @@ class Employee_controller extends ResourceController{
 
     public function deleteEmployee($id)
     {
-        if (session()->has('userId')) {
-            $userId = session()->get('userId');
-        } else if (isset($_COOKIE['userId'])) {
-            $userId = $_COOKIE['userId'];
-        }
-        if ($userId == NULL) {
-            session()->set('error', 'Enlace no permitido. Debe iniciar sesión.');
-            return redirect()->route('/');
-        }
-        $this->userModel = new User_model();
-        $status = $this->userModel->getUserStatus($userId);
-        if ($status == -1 || $status == 0) {
-            session()->set('error', 'Enlace no permitido. Debe iniciar sesión.');
-            return redirect()->route('/');
-        }
-        else if ($status == 1) {
+            echo $id;
             if($this->model->deleteEmployee($id)>0){
                 return redirect()->route('aprovisionamiento/proveedores/lista_proveedores');
             }
             else{
                 echo "error";
             }
-        }
+        
     }
 
     
