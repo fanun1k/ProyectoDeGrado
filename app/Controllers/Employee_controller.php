@@ -146,10 +146,11 @@ class Employee_controller extends ResourceController{
     }
 
     public function showEmployeeProfile(){
-        //echo $_GET['id'];
         helper("site");
         $userAccessArray = getUserAccessArrayHELPER();
-        $view = view('header_footer/header').view('header_footer/sidebar',compact('userAccessArray')).view('Employee_profile');
+        $employeeModel = new Employee_model();
+        $employeeInfoArray = $employeeModel->getEmployee($_GET['id']);
+        $view = view('header_footer/header').view('header_footer/sidebar', compact('userAccessArray')).view('Employee_profile', compact('employeeInfoArray'));
         return $view;
     }
 
@@ -165,5 +166,17 @@ class Employee_controller extends ResourceController{
         
     }
 
-    
+    public function updateEmployeeName(){
+        $employeeModel = new Employee_model();
+        $encryptedEmployeeId = $this->request->getPost('encryptedEmployeeId');
+        $name = $this->request->getPost('name');
+        $employeeModel->updateEmployeeName($encryptedEmployeeId, $name);
+    }
+
+    public function updateEmployeeLastName1(){
+        $employeeModel = new Employee_model();
+        $encryptedEmployeeId = $this->request->getPost('encryptedEmployeeId');
+        $lastName1 = $this->request->getPost('lastName1');
+        $employeeModel->updateEmployeeLastName1($encryptedEmployeeId, $lastName1);
+    }
 }

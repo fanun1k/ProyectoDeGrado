@@ -50,5 +50,19 @@ class Employee_model extends Model{
         return $this->update($id,['status'=>'0']);
     }
 
+    public function getEmployee($encryptedEmployeeId){
+        $db = db_connect();
+        $builder = $db->table('employee')->select('name, lastName1, lastName2, employeePhoneNumber, employeeCI, employeeGender, employeeDateOfBirth')->where('encryptedEmployeeId', $encryptedEmployeeId);
+        return $builder->get();
+    }
 
+    public function updateEmployeeName($encryptedEmployeeId, $name){
+        $db = db_connect();
+        $builder = $db->table('employee')->where('encryptedEmployeeId', $encryptedEmployeeId)->update(['name' => $name]);
+    }
+
+    public function updateEmployeeLastName1($encryptedEmployeeId, $lastName1){
+        $db = db_connect();
+        $builder = $db->table('employee')->where('encryptedEmployeeId', $encryptedEmployeeId)->update(['lastName1' => $lastName1]);
+    }
 }
