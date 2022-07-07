@@ -179,4 +179,39 @@ class Employee_controller extends ResourceController{
         $lastName1 = $this->request->getPost('lastName1');
         $employeeModel->updateEmployeeLastName1($encryptedEmployeeId, $lastName1);
     }
+
+    public function updateEmployeeLastName2(){
+        $employeeModel = new Employee_model();
+        $encryptedEmployeeId = $this->request->getPost('encryptedEmployeeId');
+        $lastName2 = $this->request->getPost('lastName2');
+        $employeeModel->updateEmployeeLastName2($encryptedEmployeeId, $lastName2);
+    }
+
+    public function updateEmployeePhoneNumber(){
+        $employeeModel = new Employee_model();
+        $encryptedEmployeeId = $this->request->getPost('encryptedEmployeeId');
+        $employeePhoneNumber = $this->request->getPost('employeePhoneNumber');
+        $employeeModel->updateEmployeePhoneNumber($encryptedEmployeeId, $employeePhoneNumber);
+    }
+
+    public function updateEmployeeCI(){
+        $employeeModel = new Employee_model();
+        $encryptedEmployeeId = $this->request->getPost('encryptedEmployeeId');
+        $employeeCI = $this->request->getPost('employeeCI');
+        $employeeModel->updateEmployeeCI($encryptedEmployeeId, $employeeCI);
+    }
+
+    public function updateEmployeeGender(){
+        $employeeModel = new Employee_model();
+        $encryptedEmployeeId = $this->request->getPost('encryptedEmployeeId');
+        $employeeGender = $this->request->getPost('employeeGender');
+        $employeeModel->updateEmployeeGender($encryptedEmployeeId, $employeeGender);
+    }
+
+    public function updateEmployeeDateOfBirth(){
+        $employeeModel = new Employee_model();
+        $encryptedEmployeeId = $this->request->getPost('encryptedEmployeeId');
+        $employeeDateOfBirth = $this->request->getPost('employeeDateOfBirth');
+        $employeeModel->updateEmployeeDateOfBirth($encryptedEmployeeId, $employeeDateOfBirth);
+    }
 }

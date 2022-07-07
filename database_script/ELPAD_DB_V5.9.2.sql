@@ -153,7 +153,7 @@ CREATE TABLE IF NOT EXISTS `elpad_db`.`employee` (
   `employeeLongitude` FLOAT NOT NULL,
   `employeeCI` VARCHAR(20) NOT NULL,
   `employeeGender` CHAR(1) NOT NULL,
-  `employeeDateOfBirth` DATETIME NOT NULL,
+  `employeeDateOfBirth` DATE NOT NULL,
   `employeeCode` VARCHAR(45) NOT NULL,
   `employeProfileCompleted` TINYINT NOT NULL DEFAULT 0,
   `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
