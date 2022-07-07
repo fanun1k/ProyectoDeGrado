@@ -92,7 +92,7 @@
                                                 <td>
                                                     <div class="hidden-sm hidden-xs action-buttons">
                                                         <!-- Redireccion para completar el perfil del personal (adicion de material, asignacion de horarios...) -->
-														<a class="green" href="<?php echo base_url('/recursos_humanos/empleados/perfil_empleado') ?>">
+														<a class="green" href="<?php echo base_url('/recursos_humanos/empleados/perfil_empleado?id=' . $value["encryptedEmployeeId"]); ?>">
 															<i class="ace-icon fa fa-pencil bigger-130"></i>
 														</a> 
                                                         <a class="red" href="#modalDeleteEmployee<?php echo $value["employeeId"]; ?>" data-toggle="modal">

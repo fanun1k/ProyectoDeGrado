@@ -88,6 +88,11 @@ $routes->get('/recursos_humanos/empleados/nuevo_registro', 'Employee_controller:
 $routes->post('/recursos_humanos/empleados/nuevo_registro/registrar_empleado', 'Employee_controller::registerEmployee');
 $routes->post('/recursos_humanos/empleados/actualizar_nombre', 'Employee_controller::updateEmployeeName');
 $routes->post('/recursos_humanos/empleados/actualizar_primer_apellido', 'Employee_controller::updateEmployeeLastName1');
+$routes->post('/recursos_humanos/empleados/actualizar_segundo_apellido', 'Employee_controller::updateEmployeeLastName2');
+$routes->post('/recursos_humanos/empleados/actualizar_numero_telefonico', 'Employee_controller::updateEmployeePhoneNumber');
+$routes->post('/recursos_humanos/empleados/actualizar_carnet', 'Employee_controller::updateEmployeeCI');
+$routes->post('/recursos_humanos/empleados/actualizar_genero', 'Employee_controller::updateEmployeeGender');
+$routes->post('/recursos_humanos/empleados/actualizar_fecha_de_nacimiento', 'Employee_controller::updateEmployeeDateOfBirth');
 
 /*
  * --------------------------------------------------------------------

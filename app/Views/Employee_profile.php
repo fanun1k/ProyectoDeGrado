@@ -13,7 +13,9 @@
 				<div class="col-xs-12">
 					<!-- PAGE CONTENT BEGINS -->
 					<div class="page-header">
-						<h1>Cuenta de Rodrigo Iriarte Zamorano (no esta con conexión a BDD todavía)</h1>
+						<?php foreach ($employeeInfoArray->getResult() as $row) { ?>
+						<h1>Cuenta de <?php echo $row->name." ".$row->lastName1.(($row->lastName2 != null)?" ".$row->lastName2:""); ?></h1>
+						<?php } ?>
 					</div>
 					<!-- PAGE CONTENT ENDS -->
 				</div><!-- /.col -->
@@ -100,7 +102,10 @@
 								<div class="profile-info-name">Género</div>
 								<div class="profile-info-value">
 									<i class="fa fa-venus-mars light-orange bigger-110"></i>
-									<span class="editable" id="employeeGender1"><?php echo ($row->employeeGender == "M") ? "Masculino" : "Femenino"; ?></span>
+									<span class="editable" id="employeeGender1">
+										<?php $employeeGenderText = ($row->employeeGender == "M") ? "Masculino" : "Femenino";
+										echo $employeeGenderText; ?>
+									</span>
 								</div>
 							</div>
 							<div class="profile-info-row">
@@ -280,13 +285,14 @@
 				$.fn.editableform.loading = "<div class='editableform-loading'><i class='ace-icon fa fa-spinner fa-spin fa-2x light-blue'></i></div>";
 				$.fn.editableform.buttons = '<button type="submit" class="btn btn-info editable-submit"><i class="ace-icon fa fa-check"></i></button>'+'<button type="button" class="btn editable-cancel"><i class="ace-icon fa fa-times"></i></button>';    
 				
-				$('#name1').editable({type: 'text', url: 'post.php', name: 'name1',
+				$('#name1').editable({type: 'text', name: 'name1',
 					validate: function(value) {
-						if(value.length == 0 || value.length > 60 || /\d/.test(value)) return 'Por favor ingrese un nombre';
+						var employeeName = value.trim().replace(/\s\s+/g, ' ');
+						if(employeeName.length == 0 || employeeName.length > 60 || /\d/.test(employeeName) || !/^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+$/.test(employeeName)) return 'Por favor ingrese un nombre';
 					},
 					success: function(response, value) {
 						var encryptedEmployeeId = new URLSearchParams(window.location.search).get('id').toString();
-						var employeeName = value.trim();
+						var employeeName = value.trim().replace(/\s\s+/g, ' ');
 						$.ajax({
 							url: "<?php echo base_url('/recursos_humanos/empleados/actualizar_nombre'); ?>",
 							type: "POST", dataType: "html", data: {"encryptedEmployeeId": encryptedEmployeeId, "name": employeeName},
@@ -294,13 +300,15 @@
 						});
 					}
 				});
+
 				$('#lastName1').editable({type: 'text', name: 'lastName1',
 					validate: function(value) {
-						if(value.length == 0 || value.length > 60 || /\d/.test(value)) return 'Por favor ingrese un apellido válido';
+						var employeeLastName1 = value.trim().replace(/\s\s+/g, ' ');
+						if(employeeLastName1.length == 0 || employeeLastName1.length > 60 || /\d/.test(employeeLastName1) || !/^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+$/.test(employeeLastName1)) return 'Por favor ingrese un apellido válido';
 					},
 					success: function(response, value) {
 						var encryptedEmployeeId = new URLSearchParams(window.location.search).get('id').toString();
-						var employeeLastName1 = value.trim();
+						var employeeLastName1 = value.trim().replace(/\s\s+/g, ' ');
 						$.ajax({
 							url: "<?php echo base_url('/recursos_humanos/empleados/actualizar_primer_apellido'); ?>",
 							type: "POST", dataType: "html", data: {"encryptedEmployeeId": encryptedEmployeeId, "lastName1": employeeLastName1},
@@ -308,36 +316,81 @@
 						});
 					}
 				});
-				$('#lastName2').editable({type: 'text', name: 'lastName2',
+
+				$('#lastName2').editable({type: 'text', name: 'lastName2', emptytext: '[No hay segundo apellido]',
 					validate: function(value) {
-						if(value.length == 0 || value.length > 60 || /\d/.test(value)) return 'Por favor ingrese un apellido válido';
+						var employeeLastName2 = value.trim().replace(/\s\s+/g, ' ');
+						if(employeeLastName2.length > 0 && (employeeLastName2.length > 60 || /\d/.test(employeeLastName2))) return 'Por favor ingrese un apellido válido';
+					},
+					success: function(response, value) {
+						var encryptedEmployeeId = new URLSearchParams(window.location.search).get('id').toString();
+						var employeeLastName2 = value.trim().replace(/\s\s+/g, ' ');
+						if(employeeLastName2.length == 0) employeeLastName2 = null;
+						$.ajax({
+							url: "<?php echo base_url('/recursos_humanos/empleados/actualizar_segundo_apellido'); ?>",
+							type: "POST", dataType: "html", data: {"encryptedEmployeeId": encryptedEmployeeId, "lastName2": employeeLastName2},
+							success : function(data) { if(employeeLastName2.length > 0) $("#lastName2").text(employeeLastName2); }, error : function(jqXHR, textStatus, errorThrown) {}
+						});
 					}
 				});
-			    $('#phoneNumber1').editable({type: 'text', name: 'phoneNumber1',
+
+				$('#phoneNumber1').editable({type: 'text', name: 'phoneNumber1',
 					validate: function(value) {
-						if(value.length > 8 || value.length < 7 || isNaN(value)) return 'Por favor ingrese un número de teléfono válido';
+						var phoneNumber1 = value.trim().replace(/\s\s+/g, ' ');
+						if(phoneNumber1.length > 8 || phoneNumber1.length < 7 || isNaN(phoneNumber1)) return 'Por favor ingrese un número de teléfono válido';
+					},
+					success: function(response, value) {
+						var encryptedEmployeeId = new URLSearchParams(window.location.search).get('id').toString();
+						var phoneNumber1 = value.trim().replace(/\s\s+/g, ' ');
+						$.ajax({
+							url: "<?php echo base_url('/recursos_humanos/empleados/actualizar_numero_telefonico'); ?>",
+							type: "POST", dataType: "html", data: {"encryptedEmployeeId": encryptedEmployeeId, "employeePhoneNumber": phoneNumber1},
+							success : function(data) { $("#phoneNumber1").text(phoneNumber1); }, error : function(jqXHR, textStatus, errorThrown) {}
+						});
 					}
 				});
+
 				$('#employeeId1').editable({type: 'text', name: 'employeeId1',
 					validate: function(value) {
-						if(value.length < 6 || value.length > 12)
+						var employeeCI1 = value.trim().replace(/\s\s+/g, ' ');
+						if(employeeCI1.length < 6 || employeeCI1.length > 12)
 							return 'Por favor introduzca un carnet de identidad válido';
-						if(isNaN(value)){
+						if(isNaN(employeeCI1)){
 							var isNumber = false, error = false;
-							for (var i = 0; i < value.length; i++) {
-								if(!isNaN(value.charAt(i))) isNumber = true;
+							for (var i = 0; i < employeeCI1.length; i++) {
+								if(!isNaN(employeeCI1.charAt(i))) isNumber = true;
 								else {
-									if(i == 0 && value.substring(0, 2) != "E-") error = true;
-									if(isNumber && i + 1 < value.length) if(!isNaN(value.charAt(i+1))) error = true;
+									if(i == 0 && employeeCI1.substring(0, 2) != "E-") error = true;
+									if(isNumber && i + 1 < employeeCI1.length) if(!isNaN(employeeCI1.charAt(i+1))) error = true;
 								}
 							}
 							if(error) return 'Por favor introduzca un carnet de identidad válido';
 						}
+					},
+					success: function(response, value) {
+						var encryptedEmployeeId = new URLSearchParams(window.location.search).get('id').toString();
+						var employeeCI1 = value.trim().replace(/\s\s+/g, ' ');
+						$.ajax({
+							url: "<?php echo base_url('/recursos_humanos/empleados/actualizar_carnet'); ?>",
+							type: "POST", dataType: "html", data: {"encryptedEmployeeId": encryptedEmployeeId, "employeeCI": employeeCI1},
+							success : function(data) { $("#employeeId1").text(employeeCI1); }, error : function(jqXHR, textStatus, errorThrown) {}
+						});
 					}
 				});
+
 				var employeeGenderArray = [];
 				$.each({ "M": "Masculino", "F": "Femenino"}, function(k, v) { employeeGenderArray.push({id: k, text: v}); });
-				$('#employeeGender1').editable({type: 'select2', value: 'Masculino', source: employeeGenderArray});
+				$('#employeeGender1').editable({type: 'select2', value: 'Masculino', source: employeeGenderArray,
+					success: function(response, value) {
+						var encryptedEmployeeId = new URLSearchParams(window.location.search).get('id').toString();
+						$.ajax({
+							url: "<?php echo base_url('/recursos_humanos/empleados/actualizar_genero'); ?>",
+							type: "POST", dataType: "html", data: {"encryptedEmployeeId": encryptedEmployeeId, "employeeGender": value},
+							success : function(data) {}, error : function(jqXHR, textStatus, errorThrown) {}
+						});
+					}
+				});
+
 				$('#employeeDateOfBirth1').editable({type: 'adate', date: {format: 'dd/mm/yyyy', viewformat: 'dd/mm/yyyy', weekStart: 1},
 					validate: function(value) {
 						var dateOfBirth1 = value.split("/");
@@ -346,11 +399,21 @@
 						lowerDate.setDate(lowerDate.getDate()-(90*365));
 						upperDate.setDate(upperDate.getDate()-(15*365));
 						if(dateOfBirth > upperDate || dateOfBirth < lowerDate) return 'Por favor introduzca una fecha entre ' + lowerDate.toLocaleDateString() + ' y ' + upperDate.toLocaleDateString();
+					},
+					success: function(response, value) {
+						var encryptedEmployeeId = new URLSearchParams(window.location.search).get('id').toString();
+						var dateOfBirth1 = value.split("/");
+						var dateOfBirth = (+dateOfBirth1[2]) + "-" + (dateOfBirth1[1]) + "-" + (+dateOfBirth1[0]);
+						$.ajax({
+							url: "<?php echo base_url('/recursos_humanos/empleados/actualizar_fecha_de_nacimiento'); ?>",
+							type: "POST", dataType: "html", data: {"encryptedEmployeeId": encryptedEmployeeId, "employeeDateOfBirth": dateOfBirth},
+							success : function(data) {}, error : function(jqXHR, textStatus, errorThrown) {}
+						});
 					}
 				});
 			
 			
-				
+				//////////////////////////// codigo de abajo no tocar todavia
 				
 				try {
 					try {

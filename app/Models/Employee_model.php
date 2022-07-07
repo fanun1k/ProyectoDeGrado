@@ -65,4 +65,29 @@ class Employee_model extends Model{
         $db = db_connect();
         $builder = $db->table('employee')->where('encryptedEmployeeId', $encryptedEmployeeId)->update(['lastName1' => $lastName1]);
     }
+
+    public function updateEmployeeLastName2($encryptedEmployeeId, $lastName2){
+        $db = db_connect();
+        $builder = $db->table('employee')->where('encryptedEmployeeId', $encryptedEmployeeId)->update(['lastName2' => $lastName2]);
+    }
+
+    public function updateEmployeePhoneNumber($encryptedEmployeeId, $employeePhoneNumber){
+        $db = db_connect();
+        $builder = $db->table('employee')->where('encryptedEmployeeId', $encryptedEmployeeId)->update(['employeePhoneNumber' => $employeePhoneNumber]);
+    }
+
+    public function updateEmployeeCI($encryptedEmployeeId, $employeeCI){
+        $db = db_connect();
+        $builder = $db->table('employee')->where('encryptedEmployeeId', $encryptedEmployeeId)->update(['employeeCI' => $employeeCI]);
+    }
+
+    public function updateEmployeeGender($encryptedEmployeeId, $employeeGender){
+        $db = db_connect();
+        $builder = $db->table('employee')->where('encryptedEmployeeId', $encryptedEmployeeId)->update(['employeeGender' => $employeeGender]);
+    }
+
+    public function updateEmployeeDateOfBirth($encryptedEmployeeId, $employeeDateOfBirth){
+        $db = db_connect();
+        $builder = $db->table('employee')->where('encryptedEmployeeId', $encryptedEmployeeId)->update(['employeeDateOfBirth' => $employeeDateOfBirth]);
+    }
 }
