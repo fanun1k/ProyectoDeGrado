@@ -65,52 +65,54 @@
 							</div>
 						</div>
 					</div>
-
+					
 					<div class="space-4"></div>
 					<div class="widget-box transparent">
 						<div class="widget-header widget-header-small">
 							<h4 class="widget-title blue smaller"><i class="ace-icon fa fa-users orange"></i>Datos Personales</h4>
 						</div>
+						<?php foreach ($employeeInfoArray->getResult() as $row) { ?>
 						<div class="profile-user-info profile-user-info-striped">
 							<div class="profile-info-row">
 								<div class="profile-info-name">Nombre</div>
 								<div class="profile-info-value">
 									<i class="fa fa-user light-orange bigger-110"></i>
-									<span class="editable" id="name1">Rodrigo</span>
-									<span class="editable" id="lastName1">Iriarte</span>
-									<span class="editable" id="lastName2">Zamorano</span>
+									<span class="editable" id="name1"><?php echo $row->name; ?></span>
+									<span class="editable" id="lastName1"><?php echo $row->lastName1; ?></span>
+									<span class="editable" id="lastName2"><?php echo $row->lastName2; ?></span>
 								</div>
 							</div>
 							<div class="profile-info-row">
 								<div class="profile-info-name">Número de Celular</div>
 								<div class="profile-info-value">
 									<i class="fa fa-phone light-orange bigger-110"></i>
-									<span class="editable" id="phoneNumber1">68464817</span>
+									<span class="editable" id="phoneNumber1"><?php echo $row->employeePhoneNumber; ?></span>
 								</div>
 							</div>
 							<div class="profile-info-row">
 								<div class="profile-info-name">Carnet de Identidad</div>
 								<div class="profile-info-value">
 									<i class="fa fa-id-card light-orange bigger-110"></i>
-									<span class="editable" id="employeeId1">13419279</span>
+									<span class="editable" id="employeeId1"><?php echo $row->employeeCI; ?></span>
 								</div>
 							</div>
 							<div class="profile-info-row">
 								<div class="profile-info-name">Género</div>
 								<div class="profile-info-value">
 									<i class="fa fa-venus-mars light-orange bigger-110"></i>
-									<span class="editable" id="employeeGender1">Masculino</span>
+									<span class="editable" id="employeeGender1"><?php echo ($row->employeeGender == "M") ? "Masculino" : "Femenino"; ?></span>
 								</div>
 							</div>
 							<div class="profile-info-row">
 								<div class="profile-info-name">Fecha de Nacimiento</div>
 								<div class="profile-info-value">
 									<i class="fa fa-calendar light-orange bigger-110"></i>
-									<span class="editable" id="employeeDateOfBirth1">24/09/2000</span>
+									<span class="editable" id="employeeDateOfBirth1"><?php echo date("d/m/Y", strtotime($row->employeeDateOfBirth)); ?></span>
 								</div>
 							</div>
 							<div class="profile-info-row"><div class="profile-info-name" style="width:150px; height:1px; visibility:hidden;"></div></div>
 						</div>
+						<?php } ?>
 					</div>
 
 					<div class="space-4"></div>
@@ -281,11 +283,29 @@
 				$('#name1').editable({type: 'text', url: 'post.php', name: 'name1',
 					validate: function(value) {
 						if(value.length == 0 || value.length > 60 || /\d/.test(value)) return 'Por favor ingrese un nombre';
+					},
+					success: function(response, value) {
+						var encryptedEmployeeId = new URLSearchParams(window.location.search).get('id').toString();
+						var employeeName = value.trim();
+						$.ajax({
+							url: "<?php echo base_url('/recursos_humanos/empleados/actualizar_nombre'); ?>",
+							type: "POST", dataType: "html", data: {"encryptedEmployeeId": encryptedEmployeeId, "name": employeeName},
+							success : function(data) { $("#name1").text(employeeName); }, error : function(jqXHR, textStatus, errorThrown) {}
+						});
 					}
 				});
 				$('#lastName1').editable({type: 'text', name: 'lastName1',
 					validate: function(value) {
 						if(value.length == 0 || value.length > 60 || /\d/.test(value)) return 'Por favor ingrese un apellido válido';
+					},
+					success: function(response, value) {
+						var encryptedEmployeeId = new URLSearchParams(window.location.search).get('id').toString();
+						var employeeLastName1 = value.trim();
+						$.ajax({
+							url: "<?php echo base_url('/recursos_humanos/empleados/actualizar_primer_apellido'); ?>",
+							type: "POST", dataType: "html", data: {"encryptedEmployeeId": encryptedEmployeeId, "lastName1": employeeLastName1},
+							success : function(data) { $("#lastName1").text(employeeLastName1); }, error : function(jqXHR, textStatus, errorThrown) {}
+						});
 					}
 				});
 				$('#lastName2').editable({type: 'text', name: 'lastName2',
