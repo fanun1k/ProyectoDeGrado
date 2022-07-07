@@ -758,9 +758,6 @@ CREATE TABLE IF NOT EXISTS `elpad_db`.`employee_work_schedule` (
   `employeeId` INT(11) NOT NULL,
   `diningAreaId` INT(11) NOT NULL,
   `workScheduleId` INT(11) NOT NULL,
-  `startTime` TIME NOT NULL,
-  `endTime` TIME NOT NULL,
-  `numberOfDay` TINYINT(4) NOT NULL,
   `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastUpdate` DATETIME NULL DEFAULT NULL,
   `status` TINYINT(4) NOT NULL DEFAULT '1',
@@ -781,6 +778,28 @@ CREATE TABLE IF NOT EXISTS `elpad_db`.`employee_work_schedule` (
     REFERENCES `elpad_db`.`work_schedule` (`workScheduleId`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `elpad_db`.`work_schedule_days`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `elpad_db`.`work_schedule_days` (
+  `workScheduleDaysId` INT NOT NULL AUTO_INCREMENT,
+  `workScheduleId` INT(11) NOT NULL,
+  `startTime` TIME NOT NULL,
+  `endTime` TIME NOT NULL,
+  `numberOfDay` TINYINT(4) NOT NULL,
+  `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `lastUpdate` DATETIME NULL DEFAULT NULL,
+  `status` TINYINT(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`workScheduleDaysId`),
+  INDEX `fk_work_schedule_days_work_schedule1_idx` (`workScheduleId` ASC),
+  CONSTRAINT `fk_work_schedule_days_work_schedule1`
+    FOREIGN KEY (`workScheduleId`)
+    REFERENCES `elpad_db`.`work_schedule` (`workScheduleId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -1369,7 +1388,7 @@ VALUES (1, 1);
 INSERT INTO skill (skillName)
 VALUES ('Cocinar');
 
-INSERT INTO employee_skills (employeeId, skillId, `value`)
+INSERT INTO employee_skills (employeeId, skillId, skillValue)
 VALUES (1, 1, 10);
 
 INSERT INTO food_times (foodTimesName)
