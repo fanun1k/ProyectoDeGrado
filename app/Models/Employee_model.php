@@ -17,6 +17,7 @@ class Employee_model extends Model{
 
         $id = $this->insert($data);
         $encryptedId = crypt(hash("sha256", $id), "ep");
+        $encryptedId = preg_replace('/[^a-z0-9]/i', substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'), 0, 1), $encryptedId);
 
         $this->db->query('UPDATE employee SET encryptedEmployeeId = "'.$encryptedId.'" WHERE employeeId = '.$id.';');
 
@@ -34,10 +35,10 @@ class Employee_model extends Model{
         
         if ($this->db->transStatus() === false) {
             $this->db->transRollback();
-            return 0;
+            return "0";
         } else {
             $this->db->transCommit();
-            return 1;
+            return $encryptedId;
         }
     }
     
@@ -58,7 +59,7 @@ class Employee_model extends Model{
 
     public function getEmployee($encryptedEmployeeId){
         $db = db_connect();
-        $builder = $db->table('employee')->select('name, lastName1, lastName2, employeePhoneNumber, employeeLatitude, employeeLongitude, employeeCI, employeeGender, employeeDateOfBirth')->where('encryptedEmployeeId', $encryptedEmployeeId);
+        $builder = $db->table('employee')->select('encryptedEmployeeId, name, lastName1, lastName2, employeePhoneNumber, employeeLatitude, employeeLongitude, employeeCI, employeeGender, employeeDateOfBirth')->where('encryptedEmployeeId', $encryptedEmployeeId);
         return $builder->get();
     }
 

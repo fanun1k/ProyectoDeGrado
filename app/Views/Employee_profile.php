@@ -33,9 +33,11 @@
 					<div class="space-4"></div>
 
 					<div class=" center">
+						<?php foreach ($employeeInfoArray->getResult() as $row) { ?>
 						<span class="profile-picture ">
-							<img id="avatar" class="editable img-responsive" alt="Alex's Avatar" src="https://img.game.co.uk/images/content/SpecialEditions/Kirby_Mousepad_POB.png" width="300" height="300" />
+							<img id="avatar" class="editable img-responsive" alt="Alex's Avatar" src="<?php echo base_url(); ?>/images/employee-images/<?php echo $row->encryptedEmployeeId; ?>.png" width="300" height="300" />
 						</span>
+						<?php } ?>
 
 						<div class="space-2"></div>
 
