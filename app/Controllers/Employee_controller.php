@@ -58,9 +58,24 @@ class Employee_controller extends ResourceController{
 
         $skillsId = $this->request->getPost('skillsId');
         $skillsValue = $this->request->getPost('skillsNumber');
+        $img =  $this->request->getPost('data');
+
+        $maxEmployeeId = $this->model->getMaxEmployeeId();
+        
+        foreach ($maxEmployeeId as $row) {
+            $maxEmployeeIdValue = $row;
+        }
+
+        $folderPath = "images/employee-images/";
+        $image_parts = explode(";base64,", $img);
+        $image_type_aux = explode("image/", $image_parts[0]);
+        $image_type = $image_type_aux[1];
+        $image_base64 = base64_decode($image_parts[1]);
+        $file = $folderPath . $maxEmployeeIdValue . '.png';
+        file_put_contents($file, $image_base64);
 
         if ($this->model->registerEmployee($data,$skillsId,$skillsValue)>0) {
-            return redirect()->route('recursos_humanos/personal_de_trabajo/lista_de_personal');
+            return redirect()->route('recursos_humanos/empleados');
         }    
         else{
             
@@ -214,4 +229,7 @@ class Employee_controller extends ResourceController{
         $employeeDateOfBirth = $this->request->getPost('employeeDateOfBirth');
         $employeeModel->updateEmployeeDateOfBirth($encryptedEmployeeId, $employeeDateOfBirth);
     }
+
+    
+
 }
