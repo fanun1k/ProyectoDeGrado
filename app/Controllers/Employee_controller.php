@@ -214,4 +214,12 @@ class Employee_controller extends ResourceController{
         $employeeDateOfBirth = $this->request->getPost('employeeDateOfBirth');
         $employeeModel->updateEmployeeDateOfBirth($encryptedEmployeeId, $employeeDateOfBirth);
     }
+
+    public function updateEmployeeLocation(){
+        $employeeModel = new Employee_model();
+        $encryptedEmployeeId = $this->request->getPost('encryptedEmployeeId');
+        $employeeLatitude = $this->request->getPost('employeeLatitude');
+        $employeeLongitude = $this->request->getPost('employeeLongitude');
+        $employeeModel->updateEmployeeLocation($encryptedEmployeeId, $employeeLatitude, $employeeLongitude);
+    }
 }

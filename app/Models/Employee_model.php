@@ -52,7 +52,7 @@ class Employee_model extends Model{
 
     public function getEmployee($encryptedEmployeeId){
         $db = db_connect();
-        $builder = $db->table('employee')->select('name, lastName1, lastName2, employeePhoneNumber, employeeCI, employeeGender, employeeDateOfBirth')->where('encryptedEmployeeId', $encryptedEmployeeId);
+        $builder = $db->table('employee')->select('name, lastName1, lastName2, employeePhoneNumber, employeeLatitude, employeeLongitude, employeeCI, employeeGender, employeeDateOfBirth')->where('encryptedEmployeeId', $encryptedEmployeeId);
         return $builder->get();
     }
 
@@ -89,5 +89,10 @@ class Employee_model extends Model{
     public function updateEmployeeDateOfBirth($encryptedEmployeeId, $employeeDateOfBirth){
         $db = db_connect();
         $builder = $db->table('employee')->where('encryptedEmployeeId', $encryptedEmployeeId)->update(['employeeDateOfBirth' => $employeeDateOfBirth]);
+    }
+
+    public function updateEmployeeLocation($encryptedEmployeeId, $employeeLatitude, $employeeLongitude){
+        $db = db_connect();
+        $builder = $db->table('employee')->where('encryptedEmployeeId', $encryptedEmployeeId)->update(['employeeLatitude' => $employeeLatitude, 'employeeLongitude' => $employeeLongitude]);
     }
 }
