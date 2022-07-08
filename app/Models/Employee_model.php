@@ -46,6 +46,12 @@ class Employee_model extends Model{
         return $this->where('status', '1')->findAll();
 	}
 
+    public function getMaxEmployeeId()
+	{
+        return $this->select('IFNULL(MAX(employeeId)+1,1) as MaxEmployeeId')->first();
+
+	}
+
     public function deleteEmployee($id){
         return $this->update($id,['status'=>'0']);
     }

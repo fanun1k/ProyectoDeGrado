@@ -40,6 +40,26 @@
                                 <img id="avatar" class="editable img-responsive" alt="Alex's Avatar" src="<?php echo base_url() ?>/assets/images/avatars/profile-pic.jpg" width="200" height="200" />
                             </span>
                         </div>
+
+                        <!-- captura de imagen webcam -->
+
+                        <div >
+                            <div id="my_camera"></div>
+                            <br/>
+                            <input type=button value="Tomar foto" onClick="take_snapshot()">
+                            <input type="hidden" name="image" >
+                        </div>
+
+                        <div >
+                            <div id="results">Your captured image will appear here...</div>
+                            
+                        </div>
+
+                        <div >
+                            <br/>
+                            <button >Enviar</button>
+                        </div>
+
                     </div>
 
 					<div class="space-4"></div>
@@ -57,6 +77,7 @@
                                         <i class="ace-icon fa fa-user light-orange"></i>
                                     </span>
                                 </div>
+                                <div id="results2" >...</div>
                                 <div class="col-sm-3">
                                     <span class="input-icon">
                                         <input type="text" class="form-control" name="lastName1" placeholder="Primer Apellido">
@@ -227,6 +248,11 @@
 <script src="<?php echo base_url()?>/assets/js/ace-elements.min.js"></script>
 <script src="<?php echo base_url()?>/assets/js/ace.min.js"></script>
 
+<!-- script webcam -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
+
+
+
 <!-- inline scripts related to this page -->
 <script type="text/javascript">
     var marker;
@@ -380,4 +406,28 @@
             })
         }catch(e) {}
     });
+
+
+    Webcam.set({
+        width: 250,
+        height: 250,
+        image_format: 'jpeg',
+        jpeg_quality: 90
+    });
+
+    Webcam.attach( '#my_camera' );
+
+
+
+    function take_snapshot() {
+        Webcam.snap( function(data_uri) {
+            console.log(data_uri);
+            document.getElementById('results').innerHTML = '<img name="imagenFoto" src="'+data_uri+'"/>';
+            document.getElementById('results2').innerHTML = '<textarea name="data" >'+data_uri+'</textarea>';
+        });
+    }
+
+    
+
+
 </script>
