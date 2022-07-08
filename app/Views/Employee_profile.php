@@ -27,15 +27,15 @@
 							<i class="ace-icon fa fa-times"></i>
 						</button>
 						<i class="ace-icon fa fa-info bigger-120 blue"></i>&nbsp;
-						Haga clic en la imagen de abajo o en los campos de perfil para editarlos...
+						Haga doble clic en la imagen de abajo o clic en los campos de perfil para editarlos...
 					</div>
 
 					<div class="space-4"></div>
 
 					<div class=" center">
 						<?php foreach ($employeeInfoArray->getResult() as $row) { ?>
-						<span class="profile-picture ">
-							<img id="avatar" class="editable img-responsive" alt="Alex's Avatar" src="<?php echo base_url(); ?>/images/employee-images/<?php echo $row->encryptedEmployeeId; ?>.png" width="300" height="300" />
+						<span id="profile-picture" class="profile-picture" style="width: 300; height: 300;" ondblclick="changeAvatar()">
+							<img id="avatar" class="editable img-responsive editable-click editable-empty" alt="Alex's Avatar" src="<?php echo base_url(); ?>/images/employee-images/<?php echo $row->encryptedEmployeeId; ?>.png" width="300" height="300" />
 						</span>
 						<?php } ?>
 
@@ -301,6 +301,9 @@
 <!-- google maps api -->
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoUXfTkBg00OwY-cuCpa-HWkYwBL9dhLA&callback=initMap"></script>
 
+<!-- webcam script -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
+
 <!-- ace scripts -->
 <script src="<?php echo base_url()?>/assets/js/ace-elements.min.js"></script>
 <script src="<?php echo base_url()?>/assets/js/ace.min.js"></script>
@@ -469,183 +472,52 @@
 				});
 			}
 		});
-	
-		//////////////////////////// codigo de abajo no tocar todavia
-		
-		try {
-			try {
-				document.createElement('IMG').appendChild(document.createElement('B'));
-			} catch(e) {
-				Image.prototype.appendChild = function(el){}
-			}
-	
-			var last_gritter
-			$('#avatar').editable({
-				type: 'image',
-				name: 'avatar',
-				value: null,
-				image: {
-					btn_choose: 'Change Avatar',
-					droppable: true,
-					maxSize: 5000000,
-					name: 'avatar',//put the field name here as well, will be used inside the custom plugin
-					on_error : function(error_type) {//on_error function will be called when the selected file has a problem
-						if(last_gritter) $.gritter.remove(last_gritter);
-						if(error_type == 1) {//file format error
-							last_gritter = $.gritter.add({
-								title: 'File is not an image!',
-								text: 'Please choose a jpg|gif|png image!',
-								class_name: 'gritter-error gritter-center'
-							});
-						} else if(error_type == 2) {//file size rror
-							last_gritter = $.gritter.add({
-								title: 'File too big!',
-								text: 'Image size should not exceed 5 mb!',
-								class_name: 'gritter-error gritter-center'
-							});
-						}
-						else {//other error
-						}
-					},
-					on_success : function() {
-						$.gritter.removeAll();
-					}
-				},
-			    url: function(params) {
-					// ***UPDATE AVATAR HERE*** //
-					//for a working upload example you can replace the contents of this function with 
-					//examples/profile-avatar-update.js
-	
-					var deferred = new $.Deferred
-	
-					var value = $('#avatar').next().find('input[type=hidden]:eq(0)').val();
-					if(!value || value.length == 0) {
-						deferred.resolve();
-						return deferred.promise();
-					}
-	
-	
-					//dummy upload
-					setTimeout(function(){
-						if("FileReader" in window) {
-							//for browsers that have a thumbnail of selected image
-							var thumb = $('#avatar').next().find('img').data('thumb');
-							if(thumb) $('#avatar').get(0).src = thumb;
-						}
-						
-						deferred.resolve({'status':'OK'});
-	
-						if(last_gritter) $.gritter.remove(last_gritter);
-						last_gritter = $.gritter.add({
-							title: 'Avatar Updated!',
-							text: 'Uploading to server can be easily implemented. A working example is included with the template.',
-							class_name: 'gritter-info gritter-center'
-						});
-						
-					 } , parseInt(Math.random() * 800 + 800))
-	
-					return deferred.promise();
-					
-					// ***END OF UPDATE AVATAR HERE*** //
-				},
-				
-				success: function(response, newValue) {
-				}
-			})
-		}catch(e) {}
-		
-	
-		//////////////////////////////
+
 		$('#profile-feed-1').ace_scroll({
 			height: '250px',
 			mouseWheelLock: true,
 			alwaysVisible : true
 		});
-	
+		
 		$('a[ data-original-title]').tooltip();
-	
-		$('.easy-pie-chart.percentage').each(function(){
-		var barColor = $(this).data('color') || '#555';
-		var trackColor = '#E2E2E2';
-		var size = parseInt($(this).data('size')) || 72;
-		$(this).easyPieChart({
-			barColor: barColor,
-			trackColor: trackColor,
-			scaleColor: false,
-			lineCap: 'butt',
-			lineWidth: parseInt(size/10),
-			animate:false,
-			size: size
-		}).css('color', barColor);
-		});
-	  
-		///////////////////////////////////////////
-	
-		//right & left position
-		//show the user info on right or left depending on its position
-		$('#user-profile-2 .memberdiv').on('mouseenter touchstart', function(){
-			var $this = $(this);
-			var $parent = $this.closest('.tab-pane');
-	
-			var off1 = $parent.offset();
-			var w1 = $parent.width();
-	
-			var off2 = $this.offset();
-			var w2 = $this.width();
-	
-			var place = 'left';
-			if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) place = 'right';
-			
-			$this.find('.popover').removeClass('right left').addClass(place);
-		}).on('click', function(e) {
-			e.preventDefault();
-		});
-	
-	
-		///////////////////////////////////////////
-		$('#user-profile-3')
-		.find('input[type=file]').ace_file_input({
-			style:'well',
-			btn_choose:'Change avatar',
-			btn_change:null,
-			no_icon:'ace-icon fa fa-picture-o',
-			thumbnail:'large',
-			droppable:true,
-			
-			allowExt: ['jpg', 'jpeg', 'png', 'gif'],
-			allowMime: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif']
-		})
-		.end().find('button[type=reset]').on(ace.click_event, function(){
-			$('#user-profile-3 input[type=file]').ace_file_input('reset_input');
-		})
-		.end().find('.date-picker').datepicker().next().on(ace.click_event, function(){
-			$(this).prev().focus();
-		})
-		$('.input-mask-phone').mask('(999) 999-9999');
-	
-		$('#user-profile-3').find('input[type=file]').ace_file_input('show_file_list', [{type: 'image', name: $('#avatar').attr('src')}]);
-	
-	
-		////////////////////
-		//change profile
-		$('[data-toggle="buttons"] .btn').on('click', function(e){
-			var target = $(this).find('input[type=radio]');
-			var which = parseInt(target.val());
-			$('.user-profile').parent().addClass('hide');
-			$('#user-profile-'+which).parent().removeClass('hide');
-		});
-		
-		
-		
-		/////////////////////////////////////
-		$(document).one('ajaxloadstart.page', function(e) {
-			//in ajax mode, remove remaining elements before leaving page
-			try {
-				$('.editable').editable('destroy');
-			} catch(e) {}
-			$('[class*=select2]').remove();
-		});
 	});
+
+	var avatar = document.getElementById('avatar');
+
+	function changeAvatar() {
+		Webcam.set({width: 300, height: 300, image_format: 'jpeg', jpeg_quality: 90});
+
+		var activateWebcam = '<div id="my_camera" style="width:300px; height:300px;"></div>\
+								<div>\
+									<button type="button" id="updateAvatar" onclick="updateAvatar()" class="btn btn-info" style="padding: 6px; height: 40px; width: 40px;">\
+										<i class="ace-icon fa fa-check"></i>\
+									</button>\
+									<button type="button" id="cancelAvatar" onclick="cancelAvatar()" class="btn" style="padding: 6px; height: 40px; width: 40px;">\
+										<i class="ace-icon fa fa-times"></i>\
+									</button>\
+								</div>';
+		$("#avatar").replaceWith((activateWebcam));
+
+		Webcam.attach('#my_camera');
+	}
+
+	function updateAvatar(){
+		Webcam.snap( function(data_uri) {
+			avatar.src = data_uri;
+			$.ajax({
+				url: "<?php echo base_url('/recursos_humanos/empleados/actualizar_imagen'); ?>",
+				type: "POST", dataType: "html", data: {"encryptedEmployeeId":encryptedEmployeeId, "dataURI": data_uri},
+				success : function(data) {}, error : function(jqXHR, textStatus, errorThrown) {}
+			});
+		});
+		Webcam.reset();
+		$('#profile-picture').html(avatar);
+	}
+
+	function cancelAvatar(){
+		Webcam.reset();
+		$('#profile-picture').html(avatar);
+	}
 </script>
 </body>
 </html>

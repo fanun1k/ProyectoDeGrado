@@ -94,6 +94,7 @@ $routes->post('/recursos_humanos/empleados/actualizar_carnet', 'Employee_control
 $routes->post('/recursos_humanos/empleados/actualizar_genero', 'Employee_controller::updateEmployeeGender');
 $routes->post('/recursos_humanos/empleados/actualizar_fecha_de_nacimiento', 'Employee_controller::updateEmployeeDateOfBirth');
 $routes->post('/recursos_humanos/empleados/actualizar_direccion', 'Employee_controller::updateEmployeeLocation');
+$routes->post('/recursos_humanos/empleados/actualizar_imagen', 'Employee_controller::updateEmployeeAvatar');
 
 /*
  * --------------------------------------------------------------------
