@@ -233,4 +233,24 @@ class Employee_controller extends ResourceController{
         $employeeLongitude = $this->request->getPost('employeeLongitude');
         $employeeModel->updateEmployeeLocation($encryptedEmployeeId, $employeeLatitude, $employeeLongitude);
     }
+
+    public function updateEmployeeAvatar(){
+        $encryptedEmployeeId = $this->request->getPost('encryptedEmployeeId');
+        $dataURI = $this->request->getPost('dataURI');
+        $folderPath = "images/employee-images/";
+        $image_parts = explode(";base64,", $dataURI);
+        $image_type_aux = explode("image/", $image_parts[0]);
+        $image_type = $image_type_aux[1];
+        $image_base64 = base64_decode($image_parts[1]);
+        $file = $folderPath . $encryptedEmployeeId . '.png';
+        if (file_exists($file)) {
+            if(unlink($file)) file_put_contents($file, $image_base64);
+        } else {
+            file_put_contents($file, $image_base64);
+        }
+        clearstatcache();
+        header("Cache-Control: no-cache, must-revalidate");
+        header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+        header("Content-Type: application/xml; charset=utf-8");
+    }
 }
