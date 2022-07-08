@@ -100,8 +100,8 @@ CREATE TABLE IF NOT EXISTS `elpad_db`.`dining_area` (
   `diningAreaId` INT(11) NOT NULL AUTO_INCREMENT,
   `companyId` INT(11) NOT NULL,
   `diningAreaName` VARCHAR(100) NOT NULL,
-  `latitude` FLOAT NOT NULL,
-  `longitude` FLOAT NOT NULL,
+  `latitude` DECIMAL(20,15) NOT NULL,
+  `longitude` DECIMAL(20,15) NOT NULL,
   `averageCalorie` FLOAT NOT NULL,
   `createDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastUpdate` DATETIME NULL DEFAULT NULL,
@@ -149,8 +149,8 @@ CREATE TABLE IF NOT EXISTS `elpad_db`.`employee` (
   `lastName1` VARCHAR(60) NOT NULL,
   `lastName2` VARCHAR(60) NULL DEFAULT NULL,
   `employeePhoneNumber` VARCHAR(20) NOT NULL,
-  `employeeLatitude` FLOAT NOT NULL,
-  `employeeLongitude` FLOAT NOT NULL,
+  `employeeLatitude` DECIMAL(20,15) NOT NULL,
+  `employeeLongitude` DECIMAL(20,15) NOT NULL,
   `employeeCI` VARCHAR(20) NOT NULL,
   `employeeGender` CHAR(1) NOT NULL,
   `employeeDateOfBirth` DATE NOT NULL,
@@ -1365,7 +1365,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 INSERT INTO employee_type (employeeTypeName) VALUES ('Administrador');
 
 INSERT INTO employee (encryptedEmployeeId, `name`, lastName1, lastName2, employeePhoneNumber, employeeLatitude, employeeLongitude, employeeCI, employeeGender, employeeDateOfBirth, employeeCode)
-VALUES ('st5dXs2w76pZE', 'Rodrigo', 'Iriarte', 'Zamorano', '68464817', -17.3742284, -66.1622121, '13419279', 'M', '2000-09-24', '6969');
+VALUES ('st5dXs2w76pZE', 'Rodrigo', 'Iriarte', 'Zamorano', '68464817', -17.387999582307273, -66.24065520349222, '13419279', 'M', '2000-09-24', '6969');
 
 INSERT INTO employee_has_employee_type (employeeId, employeeTypeId)
 VALUES (1, 1);
