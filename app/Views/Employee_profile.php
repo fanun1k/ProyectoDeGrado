@@ -212,6 +212,18 @@
 						</div>
 						<div class="widget-body">
 							<div class="widget-main padding-8">
+								<div class="row">
+									<input type="file" class="id-input-file"/>
+								</div>
+								<div class="row">
+									<input type="file" class="id-input-file"/>
+								</div>
+								<div class="row">
+									<input type="file" class="id-input-file"/>
+								</div>
+								<div class="row">
+									<input type="file" class="id-input-file"/>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -222,7 +234,7 @@
 						<div class="widget-header widget-header-small">
 							<h4 class="widget-title blue smaller">
 								<div style="position:absolute; width: 100%;">
-									<span style="display: block; float:left;"><i class="ace-icon fa fa-book orange"></i>Habilidades</span>
+									<span style="display: block; float:left;"><i class="ace-icon fa fa-book orange"></i> Habilidades</span>
 									<span style="display: block; float:right;"><a class="link" id="edit-skills-link" onclick="enableSkillDiv()" style="cursor: pointer;">[Editar]</a></span>
 								</div>
 							</h4>
@@ -579,6 +591,15 @@
 			document.getElementById('edit-skills-link').text = "[Editar]";
 		}
 	}
+
+	$('.id-input-file').ace_file_input({
+		no_file:'Sin Archivo',
+		btn_choose:'Elegir',
+		btn_change:'Cambiar',
+		droppable:false,
+		onchange:null,
+		thumbnail:false
+	});
 </script>
 </body>
 </html>
