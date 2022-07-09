@@ -206,12 +206,19 @@
 
 					<div class="space-4"></div>
 
-					<div class="widget-box transparent">
+					<div class="widget-box transparent" >
 						<div class="widget-header widget-header-small">
 							<h4 class="widget-title blue smaller"><i class="ace-icon fa fa-file orange"></i>Documentos</h4>
 						</div>
 						<div class="widget-body">
-							<div class="widget-main padding-8">
+							<div class="widget-main">
+								<div id="uploadDocuments">
+									<div class="form-group">
+										<div class="col-xs-12">
+											<input multiple type="file" id="id-input-file-3" />
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -221,7 +228,7 @@
 					<div class="widget-box transparent">
 						<div class="widget-header widget-header-small">
 							<h4 class="widget-title blue smaller">
-								<div style="position:absolute; width: 100%;">
+								<div style=" width: 100%;">
 									<span style="display: block; float:left;"><i class="ace-icon fa fa-book orange"></i>Habilidades</span>
 									<span style="display: block; float:right;"><a class="link" id="edit-skills-link" onclick="enableSkillDiv()" style="cursor: pointer;">[Editar]</a></span>
 								</div>
@@ -495,6 +502,37 @@
 			height: '250px',
 			mouseWheelLock: true,
 			alwaysVisible : true
+		});
+		
+		$('#id-input-file-3').ace_file_input({
+			style: 'well',
+			btn_choose: 'Drop files here or click to choose',
+			btn_change: null,
+			no_icon: 'ace-icon fa fa-cloud-upload',
+			droppable: true,
+			thumbnail: 'small'//large | fit
+			//,icon_remove:null//set null, to hide remove/reset button
+			/**,before_change:function(files, dropped) {
+				//Check an example below
+				//or examples/file-upload.html
+				return true;
+			}*/
+			/**,before_remove : function() {
+				return true;
+			}*/
+			,
+			preview_error : function(filename, error_code) {
+				//name of the file that failed
+				//error_code values
+				//1 = 'FILE_LOAD_FAILED',
+				//2 = 'IMAGE_LOAD_FAILED',
+				//3 = 'THUMBNAIL_FAILED'
+				//alert(error_code);
+			}
+	
+		}).on('change', function(){
+			//console.log($(this).data('ace_input_files'));
+			//console.log($(this).data('ace_input_method'));
 		});
 		
 		$('a[ data-original-title]').tooltip();

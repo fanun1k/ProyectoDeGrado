@@ -126,9 +126,20 @@
 
                     <div class="space-4"></div>
 
-					<div class="widget-box transparent">
+					<div class="widget-box transparent" >
 						<div class="widget-header widget-header-small">
-							<h4 class="widget-title blue smaller"><i class="ace-icon fa fa-certificate orange"></i>Documentos</h4>
+							<h4 class="widget-title blue smaller"><i class="ace-icon fa fa-file orange"></i>Documentos</h4>
+						</div>
+						<div class="widget-body">
+							<div class="widget-main">
+								<div id="uploadDocuments">
+									<div class="form-group">
+										<div class="col-xs-12">
+											<input multiple type="file" id="id-input-file-3" />
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 
