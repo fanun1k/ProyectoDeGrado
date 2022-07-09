@@ -161,7 +161,8 @@ class Employee_controller extends ResourceController{
         $userAccessArray = getUserAccessArrayHELPER();
         $employeeModel = new Employee_model();
         $employeeInfoArray = $employeeModel->getEmployee($_GET['id']);
-        $view = view('header_footer/header').view('header_footer/sidebar', compact('userAccessArray')).view('Employee_profile', compact('employeeInfoArray'));
+        $employeeSkillArray = $employeeModel->getEmployeesSkills($_GET['id']);
+        $view = view('header_footer/header').view('header_footer/sidebar', compact('userAccessArray')).view('Employee_profile', compact('employeeInfoArray', 'employeeSkillArray'));
         return $view;
     }
 
@@ -252,5 +253,13 @@ class Employee_controller extends ResourceController{
         header("Cache-Control: no-cache, must-revalidate");
         header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
         header("Content-Type: application/xml; charset=utf-8");
+    }
+
+    public function updateEmployeeSkill(){
+        $employeeModel = new Employee_model();
+        $encryptedEmployeeId = $this->request->getPost('encryptedEmployeeId');
+        $skillId = $this->request->getPost('skillId');
+        $skillValue = $this->request->getPost('skillValue');
+        $employeeModel->updateEmployeeSkill($encryptedEmployeeId, $skillId, $skillValue);
     }
 }
