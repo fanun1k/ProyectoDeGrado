@@ -57,7 +57,7 @@
                                         <i class="ace-icon fa fa-user light-orange"></i>
                                     </span>
                                 </div>
-                                <div id="results2" class="collapse" >...</div>
+                                <div id="snapDataURI" class="collapse" >...</div>
                                 <div class="col-sm-3">
                                     <span class="input-icon">
                                         <input type="text" class="form-control" name="lastName1" placeholder="Primer Apellido">
@@ -329,7 +329,7 @@
 	function updateAvatar(){
 		Webcam.snap( function(data_uri) {
 			avatar.src = data_uri;
-			document.getElementById('results2').innerHTML = '<textarea name="data" >'+data_uri+'</textarea>';
+			document.getElementById('snapDataURI').innerHTML = '<textarea name="data" >'+data_uri+'</textarea>';
 		});
 		Webcam.reset();
 		$('#profile-picture').html(avatar);
