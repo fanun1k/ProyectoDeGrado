@@ -206,12 +206,34 @@
 
 					<div class="space-4"></div>
 
-					<div class="widget-box transparent">
+					<div class="widget-box transparent" >
 						<div class="widget-header widget-header-small">
 							<h4 class="widget-title blue smaller"><i class="ace-icon fa fa-file orange"></i>Documentos</h4>
 						</div>
 						<div class="widget-body">
 							<div class="widget-main padding-8">
+								<div class="row" id="uploadEmployeeDocuments">
+									<div class="col-sm-6">
+										<input type="file" class="id-input-file"/>
+									</div>
+									<div class="col-sm-6">
+										<select style="width: 100%;">
+											<option value="" selected disabled>Seleccione el tipo de documento</option>
+											<option value="1">Currículum</option>
+											<option value="1">Licencia de Conducir</option>
+											<option value="1">Certificados</option>
+										</select>
+									</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="row" id="addUploadEmployeeDocumentInput">
+									<div class="col-xs-12 text-center">
+										<button class="btn btn-success btn-sm" style="border-radius: 4px;" >
+											<i class="ace-icon fa fa-plus"></i>
+											Documento
+										</button>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -222,7 +244,7 @@
 						<div class="widget-header widget-header-small">
 							<h4 class="widget-title blue smaller">
 								<div style="position:absolute; width: 100%;">
-									<span style="display: block; float:left;"><i class="ace-icon fa fa-book orange"></i>Habilidades</span>
+									<span style="display: block; float:left;"><i class="ace-icon fa fa-book orange"></i> Habilidades</span>
 									<span style="display: block; float:right;"><a class="link" id="edit-skills-link" onclick="enableSkillDiv()" style="cursor: pointer;">[Editar]</a></span>
 								</div>
 							</h4>
@@ -497,6 +519,37 @@
 			alwaysVisible : true
 		});
 		
+		$('#id-input-file-3').ace_file_input({
+			style: 'well',
+			btn_choose: 'Drop files here or click to choose',
+			btn_change: null,
+			no_icon: 'ace-icon fa fa-cloud-upload',
+			droppable: true,
+			thumbnail: 'small'//large | fit
+			//,icon_remove:null//set null, to hide remove/reset button
+			/**,before_change:function(files, dropped) {
+				//Check an example below
+				//or examples/file-upload.html
+				return true;
+			}*/
+			/**,before_remove : function() {
+				return true;
+			}*/
+			,
+			preview_error : function(filename, error_code) {
+				//name of the file that failed
+				//error_code values
+				//1 = 'FILE_LOAD_FAILED',
+				//2 = 'IMAGE_LOAD_FAILED',
+				//3 = 'THUMBNAIL_FAILED'
+				//alert(error_code);
+			}
+	
+		}).on('change', function(){
+			//console.log($(this).data('ace_input_files'));
+			//console.log($(this).data('ace_input_method'));
+		});
+		
 		$('a[ data-original-title]').tooltip();
 
 		<?php foreach($employeeSkillArray->getResult() as $row) { ?>
@@ -579,6 +632,15 @@
 			document.getElementById('edit-skills-link').text = "[Editar]";
 		}
 	}
+
+	$('.id-input-file').ace_file_input({
+		no_file:'Sin Archivo',
+		btn_choose:'Elegir',
+		btn_change:'Cambiar',
+		droppable:false,
+		onchange:null,
+		thumbnail:false
+	});
 </script>
 </body>
 </html>
