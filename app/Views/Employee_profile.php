@@ -220,10 +220,26 @@
 
 					<div class="widget-box transparent">
 						<div class="widget-header widget-header-small">
-							<h4 class="widget-title blue smaller"><i class="ace-icon fa fa-book orange"></i>Habilidades</h4>
+							<h4 class="widget-title blue smaller">
+								<div style="position:absolute; width: 100%;">
+									<span style="display: block; float:left;"><i class="ace-icon fa fa-book orange"></i>Habilidades</span>
+									<span style="display: block; float:right;"><a class="link" id="edit-skills-link" onclick="enableSkillDiv()" style="cursor: pointer;">[Editar]</a></span>
+								</div>
+							</h4>
 						</div>
-						<div class="widget-body">
+						<div class="widget-body" id="skill-div" style="pointer-events:none;">
 							<div class="widget-main padding-8">
+								<div class="row" style="padding-top: 20px;">
+								<?php foreach ($employeeSkillArray->getResult() as $row) { ?>
+									<div class="col-xs-3 center">
+										<div class="knob-container inline" style="cursor: pointer;">
+											<input type="text" id="knob<?php echo $row->skillId; ?>" value="<?php echo $row->skillValue ?>" class="input-small knob" data-min="0" data-max="10" data-step="1" data-width="80" data-height="80" data-thickness=".2" onChange="changeSkill(<?php echo $row->skillId; ?>)"/>
+										</div>
+										<div class="space-2"></div>
+										<?php echo $row->skillName; ?>
+									</div>
+								<?php } ?>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -297,6 +313,7 @@
 <script src="<?php echo base_url()?>/assets/js/bootstrap-editable.min.js"></script>
 <script src="<?php echo base_url()?>/assets/js/ace-editable.min.js"></script>
 <script src="<?php echo base_url()?>/assets/js/jquery.maskedinput.min.js"></script>
+<script src="<?php echo base_url()?>/assets/js/jquery.knob.min.js"></script>
 
 <!-- google maps api -->
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoUXfTkBg00OwY-cuCpa-HWkYwBL9dhLA&callback=initMap"></script>
@@ -314,6 +331,7 @@
 	var lat = parseFloat(document.getElementById('lat').value);
 	var lng = parseFloat(document.getElementById('lng').value);
 	var encryptedEmployeeId = new URLSearchParams(window.location.search).get('id').toString();
+	var knobValues = [];
 
 	function initMap() {
 		document.getElementById('lat').remove();
@@ -480,7 +498,39 @@
 		});
 		
 		$('a[ data-original-title]').tooltip();
+
+		<?php foreach($employeeSkillArray->getResult() as $row) { ?>
+			knobValues.push({skillID: <?php echo $row->skillId; ?>, skillValue: <?php echo $row->skillValue; ?>})
+			$('#knob<?php echo $row->skillId; ?>').knob({
+				change : function (value) {
+					var skillValue = Math.round(value);
+					var index = knobValues.map(function (element) {return element.skillID;}).indexOf(<?php echo $row->skillId; ?>);
+					if(skillValue != knobValues[index].skillValue){
+						knobValues[index].skillValue = skillValue;
+						skillId = knobValues[index].skillID;
+						//console.log("SkillID: " + "<?php echo $row->skillId; ?>" + " | SkillValue: " + Math.round(value));
+						$.ajax({
+							url: "<?php echo base_url('/recursos_humanos/empleados/actualizar_habilidad'); ?>",
+							type: "POST", dataType: "html", data: {"encryptedEmployeeId": encryptedEmployeeId, "skillId": skillId, "skillValue": skillValue},
+							success : function(data) {}, error : function(jqXHR, textStatus, errorThrown) {}
+						});
+					}
+				}
+			});
+		<?php } ?>
 	});
+
+	function changeSkill(skillId) {
+		var skillValue = $('#knob'+skillId).val();
+		var index = knobValues.map(function (element) {return element.skillID;}).indexOf(<?php echo $row->skillId; ?>);
+		knobValues[index].skillValue = skillValue;
+		$.ajax({
+			url: "<?php echo base_url('/recursos_humanos/empleados/actualizar_habilidad'); ?>",
+			type: "POST", dataType: "html", data: {"encryptedEmployeeId": encryptedEmployeeId, "skillId": skillId, "skillValue": skillValue},
+			success : function(data) {}, error : function(jqXHR, textStatus, errorThrown) {}
+		});
+		$('#knob'+skillId).blur();
+	}
 
 	var avatar = document.getElementById('avatar');
 
@@ -517,6 +567,17 @@
 	function cancelAvatar(){
 		Webcam.reset();
 		$('#profile-picture').html(avatar);
+	}
+
+	function enableSkillDiv(){
+		if(document.getElementById('skill-div').style.pointerEvents == "none"){
+			document.getElementById('skill-div').style.pointerEvents = "auto";
+			document.getElementById('edit-skills-link').text = "[Deshabilitar]";
+		}
+		else{
+			document.getElementById('skill-div').style.pointerEvents = "none";
+			document.getElementById('edit-skills-link').text = "[Editar]";
+		}
 	}
 </script>
 </body>
