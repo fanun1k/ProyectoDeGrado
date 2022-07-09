@@ -36,30 +36,10 @@
 							<h4 class="widget-title blue smaller"><i class="ace-icon fa fa-users orange"></i>Foto</h4>
 						</div>
                         <div class="center" style="padding-top: 20px;">
-                            <span class="profile-picture ">
-                                <img id="avatar" class="editable img-responsive" alt="Alex's Avatar" src="<?php echo base_url() ?>/assets/images/avatars/profile-pic.jpg" width="200" height="200" />
+                            <span id="profile-picture" class="profile-picture" style="width: 300; height: 300;" ondblclick="changeAvatar()">
+                                <img id="avatar" class="editable img-responsive editable-click editable-empty" alt="Alex's Avatar" src="<?php echo base_url() ?>/assets/images/avatars/profile-pic.jpg" width="300" height="300" />
                             </span>
                         </div>
-
-                        <!-- captura de imagen webcam -->
-
-                        <div >
-                            <div id="my_camera"></div>
-                            <br/>
-                            <input type=button value="Tomar foto" onClick="take_snapshot()">
-                            <input type="hidden" name="image" >
-                        </div>
-
-                        <div >
-                            <div id="results">Your captured image will appear here...</div>
-                            
-                        </div>
-
-                        <div >
-                            <br/>
-                            <button >Enviar</button>
-                        </div>
-
                     </div>
 
 					<div class="space-4"></div>
@@ -77,7 +57,7 @@
                                         <i class="ace-icon fa fa-user light-orange"></i>
                                     </span>
                                 </div>
-                                <div id="results2" >...</div>
+                                <div id="snapDataURI" class="collapse" >...</div>
                                 <div class="col-sm-3">
                                     <span class="input-icon">
                                         <input type="text" class="form-control" name="lastName1" placeholder="Primer Apellido">
@@ -324,110 +304,40 @@
             }
         });
 
-        try {
-            try {
-                document.createElement('IMG').appendChild(document.createElement('B'));
-            } catch(e) {
-                Image.prototype.appendChild = function(el){}
-            }
-    
-            var last_gritter
-            $('#avatar').editable({
-                type: 'image',
-                name: 'avatar',
-                value: null,
-                image: {
-                    btn_choose: 'Change Avatar',
-                    droppable: true,
-                    maxSize: 5000000,
-                    name: 'avatar',//put the field name here as well, will be used inside the custom plugin
-                    on_error : function(error_type) {//on_error function will be called when the selected file has a problem
-                        if(last_gritter) $.gritter.remove(last_gritter);
-                        if(error_type == 1) {//file format error
-                            last_gritter = $.gritter.add({
-                                title: 'File is not an image!',
-                                text: 'Please choose a jpg|gif|png image!',
-                                class_name: 'gritter-error gritter-center'
-                            });
-                        } else if(error_type == 2) {//file size rror
-                            last_gritter = $.gritter.add({
-                                title: 'File too big!',
-                                text: 'Image size should not exceed 5 mb!',
-                                class_name: 'gritter-error gritter-center'
-                            });
-                        }
-                        else {//other error
-                        }
-                    },
-                    on_success : function() {
-                        $.gritter.removeAll();
-                    }
-                },
-                url: function(params) {
-                    // ***UPDATE AVATAR HERE*** //
-                    //for a working upload example you can replace the contents of this function with 
-                    //examples/profile-avatar-update.js
-    
-                    var deferred = new $.Deferred
-    
-                    var value = $('#avatar').next().find('input[type=hidden]:eq(0)').val();
-                    if(!value || value.length == 0) {
-                        deferred.resolve();
-                        return deferred.promise();
-                    }
-    
-    
-                    //dummy upload
-                    setTimeout(function(){
-                        if("FileReader" in window) {
-                            //for browsers that have a thumbnail of selected image
-                            var thumb = $('#avatar').next().find('img').data('thumb');
-                            if(thumb) $('#avatar').get(0).src = thumb;
-                        }
-                        
-                        deferred.resolve({'status':'OK'});
-    
-                        if(last_gritter) $.gritter.remove(last_gritter);
-                        last_gritter = $.gritter.add({
-                            title: 'Avatar Updated!',
-                            text: 'Uploading to server can be easily implemented. A working example is included with the template.',
-                            class_name: 'gritter-info gritter-center'
-                        });
-                        
-                        } , parseInt(Math.random() * 800 + 800))
-    
-                    return deferred.promise();
-                    
-                    // ***END OF UPDATE AVATAR HERE*** //
-                },
-                
-                success: function(response, newValue) {
-                }
-            })
-        }catch(e) {}
+        
     });
 
+    var avatar = document.getElementById('avatar');
 
-    Webcam.set({
-        width: 250,
-        height: 250,
-        image_format: 'jpeg',
-        jpeg_quality: 90
-    });
+	function changeAvatar() {
+		Webcam.set({width: 300, height: 300, image_format: 'jpeg', jpeg_quality: 90});
 
-    Webcam.attach( '#my_camera' );
+		var activateWebcam = '<div id="my_camera" style="width:300px; height:300px;"></div>\
+								<div>\
+									<button type="button" id="updateAvatar" onclick="updateAvatar()" class="btn btn-info" style="padding: 6px; height: 40px; width: 40px;">\
+										<i class="ace-icon fa fa-check"></i>\
+									</button>\
+									<button type="button" id="cancelAvatar" onclick="cancelAvatar()" class="btn" style="padding: 6px; height: 40px; width: 40px;">\
+										<i class="ace-icon fa fa-times"></i>\
+									</button>\
+								</div>';
+		$("#avatar").replaceWith((activateWebcam));
 
+		Webcam.attach('#my_camera');
+	}
 
+	function updateAvatar(){
+		Webcam.snap( function(data_uri) {
+			avatar.src = data_uri;
+			document.getElementById('snapDataURI').innerHTML = '<textarea name="data" >'+data_uri+'</textarea>';
+		});
+		Webcam.reset();
+		$('#profile-picture').html(avatar);
+	}
 
-    function take_snapshot() {
-        Webcam.snap( function(data_uri) {
-            console.log(data_uri);
-            document.getElementById('results').innerHTML = '<img name="imagenFoto" src="'+data_uri+'"/>';
-            document.getElementById('results2').innerHTML = '<textarea name="data" >'+data_uri+'</textarea>';
-        });
-    }
-
-    
-
+	function cancelAvatar(){
+		Webcam.reset();
+		$('#profile-picture').html(avatar);
+	}
 
 </script>
