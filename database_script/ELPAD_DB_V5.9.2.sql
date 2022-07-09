@@ -591,6 +591,7 @@ DEFAULT CHARACTER SET = utf8;
 CREATE TABLE IF NOT EXISTS `elpad_db`.`employee_document_type` (
   `employeeDocumentTypeId` INT(11) NOT NULL,
   `employeeDocumentType` VARCHAR(45) NOT NULL,
+  `documentNeedName` TINYINT NOT NULL,
   PRIMARY KEY (`employeeDocumentTypeId`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;

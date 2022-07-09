@@ -63,6 +63,12 @@ class Employee_model extends Model{
         return $builder->get();
     }
 
+    public function getEmployeesSkills($encryptedEmployeeId){
+        $db = db_connect();
+        $builder = $db->table('employee_skills es')->select('s.skillId, s.skillName, es.skillValue')->join('employee e', 'e.employeeId = es.employeeId')->join('skill s', 's.skillId = es.skillId')->where('e.encryptedEmployeeId', $encryptedEmployeeId);
+        return $builder->get();
+    }
+
     public function updateEmployeeName($encryptedEmployeeId, $name){
         $db = db_connect();
         $builder = $db->table('employee')->where('encryptedEmployeeId', $encryptedEmployeeId)->update(['name' => $name]);
@@ -101,5 +107,12 @@ class Employee_model extends Model{
     public function updateEmployeeLocation($encryptedEmployeeId, $employeeLatitude, $employeeLongitude){
         $db = db_connect();
         $builder = $db->table('employee')->where('encryptedEmployeeId', $encryptedEmployeeId)->update(['employeeLatitude' => $employeeLatitude, 'employeeLongitude' => $employeeLongitude]);
+    }
+
+    public function updateEmployeeSkill($encryptedEmployeeId, $skillId, $skillValue){
+        $db = db_connect();
+        $builder = $db->table('employee')->select('employeeId')->where('encryptedEmployeeId', $encryptedEmployeeId);
+        foreach($builder->get()->getResult() as $row)
+            $builder = $db->table('employee_skills')->where('employeeId', $row->employeeId)->where('skillId', $skillId)->update(['skillValue' => $skillValue]);
     }
 }
