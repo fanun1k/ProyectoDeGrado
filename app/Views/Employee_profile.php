@@ -683,8 +683,32 @@
 		var employeeDocumentExtension = documentFile.type.replace(/(.*)\//g, '');
 		$.ajax({
 			url: "<?php echo base_url('/recursos_humanos/empleados/agregar_documento'); ?>",
-			type: "POST", dataType: "html", data: {"encryptedEmployeeId": encryptedEmployeeId, "documentFile": documentFile, "employeeDocumentTypeId": employeeDocumentTypeId, "employeeDocumentName": employeeDocumentName, "employeeDocumentExtension": employeeDocumentExtension},
-			success : function(data) {}, error : function(jqXHR, textStatus, errorThrown) {}
+			type: "POST", dataType: "html",
+			data: (doesDocumentNeedName) ? {
+				"encryptedEmployeeId": encryptedEmployeeId,
+				"employeeDocumentTypeId": employeeDocumentTypeId,
+				"employeeDocumentName": employeeDocumentName,
+				"employeeDocumentExtension": employeeDocumentExtension
+			} : {
+				"encryptedEmployeeId": encryptedEmployeeId,
+				"employeeDocumentTypeId": employeeDocumentTypeId,
+				"employeeDocumentExtension": employeeDocumentExtension
+			},
+			success : function(data) {
+				var file_data = $('#documentFile').prop('files')[0];
+				var form_data = new FormData();
+				form_data.append('file', file_data);
+				$.ajax({
+					url: "<?php echo base_url() ?>" + '/recursos_humanos/empleados/agregar_documento_en_carpeta/' + data,
+					dataType: 'text',
+					cache: false,
+					contentType: false,
+					processData: false,
+					data: form_data,
+					type: 'post',
+					success : function(data) { alert(data); }, error : function(jqXHR, textStatus, errorThrown) {}
+				});
+			}, error : function(jqXHR, textStatus, errorThrown) {}
 		});
 	}
 </script>

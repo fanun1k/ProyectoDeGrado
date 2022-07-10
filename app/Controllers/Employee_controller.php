@@ -266,7 +266,31 @@ class Employee_controller extends ResourceController{
     }
 
     public function insertEmployeeDocument(){
+        $employeeModel = new Employee_model();
+        $encryptedEmployeeId = $this->request->getPost('encryptedEmployeeId');
+        $employeeId = $employeeModel->getEmployeeId($encryptedEmployeeId);
+        $employeeDocumentTypeId = $this->request->getPost('employeeDocumentTypeId');
+        $employeeDocumentExtension = $this->request->getPost('employeeDocumentExtension');
+        if($this->request->getPost('employeeDocumentName') != null){
+            $employeeDocumentName = $this->request->getPost('employeeDocumentName');
+            $encryptedEmployeeDocumentId = $employeeModel->insertEmployeeDocument($employeeId, $employeeDocumentTypeId, $employeeDocumentName, $employeeDocumentExtension);
+            echo $encryptedEmployeeDocumentId;
+        }
+        else{
+            $encryptedEmployeeDocumentId = $employeeModel->insertEmployeeDocument1($employeeId, $employeeDocumentTypeId, $employeeDocumentExtension);
+            echo $encryptedEmployeeDocumentId;
+        }
+    }
 
+    public function insertEmployeeDocumentInFolder($id){
+        $encryptedEmployeeDocumentId = $id;
+        if ($_FILES['file']['error'] > 0) {
+            echo 'Error: ' . $_FILES['file']['error'] . '<br>';
+        }
+        else {
+            $employeeDocumentExtension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+            move_uploaded_file($_FILES['file']['tmp_name'], 'documents/'.$encryptedEmployeeDocumentId.'.'.$employeeDocumentExtension);
+        }
     }
 
     public function removeEmployeeDocument(){

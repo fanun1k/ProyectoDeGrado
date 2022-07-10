@@ -1394,7 +1394,10 @@ INSERT INTO employee_skills (employeeId, skillId, skillValue)
 VALUES (1, 1, 10);
 
 INSERT INTO employee_document_type (employeeDocumentType, documentNeedName)
-VALUES('Currículum', 0), ('Licencia de Conducir', 0), ('Certificados', 1);
+VALUES('Currículum', 0), ('Licencia de Conducir', 0), ('Certificado', 1);
+
+INSERT INTO employee_document (encryptedEmployeeDocumentId, employeeId, employeeDocumentTypeId, employeeDocumentName, employeeDocumentExtension)
+VALUES ('epHs415NG1OCQ', 1, 1, null, 'pdf');
 
 INSERT INTO food_times (foodTimesName)
 VALUES ('Desayuno'), ('Almuerzo'), ('Cena');

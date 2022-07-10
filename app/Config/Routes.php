@@ -97,6 +97,7 @@ $routes->post('/recursos_humanos/empleados/actualizar_direccion', 'Employee_cont
 $routes->post('/recursos_humanos/empleados/actualizar_imagen', 'Employee_controller::updateEmployeeAvatar');
 $routes->post('/recursos_humanos/empleados/actualizar_habilidad', 'Employee_controller::updateEmployeeSkill');
 $routes->post('/recursos_humanos/empleados/agregar_documento', 'Employee_controller::insertEmployeeDocument');
+$routes->post('/recursos_humanos/empleados/agregar_documento_en_carpeta/(:any)', 'Employee_controller::insertEmployeeDocumentInFolder/$1');
 $routes->post('/recursos_humanos/empleados/eliminar_documento', 'Employee_controller::removeEmployeeDocument');
 
 /*
