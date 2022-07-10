@@ -48,12 +48,12 @@
 						<div class="widget-header widget-header-small">
 							<h4 class="widget-title blue smaller"><i class="ace-icon fa fa-users orange"></i>Datos Personales</h4>
 						</div>
-                        <form class="form-horizontal" style="padding-top: 20px;" action="nuevo_registro/registrar_empleado" method="POST">
+                        <form class="form-horizontal" style="padding-top: 20px;" action="nuevo_registro/registrar_empleado" method="POST" id="validation-form">
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label control-label">Nombre Completo</label>
                                 <div class="col-sm-3">
                                     <span class="input-icon">
-                                        <input type="text" class="form-control" name="name" placeholder="Nombre">
+                                        <input type="text" class="form-control" name="name1" placeholder="Nombre">
                                         <i class="ace-icon fa fa-user light-orange"></i>
                                     </span>
                                 </div>
@@ -248,6 +248,7 @@
 <script src="<?php echo base_url()?>/assets/js/ace-editable.min.js"></script>
 <script src="<?php echo base_url()?>/assets/js/jquery.maskedinput.min.js"></script>
 <script src="<?php echo base_url()?>/assets/js/jquery.knob.min.js"></script>
+<script src="<?php echo base_url()?>/assets/js/jquery.validate.min.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoUXfTkBg00OwY-cuCpa-HWkYwBL9dhLA&callback=initMap"></script>
 
 <!-- ace scripts -->
@@ -324,12 +325,6 @@
         }
         ?>
 
-        $('#name1').editable({type: 'text', url: 'post.php', name: 'name1',
-            validate: function(value) {
-                if(value.length == 0 || value.length > 60 || /\d/.test(value)) return 'Por favor ingrese un nombre';
-            }
-        });
-
         $('.id-input-file').ace_file_input({
             no_file:'Sin Archivo',
             btn_choose:'Elegir',
@@ -337,6 +332,108 @@
             droppable:false,
             onchange:null,
             thumbnail:false
+        });
+
+        $.validator.addMethod("lastName1", function (value, element) {
+            return this.optional(element) || /^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+$/.test(value);
+        }, "Por favor ingrese un apellido válido");
+
+        $.validator.addMethod("lastName2", function (value, element) {
+            return this.optional(element) || /^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+$/.test(value);
+        }, "Por favor ingrese un apellido válido");
+
+        $.validator.addMethod("employeePhoneNumber", function (value, element) {
+            return this.optional(element) || /^[0-9]+$/.test(value);
+        }, "Por favor ingrese un teléfono válido");
+
+        $.validator.addMethod("employeeCI", function (value, element) {
+            return this.optional(element) || /^[0-9]+$/.test(value);
+        }, "Por favor introduzca un carnet de identidad válido");
+
+        $.validator.addMethod("name1", function (value, element) {
+            return this.optional(element) || /^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+$/.test(value);
+        }, "Por favor ingrese un nombre válido");
+
+
+        $('#validation-form').validate({
+            errorElement: 'div',
+            errorClass: 'help-block',
+            focusInvalid: false,
+            ignore: "",
+            rules: {
+                lastName1: {
+                    required: true,
+                    lastName1: 'lastName1',
+                },
+                lastName2: {
+                    required: true,
+                    lastName2: 'lastName2',
+                },
+                employeeGender: {
+                    required: true
+                },
+                employeePhoneNumber: {
+                    required: true,
+                    employeePhoneNumber: 'employeePhoneNumber',
+                    minlength: 8,
+                    maxlength: 8
+                },
+                employeeCI: {
+                    required: true,
+                    employeeCI: 'required',
+                    minlength: 7,
+                    maxlength: 7
+                },
+                employeeDateOfBirth: {
+                    required: true,
+                },
+                name1: {
+                    required: true,
+                    name1: 'name1',
+                },
+            },
+
+            messages: {
+                
+                lastName1: {
+                    required: 'Por favor ingrese un apellido',
+                },
+                lastName2: {
+                    required: 'Por favor ingrese un apellido',
+                },
+                employeeGender: {
+                    required: 'Por favor seleccione un género',
+                },
+                employeePhoneNumber: {
+                    required: 'Por favor ingrese un teléfono',
+                    minlength: 'Por favor ingrese un teléfono válido',
+                    maxlength: 'Por favor ingrese un teléfono válido',
+                },
+                employeeCI: {
+                    required: 'Por favor introduzca un carnet de identidad',
+                    minlength: 'Por favor introduzca un carnet de identidad válido',
+                    maxlength: 'Por favor introduzca un carnet de identidad válido',
+                },
+                employeeDateOfBirth: {
+                    required: 'Por favor introduzca una fecha de nacimiento',
+                },
+                name1: {
+                    required: 'Por favor introduzca un nombre',
+                },
+            },
+    
+    
+            highlight: function (e) {
+                $(e).closest('.form-group').removeClass('has-info').addClass('has-error');
+            },
+    
+            success: function (e) {
+                $(e).closest('.form-group').removeClass('has-error');//.addClass('has-info');
+                $(e).remove();
+            },
+    
+            invalidHandler: function (form) {
+            }
         });
 
         

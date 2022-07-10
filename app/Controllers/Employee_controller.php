@@ -45,7 +45,7 @@ class Employee_controller extends ResourceController{
         $dateOfBirth = str_replace('/', '-', $dateOfBirth);
         $dateOfBirth = date("Y-m-d", strtotime($dateOfBirth));
         $data=array(
-                'name'=>$this->request->getPost('name'),
+                'name1'=>$this->request->getPost('name1'),
                 'lastName1'=>$this->request->getPost('lastName1'),
                 'lastName2'=>$this->request->getPost('lastName2'),
                 'employeePhoneNumber'=>$this->request->getPost('employeePhoneNumber'),
