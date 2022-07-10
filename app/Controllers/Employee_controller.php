@@ -162,7 +162,9 @@ class Employee_controller extends ResourceController{
         $employeeModel = new Employee_model();
         $employeeInfoArray = $employeeModel->getEmployee($_GET['id']);
         $employeeSkillArray = $employeeModel->getEmployeesSkills($_GET['id']);
-        $view = view('header_footer/header').view('header_footer/sidebar', compact('userAccessArray')).view('Employee_profile', compact('employeeInfoArray', 'employeeSkillArray'));
+        $employeeDocumentArray = $employeeModel->getEmployeeDocuments($_GET['id']);
+        $documentTypeArray = $employeeModel->getDocumentType();
+        $view = view('header_footer/header').view('header_footer/sidebar', compact('userAccessArray')).view('Employee_profile', compact('employeeInfoArray', 'employeeSkillArray', 'documentTypeArray', 'employeeDocumentArray'));
         return $view;
     }
 
@@ -261,5 +263,16 @@ class Employee_controller extends ResourceController{
         $skillId = $this->request->getPost('skillId');
         $skillValue = $this->request->getPost('skillValue');
         $employeeModel->updateEmployeeSkill($encryptedEmployeeId, $skillId, $skillValue);
+    }
+
+    public function insertEmployeeDocument(){
+
+    }
+
+    public function removeEmployeeDocument(){
+        $employeeModel = new Employee_model();
+        $encryptedEmployeeId = $this->request->getPost('encryptedEmployeeId');
+        $encryptedEmployeeDocumentId = $this->request->getPost('encryptedEmployeeDocumentId');
+        $employeeModel->removeEmployeeDocument($encryptedEmployeeDocumentId);
     }
 }
