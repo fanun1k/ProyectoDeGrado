@@ -212,27 +212,48 @@
 						</div>
 						<div class="widget-body">
 							<div class="widget-main padding-8">
-								<div class="row" id="uploadEmployeeDocuments">
-									<div class="col-sm-6">
-										<input type="file" class="id-input-file"/>
-									</div>
-									<div class="col-sm-6">
-										<select style="width: 100%;">
-											<option value="" selected disabled>Seleccione el tipo de documento</option>
-											<option value="1">Currículum</option>
-											<option value="1">Licencia de Conducir</option>
-											<option value="1">Certificados</option>
-										</select>
+								<?php foreach ($employeeDocumentArray->getResult() as $row) { ?>
+								<div class="row widget-box" id="document_<?php echo $row->encryptedEmployeeDocumentId; ?>" style="padding: 8px;">
+									<div class="container" style="width: 100%;">
+										<span style="display: block; float:left; padding-top: 10px;">
+											<a href="<?php echo base_url(); ?>/documents/<?php echo $row->documentInFolder; ?>" download="<?php echo $row->documentDownloadName; ?>">Descargar "<?php echo $row->documentDownloadName . "." . $row->employeeDocumentExtension; ?>"</a>
+										</span>
+										<span style="display: block; float:right;">
+											<button type="button" class="btn btn-danger" style="padding: 6px; height: 40px; width: 40px;" ondblclick="removeDocument('document_<?php echo $row->encryptedEmployeeDocumentId; ?>')">
+												<i class="ace-icon fa fa-times" style="height: 11px; margin-right: 0px;"></i>
+											</button>
+										</span>
 									</div>
 								</div>
 								<div class="space-4"></div>
-								<div class="row" id="addUploadEmployeeDocumentInput">
-									<div class="col-xs-12 text-center">
-										<button class="btn btn-success btn-sm" style="border-radius: 4px;" >
-											<i class="ace-icon fa fa-plus"></i>
-											Documento
-										</button>
+								<?php } ?>
+								<div id="divForDocument">
+									<div class="row widget-box" id="uploadEmployeeDocuments" style="padding-top: 8px; padding-bottom: 1px;">
+										<div class="container" style="width: 100%;">
+											<span class="row col-sm-11">
+												<div class="col-sm-4" id="divForInputFile" style="padding-left: 5px; padding-right: 5px;">
+													<input type="file" class="id-input-file" id="documentFile"/>
+												</div>
+												<div class="col-sm-4" id="divForFileName" style="margin-bottom: 5px; padding-left: 5px; padding-right: 5px;">
+													<input type="text" class="form-control" id="documentName" placeholder="Escriba Nombre del Documento" style="height: 30px;"/>
+												</div>
+												<div class="col-sm-4" id="divForDocumentTypeSelect" style="padding-left: 5px; padding-right: 5px;">
+													<select id="selectDocumentType" style="width: 100%;margin-bottom: 5px;">
+														<option value="" selected disabled>Seleccione tipo de documento</option>
+														<?php foreach ($documentTypeArray->getResult() as $row) { ?>
+														<option value="<?php echo $row->employeeDocumentTypeId; ?>"><?php echo $row->employeeDocumentType; ?></option>
+														<?php } ?>
+													</select>
+												</div>
+											</span>
+											<span class="row col-sm-1" style="display: block; float:right;">
+												<button type="button" class="btn btn-success float-right" style="padding: 6px; height: 40px; width: 40px; margin-bottom: 6px;" onclick="addDocument()">
+													<i class="ace-icon fa fa-check" style="height: 11px; margin-right: 0px;"></i>
+												</button>
+											</span>
+										</div>
 									</div>
+									<div class="space-4"></div>
 								</div>
 							</div>
 						</div>
@@ -519,41 +540,10 @@
 			alwaysVisible : true
 		});
 		
-		$('#id-input-file-3').ace_file_input({
-			style: 'well',
-			btn_choose: 'Drop files here or click to choose',
-			btn_change: null,
-			no_icon: 'ace-icon fa fa-cloud-upload',
-			droppable: true,
-			thumbnail: 'small'//large | fit
-			//,icon_remove:null//set null, to hide remove/reset button
-			/**,before_change:function(files, dropped) {
-				//Check an example below
-				//or examples/file-upload.html
-				return true;
-			}*/
-			/**,before_remove : function() {
-				return true;
-			}*/
-			,
-			preview_error : function(filename, error_code) {
-				//name of the file that failed
-				//error_code values
-				//1 = 'FILE_LOAD_FAILED',
-				//2 = 'IMAGE_LOAD_FAILED',
-				//3 = 'THUMBNAIL_FAILED'
-				//alert(error_code);
-			}
-	
-		}).on('change', function(){
-			//console.log($(this).data('ace_input_files'));
-			//console.log($(this).data('ace_input_method'));
-		});
-		
 		$('a[ data-original-title]').tooltip();
 
 		<?php foreach($employeeSkillArray->getResult() as $row) { ?>
-			knobValues.push({skillID: <?php echo $row->skillId; ?>, skillValue: <?php echo $row->skillValue; ?>})
+			knobValues.push({skillID: <?php echo $row->skillId; ?>, skillValue: <?php echo $row->skillValue; ?>});
 			$('#knob<?php echo $row->skillId; ?>').knob({
 				change : function (value) {
 					var skillValue = Math.round(value);
@@ -634,13 +624,93 @@
 	}
 
 	$('.id-input-file').ace_file_input({
-		no_file:'Sin Archivo',
+		no_file:'Elegir Archivo',
 		btn_choose:'Elegir',
 		btn_change:'Cambiar',
 		droppable:false,
 		onchange:null,
 		thumbnail:false
 	});
+
+	var documentType = [];
+	<?php foreach ($documentTypeArray->getResult() as $row) { ?>
+		documentType.push({
+			employeeDocumentTypeId: <?php echo $row->employeeDocumentTypeId; ?>,
+			employeeDocumentType: "<?php echo $row->employeeDocumentType; ?>",
+			documentNeedName: <?php echo $row->documentNeedName; ?>
+		});
+	<?php } ?>
+
+	var doesDocumentNeedName = true;
+	$('#selectDocumentType').change(function() {
+		var newValue = $(this).val();
+		var index = documentType.map(function (element) {return element.employeeDocumentTypeId;}).indexOf(parseInt(newValue));
+		if(documentType[index].documentNeedName == 1) //Needs a name
+		{
+			document.getElementById("divForInputFile").classList.remove('col-sm-6');
+			document.getElementById("divForDocumentTypeSelect").classList.remove('col-sm-6');
+			document.getElementById("divForInputFile").classList.add('col-sm-4');
+			document.getElementById("divForDocumentTypeSelect").classList.add('col-sm-4');
+			document.getElementById("divForFileName").style.display = "block";
+			doesDocumentNeedName = true;
+		}
+		else //Doesn't need a name
+		{
+			document.getElementById("divForInputFile").classList.remove('col-sm-4');
+			document.getElementById("divForDocumentTypeSelect").classList.remove('col-sm-4');
+			document.getElementById("divForInputFile").classList.add('col-sm-6');
+			document.getElementById("divForDocumentTypeSelect").classList.add('col-sm-6');
+			document.getElementById("divForFileName").style.display = "none";
+			doesDocumentNeedName = false;
+		}
+	});
+
+	function removeDocument(element) {
+		document.getElementById(element).remove();
+		var encryptedEmployeeDocumentId = element.split('_')[1];
+		$.ajax({
+			url: "<?php echo base_url('/recursos_humanos/empleados/eliminar_documento'); ?>",
+			type: "POST", dataType: "html", data: {"encryptedEmployeeId":encryptedEmployeeId, "encryptedEmployeeDocumentId": encryptedEmployeeDocumentId},
+			success : function(data) {}, error : function(jqXHR, textStatus, errorThrown) {}
+		});
+	}
+
+	function addDocument() {
+		var documentFile = document.getElementById("documentFile").files[0];
+		var encryptedEmployeeId = new URLSearchParams(window.location.search).get('id').toString();
+		var employeeDocumentTypeId = document.getElementById("selectDocumentType").value;
+		var employeeDocumentName = document.getElementById("documentName").value;
+		var employeeDocumentExtension = documentFile.type.replace(/(.*)\//g, '');
+		$.ajax({
+			url: "<?php echo base_url('/recursos_humanos/empleados/agregar_documento'); ?>",
+			type: "POST", dataType: "html",
+			data: (doesDocumentNeedName) ? {
+				"encryptedEmployeeId": encryptedEmployeeId,
+				"employeeDocumentTypeId": employeeDocumentTypeId,
+				"employeeDocumentName": employeeDocumentName,
+				"employeeDocumentExtension": employeeDocumentExtension
+			} : {
+				"encryptedEmployeeId": encryptedEmployeeId,
+				"employeeDocumentTypeId": employeeDocumentTypeId,
+				"employeeDocumentExtension": employeeDocumentExtension
+			},
+			success : function(data) {
+				var file_data = $('#documentFile').prop('files')[0];
+				var form_data = new FormData();
+				form_data.append('file', file_data);
+				$.ajax({
+					url: "<?php echo base_url() ?>" + '/recursos_humanos/empleados/agregar_documento_en_carpeta/' + data,
+					dataType: 'text',
+					cache: false,
+					contentType: false,
+					processData: false,
+					data: form_data,
+					type: 'post',
+					success : function(data) { alert(data); }, error : function(jqXHR, textStatus, errorThrown) {}
+				});
+			}, error : function(jqXHR, textStatus, errorThrown) {}
+		});
+	}
 </script>
 </body>
 </html>

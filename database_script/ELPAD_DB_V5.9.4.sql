@@ -589,7 +589,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `elpad_db`.`employee_document_type`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `elpad_db`.`employee_document_type` (
-  `employeeDocumentTypeId` INT(11) NOT NULL,
+  `employeeDocumentTypeId` INT(11) NOT NULL AUTO_INCREMENT,
   `employeeDocumentType` VARCHAR(45) NOT NULL,
   `documentNeedName` TINYINT NOT NULL,
   PRIMARY KEY (`employeeDocumentTypeId`))
@@ -602,6 +602,7 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `elpad_db`.`employee_document` (
   `employeeDocumentId` INT(11) NOT NULL AUTO_INCREMENT,
+  `encryptedEmployeeDocumentId` VARCHAR(13) NULL DEFAULT NULL,
   `employeeId` INT(11) NOT NULL,
   `employeeDocumentTypeId` INT(11) NOT NULL,
   `employeeDocumentName` VARCHAR(45) NULL DEFAULT NULL,
@@ -1391,6 +1392,12 @@ VALUES ('Cocinar');
 
 INSERT INTO employee_skills (employeeId, skillId, skillValue)
 VALUES (1, 1, 10);
+
+INSERT INTO employee_document_type (employeeDocumentType, documentNeedName)
+VALUES('Currículum', 0), ('Licencia de Conducir', 0), ('Certificado', 1);
+
+INSERT INTO employee_document (encryptedEmployeeDocumentId, employeeId, employeeDocumentTypeId, employeeDocumentName, employeeDocumentExtension)
+VALUES ('epHs415NG1OCQ', 1, 1, null, 'pdf');
 
 INSERT INTO food_times (foodTimesName)
 VALUES ('Desayuno'), ('Almuerzo'), ('Cena');

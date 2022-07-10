@@ -162,7 +162,9 @@ class Employee_controller extends ResourceController{
         $employeeModel = new Employee_model();
         $employeeInfoArray = $employeeModel->getEmployee($_GET['id']);
         $employeeSkillArray = $employeeModel->getEmployeesSkills($_GET['id']);
-        $view = view('header_footer/header').view('header_footer/sidebar', compact('userAccessArray')).view('Employee_profile', compact('employeeInfoArray', 'employeeSkillArray'));
+        $employeeDocumentArray = $employeeModel->getEmployeeDocuments($_GET['id']);
+        $documentTypeArray = $employeeModel->getDocumentType();
+        $view = view('header_footer/header').view('header_footer/sidebar', compact('userAccessArray')).view('Employee_profile', compact('employeeInfoArray', 'employeeSkillArray', 'documentTypeArray', 'employeeDocumentArray'));
         return $view;
     }
 
@@ -261,5 +263,40 @@ class Employee_controller extends ResourceController{
         $skillId = $this->request->getPost('skillId');
         $skillValue = $this->request->getPost('skillValue');
         $employeeModel->updateEmployeeSkill($encryptedEmployeeId, $skillId, $skillValue);
+    }
+
+    public function insertEmployeeDocument(){
+        $employeeModel = new Employee_model();
+        $encryptedEmployeeId = $this->request->getPost('encryptedEmployeeId');
+        $employeeId = $employeeModel->getEmployeeId($encryptedEmployeeId);
+        $employeeDocumentTypeId = $this->request->getPost('employeeDocumentTypeId');
+        $employeeDocumentExtension = $this->request->getPost('employeeDocumentExtension');
+        if($this->request->getPost('employeeDocumentName') != null){
+            $employeeDocumentName = $this->request->getPost('employeeDocumentName');
+            $encryptedEmployeeDocumentId = $employeeModel->insertEmployeeDocument($employeeId, $employeeDocumentTypeId, $employeeDocumentName, $employeeDocumentExtension);
+            echo $encryptedEmployeeDocumentId;
+        }
+        else{
+            $encryptedEmployeeDocumentId = $employeeModel->insertEmployeeDocument1($employeeId, $employeeDocumentTypeId, $employeeDocumentExtension);
+            echo $encryptedEmployeeDocumentId;
+        }
+    }
+
+    public function insertEmployeeDocumentInFolder($id){
+        $encryptedEmployeeDocumentId = $id;
+        if ($_FILES['file']['error'] > 0) {
+            echo 'Error: ' . $_FILES['file']['error'] . '<br>';
+        }
+        else {
+            $employeeDocumentExtension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+            move_uploaded_file($_FILES['file']['tmp_name'], 'documents/'.$encryptedEmployeeDocumentId.'.'.$employeeDocumentExtension);
+        }
+    }
+
+    public function removeEmployeeDocument(){
+        $employeeModel = new Employee_model();
+        $encryptedEmployeeId = $this->request->getPost('encryptedEmployeeId');
+        $encryptedEmployeeDocumentId = $this->request->getPost('encryptedEmployeeDocumentId');
+        $employeeModel->removeEmployeeDocument($encryptedEmployeeDocumentId);
     }
 }

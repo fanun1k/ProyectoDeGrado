@@ -50,7 +50,6 @@ class Employee_model extends Model{
     public function getMaxEmployeeId()
 	{
         return $this->select('IFNULL(MAX(employeeId)+1,1) as MaxEmployeeId')->first();
-
 	}
 
     public function deleteEmployee($id){
@@ -63,9 +62,28 @@ class Employee_model extends Model{
         return $builder->get();
     }
 
+    public function getEmployeeId($encryptedEmployeeId){
+        $db = db_connect();
+        $builder = $db->table('employee')->select('employeeId')->where('encryptedEmployeeId', $encryptedEmployeeId);
+        foreach ($builder->get()->getResult() as $row)
+            return $row->employeeId;
+    }
+
     public function getEmployeesSkills($encryptedEmployeeId){
         $db = db_connect();
         $builder = $db->table('employee_skills es')->select('s.skillId, s.skillName, es.skillValue')->join('employee e', 'e.employeeId = es.employeeId')->join('skill s', 's.skillId = es.skillId')->where('e.encryptedEmployeeId', $encryptedEmployeeId);
+        return $builder->get();
+    }
+
+    public function getDocumentType(){
+        $db = db_connect();
+        $builder = $db->table('employee_document_type')->select('employeeDocumentTypeId, employeeDocumentType, documentNeedName');
+        return $builder->get();
+    }
+
+    public function getEmployeeDocuments($encryptedEmployeeId){
+        $db = db_connect();
+        $builder = $db->table('employee_document ed')->select('ed.employeeDocumentId, e.encryptedEmployeeId, ed.encryptedEmployeeDocumentId, CONCAT(ed.encryptedEmployeeDocumentId, ".", ed.employeeDocumentExtension) AS "documentInFolder", TRIM(CONCAT(edt.employeeDocumentType, IFNULL(ed.employeeDocumentName, ""), "De", e.name, e.lastName1, IFNULL(e.lastName2, ""))) AS "documentDownloadName", ed.employeeDocumentExtension')->join('employee_document_type edt', 'ed.employeeDocumentTypeId = edt.employeeDocumentTypeId')->join('employee e', 'e.employeeId = ed.employeeId')->where('e.encryptedEmployeeId', $encryptedEmployeeId)->where('ed.status', 1);
         return $builder->get();
     }
 
@@ -114,5 +132,42 @@ class Employee_model extends Model{
         $builder = $db->table('employee')->select('employeeId')->where('encryptedEmployeeId', $encryptedEmployeeId);
         foreach($builder->get()->getResult() as $row)
             $builder = $db->table('employee_skills')->where('employeeId', $row->employeeId)->where('skillId', $skillId)->update(['skillValue' => $skillValue]);
+    }
+
+    public function insertEmployeeDocument($employeeId, $employeeDocumentTypeId, $employeeDocumentName, $employeeDocumentExtension){
+        $db = db_connect();
+        
+        $builder = $db->table('employee_document')->insert(['employeeId' => $employeeId, 'employeeDocumentTypeId' => $employeeDocumentTypeId, 'employeeDocumentName' => $employeeDocumentName, 'employeeDocumentExtension' => $employeeDocumentExtension]);
+        
+        $employeeDocumentId = -1;
+        $builder1 = $db->table('employee_document')->select('MAX(employeeDocumentId) AS maxEmployeeDocumentId');
+        foreach ($builder1->get()->getResult() as $row) $employeeDocumentId = $row->maxEmployeeDocumentId;
+
+        $encryptedEmployeeDocumentId = crypt(hash("sha256", crypt($employeeDocumentId, "ep")), "ep");
+        $encryptedEmployeeDocumentId = preg_replace('/[^a-z0-9]/i', substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'), 0, 1), $encryptedEmployeeDocumentId);
+        $builder2 = $db->table('employee_document')->where('employeeDocumentId', $employeeDocumentId)->update(['encryptedEmployeeDocumentId' => $encryptedEmployeeDocumentId]);
+
+        return $encryptedEmployeeDocumentId;
+    }
+
+    public function insertEmployeeDocument1($employeeId, $employeeDocumentTypeId, $employeeDocumentExtension){
+        $db = db_connect();
+        
+        $builder = $db->table('employee_document')->insert(['employeeId' => $employeeId, 'employeeDocumentTypeId' => $employeeDocumentTypeId, 'employeeDocumentExtension' => $employeeDocumentExtension]);
+        
+        $employeeDocumentId = -1;
+        $builder1 = $db->table('employee_document')->select('MAX(employeeDocumentId) AS maxEmployeeDocumentId');
+        foreach ($builder1->get()->getResult() as $row) $employeeDocumentId = $row->maxEmployeeDocumentId;
+
+        $encryptedEmployeeDocumentId = crypt(hash("sha256", crypt($employeeDocumentId, "ep")), "ep");
+        $encryptedEmployeeDocumentId = preg_replace('/[^a-z0-9]/i', substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'), 0, 1), $encryptedEmployeeDocumentId);
+        $builder2 = $db->table('employee_document')->where('employeeDocumentId', $employeeDocumentId)->update(['encryptedEmployeeDocumentId' => $encryptedEmployeeDocumentId]);
+
+        return $encryptedEmployeeDocumentId;
+    }
+
+    public function removeEmployeeDocument($encryptedEmployeeDocumentId){
+        $db = db_connect();
+        $builder = $db->table('employee_document')->where('encryptedEmployeeDocumentId', $encryptedEmployeeDocumentId)->update(['status' => 0]);
     }
 }
