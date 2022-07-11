@@ -50,43 +50,50 @@
 
 							</div>
 							<div class="widget-body">
-								<div class="widget-box">
-									<div class="widget-header">
-										<h4 class="widget-title">
-											Ausencias
-										</h4>
-									</div>
-									<div class="widget-body">
-										<div class="widget-main padding-8">
-											
-										</div>
-									</div>
-								</div>
-								<div class="widget-main">
-									<div class="tabbable">
-										<ul class="nav nav-tabs" id="myTab">
-											<li class="active">
-												<a data-toggle="tab" href="#home">
-													Permisos prox.
-												</a>
-											</li>
-
-											<li>
-												<a data-toggle="tab" href="#messages">
-													Cumpleaños este mes
-													<span class="badge badge-danger">4</span>
-												</a>
-											</li>
-										</ul>
-										<div class="tab-content">
-											<div id="home" class="tab-pane fade in active">
-												<p>Raw denim you probably haven't heard of them jean shorts Austin.</p>
+								<div class="row">
+									<div class="col-sm-4">
+										<div class="widget-box">
+											<div class="widget-header">
+												<h4 class="widget-title">
+													Ausencias
+												</h4>
 											</div>
+											<div class="widget-body">
+												<div class="widget-main padding-8">
 
-											<div id="messages" class="tab-pane fade">
-												<p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.</p>
+												</div>
 											</div>
 										</div>
+									</div>
+									<div class="col-sm-8">
+										<div class="widget-main">
+											<div class="tabbable">
+												<ul class="nav nav-tabs" id="myTab">
+													<li class="active">
+														<a data-toggle="tab" href="#home">
+															Permisos prox.
+														</a>
+													</li>
+
+													<li>
+														<a data-toggle="tab" href="#messages">
+															Cumpleaños este mes
+															<span class="badge badge-danger">4</span>
+														</a>
+													</li>
+												</ul>
+												<div class="tab-content">
+													<div id="home" class="tab-pane fade in active">
+														<p>Raw denim you probably haven't heard of them jean shorts Austin.</p>
+													</div>
+
+													<div id="messages" class="tab-pane fade">
+														<p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.</p>
+													</div>
+												</div>
+											</div>
+										</div>
+
 									</div>
 								</div>
 							</div>
